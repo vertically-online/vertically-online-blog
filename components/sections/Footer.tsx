@@ -30,7 +30,7 @@ export default function Footer() {
               alt={site.brand.name}
               width={site.brand.logoDarkDimensions.width}
               height={site.brand.logoDarkDimensions.height}
-              className="h-7 w-auto"
+              className="h-9 w-auto"
             />
             <p className="mt-3 text-sm text-white/65">{site.brand.tagline}</p>
           </div>

@@ -16,14 +16,14 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 glass">
       <div className="container-vx flex items-center justify-between gap-4 py-3">
-        <Link href="/" className="flex flex-col min-w-0">
+        <Link href="/" className="flex flex-col items-start min-w-0">
           <Image
             src={site.brand.logoLight}
             alt={site.brand.name}
             width={site.brand.logoLightDimensions.width}
             height={site.brand.logoLightDimensions.height}
             priority
-            className="h-7 w-auto"
+            className="h-9 w-auto shrink-0"
           />
           <span className="hidden sm:block text-xs text-slate/80 leading-tight truncate mt-0.5">
             {site.brand.tagline}
