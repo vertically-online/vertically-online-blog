@@ -1,92 +1,43 @@
-import Image from "next/image";
-import Link from "next/link";
 import { site } from "@/content/site";
 
 export default function SuccessStories() {
-  const { caseStudies, clientLogos } = site;
-  if (caseStudies.length === 0 && clientLogos.length === 0) {
-    return null;
-  }
+  const { heading, items } = site.successStories;
+  if (items.length === 0) return null;
+
+  const track = [...items, ...items];
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="border-y border-void/10 py-16">
       <div className="container-vx">
-        {caseStudies.length > 0 && (
-          <>
-            <h2 className="font-display text-3xl font-semibold text-void sm:text-4xl">
-              Success stories
-            </h2>
-            <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {caseStudies.map((story) => {
-                const content = (
-                  <>
-                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
-                      <Image
-                        src={story.image}
-                        alt={story.alt}
-                        fill
-                        className="object-cover"
-                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                      />
-                    </div>
-                    <p className="mt-4 text-sm font-medium text-signal">
-                      {story.industry}
-                    </p>
-                    <h3 className="mt-1 font-display text-lg font-semibold text-void">
-                      {story.client}
-                    </h3>
-                    <p className="mt-2 leading-relaxed text-slate">
-                      {story.result}
-                    </p>
-                  </>
-                );
-                return story.href ? (
-                  <Link
-                    key={story.client}
-                    href={story.href}
-                    className="group glass holo-sheen rounded-2xl p-6"
-                  >
-                    {content}
-                  </Link>
-                ) : (
-                  <div key={story.client} className="glass rounded-2xl p-6">
-                    {content}
-                  </div>
-                );
-              })}
-            </div>
-          </>
-        )}
+        <h2 className="text-center font-display text-3xl font-semibold text-void sm:text-4xl">
+          {heading}
+        </h2>
+      </div>
 
-        {clientLogos.length > 0 && (
-          <div className={caseStudies.length > 0 ? "mt-16" : ""}>
-            <div className="flex flex-wrap items-center gap-x-12 gap-y-6">
-              {clientLogos.map((logo) => {
-                const img = (
-                  <Image
-                    src={logo.image}
-                    alt={logo.name}
-                    width={120}
-                    height={48}
-                    className="h-10 w-auto object-contain grayscale transition-all hover:grayscale-0"
-                  />
-                );
-                return logo.href ? (
-                  <a
-                    key={logo.name}
-                    href={logo.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {img}
-                  </a>
-                ) : (
-                  <span key={logo.name}>{img}</span>
-                );
-              })}
+      <div
+        className="marquee-wrap relative mt-10 overflow-hidden"
+        aria-label={heading}
+      >
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-glacier to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-glacier to-transparent" />
+
+        <div className="marquee-track flex w-max gap-6">
+          {track.map((item, i) => (
+            <div
+              key={`${item.name}-${i}`}
+              aria-hidden={i >= items.length ? true : undefined}
+              className="glass flex w-72 shrink-0 items-center gap-4 rounded-2xl p-5"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-aurora-1 to-aurora-3 font-display text-sm font-semibold text-white">
+                {item.initials}
+              </span>
+              <div>
+                <p className="text-sm font-medium text-void">{item.name}</p>
+                <p className="mt-0.5 text-sm text-slate/80">{item.result}</p>
+              </div>
             </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
     </section>
   );

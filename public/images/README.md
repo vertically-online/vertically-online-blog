@@ -16,16 +16,9 @@ when real assets are ready — no code changes needed.
 | `/images/team/<slug>.jpg` | Team grid photo, one per member (slug = `team[].slug` in `content/site.ts`) | 600x600 (1:1) |
 | `/images/og.jpg` | Open Graph / Twitter share image | 1200x630 |
 
-## Added later (currently empty in config)
-
-These slots only render once entries exist in `content/site.ts`:
-
-| Path | Used for | Recommended dimensions |
-| --- | --- | --- |
-| `/images/case-studies/<slug>.jpg` | Success story image (add path via `caseStudies[].image`) | 1200x900 (4:3) |
-| `/images/logos/<slug>.png` | Client logo strip (add path via `clientLogos[].image`), transparent background preferred | ~240px wide, transparent PNG |
-
 ## Notes
+
+- The "Success stories" marquee (`site.successStories.items`) uses text initials badges, not image files — no image slot needed there.
 
 - All images render through `next/image`; keep `alt` text in `content/site.ts` accurate when swapping files.
 - Team photos without a matching file automatically fall back to an initials avatar — no broken images.

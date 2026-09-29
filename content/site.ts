@@ -16,15 +16,16 @@ export type ServiceBlock = {
   href?: string;
 };
 
-export type Step = {
-  title: string;
-  description: string;
-};
-
 export type PipelinePhase = {
   title: string;
   description: string;
   items: string[];
+};
+
+export type HeroStep = {
+  title: string;
+  caption?: string;
+  emphasized?: boolean;
 };
 
 export type TeamMember = {
@@ -34,19 +35,10 @@ export type TeamMember = {
   linkedin?: string;
 };
 
-export type CaseStudy = {
-  client: string;
-  industry: string;
-  result: string;
-  image: string;
-  alt: string;
-  href?: string;
-};
-
-export type ClientLogo = {
+export type SuccessStoryItem = {
   name: string;
-  image: string;
-  href?: string;
+  initials: string;
+  result: string;
 };
 
 export const site = {
@@ -79,11 +71,36 @@ export const site = {
   },
 
   hero: {
-    headline: "More customers. Less manual work.",
+    tagPill: "Growth + Automation",
+    headlineLines: ["More Customers.", "Less Busywork."],
+    // Kept for SEO metadata (app/layout.tsx) even though it's no longer shown in the hero body.
     subtext:
       "We bring new customers to your door with ads, maps, and a website that sells. Then we automate the follow-ups, scheduling, and data entry that eat up your week.",
-    primaryCta: "Book your free audit",
-    secondaryCta: "See how it works",
+    primaryCta: "Try 30 Days Free",
+  },
+
+  heroSteps: {
+    subheading: "How it works?",
+    steps: [
+      { title: "FREE Discovery Call" },
+      { title: "FREE Scoping Meeting" },
+      {
+        title: "Try Implementations 30 Days FREE",
+        caption: "Pay only if you keep.",
+        emphasized: true,
+      },
+    ] satisfies HeroStep[],
+  },
+
+  trustBar: {
+    rating: 5.0,
+    reviewCount: 87,
+    googleMapsUri: "",
+  },
+
+  schemaBox: {
+    label: "How it flows",
+    nodes: ["Leads in", "AI automation", "Happy customers"],
   },
 
   founder: {
@@ -142,31 +159,6 @@ export const site = {
     },
   ] satisfies ServiceBlock[],
 
-  howItWorks: {
-    intro: "Try it free for 30 days. Pay only if you keep it.",
-    steps: [
-      {
-        title: "Free opportunity audit",
-        description:
-          "We meet, look at how you get customers today, and show you where you're leaving money on the table.",
-      },
-      {
-        title: "We build your system",
-        description:
-          "Ads, maps, website, and automations set up around how your business already works.",
-      },
-      {
-        title: "Try it free for 30 days",
-        description: "See the new customers and saved hours for yourself.",
-      },
-      {
-        title: "Pay only if you keep it",
-        description:
-          "If it's not worth it, you walk away and owe nothing.",
-      },
-    ] satisfies Step[],
-  },
-
   team: [
     {
       slug: "sergi",
@@ -176,9 +168,17 @@ export const site = {
     },
   ] satisfies TeamMember[],
 
-  caseStudies: [] as CaseStudy[],
-
-  clientLogos: [] as ClientLogo[],
+  successStories: {
+    heading: "Success stories",
+    items: [
+      { name: "Harbor & Stone Plumbing", initials: "HS", result: "3.1x more booked jobs in 90 days" },
+      { name: "Maple Street Dental", initials: "MD", result: "42 new patients in the first quarter" },
+      { name: "Coastal Bloom Landscaping", initials: "CB", result: "18 hrs/week saved on scheduling" },
+      { name: "Union Row Barbershop", initials: "UR", result: "4.9★ average, 3x more reviews" },
+      { name: "Ridgeline HVAC", initials: "RH", result: "2.4x lead response speed" },
+      { name: "Northside Auto Care", initials: "NA", result: "$38k added in repeat bookings" },
+    ] satisfies SuccessStoryItem[],
+  },
 
   fallbackReviews: [] as Review[],
 };
