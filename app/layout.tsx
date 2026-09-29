@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: `${site.brand.name} | ${site.brand.tagline}`,
   description: site.hero.subtext,
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/images/brand/apple-touch-icon.png",
+  },
   openGraph: {
     title: `${site.brand.name} | ${site.brand.tagline}`,
     description: site.hero.subtext,

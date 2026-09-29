@@ -4,11 +4,11 @@
   --void: #0a0e27;
   --void-2: #131a3a;
   --glacier: #f3f5ff;
-  --signal: #4f5fea;
-  --signal-2: #6f5ff0;
+  --signal: #006fa3;
+  --signal-2: #5a4fe0;
   --tide: #8b6fee;
-  --aurora-1: #3b82f6;
-  --aurora-2: #8b5cf6;
+  --aurora-1: #008ccd;
+  --aurora-2: #6d5fd8;
   --aurora-3: #d18af0;
   --slate: #464f6b;
   --white: #ffffff;
@@ -85,7 +85,7 @@ button:focus-visible,
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   box-shadow:
-    0 8px 32px rgba(79, 95, 234, 0.12),
+    0 8px 32px rgba(0, 140, 205, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
@@ -114,8 +114,8 @@ button:focus-visible,
 
 .holo-mesh {
   background:
-    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.35), transparent 45%),
-    radial-gradient(circle at 85% 15%, rgba(139, 92, 246, 0.32), transparent 50%),
+    radial-gradient(circle at 15% 20%, rgba(0, 140, 205, 0.35), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(109, 95, 216, 0.32), transparent 50%),
     radial-gradient(circle at 50% 85%, rgba(209, 138, 240, 0.22), transparent 55%),
     var(--void);
 }
@@ -131,10 +131,10 @@ button:focus-visible,
   inset: -2px;
   background: conic-gradient(
     from 180deg,
-    rgba(59, 130, 246, 0.35),
-    rgba(139, 92, 246, 0.35),
+    rgba(0, 140, 205, 0.35),
+    rgba(109, 95, 216, 0.35),
     rgba(209, 138, 240, 0.35),
-    rgba(59, 130, 246, 0.35)
+    rgba(0, 140, 205, 0.35)
   );
   opacity: 0;
   transition: opacity 0.5s ease;

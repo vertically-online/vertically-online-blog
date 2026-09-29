@@ -25,12 +25,13 @@ export default function Footer() {
       <div className="container-vx py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3">
-              <Image src={site.brand.logo} alt="" width={32} height={32} />
-              <span className="font-display text-lg font-semibold text-white">
-                {site.brand.name}
-              </span>
-            </div>
+            <Image
+              src={site.brand.logoDark}
+              alt={site.brand.name}
+              width={site.brand.logoDarkDimensions.width}
+              height={site.brand.logoDarkDimensions.height}
+              className="h-7 w-auto"
+            />
             <p className="mt-3 text-sm text-white/65">{site.brand.tagline}</p>
           </div>
 

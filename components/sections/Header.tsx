@@ -16,21 +16,17 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 glass">
       <div className="container-vx flex items-center justify-between gap-4 py-3">
-        <Link href="/" className="flex items-center gap-3 min-w-0">
+        <Link href="/" className="flex flex-col min-w-0">
           <Image
-            src={site.brand.logo}
-            alt=""
-            width={36}
-            height={36}
-            className="shrink-0"
+            src={site.brand.logoLight}
+            alt={site.brand.name}
+            width={site.brand.logoLightDimensions.width}
+            height={site.brand.logoLightDimensions.height}
+            priority
+            className="h-7 w-auto"
           />
-          <span className="min-w-0">
-            <span className="block font-display text-lg font-semibold text-void leading-tight">
-              {site.brand.name}
-            </span>
-            <span className="hidden sm:block text-xs text-slate/80 leading-tight truncate">
-              {site.brand.tagline}
-            </span>
+          <span className="hidden sm:block text-xs text-slate/80 leading-tight truncate mt-0.5">
+            {site.brand.tagline}
           </span>
         </Link>
 

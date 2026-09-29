@@ -47,7 +47,14 @@ export const site = {
   brand: {
     name: "Vertically",
     tagline: "Growth + AI automation for local small businesses",
-    logo: "/images/logo.svg",
+    // Wordmark for light/glass surfaces (dark text, transparent background)
+    logoLight: "/images/brand/logo-light.png",
+    logoLightDimensions: { width: 900, height: 273 },
+    // Wordmark for dark surfaces (white text, transparent background)
+    logoDark: "/images/brand/logo-dark.png",
+    logoDarkDimensions: { width: 900, height: 273 },
+    // Standalone arrow mark, square canvas
+    logoMark: "/images/brand/logo-mark.png",
   },
 
   bookingUrl: "https://cal.com/REPLACE",

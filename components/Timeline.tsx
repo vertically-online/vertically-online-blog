@@ -61,11 +61,11 @@ export default function Timeline({ steps }: { steps: Step[] }) {
         aria-hidden="true"
       />
       <div
-        className="absolute left-5 top-2 w-px bg-gradient-to-b from-aurora-1 via-signal to-aurora-3 sm:left-8"
+        className="absolute left-5 top-2 w-px bg-gradient-to-b from-aurora-1 via-aurora-2 to-aurora-3 sm:left-8"
         style={{
           height: `calc((100% - 1rem) * ${effectiveProgress})`,
           transition: reduceMotion ? "none" : "height 80ms linear",
-          boxShadow: "0 0 12px rgba(139, 92, 246, 0.6)",
+          boxShadow: "0 0 12px rgba(0, 140, 205, 0.55)",
         }}
         aria-hidden="true"
       />
