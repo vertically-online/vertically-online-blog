@@ -1,5 +1,5 @@
 import { site } from "@/content/site";
-import ReviewsPanel from "@/components/ReviewsPanel";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 export default function Hero() {
   return (
@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-aurora-2/20 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 left-0 h-72 w-72 rounded-full bg-aurora-1/20 blur-3xl" />
 
-      <div className="container-vx relative grid gap-12 py-20 sm:py-28 lg:grid-cols-2 lg:items-center lg:py-32">
+      <div className="container-vx relative grid gap-12 py-20 sm:py-28 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:py-32">
         <div>
           <h1 className="font-display text-4xl font-semibold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
             {site.hero.headline}
@@ -31,8 +31,13 @@ export default function Hero() {
           </div>
         </div>
 
-        <div>
-          <ReviewsPanel />
+        <div className="mx-auto w-full max-w-[280px] lg:max-w-none">
+          <YouTubeEmbed
+            youtubeId={site.founder.youtubeId}
+            poster={site.founder.poster}
+            posterAlt={`${site.founder.name}, ${site.founder.title}`}
+            aspectClassName="aspect-[9/16]"
+          />
         </div>
       </div>
     </section>

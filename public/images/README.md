@@ -10,7 +10,7 @@ when real assets are ready — no code changes needed.
 | `/images/brand/logo-dark.png` | Footer logo (white text, transparent bg — for dark surfaces) | ~900x273, transparent PNG |
 | `/images/brand/logo-mark.png` | Standalone arrow mark (icon-only, square canvas) | Square, transparent PNG |
 | `app/favicon.ico` | Browser tab icon | Multi-size .ico (16–256px), generated from the arrow mark |
-| `/images/founder-poster.jpg` | Founder video poster (shown before play, or if no YouTube ID is set) | 1280x720 (16:9) |
+| `/images/founder-poster.jpg` | Founder video poster (real YouTube thumbnail; shown before play, or if no YouTube ID is set) | 1080x1920 (9:16, matches the Shorts embed) |
 | `/images/more-customers.jpg` | "What we do" — More customers block | 1200x900 (4:3) |
 | `/images/less-work.jpg` | "What we do" — Less manual work block | 1200x900 (4:3) |
 | `/images/team/<slug>.jpg` | Team grid photo, one per member (slug = `team[].slug` in `content/site.ts`) | 600x600 (1:1) |

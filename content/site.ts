@@ -84,7 +84,7 @@ export const site = {
     name: "Sergi Marcos",
     title: "Founder, Vertically",
     note: "I started Vertically after watching local business owners lose customers to bigger competitors with bigger budgets, not better service. Our job is to level that field with the same tools, without the overhead.",
-    youtubeId: "",
+    youtubeId: "HeYrSpjc-vE",
     poster: "/images/founder-poster.jpg",
   },
 

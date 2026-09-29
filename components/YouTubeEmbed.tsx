@@ -7,16 +7,18 @@ export default function YouTubeEmbed({
   youtubeId,
   poster,
   posterAlt,
+  aspectClassName = "aspect-video",
 }: {
   youtubeId: string;
   poster: string;
   posterAlt: string;
+  aspectClassName?: string;
 }) {
   const [playing, setPlaying] = useState(false);
 
   if (!youtubeId) {
     return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-2xl glass">
+      <div className={`relative ${aspectClassName} w-full overflow-hidden rounded-2xl glass`}>
         <Image
           src={poster}
           alt={posterAlt}
@@ -35,7 +37,7 @@ export default function YouTubeEmbed({
 
   if (playing) {
     return (
-      <div className="aspect-video w-full overflow-hidden rounded-2xl">
+      <div className={`${aspectClassName} w-full overflow-hidden rounded-2xl`}>
         <iframe
           className="h-full w-full"
           src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1`}
@@ -51,7 +53,7 @@ export default function YouTubeEmbed({
     <button
       type="button"
       onClick={() => setPlaying(true)}
-      className="group relative aspect-video w-full overflow-hidden rounded-2xl glass holo-sheen"
+      className={`group relative ${aspectClassName} w-full overflow-hidden rounded-2xl glass holo-sheen`}
       aria-label="Play founder video"
     >
       <Image
