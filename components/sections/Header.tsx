@@ -23,7 +23,7 @@ export default function Header() {
             width={site.brand.logoLightDimensions.width}
             height={site.brand.logoLightDimensions.height}
             priority
-            className="h-9 w-auto shrink-0"
+            className="h-12 w-auto shrink-0"
           />
           <span className="hidden sm:block text-xs text-slate/80 leading-tight truncate mt-0.5">
             {site.brand.tagline}

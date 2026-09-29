@@ -1,5 +1,6 @@
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
+import Pipeline from "@/components/sections/Pipeline";
 import FounderVideo from "@/components/sections/FounderVideo";
 import Services from "@/components/sections/Services";
 import HowItWorks from "@/components/sections/HowItWorks";
@@ -14,6 +15,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <Pipeline />
         <FounderVideo />
         <Services />
         <HowItWorks />

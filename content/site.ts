@@ -21,6 +21,12 @@ export type Step = {
   description: string;
 };
 
+export type PipelinePhase = {
+  title: string;
+  description: string;
+  items: string[];
+};
+
 export type TeamMember = {
   slug: string;
   name: string;
@@ -86,6 +92,35 @@ export const site = {
     note: "I started Vertically after watching local business owners lose customers to bigger competitors with bigger budgets, not better service. Our job is to level that field with the same tools, without the overhead.",
     youtubeId: "HeYrSpjc-vE",
     poster: "/images/founder-poster.jpg",
+  },
+
+  pipeline: {
+    phases: [
+      {
+        title: "We bring the customers in",
+        description:
+          "People find you through ads, Google Maps and reviews, a website that converts, social media, and AI search.",
+        items: ["Ads", "Reviews", "Website", "Social media", "AI search"],
+      },
+      {
+        title: "You run the business",
+        description:
+          "You focus on the work only you can do. We keep the pipeline full behind the scenes.",
+        items: [],
+      },
+      {
+        title: "It runs on autopilot",
+        description:
+          "Speed to lead, follow-ups, scheduling, data entry, and job workflows, handled automatically.",
+        items: [
+          "Speed to lead",
+          "Follow-ups",
+          "Scheduling",
+          "Data entry",
+          "Job workflows",
+        ],
+      },
+    ] satisfies PipelinePhase[],
   },
 
   services: [
