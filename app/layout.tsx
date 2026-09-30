@@ -21,14 +21,14 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vertically.online";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: `${site.brand.name} | ${site.brand.tagline}`,
-  description: site.hero.subtext,
+  description: site.hero.subheadline,
   icons: {
     icon: "/favicon.ico",
     apple: "/images/brand/apple-touch-icon.png",
   },
   openGraph: {
     title: `${site.brand.name} | ${site.brand.tagline}`,
-    description: site.hero.subtext,
+    description: site.hero.subheadline,
     url: siteUrl,
     siteName: site.brand.name,
     images: [{ url: "/images/og.jpg", width: 1200, height: 630 }],
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${site.brand.name} | ${site.brand.tagline}`,
-    description: site.hero.subtext,
+    description: site.hero.subheadline,
     images: ["/images/og.jpg"],
   },
 };

@@ -7,7 +7,7 @@ import { site } from "@/content/site";
 
 const navLinks = [
   { href: "#how-it-works", label: "How it works" },
-  { href: "#team", label: "Team" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export default function Header() {
@@ -44,7 +44,7 @@ export default function Header() {
             href={site.bookingUrl}
             className="rounded-full bg-gradient-to-r from-signal to-signal-2 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-signal-2/25 transition-transform hover:scale-[1.03]"
           >
-            Book a free audit
+            Start My Free 30 Days
           </a>
         </nav>
 
@@ -84,7 +84,7 @@ export default function Header() {
               onClick={() => setOpen(false)}
               className="mt-2 rounded-full bg-gradient-to-r from-signal to-signal-2 px-5 py-2.5 text-center text-sm font-semibold text-white"
             >
-              Book a free audit
+              Start My Free 30 Days
             </a>
           </div>
         </nav>

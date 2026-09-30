@@ -11,15 +11,10 @@ when real assets are ready — no code changes needed.
 | `/images/brand/logo-mark.png` | Standalone arrow mark (icon-only, square canvas) | Square, transparent PNG |
 | `app/favicon.ico` | Browser tab icon | Multi-size .ico (16–256px), generated from the arrow mark |
 | `/images/founder-poster.jpg` | Founder video poster (real YouTube thumbnail; shown before play, or if no YouTube ID is set) | 1080x1920 (9:16, matches the Shorts embed) |
-| `/images/more-customers.jpg` | "What we do" — More customers block | 1200x900 (4:3) |
-| `/images/less-work.jpg` | "What we do" — Less manual work block | 1200x900 (4:3) |
-| `/images/team/<slug>.jpg` | Team grid photo, one per member (slug = `team[].slug` in `content/site.ts`) | 600x600 (1:1) |
 | `/images/og.jpg` | Open Graph / Twitter share image | 1200x630 |
 
 ## Notes
 
-- The "Success stories" marquee (`site.successStories.items`) uses text initials badges, not image files — no image slot needed there.
-
 - All images render through `next/image`; keep `alt` text in `content/site.ts` accurate when swapping files.
-- Team photos without a matching file automatically fall back to an initials avatar — no broken images.
 - Original, full-resolution brand exports (favicon + logo lockups, black/white/transparent variants) live in `/assets/brand-source/` at the project root — not served publicly. Regenerate the files above from those sources if the brand mark ever changes.
+- The rooftop skyline divider between the hero and the next section (`components/RoofDivider.tsx`) is a generated inline SVG, not an image file — edit the `HOUSES` array in that component to change its shape.
