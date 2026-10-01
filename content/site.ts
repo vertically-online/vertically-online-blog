@@ -13,6 +13,16 @@ export type SolutionFeature = {
   description: string;
 };
 
+export type HeroStat = {
+  target: number;
+  decimals: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+  // Short, fully-spelled-out phrase for the accessible label, e.g. "600 plus".
+  announce: string;
+};
+
 export type ResultStat = {
   label: string;
   before: string;
@@ -72,6 +82,30 @@ export const site = {
     primaryCta: "Start My Free 30 Days",
     reassurance:
       "No contract. No credit card. No catch. If it doesn't win you more jobs, you don't pay a dime.",
+    stats: [
+      {
+        target: 600,
+        decimals: 0,
+        suffix: "+",
+        label: "Businesses served",
+        announce: "600 plus",
+      },
+      {
+        target: 4.2,
+        decimals: 1,
+        suffix: "x",
+        label: "More leads",
+        announce: "4.2 times",
+      },
+      {
+        target: 30,
+        decimals: 0,
+        prefix: "<",
+        suffix: " sec",
+        label: "Response time",
+        announce: "under 30 seconds",
+      },
+    ] satisfies HeroStat[],
   },
 
   problem: {

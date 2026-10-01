@@ -1,6 +1,7 @@
 import { site } from "@/content/site";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 import RoofDivider from "@/components/RoofDivider";
+import StatCounter from "@/components/StatCounter";
 
 export default function Hero() {
   return (
@@ -13,6 +14,9 @@ export default function Hero() {
           <h1 className="font-display text-4xl font-semibold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
             {site.hero.headline}
           </h1>
+
+          <StatCounter className="mt-6 lg:absolute lg:top-0 lg:right-0 lg:mt-0" />
+
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/75">
             {site.hero.subheadline}
           </p>
