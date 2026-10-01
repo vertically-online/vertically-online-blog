@@ -7,6 +7,7 @@ import { site } from "@/content/site";
 
 const navLinks = [
   { href: "#how-it-works", label: "How it works" },
+  { href: "#live-demo", label: "Live demo" },
   { href: "#faq", label: "FAQ" },
 ];
 

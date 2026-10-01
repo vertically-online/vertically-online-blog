@@ -2,6 +2,7 @@ import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
 import Solution from "@/components/sections/Solution";
+import LiveDemo from "@/components/sections/LiveDemo";
 import Results from "@/components/sections/Results";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Included from "@/components/sections/Included";
@@ -18,6 +19,7 @@ export default function Home() {
         <Hero />
         <Problem />
         <Solution />
+        <LiveDemo />
         <Results />
         <HowItWorks />
         <Included />

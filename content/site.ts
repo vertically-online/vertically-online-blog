@@ -143,6 +143,18 @@ export const site = {
     ] satisfies SolutionFeature[],
   },
 
+  liveDemo: {
+    eyebrow: "Live demo",
+    heading: "Don't take our word for it. Try it yourself.",
+    body: "This is a demo roofing company running our exact system. Request a quote with your own email and you'll get an instant PDF estimate in under a minute, plus the lead breakdown your company would receive.",
+    ctaLabel: "Try the live demo →",
+    note: "Takes about 2 minutes. Opens in a new tab.",
+    // Base URL, previewed in the embedded browser-chrome mockup and linked from the overlay/card.
+    url: "https://vertically-roofing.vercel.app",
+    // Deep link used by the primary CTA button specifically.
+    ctaUrl: "https://vertically-roofing.vercel.app/quote?ref=vertically-online",
+  },
+
   results: {
     headline: "What happened when one local roofer stopped leaving leads waiting",
     intro:
