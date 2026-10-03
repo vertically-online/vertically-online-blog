@@ -17,7 +17,7 @@ function BrowserChrome({ children }: { children: ReactNode }) {
         <span className="h-2.5 w-2.5 rounded-full bg-aurora-2" aria-hidden="true" />
         <span className="h-2.5 w-2.5 rounded-full bg-aurora-1" aria-hidden="true" />
         <span className="ml-3 flex-1 truncate rounded-md bg-void/5 px-3 py-1 text-xs text-slate">
-          vertically-roofing.vercel.app
+          roofing-demo.vertically.online
         </span>
       </div>
       {children}

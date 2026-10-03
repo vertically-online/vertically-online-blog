@@ -38,6 +38,7 @@ export default function Footer() {
             className="h-8 w-auto"
           />
           <p className="mt-3 text-sm text-white/50 max-w-xs">{site.brand.tagline}</p>
+          <p className="mt-1 text-xs text-white/60">{site.contact.foundedLine}</p>
 
           {socialEntries.length > 0 && (
             <div className="mt-4 flex gap-3">
@@ -89,16 +90,13 @@ export default function Footer() {
                 {site.contact.email}
               </a>
             </li>
-            <li>{site.contact.address}</li>
           </ul>
         </div>
       </div>
 
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-6xl px-4 py-5 text-xs text-white/60 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>
-            &copy; {new Date().getFullYear()} {site.brand.name}. All rights reserved.
-          </span>
+          <span>&copy; 2021–2026 {site.brand.name}. All rights reserved.</span>
         </div>
       </div>
     </footer>

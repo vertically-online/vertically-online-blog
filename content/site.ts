@@ -61,7 +61,9 @@ export const site = {
     email: "vertically.online@gmail.com",
     phone: "360-623-5598",
     phoneHref: "tel:+13606235598",
-    address: "239 Fourth Ave, Ste 1401 #8621, Pittsburgh, PA",
+    foundedLine: "Founded in Philadelphia, PA",
+    addressLocality: "Philadelphia",
+    addressRegion: "PA",
   },
 
   social: {
@@ -164,9 +166,9 @@ export const site = {
     ctaLabel: "Try the live demo →",
     note: "Takes about 2 minutes. Opens in a new tab.",
     // Base URL, previewed in the embedded browser-chrome mockup and linked from the overlay/card.
-    url: "https://vertically-roofing.vercel.app",
+    url: "https://roofing-demo.vertically.online",
     // Deep link used by the primary CTA button specifically.
-    ctaUrl: "https://vertically-roofing.vercel.app/quote?ref=vertically-online",
+    ctaUrl: "https://roofing-demo.vertically.online/quote?ref=vertically-online",
   },
 
   results: {

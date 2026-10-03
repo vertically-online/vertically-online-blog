@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: `${site.brand.name} | ${site.brand.tagline}`,
   description: site.hero.subheadline,
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/images/brand/apple-touch-icon.png",
@@ -53,7 +56,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     telephone: site.contact.phoneHref.replace("tel:", ""),
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.contact.address,
+      addressLocality: site.contact.addressLocality,
+      addressRegion: site.contact.addressRegion,
     },
     url: siteUrl,
     sameAs: Object.values(site.social).filter(Boolean),
