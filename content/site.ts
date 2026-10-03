@@ -11,6 +11,8 @@ export type Review = {
 export type SolutionFeature = {
   title: string;
   description: string;
+  image: string;
+  alt: string;
 };
 
 export type HeroStat = {
@@ -53,12 +55,13 @@ export const site = {
     logoMark: "/images/brand/logo-mark.png",
   },
 
-  bookingUrl: "https://cal.com/REPLACE",
+  bookingUrl: "https://cal.com/vertical-ai-y2xlue/free-systems-audit",
 
   contact: {
-    email: "hello@vertically.online",
-    phone: "+1 (555) 010-2024",
-    address: "120 Harbor Street, Suite 4, Portland, ME 04101",
+    email: "vertically.online@gmail.com",
+    phone: "360-623-5598",
+    phoneHref: "tel:+13606235598",
+    address: "239 Fourth Ave, Ste 1401 #8621, Pittsburgh, PA",
   },
 
   social: {
@@ -76,9 +79,12 @@ export const site = {
   },
 
   hero: {
+    badge: "No contract. No credit card. 30 days free.",
     headline: "Answer every roofing lead in 30 seconds. Close 5x more jobs.",
     subheadline:
       "Vertically installs an AI system that responds to every lead instantly, builds the quote for you, and books the inspection, so no homeowner ever calls your competitor first.",
+    image: "/images/service-replacement.jpg",
+    imageAlt: "Roofer nailing down architectural shingles on a sunny day",
     primaryCta: "Start My Free 30 Days",
     reassurance:
       "No contract. No credit card. No catch. If it doesn't win you more jobs, you don't pay a dime.",
@@ -124,21 +130,29 @@ export const site = {
         title: "Instant response, every time.",
         description:
           "Every form, call, and quote request gets a reply in under 30 seconds, day or night, weekends included.",
+        image: "/images/service-repair.jpg",
+        alt: "Roofer quickly addressing a repair on a shingle roof",
       },
       {
         title: "Automatic quotes.",
         description:
           "Homeowners answer a few simple questions, and jobs within your price range get a quote automatically. No more hours of back-and-forth. You set the limits; bigger jobs come to you for review. This is entirely custom and specific to your company. We don't launch this without your approval.",
+        image: "/images/service-inspection.jpg",
+        alt: "Roofer inspecting a roof to prepare an estimate",
       },
       {
         title: "Every lead lands in your inbox, fully detailed.",
         description:
           "Name, address, service type, job details, and quote, the moment it comes in. No digging and no missing information.",
+        image: "/images/trust-craftsmanship.jpg",
+        alt: "Roofer carefully installing shingles with attention to detail",
       },
       {
         title: "Nothing slips through.",
         description:
           "Missed calls get an instant text back. Leads who go quiet get automatic follow-up. Finished jobs get a review request.",
+        image: "/images/service-storm.jpg",
+        alt: "Roofing crew working on a roof against a dramatic sky",
       },
     ] satisfies SolutionFeature[],
   },

@@ -7,12 +7,12 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="scroll-mt-24 py-20 sm:py-28">
-      <div className="container-vx max-w-2xl">
-        <h2 className="font-display text-3xl font-semibold text-void sm:text-4xl">
+    <section id="faq" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-20">
+      <div className="max-w-2xl">
+        <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-void">
           FAQ
         </h2>
-        <div className="mt-10 divide-y divide-void/10 overflow-hidden rounded-2xl glass">
+        <div className="mt-10 divide-y divide-void/10 overflow-hidden rounded-2xl bg-white shadow-card border border-void/10">
           {site.faq.items.map((item, i) => {
             const open = openIndex === i;
             return (

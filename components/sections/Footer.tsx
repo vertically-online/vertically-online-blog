@@ -17,70 +17,88 @@ const socialIcons: Record<string, ReactElement> = {
   ),
 };
 
+const QUICK_LINKS = [
+  { href: "#how-it-works", label: "How it works" },
+  { href: "#live-demo", label: "Live demo" },
+  { href: "#faq", label: "FAQ" },
+];
+
 export default function Footer() {
   const socialEntries = Object.entries(site.social).filter(([, url]) => url);
 
   return (
-    <footer className="holo-mesh mt-auto">
-      <div className="container-vx py-16">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="sm:col-span-2 lg:col-span-1">
-            <Image
-              src={site.brand.logoDark}
-              alt={site.brand.name}
-              width={site.brand.logoDarkDimensions.width}
-              height={site.brand.logoDarkDimensions.height}
-              className="h-9 w-auto"
-            />
-            <p className="mt-3 text-sm text-white/65">{site.brand.tagline}</p>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-white">Contact</h3>
-            <ul className="mt-3 space-y-2 text-sm text-white/65">
-              <li>
-                <a href={`mailto:${site.contact.email}`} className="hover:text-white">
-                  {site.contact.email}
-                </a>
-              </li>
-              <li>
-                <a href={`tel:${site.contact.phone}`} className="hover:text-white">
-                  {site.contact.phone}
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-white">Address</h3>
-            <p className="mt-3 text-sm text-white/65">{site.contact.address}</p>
-          </div>
+    <footer className="bg-void text-white/70">
+      <div className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 sm:grid-cols-3 gap-10">
+        <div>
+          <Image
+            src={site.brand.logoDark}
+            alt={site.brand.name}
+            width={site.brand.logoDarkDimensions.width}
+            height={site.brand.logoDarkDimensions.height}
+            className="h-8 w-auto"
+          />
+          <p className="mt-3 text-sm text-white/50 max-w-xs">{site.brand.tagline}</p>
 
           {socialEntries.length > 0 && (
-            <div>
-              <h3 className="text-sm font-semibold text-white">Follow</h3>
-              <div className="mt-3 flex gap-3">
-                {socialEntries.map(([name, url]) => (
-                  <a
-                    key={name}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={name}
-                    className="flex h-9 w-9 items-center justify-center rounded-full glass-dark text-white/80 transition-colors hover:text-white"
-                  >
-                    <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
-                      {socialIcons[name]}
-                    </svg>
-                  </a>
-                ))}
-              </div>
+            <div className="mt-4 flex gap-3">
+              {socialEntries.map(([name, url]) => (
+                <a
+                  key={name}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-white/60 transition-colors hover:text-white"
+                >
+                  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
+                    {socialIcons[name]}
+                  </svg>
+                </a>
+              ))}
             </div>
           )}
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-sm text-white/50">
-          &copy; {new Date().getFullYear()} {site.brand.name}. All rights reserved.
+        <div>
+          <h3 className="text-white font-display font-semibold mb-3 text-sm uppercase tracking-wide">
+            Explore
+          </h3>
+          <ul className="space-y-2 text-sm text-white/50">
+            {QUICK_LINKS.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="hover:text-white">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-white font-display font-semibold mb-3 text-sm uppercase tracking-wide">
+            Contact
+          </h3>
+          <ul className="space-y-2 text-sm text-white/50">
+            <li>
+              <a href={site.contact.phoneHref} className="hover:text-white">
+                {site.contact.phone}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${site.contact.email}`} className="hover:text-white">
+                {site.contact.email}
+              </a>
+            </li>
+            <li>{site.contact.address}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10">
+        <div className="mx-auto max-w-6xl px-4 py-5 text-xs text-white/60 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span>
+            &copy; {new Date().getFullYear()} {site.brand.name}. All rights reserved.
+          </span>
         </div>
       </div>
     </footer>

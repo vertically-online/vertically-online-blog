@@ -16,7 +16,7 @@ function BrowserChrome({ children }: { children: ReactNode }) {
         <span className="h-2.5 w-2.5 rounded-full bg-aurora-3" aria-hidden="true" />
         <span className="h-2.5 w-2.5 rounded-full bg-aurora-2" aria-hidden="true" />
         <span className="h-2.5 w-2.5 rounded-full bg-aurora-1" aria-hidden="true" />
-        <span className="ml-3 flex-1 truncate rounded-md bg-void/5 px-3 py-1 text-xs text-slate/60">
+        <span className="ml-3 flex-1 truncate rounded-md bg-void/5 px-3 py-1 text-xs text-slate">
           vertically-roofing.vercel.app
         </span>
       </div>
@@ -27,7 +27,7 @@ function BrowserChrome({ children }: { children: ReactNode }) {
 
 function OpenDemoPill() {
   return (
-    <span className="glass rounded-full px-5 py-2.5 text-sm font-semibold text-void opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+    <span className="rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-void opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
       Open live demo ↗
     </span>
   );
@@ -58,13 +58,12 @@ export default function DemoPreview() {
           href={site.liveDemo.url}
           target="_blank"
           rel="noopener"
-          aria-label="Open the live Vertically Roofing demo"
           className="flex flex-col items-center justify-center gap-4 bg-glacier px-6 py-16 text-center"
         >
           <span className="font-display text-base font-semibold text-void">
             Vertically Roofing — live demo
           </span>
-          <span className="rounded-full bg-gradient-to-r from-signal to-signal-2 px-5 py-2.5 text-sm font-semibold text-white">
+          <span className="rounded-lg bg-signal px-5 py-2.5 text-sm font-semibold text-white">
             Open live demo ↗
           </span>
         </a>

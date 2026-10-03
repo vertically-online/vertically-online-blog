@@ -18,7 +18,9 @@ export default function YouTubeEmbed({
 
   if (!youtubeId) {
     return (
-      <div className={`relative ${aspectClassName} w-full overflow-hidden rounded-2xl glass`}>
+      <div
+        className={`relative ${aspectClassName} w-full overflow-hidden rounded-2xl bg-white shadow-card`}
+      >
         <Image
           src={poster}
           alt={posterAlt}
@@ -27,7 +29,7 @@ export default function YouTubeEmbed({
           sizes="(min-width: 1024px) 560px, 100vw"
         />
         <div className="absolute inset-0 flex items-center justify-center bg-void/40">
-          <span className="glass rounded-full px-5 py-2 text-sm font-medium text-void">
+          <span className="rounded-lg bg-white px-5 py-2 text-sm font-medium text-void shadow-sm">
             Video coming soon
           </span>
         </div>
@@ -53,7 +55,7 @@ export default function YouTubeEmbed({
     <button
       type="button"
       onClick={() => setPlaying(true)}
-      className={`group relative ${aspectClassName} w-full overflow-hidden rounded-2xl glass holo-sheen`}
+      className={`group relative ${aspectClassName} w-full overflow-hidden rounded-2xl bg-white shadow-card hover:shadow-lg transition-shadow`}
       aria-label="Play founder video"
     >
       <Image
@@ -64,7 +66,7 @@ export default function YouTubeEmbed({
         sizes="(min-width: 1024px) 560px, 100vw"
       />
       <div className="absolute inset-0 flex items-center justify-center bg-void/30 transition-colors group-hover:bg-void/40">
-        <span className="flex h-16 w-16 items-center justify-center rounded-full glass shadow-lg transition-transform group-hover:scale-110">
+        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg transition-transform group-hover:scale-110">
           <svg viewBox="0 0 24 24" className="h-6 w-6 fill-signal translate-x-0.5">
             <path d="M8 5v14l11-7z" />
           </svg>

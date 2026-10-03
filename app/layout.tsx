@@ -50,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     name: site.brand.name,
     description: site.brand.tagline,
     email: site.contact.email,
-    telephone: site.contact.phone,
+    telephone: site.contact.phoneHref.replace("tel:", ""),
     address: {
       "@type": "PostalAddress",
       streetAddress: site.contact.address,

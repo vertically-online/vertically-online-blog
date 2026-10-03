@@ -11,19 +11,17 @@ function easeOutCubic(t: number) {
 
 export default function StatCounter({ className = "" }: { className?: string }) {
   const stats = site.hero.stats;
-  const [values, setValues] = useState(() => stats.map(() => 0));
+  // Default to the final target values so the counters are correct on first
+  // paint — server-rendered, before hydration, and with JS disabled. The
+  // effect below only resets to 0 and counts up when motion is safe to animate.
+  const [values, setValues] = useState(() => stats.map((stat) => stat.target));
 
   useEffect(() => {
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    if (reduceMotion) {
-      const raf = requestAnimationFrame(() => {
-        setValues(stats.map((stat) => stat.target));
-      });
-      return () => cancelAnimationFrame(raf);
-    }
+    if (reduceMotion) return;
 
     let raf = 0;
     const start = performance.now();
@@ -48,27 +46,21 @@ export default function StatCounter({ className = "" }: { className?: string }) 
     .join(", ");
 
   return (
-    <div
+    <dl
       role="group"
       aria-label={ariaLabel}
-      className={`flex divide-x divide-white/15 ${className}`}
+      className={`grid grid-cols-3 gap-6 ${className}`}
     >
       {stats.map((stat, i) => (
-        <div
-          key={stat.label}
-          aria-hidden="true"
-          className="px-3 text-left first:pl-0 sm:px-4"
-        >
-          <p className="font-display text-xl font-bold tabular-nums text-white sm:text-2xl lg:text-2xl">
+        <div key={stat.label} aria-hidden="true">
+          <dd className="font-display text-2xl sm:text-3xl font-bold text-white tabular-nums">
             {stat.prefix}
             {values[i].toFixed(stat.decimals)}
             {stat.suffix}
-          </p>
-          <p className="mt-0.5 whitespace-nowrap text-[10px] text-white/60 sm:text-xs">
-            {stat.label}
-          </p>
+          </dd>
+          <dd className="mt-1 text-xs sm:text-sm text-white/70">{stat.label}</dd>
         </div>
       ))}
-    </div>
+    </dl>
   );
 }

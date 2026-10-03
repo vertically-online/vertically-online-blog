@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/content/site";
@@ -12,84 +9,43 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <header className="sticky top-0 z-50 glass">
-      <div className="container-vx flex items-center justify-between gap-4 py-3">
-        <Link href="/" className="flex flex-col items-start min-w-0">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-void/10">
+      <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between gap-4">
+        <Link href="/" className="flex items-center gap-2 min-w-0">
           <Image
             src={site.brand.logoLight}
             alt={site.brand.name}
             width={site.brand.logoLightDimensions.width}
             height={site.brand.logoLightDimensions.height}
             priority
-            className="h-12 w-auto shrink-0"
+            className="h-8 w-auto shrink-0"
           />
-          <span className="hidden sm:block text-xs text-slate/80 leading-tight truncate mt-0.5">
+          <span className="hidden lg:block truncate border-l border-void/10 pl-2 ml-1 text-sm text-slate">
             {site.brand.tagline}
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-slate hover:text-signal transition-colors"
-            >
+            <a key={link.href} href={link.href} className="hover:text-void transition-colors">
               {link.label}
             </a>
           ))}
-          <a
-            href={site.bookingUrl}
-            className="rounded-full bg-gradient-to-r from-signal to-signal-2 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-signal-2/25 transition-transform hover:scale-[1.03]"
-          >
-            Start My Free 30 Days
+          <a href={site.contact.phoneHref} className="hover:text-void transition-colors">
+            {site.contact.phone}
           </a>
         </nav>
 
-        <button
-          type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg glass md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
+        <a
+          href={site.bookingUrl}
+          target="_blank"
+          rel="noopener"
+          className="inline-flex items-center justify-center rounded-lg bg-signal px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-void-2 transition-colors shrink-0"
         >
-          <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-void" fill="none" strokeWidth={2}>
-            {open ? (
-              <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
-            ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
-            )}
-          </svg>
-        </button>
+          {site.hero.primaryCta}
+        </a>
       </div>
-
-      {open && (
-        <nav id="mobile-menu" className="glass border-t border-void/5 md:hidden">
-          <div className="container-vx flex flex-col gap-1 py-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate hover:bg-void/5"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href={site.bookingUrl}
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-gradient-to-r from-signal to-signal-2 px-5 py-2.5 text-center text-sm font-semibold text-white"
-            >
-              Start My Free 30 Days
-            </a>
-          </div>
-        </nav>
-      )}
     </header>
   );
 }

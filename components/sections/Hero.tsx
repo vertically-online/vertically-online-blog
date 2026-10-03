@@ -1,47 +1,60 @@
+import Image from "next/image";
 import { site } from "@/content/site";
-import YouTubeEmbed from "@/components/YouTubeEmbed";
-import RoofDivider from "@/components/RoofDivider";
 import StatCounter from "@/components/StatCounter";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden holo-mesh">
-      <div className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-aurora-2/20 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 left-0 h-72 w-72 rounded-full bg-aurora-1/20 blur-3xl" />
-
-      <div className="container-vx relative grid gap-12 py-20 sm:py-28 lg:grid-cols-[11fr_9fr] lg:items-center lg:gap-10 lg:py-24">
-        <div>
-          <h1 className="font-display text-4xl font-semibold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
+    <section className="relative overflow-hidden bg-void text-white">
+      <Image
+        src={site.hero.image}
+        alt={site.hero.imageAlt}
+        fill
+        priority
+        quality={55}
+        sizes="100vw"
+        className="object-cover object-center opacity-45"
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(115deg, rgba(10,14,39,0.97) 20%, rgba(10,14,39,0.75) 55%, rgba(10,14,39,0.55) 100%), radial-gradient(circle at 85% 15%, rgba(109,95,216,0.35), transparent 45%)",
+        }}
+      />
+      <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-28">
+        <div className="max-w-2xl">
+          <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-[#9fdaff] mb-5 ring-1 ring-white/10">
+            {site.hero.badge}
+          </span>
+          <h1 className="font-display text-4xl sm:text-5xl font-bold leading-tight tracking-tight text-white">
             {site.hero.headline}
           </h1>
-
-          <StatCounter className="mt-6 lg:absolute lg:top-0 lg:right-0 lg:mt-0" />
-
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/75">
+          <p className="mt-5 text-lg text-white/80 max-w-lg">
             {site.hero.subheadline}
           </p>
-          <a
-            href={site.bookingUrl}
-            className="mt-8 inline-block rounded-full bg-gradient-to-r from-signal to-signal-2 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-signal-2/30 transition-transform hover:scale-[1.03]"
-          >
-            {site.hero.primaryCta}
-          </a>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <a
+              href={site.bookingUrl}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center justify-center rounded-lg bg-signal px-6 py-3.5 text-base font-semibold text-white shadow-lg hover:bg-void-2 transition-colors"
+            >
+              {site.hero.primaryCta}
+            </a>
+            <a
+              href={site.contact.phoneHref}
+              className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors"
+            >
+              Call {site.contact.phone}
+            </a>
+          </div>
           <p className="mt-4 max-w-md text-sm text-white/60">
             {site.hero.reassurance}
           </p>
-        </div>
 
-        <div className="mx-auto w-full max-w-[240px] lg:mx-0 lg:ml-auto lg:max-w-[280px]">
-          <YouTubeEmbed
-            youtubeId={site.founder.youtubeId}
-            poster={site.founder.poster}
-            posterAlt={`${site.founder.name}, ${site.founder.title}`}
-            aspectClassName="aspect-[9/16]"
-          />
+          <StatCounter className="mt-12 max-w-lg" />
         </div>
       </div>
-
-      <RoofDivider />
     </section>
   );
 }
