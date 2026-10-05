@@ -1,6 +1,11 @@
 // All site copy, links, and image paths live here.
 // Edit this file to change content without touching components.
 
+// Single source of truth for the booking link — imported directly anywhere
+// new, and threaded through `site.bookingUrl` for existing call sites.
+export const BOOKING_URL =
+  "https://cal.com/vertically/free-systems-audit?overlayCalendar=true";
+
 export type Review = {
   author: string;
   rating: number;
@@ -55,7 +60,7 @@ export const site = {
     logoMark: "/images/brand/logo-mark.png",
   },
 
-  bookingUrl: "https://cal.com/vertical-ai-y2xlue/free-systems-audit",
+  bookingUrl: BOOKING_URL,
 
   contact: {
     email: "vertically.online@gmail.com",
@@ -92,11 +97,11 @@ export const site = {
       "No contract. No credit card. No catch. If it doesn't win you more jobs, you don't pay a dime.",
     stats: [
       {
-        target: 600,
+        target: 2000,
         decimals: 0,
         suffix: "+",
-        label: "Businesses served",
-        announce: "600 plus",
+        label: "Leads answered automatically",
+        announce: "2,000 plus",
       },
       {
         target: 4.2,
@@ -171,10 +176,36 @@ export const site = {
     ctaUrl: "https://roofing-demo.vertically.online/quote?ref=vertically-online",
   },
 
+  arias: {
+    logo: "/images/clients/arias-logo.png",
+    logoAlt: "Arias Roofing & Siding logo",
+    eyebrow: "Real results",
+    heading: "See it running for a real roofer",
+    subhead:
+      "Arias Roofing & Siding in Sewell, NJ runs on Vertically. Click around their site, request a quote, and see it for yourself.",
+    embedUrl: "https://ariasroofingnj.com",
+    embedLabel: "ariasroofingnj.com",
+    visitLabel: "Visit ariasroofingnj.com ↗",
+    testimonial: {
+      paragraphs: [
+        "Working with Vertically has made a real difference in how we operate and grow our business.",
+        "They helped us put better systems in place, improve how we manage and follow up with leads, and take a lot of manual work off our team. That has allowed us to stay focused on our customers, close more opportunities, and scale the business more efficiently.",
+        "I would highly recommend Vertically to any business owner looking to improve their operations and grow.",
+      ],
+      authorName: "Gustavo Arias",
+      authorTitle: "Owner, Arias Roofing and Siding",
+      authorLocation: "Sewell, New Jersey",
+      rating: 5,
+    },
+  },
+
   results: {
-    headline: "What happened when one local roofer stopped leaving leads waiting",
+    eyebrow: "Case study: Arias Roofing & Siding",
+    logo: "/images/clients/arias-logo.png",
+    logoAlt: "Arias Roofing & Siding logo",
+    headline: "How we helped Arias Roofing & Siding scale from 1 job a month to 5",
     intro:
-      "A local roofing company was getting 1 to 3 leads a month, almost all from referrals. Replies took 24 to 48 hours, and they were closing about one job a month.",
+      "Arias Roofing & Siding in Sewell, NJ was getting 1 to 3 leads a month, almost all from referrals. Replies took 24 to 48 hours, and they were closing about one job a month.",
     setup: "We installed the system. No ad spend. No new marketing.",
     stats: [
       { label: "Response time", before: "24–48 hours", after: "Under 30 seconds" },
@@ -184,7 +215,8 @@ export const site = {
       { label: "Time saved", before: "—", after: "~30 hours/week on quoting and chasing leads" },
     ] satisfies ResultStat[],
     closingNote:
-      "Their close rate didn't change. They were always good at closing. They just finally answered every lead.",
+      "Gustavo's close rate didn't change. Arias was always good at closing. They just finally answered every lead.",
+    backLink: { label: "See the Arias site live ↑", href: "#results" },
   },
 
   howItWorks: {

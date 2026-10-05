@@ -55,7 +55,10 @@ export default function StatCounter({ className = "" }: { className?: string }) 
         <div key={stat.label} aria-hidden="true">
           <dd className="font-display text-2xl sm:text-3xl font-bold text-white tabular-nums">
             {stat.prefix}
-            {values[i].toFixed(stat.decimals)}
+            {values[i].toLocaleString("en-US", {
+              minimumFractionDigits: stat.decimals,
+              maximumFractionDigits: stat.decimals,
+            })}
             {stat.suffix}
           </dd>
           <dd className="mt-1 text-xs sm:text-sm text-white/70">{stat.label}</dd>

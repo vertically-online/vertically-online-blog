@@ -1,11 +1,26 @@
+import Image from "next/image";
 import { site } from "@/content/site";
 
 export default function Results() {
-  const { headline, intro, setup, stats, closingNote } = site.results;
+  const { eyebrow, logo, logoAlt, headline, intro, setup, stats, closingNote, backLink } =
+    site.results;
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-20">
-      <h2 className="max-w-2xl font-display text-3xl sm:text-4xl font-bold tracking-tight text-void">
+      <div className="relative h-10 w-36">
+        <Image
+          src={logo}
+          alt={logoAlt}
+          fill
+          className="object-contain object-left"
+          sizes="144px"
+        />
+      </div>
+
+      <span className="mt-5 inline-flex items-center rounded-full bg-signal/10 px-3 py-1 text-xs font-medium text-signal ring-1 ring-signal/20">
+        {eyebrow}
+      </span>
+      <h2 className="mt-5 max-w-2xl font-display text-3xl sm:text-4xl font-bold tracking-tight text-void">
         {headline}
       </h2>
       <p className="mt-6 max-w-2xl text-slate leading-relaxed">{intro}</p>
@@ -31,6 +46,13 @@ export default function Results() {
       </div>
 
       <p className="mt-10 max-w-2xl font-medium text-void">{closingNote}</p>
+
+      <a
+        href={backLink.href}
+        className="mt-4 inline-block text-sm font-semibold text-signal hover:text-void-2"
+      >
+        {backLink.label}
+      </a>
     </section>
   );
 }

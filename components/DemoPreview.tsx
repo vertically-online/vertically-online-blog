@@ -1,29 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { ReactNode } from "react";
 import { site } from "@/content/site";
+import BrowserChrome from "@/components/BrowserChrome";
 
 const DESKTOP_WIDTH = 1280;
 // ~1.5 screens of content at an assumed 800px desktop viewport height.
 const IFRAME_HEIGHT = 1200;
 const MOBILE_BREAKPOINT = 640;
-
-function BrowserChrome({ children }: { children: ReactNode }) {
-  return (
-    <div className="group relative overflow-hidden rounded-2xl border border-void/10 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl focus-within:-translate-y-1 focus-within:shadow-2xl">
-      <div className="flex items-center gap-1.5 border-b border-void/10 bg-glacier px-4 py-2.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-aurora-3" aria-hidden="true" />
-        <span className="h-2.5 w-2.5 rounded-full bg-aurora-2" aria-hidden="true" />
-        <span className="h-2.5 w-2.5 rounded-full bg-aurora-1" aria-hidden="true" />
-        <span className="ml-3 flex-1 truncate rounded-md bg-void/5 px-3 py-1 text-xs text-slate">
-          roofing-demo.vertically.online
-        </span>
-      </div>
-      {children}
-    </div>
-  );
-}
 
 function OpenDemoPill() {
   return (
@@ -53,7 +37,7 @@ export default function DemoPreview() {
 
   if (isMobile) {
     return (
-      <BrowserChrome>
+      <BrowserChrome label="roofing-demo.vertically.online">
         <a
           href={site.liveDemo.url}
           target="_blank"
@@ -74,7 +58,7 @@ export default function DemoPreview() {
   const previewHeight = scale > 0 ? IFRAME_HEIGHT * scale : 360;
 
   return (
-    <BrowserChrome>
+    <BrowserChrome label="roofing-demo.vertically.online">
       <div
         ref={containerRef}
         className="relative bg-glacier"

@@ -61,6 +61,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     },
     url: siteUrl,
     sameAs: Object.values(site.social).filter(Boolean),
+    review: [
+      {
+        "@type": "Review",
+        author: { "@type": "Person", name: site.arias.testimonial.authorName },
+        reviewRating: { "@type": "Rating", ratingValue: site.arias.testimonial.rating, bestRating: 5 },
+        itemReviewed: { "@type": "ProfessionalService", name: site.brand.name },
+      },
+    ],
   };
 
   return (
