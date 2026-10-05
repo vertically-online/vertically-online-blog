@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Public_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { site } from "@/content/site";
+import CalProvider from "@/components/CalProvider";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -76,11 +77,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${bricolage.variable} ${publicSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-glacier text-slate">
+      <body className="min-h-full flex flex-col text-slate">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <CalProvider />
         {children}
         <Analytics />
       </body>

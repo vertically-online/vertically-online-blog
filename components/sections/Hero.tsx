@@ -2,6 +2,7 @@ import Image from "next/image";
 import { site } from "@/content/site";
 import StatCounter from "@/components/StatCounter";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
+import BookCallButton from "@/components/BookCallButton";
 
 export default function Hero() {
   return (
@@ -36,14 +37,9 @@ export default function Hero() {
               {site.hero.subheadline}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <a
-                href={site.bookingUrl}
-                target="_blank"
-                rel="noopener"
-                className="inline-flex items-center justify-center rounded-lg bg-signal px-6 py-3.5 text-base font-semibold text-white shadow-lg hover:bg-void-2 transition-colors"
-              >
+              <BookCallButton className="inline-flex items-center justify-center rounded-lg bg-signal px-6 py-3.5 text-base font-semibold text-white shadow-lg hover:bg-void-2 transition-colors">
                 {site.hero.primaryCta}
-              </a>
+              </BookCallButton>
               <a
                 href={site.contact.phoneHref}
                 className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors"

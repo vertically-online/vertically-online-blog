@@ -5,9 +5,14 @@ import { site } from "@/content/site";
 import BrowserChrome from "@/components/BrowserChrome";
 
 const DESKTOP_WIDTH = 1280;
-// ~1.5 screens of content at an assumed 800px desktop viewport height.
-const IFRAME_HEIGHT = 1200;
 const MOBILE_BREAKPOINT = 640;
+const LARGE_BREAKPOINT = 1024;
+// Box heights are fixed via CSS classes below (zero layout shift); these
+// mirror them so the iframe's own natural height can be computed to
+// exactly fill whichever box is showing. 700 matches InlineCalBooking's
+// desktop height for visual parity between the two embeds.
+const BOX_HEIGHT_SMALL = 480;
+const BOX_HEIGHT_LARGE = 700;
 
 function OpenDemoPill() {
   return (
@@ -21,11 +26,13 @@ export default function DemoPreview() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [isLarge, setIsLarge] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const update = () => {
       setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+      setIsLarge(window.innerWidth >= LARGE_BREAKPOINT);
       if (containerRef.current) {
         setScale(containerRef.current.offsetWidth / DESKTOP_WIDTH);
       }
@@ -55,53 +62,64 @@ export default function DemoPreview() {
     );
   }
 
-  const previewHeight = scale > 0 ? IFRAME_HEIGHT * scale : 360;
+  const targetHeight = isLarge ? BOX_HEIGHT_LARGE : BOX_HEIGHT_SMALL;
+  const naturalIframeHeight = scale > 0 ? targetHeight / scale : 0;
 
   return (
-    <BrowserChrome label="roofing-demo.vertically.online">
-      <div
-        ref={containerRef}
-        className="relative bg-glacier"
-        style={{ height: previewHeight }}
-      >
-        {!loaded && (
-          <div
-            className="absolute inset-0 animate-pulse bg-gradient-to-br from-void/5 to-void/10"
-            aria-hidden="true"
-          />
-        )}
-
-        {isMobile === false && scale > 0 && (
-          <iframe
-            src={site.liveDemo.url}
-            width={DESKTOP_WIDTH}
-            height={IFRAME_HEIGHT}
-            style={{
-              transform: `scale(${scale})`,
-              transformOrigin: "top left",
-              width: DESKTOP_WIDTH,
-              height: IFRAME_HEIGHT,
-              border: "none",
-            }}
-            tabIndex={-1}
-            aria-hidden="true"
-            loading="lazy"
-            title="Vertically Roofing demo preview"
-            className="pointer-events-none"
-            onLoad={() => setLoaded(true)}
-          />
-        )}
-
-        <a
-          href={site.liveDemo.url}
-          target="_blank"
-          rel="noopener"
-          aria-label="Open the live Vertically Roofing demo"
-          className="absolute inset-0 flex items-center justify-center"
+    <div>
+      <BrowserChrome label="roofing-demo.vertically.online">
+        <div
+          ref={containerRef}
+          className="relative h-[480px] overflow-hidden bg-glacier lg:h-[700px]"
         >
-          <OpenDemoPill />
-        </a>
-      </div>
-    </BrowserChrome>
+          {!loaded && (
+            <div
+              className="absolute inset-0 animate-pulse bg-gradient-to-br from-void/5 to-void/10"
+              aria-hidden="true"
+            />
+          )}
+
+          {isMobile === false && scale > 0 && (
+            <iframe
+              src={site.liveDemo.url}
+              width={DESKTOP_WIDTH}
+              height={naturalIframeHeight}
+              style={{
+                transform: `scale(${scale})`,
+                transformOrigin: "top left",
+                width: DESKTOP_WIDTH,
+                height: naturalIframeHeight,
+                border: "none",
+              }}
+              tabIndex={-1}
+              aria-hidden="true"
+              loading="lazy"
+              title="Vertically Roofing demo preview"
+              className="pointer-events-none"
+              onLoad={() => setLoaded(true)}
+            />
+          )}
+
+          <a
+            href={site.liveDemo.url}
+            target="_blank"
+            rel="noopener"
+            aria-label="Open the live Vertically Roofing demo"
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <OpenDemoPill />
+          </a>
+        </div>
+      </BrowserChrome>
+
+      <a
+        href={site.liveDemo.url}
+        target="_blank"
+        rel="noopener"
+        className="mt-4 inline-flex items-center justify-center rounded-lg border border-void/15 bg-white px-5 py-2.5 text-sm font-semibold text-void shadow-card transition-shadow hover:shadow-lg"
+      >
+        Open live demo ↗
+      </a>
+    </div>
   );
 }

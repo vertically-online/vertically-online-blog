@@ -1,4 +1,5 @@
 import { site } from "@/content/site";
+import BookCallButton from "@/components/BookCallButton";
 
 export default function FinalCta() {
   return (
@@ -15,14 +16,9 @@ export default function FinalCta() {
         <p className="text-white/85 mb-6 max-w-lg mx-auto">
           {site.finalCta.subheadline}
         </p>
-        <a
-          href={site.bookingUrl}
-          target="_blank"
-          rel="noopener"
-          className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-base font-semibold text-signal-2 shadow-lg hover:bg-glacier transition-colors"
-        >
+        <BookCallButton className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-base font-semibold text-signal-2 shadow-lg hover:bg-glacier transition-colors">
           {site.finalCta.primaryCta}
-        </a>
+        </BookCallButton>
         <p className="mt-4 text-sm text-white/70">{site.finalCta.reassurance}</p>
       </div>
     </section>

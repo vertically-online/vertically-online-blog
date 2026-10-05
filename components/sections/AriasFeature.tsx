@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { site } from "@/content/site";
 import AriasEmbed from "@/components/AriasEmbed";
+import BookCallButton from "@/components/BookCallButton";
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -72,14 +73,9 @@ export default function AriasFeature() {
               <p className="text-sm text-slate">{testimonial.authorLocation}</p>
             </div>
 
-            <a
-              href={site.bookingUrl}
-              target="_blank"
-              rel="noopener"
-              className="mt-6 inline-flex items-center justify-center rounded-lg bg-signal px-6 py-3.5 text-base font-semibold text-white shadow-lg transition-colors hover:bg-void-2"
-            >
+            <BookCallButton className="mt-6 inline-flex items-center justify-center rounded-lg bg-signal px-6 py-3.5 text-base font-semibold text-white shadow-lg transition-colors hover:bg-void-2">
               {site.hero.primaryCta}
-            </a>
+            </BookCallButton>
           </div>
         </div>
       </div>

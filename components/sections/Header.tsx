@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/content/site";
+import BookCallButton from "@/components/BookCallButton";
 
 const navLinks = [
   { href: "#how-it-works", label: "How it works" },
@@ -37,14 +38,9 @@ export default function Header() {
           </a>
         </nav>
 
-        <a
-          href={site.bookingUrl}
-          target="_blank"
-          rel="noopener"
-          className="inline-flex items-center justify-center rounded-lg bg-signal px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-void-2 transition-colors shrink-0"
-        >
+        <BookCallButton className="inline-flex items-center justify-center rounded-lg bg-signal px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-void-2 transition-colors shrink-0">
           {site.hero.primaryCta}
-        </a>
+        </BookCallButton>
       </div>
     </header>
   );
