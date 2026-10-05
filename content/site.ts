@@ -63,7 +63,7 @@ export const site = {
   bookingUrl: BOOKING_URL,
 
   contact: {
-    email: "vertically.online@gmail.com",
+    email: "leads@vertically.online",
     phone: "360-623-5598",
     phoneHref: "tel:+13606235598",
     foundedLine: "Founded in Philadelphia, PA",
@@ -211,7 +211,6 @@ export const site = {
       { label: "Response time", before: "24–48 hours", after: "Under 30 seconds" },
       { label: "Leads", before: "1–3/month", after: "7–10/month from their website alone" },
       { label: "Jobs closed", before: "~1/month", after: "~5/month" },
-      { label: "Added revenue", before: "—", after: "~$38,000/month at a $9,500 average job" },
       { label: "Time saved", before: "—", after: "~30 hours/week on quoting and chasing leads" },
     ] satisfies ResultStat[],
     closingNote:

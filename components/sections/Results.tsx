@@ -26,7 +26,7 @@ export default function Results() {
       <p className="mt-6 max-w-2xl text-slate leading-relaxed">{intro}</p>
       <p className="mt-2 max-w-2xl font-medium text-void">{setup}</p>
 
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <div
             key={stat.label}

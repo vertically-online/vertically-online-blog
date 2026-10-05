@@ -2,7 +2,7 @@ import { site } from "@/content/site";
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="scroll-mt-24 bg-glacier">
+    <section id="how-it-works" className="scroll-mt-24 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-20">
         <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-void">
           How it works
