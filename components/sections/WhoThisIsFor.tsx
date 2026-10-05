@@ -4,7 +4,7 @@ export default function WhoThisIsFor() {
   const { heading, intro, criteria, closingNote } = site.whoThisIsFor;
 
   return (
-    <section className="bg-white">
+    <section>
       <div className="mx-auto max-w-6xl px-4 py-20">
         <div className="max-w-2xl">
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-void">

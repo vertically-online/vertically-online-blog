@@ -1,7 +1,7 @@
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
+import CredibilityStrip from "@/components/sections/CredibilityStrip";
 import LiveDemo from "@/components/sections/LiveDemo";
-import AriasFeature from "@/components/sections/AriasFeature";
 import Problem from "@/components/sections/Problem";
 import Solution from "@/components/sections/Solution";
 import Results from "@/components/sections/Results";
@@ -18,8 +18,8 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <CredibilityStrip />
         <LiveDemo />
-        <AriasFeature />
         <Problem />
         <Solution />
         <Results />

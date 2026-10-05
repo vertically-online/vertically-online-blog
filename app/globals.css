@@ -49,12 +49,7 @@ html {
 }
 
 body {
-  /* A soft diagonal wash of the brand blue/violet (--aurora-1 / --tide)
-     behind the whole page, so white cards, browser-chrome embeds, and the
-     flat bg-white section bands read as distinct layers instead of
-     blending into a flat white background. Spans the full document height
-     (no background-attachment: fixed, which would tile per-viewport). */
-  background: linear-gradient(160deg, #dff2fb 0%, #eef2fc 45%, #f4eefc 100%);
+  background: #f6f6f7;
   color: var(--slate);
   font-family: var(--font-body), system-ui, sans-serif;
 }

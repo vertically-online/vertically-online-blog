@@ -179,12 +179,7 @@ export const site = {
   arias: {
     logo: "/images/clients/arias-logo.png",
     logoAlt: "Arias Roofing & Siding logo",
-    eyebrow: "Real results",
-    heading: "See it running for a real roofer",
-    subhead:
-      "Arias Roofing & Siding in Sewell, NJ runs on Vertically. Click around their site, request a quote, and see it for yourself.",
-    embedUrl: "https://ariasroofingnj.com",
-    embedLabel: "ariasroofingnj.com",
+    websiteUrl: "https://ariasroofingnj.com",
     visitLabel: "Visit ariasroofingnj.com ↗",
     testimonial: {
       paragraphs: [
@@ -215,7 +210,6 @@ export const site = {
     ] satisfies ResultStat[],
     closingNote:
       "Gustavo's close rate didn't change. Arias was always good at closing. They just finally answered every lead.",
-    backLink: { label: "See the Arias site live ↑", href: "#results" },
   },
 
   howItWorks: {

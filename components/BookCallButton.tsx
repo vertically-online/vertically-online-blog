@@ -1,17 +1,18 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { MouseEvent, ReactNode } from "react";
+import { getCalApi } from "@calcom/embed-react";
 import { site } from "@/content/site";
 import { CAL_LINK, CAL_NAMESPACE, CAL_ORIGIN, CAL_EMBED_CONFIG } from "@/lib/cal";
 
 /**
- * Every "Start My Free 30 Days" button, site-wide. Renders a plain <a> to
- * the booking URL so it always works, even with JS disabled or Cal's script
- * blocked. The data-cal-* attributes are Cal's own documented progressive-
- * enhancement pattern: once its embed script has loaded, Cal attaches a
- * global click listener that recognizes these attributes on ANY element,
- * calls preventDefault, and opens the popup instead — no manual click
- * handler needed here, and nothing to fight with Cal's own listener.
+ * Every "Start My Free 30 Days" button, site-wide. We open the modal
+ * ourselves via the Cal API (rather than Cal's data-cal-link auto-click
+ * interception) so preventDefault always fires before the browser acts on
+ * href/target — otherwise, if Cal's script hadn't attached its listener yet,
+ * the click would navigate to cal.com in a new tab AND still queue the
+ * modal to pop open in this tab once you switched back to it. href stays as
+ * a plain fallback for no-JS or a blocked Cal script.
  */
 export default function BookCallButton({
   children,
@@ -22,18 +23,23 @@ export default function BookCallButton({
   className?: string;
   onClick?: () => void;
 }) {
+  const handleClick = async (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    onClick?.();
+    try {
+      const cal = await getCalApi({ namespace: CAL_NAMESPACE });
+      cal("modal", {
+        calLink: CAL_LINK,
+        calOrigin: CAL_ORIGIN,
+        config: CAL_EMBED_CONFIG,
+      });
+    } catch {
+      window.open(site.bookingUrl, "_blank", "noopener");
+    }
+  };
+
   return (
-    <a
-      href={site.bookingUrl}
-      target="_blank"
-      rel="noopener"
-      data-cal-link={CAL_LINK}
-      data-cal-namespace={CAL_NAMESPACE}
-      data-cal-origin={CAL_ORIGIN}
-      data-cal-config={JSON.stringify(CAL_EMBED_CONFIG)}
-      onClick={onClick}
-      className={className}
-    >
+    <a href={site.bookingUrl} onClick={handleClick} className={className}>
       {children}
     </a>
   );

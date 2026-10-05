@@ -2,7 +2,7 @@ import Image from "next/image";
 import { site } from "@/content/site";
 
 export default function Results() {
-  const { eyebrow, logo, logoAlt, headline, intro, setup, stats, closingNote, backLink } =
+  const { eyebrow, logo, logoAlt, headline, intro, setup, stats, closingNote } =
     site.results;
 
   return (
@@ -46,13 +46,6 @@ export default function Results() {
       </div>
 
       <p className="mt-10 max-w-2xl font-medium text-void">{closingNote}</p>
-
-      <a
-        href={backLink.href}
-        className="mt-4 inline-block text-sm font-semibold text-signal hover:text-void-2"
-      >
-        {backLink.label}
-      </a>
     </section>
   );
 }

@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 
 export default function Solution() {
   return (
-    <section className="bg-white">
+    <section>
       <div className="mx-auto max-w-6xl px-4 py-20">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-void">
