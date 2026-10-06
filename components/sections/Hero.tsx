@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { site } from "@/content/site";
 import StatCounter from "@/components/StatCounter";
-import YouTubeEmbed from "@/components/YouTubeEmbed";
+import IntroVideo from "@/components/IntroVideo";
 import BookCallButton from "@/components/BookCallButton";
 
 export default function Hero() {
@@ -52,16 +52,9 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Founder video: right column on desktop (spans both rows, centered), second on mobile */}
+          {/* Intro video: right column on desktop (spans both rows, centered), second on mobile */}
           <div className="mx-auto w-full max-w-xs lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:mx-0 lg:max-w-none lg:self-center">
-            <div className="rounded-2xl overflow-hidden shadow-card">
-              <YouTubeEmbed
-                youtubeId={site.founder.youtubeId}
-                poster={site.founder.poster}
-                posterAlt={`${site.founder.name}, ${site.founder.title}`}
-                aspectClassName="aspect-[9/16]"
-              />
-            </div>
+            <IntroVideo />
           </div>
 
           {/* Stats: stays in the left column on desktop, last on mobile */}
