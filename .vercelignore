@@ -1,0 +1,3 @@
+# raw video source files — never deploy these, only the compressed /public assets
+*.mov
+*.MOV
