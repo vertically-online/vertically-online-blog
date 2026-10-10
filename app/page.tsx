@@ -1,5 +1,6 @@
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
+import JotFormWidget from "@/components/sections/JotFormWidget";
 import CredibilityStrip from "@/components/sections/CredibilityStrip";
 import LiveDemo from "@/components/sections/LiveDemo";
 import Problem from "@/components/sections/Problem";
@@ -18,6 +19,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <JotFormWidget />
         <CredibilityStrip />
         <LiveDemo />
         <Problem />
