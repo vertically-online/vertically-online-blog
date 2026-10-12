@@ -245,13 +245,14 @@ export const site = {
   },
 
   objections: {
-    heading: "Addressing your concerns",
-    intro: "Common hesitations we hear, answered straight.",
+    heading: "Your Questions, Answered",
+    intro:
+      "We know you may have questions. Here are straightforward answers to the ones we hear most often.",
     items: [
       {
-        label: "You don't need to be technical",
+        label: "Do I need to understand the tech?",
         answer:
-          "You don't need to learn software, log into a dashboard, or manage anything. We install everything on your website and phone, connect it to your email and calendar, and it just runs. If you can check your email, you can run this.",
+          "We install everything on your website, connected to your existing systems, and it just runs. If you can check your email, you can run this, and you don't need to learn software, log into a dashboard, or manage anything.",
         video: "/objections/not-tech-savvy.mp4",
         poster: "/objections/not-tech-savvy-poster.jpg",
       },
@@ -263,16 +264,16 @@ export const site = {
         poster: "/objections/too-expensive-poster.jpg",
       },
       {
-        label: "Already getting referrals? Here's why that's not enough",
+        label: "I'm already getting referrals. Here's why that's not enough.",
         answer:
           "Referrals are great until the phone rings on a Tuesday at 7pm and you're on a roof. Even referred homeowners call around, and the first roofer to respond usually wins the job. This system makes sure every referral, call, and website lead gets answered in under 30 seconds, so none of that goodwill goes to waste.",
         video: "/objections/referrals-enough.mp4",
         poster: "/objections/referrals-enough-poster.jpg",
       },
       {
-        label: "We do the setup, you don't lift a finger",
+        label: "I don't have time to set this up.",
         answer:
-          "We handle the entire setup, from connecting your website and phone to setting your pricing limits. It's live within days and takes about an hour of your time total: a short audit call and a quick check-in. You keep roofing. We build the system.",
+          "We handle the entire setup, connecting to your existing systems and setting your pricing limits. It's live within hours, it just takes a short audit call and a quick check-in. You keep roofing. We build the system.",
         video: "/objections/no-time.mp4",
         poster: "/objections/no-time-poster.jpg",
       },
