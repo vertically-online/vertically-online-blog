@@ -7,6 +7,7 @@ import Problem from "@/components/sections/Problem";
 import Solution from "@/components/sections/Solution";
 import Results from "@/components/sections/Results";
 import HowItWorks from "@/components/sections/HowItWorks";
+import Objections from "@/components/sections/Objections";
 import Included from "@/components/sections/Included";
 import WhoThisIsFor from "@/components/sections/WhoThisIsFor";
 import Faq from "@/components/sections/Faq";
@@ -26,6 +27,7 @@ export default function Home() {
         <Solution />
         <Results />
         <HowItWorks />
+        <Objections />
         <Included />
         <WhoThisIsFor />
         <Faq />

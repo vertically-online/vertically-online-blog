@@ -46,6 +46,13 @@ export type FaqItem = {
   answer: string;
 };
 
+export type Objection = {
+  label: string;
+  answer: string;
+  video: string;
+  poster: string;
+};
+
 export const site = {
   brand: {
     name: "Vertically",
@@ -235,6 +242,55 @@ export const site = {
           "If it's winning you jobs, keep it. If not, we turn it off. No contract and no hard feelings.",
       },
     ] satisfies HowItWorksStep[],
+  },
+
+  objections: {
+    heading: "Addressing your concerns",
+    intro: "Common hesitations we hear, answered straight.",
+    items: [
+      {
+        label: "You don't need to be technical",
+        answer:
+          "You don't need to learn software, log into a dashboard, or manage anything. We install everything on your website and phone, connect it to your email and calendar, and it just runs. If you can check your email, you can run this.",
+        video: "/objections/not-tech-savvy.mp4",
+        poster: "/objections/not-tech-savvy-poster.jpg",
+      },
+      {
+        label: "Is this worth the investment?",
+        answer:
+          "Think of it as the cost of never missing a lead again. Most roofers using this close several extra jobs a month, just from leads they would have lost to a slower competitor. It pays for itself with the very first job it saves you, and it's free for the first 30 days, so you see the numbers before you spend a dollar.",
+        video: "/objections/too-expensive.mp4",
+        poster: "/objections/too-expensive-poster.jpg",
+      },
+      {
+        label: "Already getting referrals? Here's why that's not enough",
+        answer:
+          "Referrals are great until the phone rings on a Tuesday at 7pm and you're on a roof. Even referred homeowners call around, and the first roofer to respond usually wins the job. This system makes sure every referral, call, and website lead gets answered in under 30 seconds, so none of that goodwill goes to waste.",
+        video: "/objections/referrals-enough.mp4",
+        poster: "/objections/referrals-enough-poster.jpg",
+      },
+      {
+        label: "We do the setup, you don't lift a finger",
+        answer:
+          "We handle the entire setup, from connecting your website and phone to setting your pricing limits. It's live within days and takes about an hour of your time total: a short audit call and a quick check-in. You keep roofing. We build the system.",
+        video: "/objections/no-time.mp4",
+        poster: "/objections/no-time-poster.jpg",
+      },
+      {
+        label: "Burned by an agency before? Here's what's different",
+        answer:
+          "No long-term contract, no upfront payment, and no vague promises. You get 30 days free to watch real leads, quotes, and booked jobs come in before you decide anything. If it's not winning you jobs, we turn it off, no hard feelings.",
+        video: "/objections/burned-before.mp4",
+        poster: "/objections/burned-before-poster.jpg",
+      },
+      {
+        label: "Won't this feel robotic to my clients?",
+        answer:
+          "Every message goes out under your name, in your company's voice. Homeowners never see a bot. They just see a roofer who somehow always responds first.",
+        video: "/objections/feels-robotic.mp4",
+        poster: "/objections/feels-robotic-poster.jpg",
+      },
+    ] satisfies Objection[],
   },
 
   included: {
