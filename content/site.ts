@@ -14,6 +14,7 @@ export type Review = {
 };
 
 export type SolutionFeature = {
+  icon: SolutionIcon;
   title: string;
   description: string;
   image: string;
@@ -28,6 +29,30 @@ export type HeroStat = {
   label: string;
   // Short, fully-spelled-out phrase for the accessible label, e.g. "600 plus".
   announce: string;
+};
+
+// One row in the cinematic hero's phone "lead desk" feed. `icon` is a key
+// mapped to a lucide icon inside the component.
+export type LeadFeedItem = {
+  icon: "lead" | "reply" | "quote" | "booked";
+  title: string;
+  detail: string;
+  time: string;
+};
+
+export type SolutionIcon = "zap" | "quote" | "phone" | "shield";
+
+export type IncludedIcon = "zap" | "quote" | "mail" | "phone" | "refresh" | "star" | "chart";
+
+export type IncludedItem = {
+  label: string;
+  icon: IncludedIcon;
+};
+
+// A beat in the "how a lead gets lost today" timeline in the Problem section.
+export type LostLeadStep = {
+  time: string;
+  text: string;
 };
 
 export type ResultStat = {
@@ -56,7 +81,7 @@ export type Objection = {
 export const site = {
   brand: {
     name: "Vertically",
-    tagline: "AI-powered lead response for roofing companies",
+    tagline: "Automatic lead response for roofing companies",
     // Wordmark for light/glass surfaces (dark text, transparent background)
     logoLight: "/images/brand/logo-light.png",
     logoLightDimensions: { width: 900, height: 273 },
@@ -78,6 +103,32 @@ export const site = {
     addressRegion: "PA",
   },
 
+  // Used by /privacy and /terms. The privacy URL is the exact value given to
+  // Google Cloud Console for OAuth verification, so don't move these paths.
+  legal: {
+    entity: "BT Digital Consulting LLC",
+    entityWithDba: 'BT Digital Consulting LLC, doing business as "Vertically"',
+    effectiveDate: "October 12, 2026",
+    governingState: "the Commonwealth of Pennsylvania",
+    retentionDays: 30,
+    privacyPath: "/privacy",
+    termsPath: "/terms",
+  },
+
+  connectEmail: {
+    heading: "Connect your email",
+    body: "When you start with Vertically, you connect your own business email so quotes, follow-ups, and review requests go out from your address, not ours. The connection is send-only: we can't read your inbox. You can disconnect it any time.",
+    eyebrow: "Your email, your name",
+    points: ["Send-only access", "We can't read your inbox", "Disconnect any time"],
+    // Matches the three mailbox options in the client onboarding portal.
+    providersLabel: "Works with",
+    providers: [
+      { id: "google", label: "Gmail & Google Workspace" },
+      { id: "microsoft", label: "Outlook & Microsoft 365" },
+      { id: "smtp", label: "Any other email (SMTP)" },
+    ],
+  },
+
   social: {
     linkedin: "",
     instagram: "",
@@ -85,20 +136,16 @@ export const site = {
     youtube: "",
   },
 
-  founder: {
-    name: "Sergi Marcos",
-    title: "Founder, Vertically",
-    youtubeId: "HeYrSpjc-vE",
-    poster: "/images/founder-poster.jpg",
-  },
-
   hero: {
     badge: "No contract. No credit card. 30 days free.",
     headline: "Answer every roofing lead in 30 seconds. Close 5x more jobs.",
     subheadline:
-      "Vertically installs an AI system that responds to every lead instantly, builds the quote for you, and books the inspection, so no homeowner ever calls your competitor first.",
-    image: "/images/service-replacement.jpg",
-    imageAlt: "Roofer nailing down architectural shingles on a sunny day",
+      "Vertically installs an AI system that responds to every lead instantly, builds the quote for you, and books the inspection on your Google Calendar, so no homeowner ever calls your competitor first.",
+    // Glass badges floating beside the founder video phone.
+    videoBadges: [
+      { title: "Meet the founder", detail: "Why we built Vertically" },
+      { title: "Arias Roofing & Siding", detail: "1 → 5 jobs a month" },
+    ],
     primaryCta: "Start My Free 30 Days",
     reassurance:
       "No contract. No credit card. No catch. If it doesn't win you more jobs, you don't pay a dime.",
@@ -128,7 +175,57 @@ export const site = {
     ] satisfies HeroStat[],
   },
 
+  // Scroll-driven intro at the very top of the homepage: two taglines, then a
+  // card rises with a phone showing a lead getting answered, quoted, and booked.
+  cinematicHero: {
+    tagline1: "Every lead answered.",
+    tagline2: "Every job booked.",
+    cardHeading: "Jobs booked on autopilot.",
+    cardDescription:
+      "While you're up on a roof, Vertically texts the homeowner back, builds the quote from your pricing, and books the inspection straight onto your Google Calendar.",
+    cardPoints: [
+      "Instant reply by text and email, under your name",
+      "Quotes built from your pricing and limits",
+      "Inspections booked straight onto your Google Calendar",
+      "Automatic voice agent phone call to book the inspection",
+      "Weekly lead reporting",
+      "Automatic review requests after job completion",
+    ],
+    highlightValue: "<30s",
+    highlightCaption: "to answer every lead. Nights and weekends included.",
+    phone: {
+      eyebrow: "Tonight · 9:41 PM",
+      title: "Your lead desk",
+      metricValue: 100,
+      metricSuffix: "%",
+      metricLabel: "Leads answered",
+      feed: [
+        { icon: "lead", title: "New lead: Sarah M.", detail: "Roof replacement · Cherry Hill, NJ", time: "now" },
+        { icon: "reply", title: "Replied in 18 sec", detail: "“Hi Sarah, thanks for reaching out…”", time: "now" },
+        { icon: "quote", title: "Quote sent", detail: "$11,850 · PDF estimate", time: "1m" },
+        { icon: "booked", title: "Inspection booked", detail: "Thu 10:00 AM · Google Calendar", time: "4m" },
+      ] satisfies LeadFeedItem[],
+    },
+    badges: [
+      { title: "Lead answered", detail: "18 seconds after it came in" },
+      { title: "Job booked", detail: "While you were on a roof" },
+    ],
+    ctaHeading: "Your next job is already calling.",
+    ctaDescription:
+      "Let Vertically answer it. Start free for 30 days. No contract, no credit card.",
+  },
+
   problem: {
+    eyebrow: "The real problem",
+    // Visualises the first paragraph: how a lead slips away today.
+    timeline: [
+      { time: "2:00 PM", text: "A homeowner fills out your form" },
+      { time: "8:00 PM", text: "You see it after a day on the roof" },
+      { time: "Next morning", text: "You call back" },
+      { time: "Too late", text: "They already booked someone else" },
+    ] satisfies LostLeadStep[],
+    fix: "With Vertically, that lead gets a reply in under 30 seconds, a quote, and an inspection booked on your Google Calendar, before you're even off the roof.",
+    bookingLabel: "Book your free 15-minute lead audit",
     headline: "You don't have a closing problem. You have a response problem.",
     paragraphs: [
       "You're on a roof all day. A homeowner fills out your form at 2pm. You see it at 8pm, call back the next morning, and they've already booked someone else.",
@@ -138,9 +235,11 @@ export const site = {
   },
 
   solution: {
+    eyebrow: "The solution",
     headline: "A system that works your leads while you work the roof.",
     features: [
       {
+        icon: "zap",
         title: "Instant response, every time.",
         description:
           "Every form, call, and quote request gets a reply in under 30 seconds, day or night, weekends included.",
@@ -148,6 +247,7 @@ export const site = {
         alt: "Roofer quickly addressing a repair on a shingle roof",
       },
       {
+        icon: "quote",
         title: "Automatic quotes.",
         description:
           "Homeowners answer a few simple questions, and jobs within your price range get a quote automatically. No more hours of back-and-forth. You set the limits; bigger jobs come to you for review. This is entirely custom and specific to your company. We don't launch this without your approval.",
@@ -155,13 +255,15 @@ export const site = {
         alt: "Roofer inspecting a roof to prepare an estimate",
       },
       {
-        title: "Every lead lands in your inbox, fully detailed.",
+        icon: "phone",
+        title: "An automatic call that books the inspection.",
         description:
-          "Name, address, service type, job details, and quote, the moment it comes in. No digging and no missing information.",
+          "A voice agent phones every new lead right away, answers their questions, and schedules the inspection straight into your Google Calendar.",
         image: "/images/trust-craftsmanship.jpg",
         alt: "Roofer carefully installing shingles with attention to detail",
       },
       {
+        icon: "shield",
         title: "Nothing slips through.",
         description:
           "Missed calls get an instant text back. Leads who go quiet get automatic follow-up. Finished jobs get a review request.",
@@ -181,6 +283,10 @@ export const site = {
     url: "https://roofing-demo.vertically.online",
     // Deep link used by the primary CTA button specifically.
     ctaUrl: "https://roofing-demo.vertically.online/quote?ref=vertically-online",
+    badges: [
+      { title: "Instant PDF estimate", detail: "Sent straight to your inbox" },
+      { title: "Lead breakdown", detail: "Everything your company would get" },
+    ],
   },
 
   arias: {
@@ -220,6 +326,8 @@ export const site = {
   },
 
   howItWorks: {
+    eyebrow: "How it works",
+    headline: "Live within hours. You don't lift a finger.",
     steps: [
       {
         title: "Free lead audit (15 minutes)",
@@ -229,7 +337,7 @@ export const site = {
       {
         title: "We set it up (you don't lift a finger)",
         description:
-          "We install the system on your website and phone, set your pricing limits, and connect it to your email and calendar. Live within days.",
+          "We install the system on your website and phone, set your pricing limits, and connect it to your email and Google Calendar. Live within hours.",
       },
       {
         title: "You get 30 days free",
@@ -245,6 +353,7 @@ export const site = {
   },
 
   objections: {
+    eyebrow: "Straight answers",
     heading: "Your Questions, Answered",
     intro:
       "We know you may have questions. Here are straightforward answers to the ones we hear most often.",
@@ -296,18 +405,20 @@ export const site = {
 
   included: {
     heading: "What's included free for 30 days",
+    eyebrow: "What you get",
     items: [
-      "Instant response to every web lead in under 30 seconds",
-      "Automated quote builder with your pricing and limits",
-      "Instant lead breakdown emails",
-      "Missed-call text-back",
-      "Automatic follow-up for leads who go quiet",
-      "Review requests after completed jobs",
-      "Weekly performance report",
-    ],
+      { label: "Instant response to every web lead in under 30 seconds", icon: "zap" },
+      { label: "Automated quote builder with your pricing and limits", icon: "quote" },
+      { label: "Instant lead breakdown emails", icon: "mail" },
+      { label: "Automatic phone call to the lead to book the inspection", icon: "phone" },
+      { label: "Automatic follow-up for leads who go quiet", icon: "refresh" },
+      { label: "Review requests after completed jobs", icon: "star" },
+      { label: "Weekly performance report", icon: "chart" },
+    ] satisfies IncludedItem[],
   },
 
   whoThisIsFor: {
+    eyebrow: "Is this you?",
     heading: "Who this is for",
     intro: "This is built for roofing companies that:",
     criteria: [
@@ -320,6 +431,10 @@ export const site = {
   },
 
   faq: {
+    eyebrow: "FAQ",
+    heading: "Questions roofers ask us first.",
+    helpHeading: "Still have a question?",
+    helpBody: "Call or text us. You'll talk to a person, not a bot.",
     items: [
       {
         question: "Is it really free?",
@@ -355,6 +470,7 @@ export const site = {
   },
 
   finalCta: {
+    eyebrow: "Free for 30 days",
     headline: "Every lead you don't answer today is a job for someone else.",
     subheadline: "Let us answer them for you, free for 30 days.",
     primaryCta: "Start My Free 30 Days",

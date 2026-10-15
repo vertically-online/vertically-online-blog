@@ -1,50 +1,93 @@
 "use client";
 
 import { useState } from "react";
+import { Mail, Phone, Plus } from "lucide-react";
 import { site } from "@/content/site";
+import { cn } from "@/lib/utils";
+import { Section } from "@/components/ui/section";
+import { DarkPanel } from "@/components/ui/dark-panel";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 export default function Faq() {
+  const { eyebrow, heading, helpHeading, helpBody, items } = site.faq;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-20">
-      <div className="max-w-2xl">
-        <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-void">
-          FAQ
-        </h2>
-        <div className="mt-10 divide-y divide-void/10 overflow-hidden rounded-2xl bg-white shadow-card border border-void/10">
-          {site.faq.items.map((item, i) => {
+    <Section id="faq" grid>
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <div className="lg:pt-2">
+          <SectionHeading eyebrow={eyebrow} title={heading} />
+
+          <DarkPanel reveal={false} padded={false} data-reveal="up" className="mt-10 rounded-[28px] md:rounded-[28px] p-7">
+            <p className="font-display text-xl font-bold tracking-tight text-white">{helpHeading}</p>
+            <p className="mt-2 text-sm text-[#C9D3DB]">{helpBody}</p>
+            <div className="mt-5 flex flex-col gap-3">
+              <a
+                href={site.contact.phoneHref}
+                className="btn-modern-glass inline-flex items-center gap-2.5 self-start rounded-xl px-4 py-2.5 text-sm font-bold"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                {site.contact.phone}
+              </a>
+              <a
+                href={`mailto:${site.contact.email}`}
+                className="inline-flex items-center gap-2.5 self-start text-sm font-medium text-[#8FCBEB] hover:text-white transition-colors"
+              >
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                {site.contact.email}
+              </a>
+            </div>
+          </DarkPanel>
+        </div>
+
+        <div className="space-y-3">
+          {items.map((item, i) => {
             const open = openIndex === i;
             return (
-              <div key={item.question}>
+              <div
+                key={item.question}
+                data-reveal="up"
+                className={cn(
+                  "light-depth-card rounded-2xl transition-shadow duration-300",
+                  open && "shadow-[0_20px_44px_-18px_rgba(10,14,39,0.28)]"
+                )}
+              >
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                   aria-expanded={open}
+                  aria-controls={`faq-answer-${i}`}
                   onClick={() => setOpenIndex(open ? null : i)}
                 >
-                  <span className="font-medium text-void">{item.question}</span>
-                  <svg
-                    viewBox="0 0 24 24"
-                    className={`h-5 w-5 shrink-0 fill-none stroke-slate transition-transform ${
-                      open ? "rotate-180" : ""
-                    }`}
-                    strokeWidth={2}
+                  <span className="font-display text-lg font-bold tracking-tight text-void">{item.question}</span>
+                  <span
+                    className={cn(
+                      "flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300",
+                      open ? "icon-tile rotate-45" : "bg-void/[0.05] text-void"
+                    )}
                     aria-hidden="true"
                   >
-                    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                    <Plus className="h-4 w-4" />
+                  </span>
                 </button>
-                {open && (
-                  <div className="px-5 pb-5 leading-relaxed text-slate">
-                    {item.answer}
+                {/* Animated height via grid rows; aria-hidden while collapsed */}
+                <div
+                  id={`faq-answer-${i}`}
+                  aria-hidden={!open}
+                  className={cn(
+                    "grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                    open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                  )}
+                >
+                  <div className="overflow-hidden">
+                    <p className="px-6 pb-6 leading-relaxed text-slate">{item.answer}</p>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

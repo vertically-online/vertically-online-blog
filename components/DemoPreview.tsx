@@ -16,7 +16,7 @@ const BOX_HEIGHT_LARGE = 700;
 
 function OpenDemoPill() {
   return (
-    <span className="rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-void opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+    <span className="rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-void opacity-0 shadow-[0_20px_40px_-12px_rgba(10,14,39,0.5)] transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
       Open live demo ↗
     </span>
   );
@@ -54,7 +54,7 @@ export default function DemoPreview() {
           <span className="font-display text-base font-semibold text-void">
             Vertically Roofing — live demo
           </span>
-          <span className="rounded-lg bg-signal px-5 py-2.5 text-sm font-semibold text-white">
+          <span className="btn-modern-brand rounded-xl px-5 py-2.5 text-sm font-bold">
             Open live demo ↗
           </span>
         </a>
@@ -116,7 +116,7 @@ export default function DemoPreview() {
         href={site.liveDemo.url}
         target="_blank"
         rel="noopener"
-        className="mt-4 inline-flex items-center justify-center rounded-lg border border-void/15 bg-white px-5 py-2.5 text-sm font-semibold text-void shadow-card transition-shadow hover:shadow-lg"
+        className="light-depth-card light-depth-card-hover mt-5 inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold text-void"
       >
         Open live demo ↗
       </a>

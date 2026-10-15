@@ -100,3 +100,223 @@ button:focus-visible,
     animation: none;
   }
 }
+
+/* -----------------------------------------------------------------------
+   Cinematic materials: shared by the cinematic hero and the founder
+   section (navy depth card, iPhone bezel, glass badges, tactile buttons).
+   Left unlayered on purpose so they win over Tailwind utilities, matching
+   how they behaved when injected by the component.
+------------------------------------------------------------------------ */
+
+.gsap-reveal { visibility: hidden; }
+
+/* Environment overlays */
+.film-grain {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 50; opacity: 0.05; mix-blend-mode: overlay;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+}
+
+.bg-grid-theme {
+    background-size: 60px 60px;
+    background-image:
+        linear-gradient(to right, color-mix(in srgb, var(--void) 6%, transparent) 1px, transparent 1px),
+        linear-gradient(to bottom, color-mix(in srgb, var(--void) 6%, transparent) 1px, transparent 1px);
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+}
+
+/* Outside the card: ink text on the light page */
+.text-3d-matte {
+    color: var(--void);
+    text-shadow:
+        0 10px 30px color-mix(in srgb, var(--void) 18%, transparent),
+        0 2px 4px color-mix(in srgb, var(--void) 10%, transparent);
+}
+
+.text-brand-matte {
+    background: linear-gradient(180deg, #008FD0 0%, var(--void) 110%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transform: translateZ(0); /* avoids WebKit gradient-text clipping */
+    filter:
+        drop-shadow(0px 10px 20px color-mix(in srgb, #008FD0 20%, transparent))
+        drop-shadow(0px 2px 4px color-mix(in srgb, var(--void) 10%, transparent));
+}
+
+/* Inside the card: silver on the deep brand navy */
+.text-card-silver-matte {
+    background: linear-gradient(180deg, #FFFFFF 0%, #9FC7E0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transform: translateZ(0);
+    filter:
+        drop-shadow(0px 12px 24px rgba(0,0,0,0.8))
+        drop-shadow(0px 4px 8px rgba(0,0,0,0.6));
+}
+
+.premium-depth-card {
+    background:
+        radial-gradient(60% 50% at 75% 20%, rgba(0,143,208,0.28) 0%, transparent 70%),
+        radial-gradient(50% 45% at 15% 90%, rgba(0,111,163,0.22) 0%, transparent 70%),
+        linear-gradient(145deg, #11265e 0%, #0a0e27 55%, #070a1c 100%);
+    box-shadow:
+        0 40px 100px -20px rgba(10, 14, 39, 0.55),
+        0 20px 40px -20px rgba(10, 14, 39, 0.5),
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.card-sheen {
+    position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 50;
+    background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(143,203,235,0.07) 0%, transparent 40%);
+    mix-blend-mode: screen; transition: opacity 0.3s ease;
+}
+
+/* iPhone hardware */
+.iphone-bezel {
+    background-color: #111;
+    box-shadow:
+        inset 0 0 0 2px #52525B,
+        inset 0 0 0 7px #000,
+        0 40px 80px -15px rgba(0,0,0,0.9),
+        0 15px 25px -5px rgba(0,0,0,0.7),
+        0 0 120px -20px rgba(0,143,208,0.45);
+    transform-style: preserve-3d;
+}
+
+.hardware-btn {
+    background: linear-gradient(90deg, #404040 0%, #171717 100%);
+    box-shadow:
+        -2px 0 5px rgba(0,0,0,0.8),
+        inset -1px 0 1px rgba(255,255,255,0.15),
+        inset 1px 0 2px rgba(0,0,0,0.8);
+    border-left: 1px solid rgba(255,255,255,0.05);
+}
+
+.screen-glare {
+    background: linear-gradient(110deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 45%);
+}
+
+.widget-depth {
+    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.015) 100%);
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.3),
+        inset 0 1px 1px rgba(255,255,255,0.06),
+        inset 0 -1px 1px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.floating-ui-badge {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 25px 50px -12px rgba(0, 0, 0, 0.8),
+        inset 0 1px 1px rgba(255,255,255,0.2),
+        inset 0 -1px 1px rgba(0,0,0,0.5);
+}
+
+/* Tactile CTA buttons */
+.btn-modern-brand, .btn-modern-dark {
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.btn-modern-brand {
+    background: linear-gradient(180deg, #1aa3e0 0%, #006fa3 100%);
+    color: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba(0,80,120,0.4), 0 2px 4px rgba(0,60,100,0.25), 0 12px 24px -4px rgba(0,111,163,0.5), inset 0 1px 1px rgba(255,255,255,0.35), inset 0 -3px 6px rgba(0,40,80,0.3);
+}
+.btn-modern-brand:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 1px rgba(0,80,120,0.4), 0 6px 12px -2px rgba(0,60,100,0.3), 0 20px 32px -6px rgba(0,111,163,0.6), inset 0 1px 1px rgba(255,255,255,0.35), inset 0 -3px 6px rgba(0,40,80,0.3);
+}
+.btn-modern-brand:active {
+    transform: translateY(1px);
+    background: linear-gradient(180deg, #006fa3 0%, #005b87 100%);
+    box-shadow: 0 0 0 1px rgba(0,80,120,0.5), inset 0 3px 6px rgba(0,30,60,0.35);
+}
+.btn-modern-dark {
+    background: linear-gradient(180deg, #1b2350 0%, #0a0e27 100%);
+    color: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 2px 4px rgba(10,14,39,0.4), 0 12px 24px -4px rgba(10,14,39,0.5), inset 0 1px 1px rgba(255,255,255,0.15), inset 0 -3px 6px rgba(0,0,0,0.6);
+}
+.btn-modern-dark:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(180deg, #242d63 0%, #131a3a 100%);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 6px 12px -2px rgba(10,14,39,0.5), 0 20px 32px -6px rgba(10,14,39,0.6), inset 0 1px 1px rgba(255,255,255,0.2), inset 0 -3px 6px rgba(0,0,0,0.6);
+}
+.btn-modern-dark:active {
+    transform: translateY(1px);
+    background: #0a0e27;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.05), inset 0 3px 8px rgba(0,0,0,0.9);
+}
+
+.btn-modern-glass {
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 100%);
+    color: #FFFFFF;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.14), 0 12px 24px -8px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.2);
+}
+.btn-modern-glass:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.05) 100%);
+}
+.btn-modern-glass:active { transform: translateY(1px); }
+
+/* Light-surface counterpart to .premium-depth-card: tactile white card with
+   a crisp top highlight and a soft navy-tinted drop shadow. */
+.light-depth-card {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+    border: 1px solid rgba(10, 14, 39, 0.07);
+    box-shadow:
+        0 1px 2px rgba(10, 14, 39, 0.04),
+        0 14px 36px -14px rgba(10, 14, 39, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        inset 0 -2px 4px rgba(10, 14, 39, 0.03);
+}
+.light-depth-card-hover {
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.light-depth-card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 2px 4px rgba(10, 14, 39, 0.05),
+        0 28px 56px -18px rgba(10, 14, 39, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        inset 0 -2px 4px rgba(10, 14, 39, 0.03);
+}
+
+/* Icon tile for light surfaces: navy glass chip with a brand-blue glyph. */
+.icon-tile {
+    background: linear-gradient(145deg, #1b2a6b 0%, #0a0e27 100%);
+    color: #7DD3FC;
+    box-shadow:
+        0 8px 18px -6px rgba(10, 14, 39, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Glass badge variant that stays readable on light pages and busy media. */
+.floating-badge-dark {
+    background: linear-gradient(135deg, rgba(27, 35, 80, 0.94) 0%, rgba(10, 14, 39, 0.94) 100%);
+}
+
+/* Content swap (tabs, accordions): a short blur-up, like the reveals. */
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(14px); filter: blur(6px); }
+    to { opacity: 1; transform: none; filter: none; }
+}
+.animate-fade-up {
+    animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+    .animate-fade-up { animation: none; }
+    .light-depth-card-hover, .light-depth-card-hover:hover { transition: none; transform: none; }
+}

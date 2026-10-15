@@ -4,9 +4,9 @@ import { site } from "@/content/site";
 import BookCallButton from "@/components/BookCallButton";
 
 const navLinks = [
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#live-demo", label: "Live demo" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/#live-demo", label: "Live demo" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export default function Header() {
@@ -38,7 +38,7 @@ export default function Header() {
           </a>
         </nav>
 
-        <BookCallButton className="inline-flex items-center justify-center rounded-lg bg-signal px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-void-2 transition-colors shrink-0">
+        <BookCallButton className="btn-modern-brand whitespace-nowrap inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-bold shrink-0">
           {site.hero.primaryCta}
         </BookCallButton>
       </div>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { site } from "@/content/site";
 
@@ -18,9 +19,9 @@ const socialIcons: Record<string, ReactElement> = {
 };
 
 const QUICK_LINKS = [
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#live-demo", label: "Live demo" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/#live-demo", label: "Live demo" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export default function Footer() {
@@ -96,7 +97,18 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-6xl px-4 py-5 text-xs text-white/60 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>&copy; 2021–2026 {site.brand.name}. All rights reserved.</span>
+          <span>&copy; 2021–2026 {site.legal.entityWithDba}. All rights reserved.</span>
+          <nav aria-label="Legal" className="flex items-center gap-4">
+            <Link href={site.legal.privacyPath} className="hover:text-white">
+              Privacy Policy
+            </Link>
+            <Link href={site.legal.termsPath} className="hover:text-white">
+              Terms of Service
+            </Link>
+            <a href={`mailto:${site.contact.email}`} className="hover:text-white">
+              {site.contact.email}
+            </a>
+          </nav>
         </div>
       </div>
     </footer>

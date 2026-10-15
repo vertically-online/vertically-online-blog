@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 /**
  * Self-hosted, muted-autoplay intro video. WebM/MP4 sources with a poster
@@ -57,8 +58,8 @@ export default function IntroVideo({
   };
 
   return (
-    <div className={`relative mx-auto w-full max-w-[960px] overflow-hidden rounded-2xl shadow-card ${className}`}>
-      <div className={`relative ${aspectClassName} w-full bg-void`}>
+    <div className={cn("relative mx-auto w-full max-w-[960px] overflow-hidden rounded-2xl shadow-card", className)}>
+      <div className={cn("relative w-full bg-void", aspectClassName)}>
         <video
           ref={videoRef}
           className="absolute inset-0 h-full w-full object-cover"
@@ -91,9 +92,9 @@ export default function IntroVideo({
         <button
           type="button"
           onClick={handleToggleMute}
-          className="absolute bottom-3 right-3 rounded-lg bg-void/70 px-3 py-1.5 text-xs font-medium text-white backdrop-blur hover:bg-void/85 transition-colors"
+          className="btn-modern-glass absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold text-white"
         >
-          {muted ? "🔊 Tap to unmute" : "🔇 Mute"}
+          {muted ? "Tap to unmute" : "Mute"}
         </button>
       </div>
     </div>
