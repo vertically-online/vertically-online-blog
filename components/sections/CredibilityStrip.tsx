@@ -28,9 +28,7 @@ export default function CredibilityStrip() {
         className="light-depth-card flex flex-col gap-5 rounded-3xl px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8"
       >
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
-          <div className="relative h-11 w-[70px] shrink-0">
-            <Image src={logo} alt={logoAlt} fill className="object-cover" sizes="70px" />
-          </div>
+          <Image src={logo} alt={logoAlt} width={140} height={88} className="h-11 w-[70px] shrink-0 object-cover" />
           <div className="hidden sm:block h-10 w-px bg-void/10" aria-hidden="true" />
           <div>
             <Stars rating={testimonial.rating} />

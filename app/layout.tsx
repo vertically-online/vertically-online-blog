@@ -4,6 +4,10 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { site } from "@/content/site";
 import CalProvider from "@/components/CalProvider";
+import AnalyticsEvents from "@/components/AnalyticsEvents";
+import JsonLd from "@/components/JsonLd";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { organizationJsonLd, siteUrl } from "@/lib/seo";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -17,12 +21,12 @@ const publicSans = Public_Sans({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vertically.online";
+const homeTitle = `${site.brand.name} | ${site.brand.tagline}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: `${site.brand.name} | ${site.brand.tagline}`,
-  description: site.hero.subheadline,
+  title: { default: homeTitle, template: `%s | ${site.brand.name}` },
+  description: site.seo.description,
   alternates: {
     canonical: "/",
   },
@@ -31,60 +35,38 @@ export const metadata: Metadata = {
     apple: "/images/brand/apple-touch-icon.png",
   },
   openGraph: {
-    title: `${site.brand.name} | ${site.brand.tagline}`,
-    description: site.hero.subheadline,
+    title: homeTitle,
+    description: site.seo.description,
     url: siteUrl,
     siteName: site.brand.name,
-    images: [{ url: "/images/og.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/images/og.jpg", width: 1200, height: 630, alt: site.seo.ogImageAlt }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.brand.name} | ${site.brand.tagline}`,
-    description: site.hero.subheadline,
-    images: ["/images/og.jpg"],
+    title: homeTitle,
+    description: site.seo.description,
+    images: [{ url: "/images/og.jpg", alt: site.seo.ogImageAlt }],
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: site.brand.name,
-    description: site.brand.tagline,
-    email: site.contact.email,
-    telephone: site.contact.phoneHref.replace("tel:", ""),
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: site.contact.addressLocality,
-      addressRegion: site.contact.addressRegion,
-    },
-    url: siteUrl,
-    sameAs: Object.values(site.social).filter(Boolean),
-    review: [
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: site.arias.testimonial.authorName },
-        reviewRating: { "@type": "Rating", ratingValue: site.arias.testimonial.rating, bestRating: 5 },
-        itemReviewed: { "@type": "ProfessionalService", name: site.brand.name },
-      },
-    ],
-  };
+// GA4 measurement ID (G-XXXXXXX), set in Vercel env. Analytics stay off until it's set.
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
+export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
       className={`${bricolage.variable} ${publicSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col text-slate">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={organizationJsonLd()} />
         <CalProvider />
         {children}
         <Analytics />
+        {gaId && <GoogleAnalytics gaId={gaId} />}
+        <AnalyticsEvents />
       </body>
     </html>
   );

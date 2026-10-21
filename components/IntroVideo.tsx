@@ -13,12 +13,14 @@ export default function IntroVideo({
   mp4Src = "/intro.mp4",
   webmSrc = "/intro.webm",
   poster = "/intro-poster.jpg",
+  captions = "/captions/intro.vtt",
   aspectClassName = "aspect-[9/16]",
   className = "",
 }: {
   mp4Src?: string;
   webmSrc?: string;
   poster?: string;
+  captions?: string;
   aspectClassName?: string;
   className?: string;
 }) {
@@ -26,13 +28,24 @@ export default function IntroVideo({
   const [muted, setMuted] = useState(true);
   const [needsTapToPlay, setNeedsTapToPlay] = useState(false);
 
+  // The video sits below the opening hero, so it only starts downloading
+  // and playing (muted) once it's actually on screen.
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => setNeedsTapToPlay(true));
-    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0]?.isIntersecting) return;
+        observer.disconnect();
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => setNeedsTapToPlay(true));
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
   }, []);
 
   const handleTapToPlay = () => {
@@ -63,15 +76,15 @@ export default function IntroVideo({
         <video
           ref={videoRef}
           className="absolute inset-0 h-full w-full object-cover"
-          autoPlay
           muted={muted}
           loop
           playsInline
-          preload="auto"
+          preload="none"
           poster={poster}
         >
           <source src={webmSrc} type="video/webm" />
           <source src={mp4Src} type="video/mp4" />
+          <track kind="captions" src={captions} srcLang="en" label="English" />
         </video>
 
         {needsTapToPlay && (

@@ -5,10 +5,12 @@ import { useRef, useState } from "react";
 export default function ClickToPlayVideo({
   src,
   poster,
+  captions,
   className = "",
 }: {
   src: string;
   poster: string;
+  captions?: string;
   className?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -35,6 +37,7 @@ export default function ClickToPlayVideo({
         onPause={() => setPlaying(false)}
       >
         <source src={src} type="video/mp4" />
+        {captions && <track kind="captions" src={captions} srcLang="en" label="English" />}
       </video>
 
       {!playing && (

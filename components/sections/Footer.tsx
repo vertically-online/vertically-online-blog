@@ -22,6 +22,9 @@ const QUICK_LINKS = [
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#live-demo", label: "Live demo" },
   { href: "/#faq", label: "FAQ" },
+  { href: "/roofing-answering-service", label: "Roofing answering service" },
+  { href: "/roofing-quote-software", label: "Roofing quote software" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Footer() {
@@ -36,6 +39,7 @@ export default function Footer() {
             alt={site.brand.name}
             width={site.brand.logoDarkDimensions.width}
             height={site.brand.logoDarkDimensions.height}
+            sizes="120px"
             className="h-8 w-auto"
           />
           <p className="mt-3 text-sm text-white/50 max-w-xs">{site.brand.tagline}</p>

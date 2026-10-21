@@ -1,36 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import type React from "react";
 import { ChevronRight } from "lucide-react";
-import { site, type Objection } from "@/content/site";
+import { site } from "@/content/site";
 import ClickToPlayVideo from "@/components/ClickToPlayVideo";
 import { cn } from "@/lib/utils";
 import { Section } from "@/components/ui/section";
 import { DarkPanel } from "@/components/ui/dark-panel";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-function Answer({ item, index, animate }: { item: Objection; index: number; animate: boolean }) {
-  return (
-    // Keyed by index so switching questions remounts it: replays the fade
-    // and resets the video to its poster. No fade on first paint, where the
-    // section's own scroll reveal already brings it in.
-    <div
-      key={index}
-      className={cn(animate && "animate-fade-up", "grid grid-cols-1 items-center gap-6 sm:grid-cols-[1fr_220px] sm:gap-8")}
-    >
-      <div>
-        <p className="font-display text-2xl font-bold tracking-tight text-white">{item.label}</p>
-        <p className="mt-3 leading-relaxed text-[#C9D3DB]">{item.answer}</p>
-      </div>
-      <ClickToPlayVideo
-        src={item.video}
-        poster={item.poster}
-        className="mx-auto max-w-[220px] ring-1 ring-white/10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)]"
-      />
-    </div>
-  );
-}
-
+/**
+ * Every answer is in the HTML (search engines and AI crawlers read all six),
+ * rendered once. DOM order is question, answer, question, answer… so on
+ * mobile each answer sits under its question; on desktop a grid places all
+ * answers in the right-hand column, overlapping, with only the active shown.
+ */
 export default function Objections() {
   const { eyebrow, heading, intro, items } = site.objections;
   const [active, setActive] = useState(0);
@@ -41,13 +26,16 @@ export default function Objections() {
       <DarkPanel>
         <SectionHeading tone="dark" eyebrow={eyebrow} title={heading} intro={intro} />
 
-        <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
-          {/* Questions: tabs on desktop, accordion on mobile */}
-          <div data-reveal="left" className="space-y-2.5">
-            {items.map((item, i) => {
-              const open = active === i;
-              return (
-                <div key={item.label}>
+        <div
+          data-reveal="up"
+          className="mt-12 grid grid-cols-1 gap-2.5 lg:grid-cols-[0.85fr_1.15fr] lg:grid-rows-[repeat(var(--rows),auto)] lg:gap-x-12 lg:content-start"
+          style={{ "--rows": items.length } as React.CSSProperties}
+        >
+          {items.map((item, i) => {
+            const open = active === i;
+            return (
+              <div key={item.label} className="contents">
+                <h3 className="lg:col-start-1">
                   <button
                     type="button"
                     onClick={() => {
@@ -82,22 +70,37 @@ export default function Objections() {
                       aria-hidden="true"
                     />
                   </button>
-                  {open && (
-                    <div id={`objection-answer-${i}`} className="px-1 pb-4 pt-5 lg:hidden">
-                      <Answer item={item} index={i} animate={switched} />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                </h3>
 
-          {/* Desktop answer panel */}
-          <div data-reveal="right" className="hidden lg:block">
-            <div className="widget-depth rounded-3xl p-8">
-              <Answer item={items[active]} index={active} animate={switched} />
-            </div>
-          </div>
+                <div
+                  id={`objection-answer-${i}`}
+                  hidden={!open}
+                  className="pb-4 pt-3 lg:col-start-2 lg:row-start-1 lg:[grid-row-end:span_var(--rows)] lg:pb-0 lg:pt-0"
+                >
+                  {/* Remounted per question (key) so the fade replays and the
+                      video resets; no fade on first paint. */}
+                  <div
+                    key={open ? `open-${i}` : `closed-${i}`}
+                    className={cn(
+                      open && switched && "animate-fade-up",
+                      "objection-panel grid grid-cols-1 items-center gap-6 rounded-3xl sm:grid-cols-[1fr_220px] sm:gap-8 lg:p-8"
+                    )}
+                  >
+                    <div>
+                      <p className="font-display text-2xl font-bold tracking-tight text-white">{item.label}</p>
+                      <p className="mt-3 leading-relaxed text-[#C9D3DB]">{item.answer}</p>
+                    </div>
+                    <ClickToPlayVideo
+                      src={item.video}
+                      poster={item.poster}
+                      captions={item.captions}
+                      className="mx-auto max-w-[220px] ring-1 ring-white/10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)]"
+                    />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </DarkPanel>
     </Section>

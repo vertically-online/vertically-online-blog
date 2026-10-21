@@ -281,19 +281,19 @@ export function CinematicHero({
 
       {/* BACKGROUND LAYER: taglines */}
       <div className="hero-text-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-full px-4 will-change-transform transform-3d">
-        <h2 className="text-track gsap-reveal text-3d-matte font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight leading-[1.05] mb-2">
+        <p className="text-track gsap-reveal text-3d-matte font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight leading-[1.05] mb-2">
           {content.tagline1}
-        </h2>
-        <h2 className="text-days gsap-reveal text-brand-matte font-display text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tighter leading-[1.05] pb-2">
+        </p>
+        <p className="text-days gsap-reveal text-brand-matte font-display text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tighter leading-[1.05] pb-2">
           {content.tagline2}
-        </h2>
+        </p>
       </div>
 
       {/* BACKGROUND LAYER 2: CTA, revealed when the card flies away */}
       <div className="cta-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-full px-4 gsap-reveal pointer-events-auto will-change-transform">
-        <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight text-brand-matte pb-1">
+        <p className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight text-brand-matte pb-1">
           {content.ctaHeading}
-        </h2>
+        </p>
         <p className="text-slate text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed">
           {content.ctaDescription}
         </p>
@@ -343,7 +343,7 @@ export function CinematicHero({
                   ref={mockupRef}
                   className="relative w-[280px] h-[580px] rounded-[3rem] iphone-bezel flex flex-col will-change-transform transform-3d"
                   role="img"
-                  aria-label="Phone showing a new roofing lead answered in 18 seconds, quoted, and booked for an inspection"
+                  aria-label="Example phone screen: a new roofing lead answered in 18 seconds, quoted, and booked for an inspection"
                 >
                   {/* Hardware buttons */}
                   <div className="absolute top-[120px] -left-[3px] w-[3px] h-[25px] hardware-btn rounded-l-md z-0" aria-hidden="true" />
@@ -444,9 +444,9 @@ export function CinematicHero({
 
             {/* BOTTOM (mobile) / LEFT (desktop): pitch */}
             <div className="card-left-text gsap-reveal order-3 lg:order-1 flex flex-col justify-center text-center lg:text-left z-20 w-full px-4 lg:px-0">
-              <h3 className="font-display text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-0 lg:mb-5 tracking-tight">
+              <p className="font-display text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-0 lg:mb-5 tracking-tight">
                 {content.cardHeading}
-              </h3>
+              </p>
               <p className="hidden md:block mt-3 lg:mt-0 text-[#C9D3DB] text-sm md:text-base lg:text-lg leading-relaxed mx-auto lg:mx-0 max-w-sm lg:max-w-none">
                 {content.cardDescription}
               </p>

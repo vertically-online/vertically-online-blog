@@ -76,6 +76,8 @@ export type Objection = {
   answer: string;
   video: string;
   poster: string;
+  // WebVTT captions, transcribed from the video
+  captions: string;
 };
 
 export const site = {
@@ -93,6 +95,25 @@ export const site = {
   },
 
   bookingUrl: BOOKING_URL,
+
+  // Byline for blog posts and landing pages, and the founder in JSON-LD.
+  author: {
+    name: "Toby Karamoutchev",
+    title: "Co-founder, Vertically",
+    image: "/images/team/toby-karamoutchev.jpg",
+    imageWidth: 640,
+    imageHeight: 800,
+    bio: "Toby Karamoutchev is the co-founder of Vertically, which sets up automatic lead response, quoting, phone answering, and inspection booking for roofing companies.",
+  },
+
+  // Search/social snippet. Keep the description at or under ~155 characters.
+  seo: {
+    description:
+      "Vertically answers every roofing lead in under 30 seconds, sends a quote from your price list, and books the inspection. Free for 30 days, no contract.",
+    ogImageAlt: "Vertically: automatic lead response for roofing companies",
+    // Sitemap lastModified for the homepage; bump when its content changes.
+    homeUpdated: "2026-10-21",
+  },
 
   contact: {
     email: "leads@vertically.online",
@@ -138,7 +159,7 @@ export const site = {
 
   hero: {
     badge: "No contract. No credit card. 30 days free.",
-    headline: "Answer every roofing lead in 30 seconds. Close 5x more jobs.",
+    headline: "Answer every roofing lead in under 30 seconds. Book more inspections.",
     subheadline:
       "Vertically installs an AI system that responds to every lead instantly, builds the quote for you, and books the inspection on your Google Calendar, so no homeowner ever calls your competitor first.",
     // Glass badges floating beside the founder video phone.
@@ -148,29 +169,33 @@ export const site = {
     ],
     primaryCta: "Start My Free 30 Days",
     reassurance:
-      "No contract. No credit card. No catch. If it doesn't win you more jobs, you don't pay a dime.",
+      "No contract. No credit card. Free for 30 days. If it isn't working for you, we switch it off and you owe nothing.",
+    // Only provable numbers: the product's response time and the Arias
+    // Roofing & Siding case study (see results below).
     stats: [
-      {
-        target: 2000,
-        decimals: 0,
-        suffix: "+",
-        label: "Leads answered automatically",
-        announce: "2,000 plus",
-      },
-      {
-        target: 4.2,
-        decimals: 1,
-        suffix: "x",
-        label: "More leads",
-        announce: "4.2 times",
-      },
       {
         target: 30,
         decimals: 0,
         prefix: "<",
         suffix: " sec",
-        label: "Response time",
+        label: "Response time to every lead",
         announce: "under 30 seconds",
+      },
+      {
+        target: 5,
+        decimals: 0,
+        prefix: "~",
+        suffix: "/mo",
+        label: "Jobs at Arias Roofing, up from about 1",
+        announce: "about 5 jobs a month",
+      },
+      {
+        target: 30,
+        decimals: 0,
+        prefix: "~",
+        suffix: " hrs",
+        label: "Saved weekly at Arias on quotes and follow-up",
+        announce: "about 30 hours",
       },
     ] satisfies HeroStat[],
   },
@@ -194,7 +219,7 @@ export const site = {
     highlightValue: "<30s",
     highlightCaption: "to answer every lead. Nights and weekends included.",
     phone: {
-      eyebrow: "Tonight · 9:41 PM",
+      eyebrow: "Example · 9:41 PM",
       title: "Your lead desk",
       metricValue: 100,
       metricSuffix: "%",
@@ -244,7 +269,7 @@ export const site = {
         description:
           "Every form, call, and quote request gets a reply in under 30 seconds, day or night, weekends included.",
         image: "/images/service-repair.jpg",
-        alt: "Roofer quickly addressing a repair on a shingle roof",
+        alt: "Roofer in a white cap kneeling on fresh underlayment beside a roll of roofing membrane",
       },
       {
         icon: "quote",
@@ -252,7 +277,7 @@ export const site = {
         description:
           "Homeowners answer a few simple questions, and jobs within your price range get a quote automatically. No more hours of back-and-forth. You set the limits; bigger jobs come to you for review. This is entirely custom and specific to your company. We don't launch this without your approval.",
         image: "/images/service-inspection.jpg",
-        alt: "Roofer inspecting a roof to prepare an estimate",
+        alt: "Roofer in a safety harness carrying a tool bag across a driveway to the job",
       },
       {
         icon: "phone",
@@ -260,15 +285,15 @@ export const site = {
         description:
           "A voice agent phones every new lead right away, answers their questions, and schedules the inspection straight into your Google Calendar.",
         image: "/images/trust-craftsmanship.jpg",
-        alt: "Roofer carefully installing shingles with attention to detail",
+        alt: "Roofer kneeling on underlayment, lining up a new course of asphalt shingles",
       },
       {
         icon: "shield",
         title: "Nothing slips through.",
         description:
-          "Missed calls get an instant text back. Leads who go quiet get automatic follow-up. Finished jobs get a review request.",
+          "Leads who go quiet get automatic follow-up. Every lead lands in your inbox with full details. Finished jobs get a review request.",
         image: "/images/service-storm.jpg",
-        alt: "Roofing crew working on a roof against a dramatic sky",
+        alt: "Two roofers working near a brick chimney under a dark storm sky",
       },
     ] satisfies SolutionFeature[],
   },
@@ -364,6 +389,7 @@ export const site = {
           "We install everything on your website, connected to your existing systems, and it just runs. If you can check your email, you can run this, and you don't need to learn software, log into a dashboard, or manage anything.",
         video: "/objections/not-tech-savvy.mp4",
         poster: "/objections/not-tech-savvy-poster.jpg",
+        captions: "/captions/not-tech-savvy.vtt",
       },
       {
         label: "Is this worth the investment?",
@@ -371,6 +397,7 @@ export const site = {
           "Think of it as the cost of never missing a lead again. Most roofers using this close several extra jobs a month, just from leads they would have lost to a slower competitor. It pays for itself with the very first job it saves you, and it's free for the first 30 days, so you see the numbers before you spend a dollar.",
         video: "/objections/too-expensive.mp4",
         poster: "/objections/too-expensive-poster.jpg",
+        captions: "/captions/too-expensive.vtt",
       },
       {
         label: "I'm already getting referrals. Here's why that's not enough.",
@@ -378,6 +405,7 @@ export const site = {
           "Referrals are great until the phone rings on a Tuesday at 7pm and you're on a roof. Even referred homeowners call around, and the first roofer to respond usually wins the job. This system makes sure every referral, call, and website lead gets answered in under 30 seconds, so none of that goodwill goes to waste.",
         video: "/objections/referrals-enough.mp4",
         poster: "/objections/referrals-enough-poster.jpg",
+        captions: "/captions/referrals-enough.vtt",
       },
       {
         label: "I don't have time to set this up.",
@@ -385,6 +413,7 @@ export const site = {
           "We handle the entire setup, connecting to your existing systems and setting your pricing limits. It's live within hours, it just takes a short audit call and a quick check-in. You keep roofing. We build the system.",
         video: "/objections/no-time.mp4",
         poster: "/objections/no-time-poster.jpg",
+        captions: "/captions/no-time.vtt",
       },
       {
         label: "Burned by an agency before? Here's what's different",
@@ -392,6 +421,7 @@ export const site = {
           "No long-term contract, no upfront payment, and no vague promises. You get 30 days free to watch real leads, quotes, and booked jobs come in before you decide anything. If it's not winning you jobs, we turn it off, no hard feelings.",
         video: "/objections/burned-before.mp4",
         poster: "/objections/burned-before-poster.jpg",
+        captions: "/captions/burned-before.vtt",
       },
       {
         label: "Won't this feel robotic to my clients?",
@@ -399,6 +429,7 @@ export const site = {
           "Every message goes out under your name, in your company's voice. Homeowners never see a bot. They just see a roofer who somehow always responds first.",
         video: "/objections/feels-robotic.mp4",
         poster: "/objections/feels-robotic-poster.jpg",
+        captions: "/captions/feels-robotic.vtt",
       },
     ] satisfies Objection[],
   },

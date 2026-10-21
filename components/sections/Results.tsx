@@ -15,9 +15,7 @@ export default function Results() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:items-center">
           <div>
             <div data-reveal="up" className="inline-flex rounded-2xl bg-white px-3 py-1.5 shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6)]">
-              <div className="relative h-14 w-[90px]">
-                <Image src={logo} alt={logoAlt} fill className="object-cover" sizes="90px" />
-              </div>
+              <Image src={logo} alt={logoAlt} width={180} height={112} className="h-14 w-[90px] object-cover" />
             </div>
             <div className="mt-6">
               <Eyebrow tone="dark">{eyebrow}</Eyebrow>

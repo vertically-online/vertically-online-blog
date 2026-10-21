@@ -52,24 +52,26 @@ export default function Faq() {
                   open && "shadow-[0_20px_44px_-18px_rgba(10,14,39,0.28)]"
                 )}
               >
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-                  aria-expanded={open}
-                  aria-controls={`faq-answer-${i}`}
-                  onClick={() => setOpenIndex(open ? null : i)}
-                >
-                  <span className="font-display text-lg font-bold tracking-tight text-void">{item.question}</span>
-                  <span
-                    className={cn(
-                      "flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300",
-                      open ? "icon-tile rotate-45" : "bg-void/[0.05] text-void"
-                    )}
-                    aria-hidden="true"
+                <h3>
+                  <button
+                    type="button"
+                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                    aria-expanded={open}
+                    aria-controls={`faq-answer-${i}`}
+                    onClick={() => setOpenIndex(open ? null : i)}
                   >
-                    <Plus className="h-4 w-4" />
-                  </span>
-                </button>
+                    <span className="font-display text-lg font-bold tracking-tight text-void">{item.question}</span>
+                    <span
+                      className={cn(
+                        "flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300",
+                        open ? "icon-tile rotate-45" : "bg-void/[0.05] text-void"
+                      )}
+                      aria-hidden="true"
+                    >
+                      <Plus className="h-4 w-4" />
+                    </span>
+                  </button>
+                </h3>
                 {/* Animated height via grid rows; aria-hidden while collapsed */}
                 <div
                   id={`faq-answer-${i}`}

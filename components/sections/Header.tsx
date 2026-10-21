@@ -7,6 +7,7 @@ const navLinks = [
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#live-demo", label: "Live demo" },
   { href: "/#faq", label: "FAQ" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Header() {
@@ -19,6 +20,7 @@ export default function Header() {
             alt={site.brand.name}
             width={site.brand.logoLightDimensions.width}
             height={site.brand.logoLightDimensions.height}
+            sizes="120px"
             priority
             className="h-8 w-auto shrink-0"
           />
