@@ -55,8 +55,10 @@ const INJECTED_STYLES = `
 
   /* Taglines: CSS so they start on first paint (LCP), not after hydration */
   @keyframes tagline-in {
-      from { opacity: 0.01; transform: translateY(60px) scale(0.85); filter: blur(20px); }
-      to { opacity: 1; transform: none; filter: blur(0); }
+      /* Opaque from the first frame (a focus pull, not a fade) so Chrome
+         counts it as painted immediately for LCP. */
+      from { transform: translateY(60px) scale(0.85); filter: blur(20px); }
+      to { transform: none; filter: blur(0); }
   }
   @keyframes tagline-wipe {
       from { clip-path: inset(0 100% 0 0); }
