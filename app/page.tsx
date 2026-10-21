@@ -6,6 +6,7 @@ import CredibilityStrip from "@/components/sections/CredibilityStrip";
 import LiveDemo from "@/components/sections/LiveDemo";
 import Problem from "@/components/sections/Problem";
 import Solution from "@/components/sections/Solution";
+import AiExplainer from "@/components/sections/AiExplainer";
 import Results from "@/components/sections/Results";
 import HowItWorks from "@/components/sections/HowItWorks";
 import ConnectEmail from "@/components/sections/ConnectEmail";
@@ -22,7 +23,12 @@ import { site } from "@/content/site";
 export default function Home() {
   return (
     <>
-      <JsonLd data={faqPageJsonLd(site.faq.items)} />
+      <JsonLd
+        data={faqPageJsonLd([
+          ...site.objections.items.map((item) => ({ question: item.label, answer: item.answer })),
+          ...site.faq.items,
+        ])}
+      />
       <Header />
       <main className="flex-1">
         <CinematicHero />
@@ -32,6 +38,7 @@ export default function Home() {
         <LiveDemo />
         <Problem />
         <Solution />
+        <AiExplainer />
         <Results />
         <HowItWorks />
         <ConnectEmail />

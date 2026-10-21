@@ -344,6 +344,27 @@ export function CinematicHero({
           {/* Flex column on mobile to control order, 3-column grid on desktop */}
           <div className="relative w-full h-full max-w-7xl mx-auto px-4 lg:px-12 flex flex-col justify-evenly lg:grid lg:grid-cols-3 items-center lg:gap-8 z-10 py-6 lg:py-0">
 
+            {/* BOTTOM (mobile) / LEFT (desktop): pitch */}
+            <div className="card-left-text gsap-reveal order-3 lg:order-1 flex flex-col justify-center text-center lg:text-left z-20 w-full px-4 lg:px-0 lg:pr-28">
+              <p className="font-display text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-0 lg:mb-5 tracking-tight">
+                {content.cardHeading}
+              </p>
+              <p className="hidden md:block mt-3 lg:mt-0 text-[#C9D3DB] text-sm md:text-base lg:text-lg leading-relaxed mx-auto lg:mx-0 max-w-sm lg:max-w-none">
+                {content.cardDescription}
+              </p>
+              <ul className="hidden lg:flex flex-col gap-2.5 mt-5">
+                {content.cardPoints.map((point) => (
+                  <li key={point} className="flex items-start gap-3 text-sm text-white/80">
+                    <span className="mt-0.5 flex w-5 h-5 shrink-0 items-center justify-center rounded-full bg-[#008FD0]/20 border border-[#008FD0]/40">
+                      <Check className="w-3 h-3 text-sky-300" strokeWidth={3} aria-hidden="true" />
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* DOM order: the pitch comes first (it carries the page keyword); order-* classes set the visual order. */}
             {/* TOP (mobile) / RIGHT (desktop): headline stat */}
             <div className="card-right-text gsap-reveal order-1 lg:order-3 flex flex-col items-center lg:items-end text-center lg:text-right z-20 w-full">
               <p className="font-display text-6xl md:text-[6rem] lg:text-[8rem] font-black tracking-tighter leading-none text-card-silver-matte">
@@ -363,7 +384,7 @@ export function CinematicHero({
                   ref={mockupRef}
                   className="relative w-[280px] h-[580px] rounded-[3rem] iphone-bezel flex flex-col will-change-transform transform-3d"
                   role="img"
-                  aria-label="Example phone screen: a new roofing lead answered in 18 seconds, quoted, and booked for an inspection"
+                  aria-label="Example of AI for roofing companies on a phone: a new roofing lead answered in 18 seconds, quoted, and booked for an inspection"
                 >
                   {/* Hardware buttons */}
                   <div className="absolute top-[120px] -left-[3px] w-[3px] h-[25px] hardware-btn rounded-l-md z-0" aria-hidden="true" />
@@ -460,26 +481,6 @@ export function CinematicHero({
                 </div>
 
               </div>
-            </div>
-
-            {/* BOTTOM (mobile) / LEFT (desktop): pitch */}
-            <div className="card-left-text gsap-reveal order-3 lg:order-1 flex flex-col justify-center text-center lg:text-left z-20 w-full px-4 lg:px-0">
-              <p className="font-display text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-0 lg:mb-5 tracking-tight">
-                {content.cardHeading}
-              </p>
-              <p className="hidden md:block mt-3 lg:mt-0 text-[#C9D3DB] text-sm md:text-base lg:text-lg leading-relaxed mx-auto lg:mx-0 max-w-sm lg:max-w-none">
-                {content.cardDescription}
-              </p>
-              <ul className="hidden lg:flex flex-col gap-2.5 mt-5">
-                {content.cardPoints.map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-sm text-white/80">
-                    <span className="mt-0.5 flex w-5 h-5 shrink-0 items-center justify-center rounded-full bg-[#008FD0]/20 border border-[#008FD0]/40">
-                      <Check className="w-3 h-3 text-sky-300" strokeWidth={3} aria-hidden="true" />
-                    </span>
-                    {point}
-                  </li>
-                ))}
-              </ul>
             </div>
 
           </div>

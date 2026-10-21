@@ -21,7 +21,7 @@ const publicSans = Public_Sans({
   display: "swap",
 });
 
-const homeTitle = `${site.brand.name} | ${site.brand.tagline}`;
+const homeTitle = site.seo.title;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -11,7 +11,11 @@ export default function RoofingAnsweringServicePage() {
       slug={SLUG}
       eyebrow="Phone answering for roofers"
       visual={
-        <ExampleCard label="Example" title="A call while you're on a roof">
+        <ExampleCard
+          label="Example"
+          title="A call while you're on a roof"
+          alt="Example of the AI roofing answering service handling a call: answered, job details captured, inspection booked on Google Calendar"
+        >
           <ExampleStep
             icon={<PhoneIncoming className="h-4 w-4" aria-hidden="true" />}
             title="Incoming call, 7:42 PM"

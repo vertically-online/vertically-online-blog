@@ -11,7 +11,11 @@ export default function RoofingQuoteSoftwarePage() {
       slug={SLUG}
       eyebrow="Instant roofing quotes"
       visual={
-        <ExampleCard label="Example" title="Estimate built from your price list">
+        <ExampleCard
+          label="Example"
+          title="Estimate built from your price list"
+          alt="Example of roofing proposal software output: a PDF estimate built from your price list and sent in under a minute"
+        >
           <ExampleStep
             icon={<FileText className="h-4 w-4" aria-hidden="true" />}
             title="Roof replacement · architectural shingles"

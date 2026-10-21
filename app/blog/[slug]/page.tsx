@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const path = `/blog/${post.slug}`;
   const title = post.seoTitle ?? post.title;
   return {
-    title,
+    title: post.seoTitle ? { absolute: post.seoTitle } : post.title,
     description: post.description,
     alternates: { canonical: path },
     authors: [{ name: post.author }],

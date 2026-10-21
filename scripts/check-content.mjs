@@ -34,8 +34,11 @@ for (const dir of ["blog", "landing"]) {
     if (typeof data.description === "string" && data.description.length > 160) {
       errors.push(`${rel}: description is ${data.description.length} characters (max 160)`);
     }
-    // Blog titles get " | Vertically" from the layout's title template; landing pages use theirs as-is.
-    const title = dir === "blog" ? `${data.seoTitle ?? data.title} | Vertically` : data.seoTitle;
+    if (typeof data.description === "string" && data.description.length < 140) {
+      warnings.push(`${rel}: description is ${data.description.length} characters (aim for 140-158)`);
+    }
+    // seoTitle is used as-is; a blog post without one gets " | Vertically" from the title template.
+    const title = data.seoTitle ?? `${data.title} | Vertically`;
     if (typeof title === "string" && title.length > 60) {
       warnings.push(`${rel}: <title> is ${title.length} characters (aim for 60 or fewer): ${title}`);
     }

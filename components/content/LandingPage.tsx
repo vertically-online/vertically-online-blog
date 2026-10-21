@@ -116,9 +116,20 @@ export async function LandingPage({ slug, eyebrow, visual }: { slug: string; eye
 }
 
 /** Navy "example" card used as the hero visual on landing pages. */
-export function ExampleCard({ label, title, children }: { label: string; title: string; children: ReactNode }) {
+export function ExampleCard({
+  label,
+  title,
+  alt,
+  children,
+}: {
+  label: string;
+  title: string;
+  /** Accessible description of the whole visual (the page's image alt). */
+  alt: string;
+  children: ReactNode;
+}) {
   return (
-    <figure className="premium-depth-card relative overflow-hidden rounded-[32px] p-6 sm:p-8 text-white" aria-label={`${label}: ${title}`}>
+    <figure className="premium-depth-card relative overflow-hidden rounded-[32px] p-6 sm:p-8 text-white" aria-label={alt}>
       <div className="flex items-center justify-between gap-4">
         <figcaption className="font-display text-lg font-bold tracking-tight">{title}</figcaption>
         <span className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-[#9fdaff] ring-1 ring-white/10">

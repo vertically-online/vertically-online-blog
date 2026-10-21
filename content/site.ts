@@ -55,6 +55,12 @@ export type LostLeadStep = {
   text: string;
 };
 
+export type AiExplainerStep = {
+  icon: "lead" | "reply" | "quote" | "call" | "follow" | "review";
+  title: string;
+  body: string;
+};
+
 export type ResultStat = {
   label: string;
   before: string;
@@ -108,9 +114,11 @@ export const site = {
 
   // Search/social snippet. Keep the description at or under ~155 characters.
   seo: {
+    // Primary keyword: "ai for roofing companies" (also "ai for roofers", "ai roofing software")
+    title: "AI for Roofing Companies: Instant Lead Response | Vertically",
     description:
-      "Vertically answers every roofing lead in under 30 seconds, sends a quote from your price list, and books the inspection. Free for 30 days, no contract.",
-    ogImageAlt: "Vertically: automatic lead response for roofing companies",
+      "Vertically is AI for roofing companies: it answers every lead in 30 seconds, builds the quote and books the inspection. Free for 30 days, no contract.",
+    ogImageAlt: "Vertically: AI for roofing companies that answers every lead and books the inspection",
     // Sitemap lastModified for the homepage; bump when its content changes.
     homeUpdated: "2026-10-21",
   },
@@ -159,7 +167,7 @@ export const site = {
 
   hero: {
     badge: "No contract. No credit card. 30 days free.",
-    headline: "Answer every roofing lead in under 30 seconds. Book more inspections.",
+    headline: "AI for Roofing Companies: Answer Every Lead in 30 Seconds",
     subheadline:
       "Vertically installs an AI system that responds to every lead instantly, builds the quote for you, and books the inspection on your Google Calendar, so no homeowner ever calls your competitor first.",
     // Glass badges floating beside the founder video phone.
@@ -207,7 +215,7 @@ export const site = {
     tagline2: "Every job booked.",
     cardHeading: "Jobs booked on autopilot.",
     cardDescription:
-      "While you're up on a roof, Vertically texts the homeowner back, builds the quote from your pricing, and books the inspection straight onto your Google Calendar.",
+      "Vertically is AI for roofing companies. While you're up on a roof, it texts the homeowner back, builds the quote from your pricing, and books the inspection straight onto your Google Calendar.",
     cardPoints: [
       "Instant reply by text and email, under your name",
       "Quotes built from your pricing and limits",
@@ -238,6 +246,65 @@ export const site = {
     ctaHeading: "Your next job is already calling.",
     ctaDescription:
       "Let Vertically answer it. Start free for 30 days. No contract, no credit card.",
+  },
+
+  // "How AI lead response works for roofers" + "in plain English" sections.
+  aiExplainer: {
+    eyebrow: "AI lead response",
+    heading: "How AI lead response works for roofers.",
+    intro:
+      "Slow replies stretch out your sales cycle and quietly hurt your conversion rate: the homeowner keeps shopping while they wait. AI-powered lead response closes that gap. Here's what happens to every lead, step by step.",
+    steps: [
+      {
+        icon: "lead",
+        title: "A lead comes in",
+        body: "A homeowner calls, fills out your website form, or asks for a quote, whether it's a small repair or a storm lead with an insurance claim. Vertically picks it up in real time, day or night.",
+      },
+      {
+        icon: "reply",
+        title: "An instant reply",
+        body: "Within 30 seconds they get a text and an email from your company, under your name. You get a real-time lead alert in your inbox with every detail.",
+      },
+      {
+        icon: "quote",
+        title: "A quote from your price list",
+        body: "If the roofing job fits the limits you set, the AI builds a PDF estimate from your own pricing. Bigger or unusual jobs come to you first.",
+      },
+      {
+        icon: "call",
+        title: "A call that books the inspection",
+        body: "An AI voice agent calls the homeowner, answers their questions, and books the inspection straight onto your Google Calendar.",
+      },
+      {
+        icon: "follow",
+        title: "Follow-up if they don't book",
+        body: "Homeowners who go quiet get friendly, automatic follow-up, so a \"let me think about it\" doesn't turn into a lost job.",
+      },
+      {
+        icon: "review",
+        title: "A review request after the job",
+        body: "When the work is done, the homeowner gets a review request, which helps your roofing business win the next lead.",
+      },
+    ] satisfies AiExplainerStep[],
+    plain: {
+      heading: "AI for roofing companies, in plain English.",
+      body: "AI tools are only useful if they take work off your plate without taking control away from you. Here's the split.",
+      aiDoes: [
+        "Answers every call and web lead in seconds",
+        "Replies by text and email under your name",
+        "Quotes jobs inside the limits you set",
+        "Calls homeowners and books inspections",
+        "Follows up and asks for reviews",
+      ],
+      youDo: [
+        "Set your prices and quoting limits",
+        "Review bigger and unusual jobs",
+        "Run the inspection and close the sale",
+        "Do the roofing",
+      ],
+      closing:
+        "It doesn't replace you or your sales reps. It makes sure every homeowner gets a fast, consistent customer experience until a person takes over, and nothing launches without your approval.",
+    },
   },
 
   problem: {
