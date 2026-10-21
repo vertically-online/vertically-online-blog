@@ -1,4 +1,6 @@
-import { CalendarDays, CheckCircle2, Clock, X } from "lucide-react";
+"use client";
+
+import { CalendarDays, CheckCircle2, Clock, X } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import InlineCalBooking from "@/components/InlineCalBooking";
 import { Section } from "@/components/ui/section";

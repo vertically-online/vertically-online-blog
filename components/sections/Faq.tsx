@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, Plus } from "lucide-react";
+import { Mail, Phone, Plus } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { Section } from "@/components/ui/section";
@@ -55,7 +55,7 @@ export default function Faq() {
                 <h3>
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                    className="faq-button"
                     aria-expanded={open}
                     aria-controls={`faq-answer-${i}`}
                     onClick={() => setOpenIndex(open ? null : i)}
@@ -63,7 +63,7 @@ export default function Faq() {
                     <span className="font-display text-lg font-bold tracking-tight text-void">{item.question}</span>
                     <span
                       className={cn(
-                        "flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300",
+                        "faq-toggle",
                         open ? "icon-tile rotate-45" : "bg-void/[0.05] text-void"
                       )}
                       aria-hidden="true"
@@ -77,7 +77,7 @@ export default function Faq() {
                   id={`faq-answer-${i}`}
                   aria-hidden={!open}
                   className={cn(
-                    "grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                    "faq-answer",
                     open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   )}
                 >

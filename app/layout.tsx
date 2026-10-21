@@ -5,9 +5,9 @@ import "./globals.css";
 import { site } from "@/content/site";
 import CalProvider from "@/components/CalProvider";
 import AnalyticsEvents from "@/components/AnalyticsEvents";
-import JsonLd from "@/components/JsonLd";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { organizationJsonLd, siteUrl } from "@/lib/seo";
+import { OrganizationStructuredData } from "@/components/StructuredData";
+import { siteUrl } from "@/lib/seo";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -61,7 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${bricolage.variable} ${publicSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col text-slate">
-        <JsonLd data={organizationJsonLd()} />
+        <OrganizationStructuredData />
         <CalProvider />
         {children}
         <Analytics />

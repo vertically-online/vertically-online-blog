@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import { Star } from "lucide-react";
+import { Star } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import BookCallButton from "@/components/BookCallButton";
 import { Section } from "@/components/ui/section";

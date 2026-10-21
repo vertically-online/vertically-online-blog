@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Phone, Play, TrendingUp, Zap } from "lucide-react";
+import { Phone, Play, TrendingUp, Zap } from "@/components/ui/icons";
 import { site, type HeroStat } from "@/content/site";
 import IntroVideo from "@/components/IntroVideo";
 import BookCallButton from "@/components/BookCallButton";

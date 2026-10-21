@@ -1,4 +1,4 @@
-import { Phone, Zap } from "lucide-react";
+import { Phone, Zap } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import BookCallButton from "@/components/BookCallButton";
 import { DarkPanel } from "@/components/ui/dark-panel";

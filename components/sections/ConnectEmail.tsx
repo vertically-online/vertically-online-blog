@@ -1,12 +1,14 @@
+"use client";
+
 import type React from "react";
 import Link from "next/link";
-import { EyeOff, Mail, Paperclip, Server, ShieldCheck, Unplug, type LucideIcon } from "lucide-react";
+import { EyeOff, Mail, Paperclip, Server, ShieldCheck, Unplug, type IconComponent } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 // Paired by position with site.connectEmail.points
-const POINT_ICONS: LucideIcon[] = [ShieldCheck, EyeOff, Unplug];
+const POINT_ICONS: IconComponent[] = [ShieldCheck, EyeOff, Unplug];
 
 function GmailLogo() {
   return (

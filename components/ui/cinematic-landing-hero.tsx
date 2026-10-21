@@ -13,8 +13,8 @@ import {
   Phone,
   UserPlus,
   Zap,
-  type LucideIcon,
-} from "lucide-react";
+  type IconComponent,
+} from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import { site, type LeadFeedItem } from "@/content/site";
 import BookCallButton from "@/components/BookCallButton";
@@ -35,7 +35,7 @@ const TAGLINES_DONE_S = 2.7 - 0.3;
 const RING_RADIUS = 58;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
-const FEED_ICONS: Record<LeadFeedItem["icon"], { Icon: LucideIcon; tint: string }> = {
+const FEED_ICONS: Record<LeadFeedItem["icon"], { Icon: IconComponent; tint: string }> = {
   lead: { Icon: UserPlus, tint: "text-sky-300 from-sky-400/25 border-sky-300/25" },
   reply: { Icon: MessageSquareText, tint: "text-cyan-300 from-cyan-400/25 border-cyan-300/25" },
   quote: { Icon: FileText, tint: "text-blue-300 from-blue-400/25 border-blue-300/25" },

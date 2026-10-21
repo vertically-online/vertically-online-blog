@@ -1,10 +1,12 @@
+"use client";
+
 import Image from "next/image";
-import { FileText, PhoneCall, ShieldCheck, Zap, type LucideIcon } from "lucide-react";
+import { FileText, PhoneCall, ShieldCheck, Zap, type IconComponent } from "@/components/ui/icons";
 import { site, type SolutionIcon } from "@/content/site";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-const ICONS: Record<SolutionIcon, LucideIcon> = {
+const ICONS: Record<SolutionIcon, IconComponent> = {
   zap: Zap,
   quote: FileText,
   phone: PhoneCall,

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@/components/ui/icons";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import JsonLd from "@/components/JsonLd";

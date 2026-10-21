@@ -1,4 +1,6 @@
-import { CalendarCheck, Phone, Zap } from "lucide-react";
+"use client";
+
+import { CalendarCheck, Phone, Zap } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import BookCallButton from "@/components/BookCallButton";
 import { Section } from "@/components/ui/section";

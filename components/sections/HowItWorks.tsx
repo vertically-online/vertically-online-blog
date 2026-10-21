@@ -1,3 +1,5 @@
+"use client";
+
 import { site } from "@/content/site";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type React from "react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import ClickToPlayVideo from "@/components/ClickToPlayVideo";
 import { cn } from "@/lib/utils";
@@ -94,7 +94,7 @@ export default function Objections() {
                       src={item.video}
                       poster={item.poster}
                       captions={item.captions}
-                      className="mx-auto max-w-[220px] ring-1 ring-white/10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)]"
+                      className="objection-video"
                     />
                   </div>
                 </div>

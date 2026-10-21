@@ -560,6 +560,31 @@ export const site = {
           "About an hour total: a short audit call and a call to confirm your eligibility. We handle the rest.",
       },
       {
+        question: "Does it answer my phone, or just web leads?",
+        answer:
+          "Both. We set up phone answering so calls get picked up in your company's name, and web leads get a text and email reply in under 30 seconds. Either way, the job details are captured and the inspection gets booked.",
+      },
+      {
+        question: "How does it book inspections?",
+        answer:
+          "An AI voice agent calls the homeowner, answers their questions, and books the inspection straight onto your Google Calendar. The homeowner gets a confirmation, and you get the details in your inbox.",
+      },
+      {
+        question: "Which email does it send from?",
+        answer:
+          "Your own business email, so quotes, follow-ups, and review requests come from your address and under your name. It works with Gmail and Google Workspace, Outlook and Microsoft 365, and other providers over SMTP. Access is send-only: we can't read your inbox.",
+      },
+      {
+        question: "What happens to jobs that are too big to quote automatically?",
+        answer:
+          "They come to you. Automatic quotes only go out for jobs inside the price limits you set; anything larger or unusual waits for your review before a price is sent.",
+      },
+      {
+        question: "Can I see every lead the system handles?",
+        answer:
+          "Yes. Every lead lands in your inbox the moment it comes in, with the name, address, service type, job details, and any quote that was sent, and you get a weekly report on what the system caught.",
+      },
+      {
         question: "Will it sound like a robot?",
         answer:
           "Messages are written in your company's voice and sent under your name. Homeowners just see a roofer who responds fast.",

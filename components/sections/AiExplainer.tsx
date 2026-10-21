@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   ArrowRight,
@@ -8,14 +10,14 @@ import {
   PhoneCall,
   RefreshCw,
   Star,
-  type LucideIcon,
-} from "lucide-react";
+  type IconComponent,
+} from "@/components/ui/icons";
 import { site, type AiExplainerStep } from "@/content/site";
 import { Section } from "@/components/ui/section";
 import { DarkPanel } from "@/components/ui/dark-panel";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-const ICONS: Record<AiExplainerStep["icon"], LucideIcon> = {
+const ICONS: Record<AiExplainerStep["icon"], IconComponent> = {
   lead: Inbox,
   reply: MessageSquareText,
   quote: FileText,

@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import { ArrowRight, Quote, Star, TrendingUp } from "lucide-react";
+import { ArrowRight, Quote, Star, TrendingUp } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import { Section } from "@/components/ui/section";
 import { DarkPanel } from "@/components/ui/dark-panel";

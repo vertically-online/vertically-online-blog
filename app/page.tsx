@@ -16,19 +16,12 @@ import WhoThisIsFor from "@/components/sections/WhoThisIsFor";
 import Faq from "@/components/sections/Faq";
 import FinalCta from "@/components/sections/FinalCta";
 import Footer from "@/components/sections/Footer";
-import JsonLd from "@/components/JsonLd";
-import { faqPageJsonLd } from "@/lib/seo";
-import { site } from "@/content/site";
+import { HomeFaqStructuredData } from "@/components/StructuredData";
 
 export default function Home() {
   return (
     <>
-      <JsonLd
-        data={faqPageJsonLd([
-          ...site.objections.items.map((item) => ({ question: item.label, answer: item.answer })),
-          ...site.faq.items,
-        ])}
-      />
+      <HomeFaqStructuredData />
       <Header />
       <main className="flex-1">
         <CinematicHero />

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import { formatDate, getLinkCard, type FaqItem, type Heading } from "@/lib/content";
 

@@ -1,4 +1,4 @@
-import { CalendarCheck, ClipboardList, MessageSquareText, PhoneIncoming } from "lucide-react";
+import { CalendarCheck, ClipboardList, MessageSquareText, PhoneIncoming } from "@/components/ui/icons";
 import { ExampleCard, ExampleStep, LandingPage, landingMetadata } from "@/components/content/LandingPage";
 
 const SLUG = "roofing-answering-service";

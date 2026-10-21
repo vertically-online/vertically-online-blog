@@ -1,4 +1,6 @@
-import { ArrowUpRight, FileText, Inbox } from "lucide-react";
+"use client";
+
+import { ArrowUpRight, FileText, Inbox } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import DemoPreview from "@/components/DemoPreview";
 import { Section } from "@/components/ui/section";

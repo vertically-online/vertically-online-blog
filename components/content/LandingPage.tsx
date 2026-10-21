@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
-import { Phone, Zap } from "lucide-react";
+import { Phone, Zap } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import BookCallButton from "@/components/BookCallButton";
 import JsonLd from "@/components/JsonLd";
 import CTA from "@/components/content/CTA";
+import MdxBody from "@/components/content/mdx-registry";
 import { Breadcrumbs, Byline, FaqBlock, RelatedPosts } from "@/components/content/PageParts";
 import { Eyebrow } from "@/components/ui/section-heading";
 import { getLandingPage } from "@/lib/content";
@@ -40,10 +41,9 @@ export function landingMetadata(slug: string): Metadata {
  * Product landing page: keyword H1 with the CTA above the fold, an example
  * visual, the MDX body, FAQ (with schema), a closing CTA, and related links.
  */
-export async function LandingPage({ slug, eyebrow, visual }: { slug: string; eyebrow: string; visual: ReactNode }) {
+export function LandingPage({ slug, eyebrow, visual }: { slug: string; eyebrow: string; visual: ReactNode }) {
   const page = getLandingPage(slug);
   if (!page) notFound();
-  const { default: Body } = await import(`@/content/landing/${slug}.mdx`);
 
   const path = `/${page.slug}`;
   const crumbs = [
@@ -103,7 +103,7 @@ export async function LandingPage({ slug, eyebrow, visual }: { slug: string; eye
             <div className="mb-10 border-b border-void/10 pb-8">
               <Byline date={page.date} updated={page.updated} />
             </div>
-            <Body />
+            <MdxBody id={`landing/${page.slug}`} />
             <FaqBlock faq={page.faq} />
             <CTA />
             <RelatedPosts slugs={page.related ?? []} heading="Related guides" />

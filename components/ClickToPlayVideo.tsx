@@ -25,7 +25,7 @@ export default function ClickToPlayVideo({
 
   return (
     <div
-      className={`relative aspect-[9/16] w-full overflow-hidden rounded-2xl bg-void shadow-card ${className}`}
+      className={`video-frame shadow-card ${className}`}
     >
       <video
         ref={videoRef}

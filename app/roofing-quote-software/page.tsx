@@ -1,4 +1,4 @@
-import { FileText, ShieldCheck, Send, UserCheck } from "lucide-react";
+import { FileText, ShieldCheck, Send, UserCheck } from "@/components/ui/icons";
 import { ExampleCard, ExampleStep, LandingPage, landingMetadata } from "@/components/content/LandingPage";
 
 const SLUG = "roofing-quote-software";

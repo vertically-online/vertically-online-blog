@@ -1,3 +1,5 @@
+"use client";
+
 import {
   BarChart3,
   FileText,
@@ -6,13 +8,13 @@ import {
   RefreshCw,
   Star,
   Zap,
-  type LucideIcon,
-} from "lucide-react";
+  type IconComponent,
+} from "@/components/ui/icons";
 import { site, type IncludedIcon } from "@/content/site";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-const ICONS: Record<IncludedIcon, LucideIcon> = {
+const ICONS: Record<IncludedIcon, IconComponent> = {
   zap: Zap,
   quote: FileText,
   mail: Mail,

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ArrowRight, ArrowUpRight, Lightbulb, MonitorPlay } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Lightbulb, MonitorPlay } from "@/components/ui/icons";
 import { site } from "@/content/site";
 
 /** "What we'd do" box: the post's actual recommendation. */

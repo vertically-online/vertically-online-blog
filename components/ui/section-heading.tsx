@@ -16,7 +16,7 @@ export function Eyebrow({
     <span
       data-reveal="up"
       className={cn(
-        "inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold tracking-wide ring-1",
+        "eyebrow-pill",
         tone === "light"
           ? "bg-signal/10 text-signal ring-signal/20"
           : "bg-white/10 text-[#9fdaff] ring-white/10",
@@ -61,7 +61,7 @@ export function SectionHeading({
       <h2
         data-reveal="up"
         className={cn(
-          "font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-[1.06] pb-1",
+          "section-title",
           eyebrow && "mt-5",
           tone === "light" ? "text-void" : "text-white"
         )}

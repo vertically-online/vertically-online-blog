@@ -4,6 +4,7 @@ import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import JsonLd from "@/components/JsonLd";
 import CTA from "@/components/content/CTA";
+import MdxBody from "@/components/content/mdx-registry";
 import {
   AuthorBox,
   Breadcrumbs,
@@ -59,7 +60,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const post = getPost(slug);
   if (!post) notFound();
 
-  const { default: Body } = await import(`@/content/blog/${slug}.mdx`);
   const path = `/blog/${post.slug}`;
   const crumbs = [
     { name: "Home", path: "/" },
@@ -116,7 +116,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             >
               <div className={showToc ? "mx-auto w-full max-w-3xl lg:order-1" : ""}>
                 {showToc && <TableOfContents headings={post.headings} variant="inline" />}
-                <Body />
+                <MdxBody id={`blog/${post.slug}`} />
                 <FaqBlock faq={post.faq} />
                 <CTA />
                 <AuthorBox />

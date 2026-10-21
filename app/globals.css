@@ -333,3 +333,43 @@ button:focus-visible,
         border: 1px solid rgba(255,255,255,0.04);
     }
 }
+
+/* Sprite icons (components/ui/icons.tsx): lucide's stroke defaults. In a
+   layer so Tailwind size/color/fill utilities still override them. */
+@layer components {
+    .icon {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+}
+
+/* Repeated utility bundles, named once instead of inlined on every
+   element (keeps the HTML lean). Layered so utilities can still override. */
+@layer components {
+    .eyebrow-pill {
+        @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold tracking-wide ring-1;
+    }
+    .section-title {
+        @apply font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-[1.06] pb-1;
+    }
+    .faq-button {
+        @apply flex w-full items-center justify-between gap-4 px-6 py-5 text-left;
+    }
+    .faq-toggle {
+        @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300;
+    }
+    .faq-answer {
+        @apply grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)];
+    }
+    .video-frame {
+        @apply relative aspect-[9/16] w-full overflow-hidden rounded-2xl bg-void;
+    }
+    .objection-video {
+        @apply mx-auto max-w-[220px] ring-1 ring-white/10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)];
+    }
+}
