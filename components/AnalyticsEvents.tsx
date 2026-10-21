@@ -9,7 +9,7 @@ import { sendGAEvent } from "@next/third-parties/google";
  * Capture phase, so it still fires for BookCallButton (which preventDefaults
  * to open the Cal popup instead of navigating).
  *
- * Events (GA4): booking_click, phone_tap, email_click, demo_click, each with
+ * Events (GA4): cta_booking_click, phone_tap, email_click, demo_click, each with
  * the page path and the nearest section id as `location`.
  */
 export default function AnalyticsEvents() {
@@ -20,7 +20,7 @@ export default function AnalyticsEvents() {
       const href = link.getAttribute("href") ?? "";
 
       const event = href.includes("cal.com/")
-        ? "booking_click"
+        ? "cta_booking_click"
         : href.startsWith("tel:")
           ? "phone_tap"
           : href.startsWith("mailto:")

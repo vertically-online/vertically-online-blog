@@ -23,8 +23,13 @@ const publicSans = Public_Sans({
 
 const homeTitle = site.seo.title;
 
+// Google Search Console HTML-tag verification token (the content="" value
+// only), set in Vercel env. Not needed if the domain is verified via DNS.
+const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  ...(googleVerification && { verification: { google: googleVerification } }),
   title: { default: homeTitle, template: `%s | ${site.brand.name}` },
   description: site.seo.description,
   alternates: {

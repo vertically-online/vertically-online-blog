@@ -106,7 +106,7 @@ export function LandingPage({ slug, eyebrow, visual }: { slug: string; eyebrow: 
             <MdxBody id={`landing/${page.slug}`} />
             <FaqBlock faq={page.faq} />
             <CTA />
-            <RelatedPosts slugs={page.related ?? []} heading="Related guides" />
+            <RelatedPosts slugs={page.related ?? []} heading="Learn more" />
           </div>
         </div>
       </main>
