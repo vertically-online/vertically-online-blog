@@ -27,6 +27,10 @@ if (typeof window !== "undefined") {
 // sizes itself to the remaining viewport so nothing hides underneath.
 const HEADER_OFFSET = 64;
 
+// When the CSS tagline animations finish (wipe: 0.8s delay + 1.4s), plus a
+// half-second beat, the GSAP timeline starts the card rise.
+const TAGLINES_DONE_S = 2.7 - 0.3;
+
 // Progress ring geometry (r = 58 inside a 144px box).
 const RING_RADIUS = 58;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
@@ -47,6 +51,21 @@ const INJECTED_STYLES = `
       stroke-dasharray: ${RING_CIRCUMFERENCE};
       stroke-dashoffset: ${RING_CIRCUMFERENCE};
       stroke-linecap: round;
+  }
+
+  /* Taglines: CSS so they start on first paint (LCP), not after hydration */
+  @keyframes tagline-in {
+      from { opacity: 0.01; transform: translateY(60px) scale(0.85); filter: blur(20px); }
+      to { opacity: 1; transform: none; filter: blur(0); }
+  }
+  @keyframes tagline-wipe {
+      from { clip-path: inset(0 100% 0 0); }
+      to { clip-path: inset(0 0 0 0); }
+  }
+  .text-track { animation: tagline-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .text-days { animation: tagline-wipe 1.4s cubic-bezier(0.76, 0, 0.24, 1) 0.8s both; }
+  @media (prefers-reduced-motion: reduce) {
+      .text-track, .text-days { animation: none; }
   }
 
   /* Scroll cue: fades in once the reveal finishes, out on first scroll */
@@ -143,8 +162,6 @@ export function CinematicHero({
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       const isMobile = window.innerWidth < 768;
 
-      gsap.set(".text-track", { autoAlpha: 0, y: 60, scale: 0.85, filter: "blur(20px)", rotationX: -20 });
-      gsap.set(".text-days", { autoAlpha: 1, clipPath: "inset(0 100% 0 0)" });
       gsap.set(".main-card", { y: window.innerHeight + 200, autoAlpha: 1 });
       gsap.set([".card-left-text", ".card-right-text", ".mockup-scroll-wrapper", ".floating-badge", ".phone-widget"], { autoAlpha: 0 });
       gsap.set(".cta-wrapper", { autoAlpha: 0, scale: 0.8, filter: "blur(30px)" });
@@ -173,9 +190,10 @@ export function CinematicHero({
         },
       });
       introTl
-        .to(".text-track", { duration: 1.8, autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", rotationX: 0, ease: "expo.out" })
-        .to(".text-days", { duration: 1.4, clipPath: "inset(0 0% 0 0)", ease: "power4.inOut" }, "-=1.0")
-        .addLabel("rise", "+=0.5")
+        // The taglines animate in with CSS (tagline-in / tagline-wipe below)
+        // so they paint on first render instead of waiting for JS: they're
+        // the page's LCP element. The card rises once they've landed.
+        .addLabel("rise", TAGLINES_DONE_S)
         .to([".hero-text-wrapper", ".bg-grid-theme"], { scale: 1.15, filter: "blur(20px)", opacity: 0.2, ease: "power2.inOut", duration: 1.2 }, "rise")
         .to(".main-card", { y: 0, ease: "power3.inOut", duration: 1.2 }, "rise")
         .to(".main-card", { width: "100%", height: "100%", borderRadius: "0px", ease: "power3.inOut", duration: 0.9 })
@@ -281,10 +299,10 @@ export function CinematicHero({
 
       {/* BACKGROUND LAYER: taglines */}
       <div className="hero-text-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-full px-4 will-change-transform transform-3d">
-        <p className="text-track gsap-reveal text-3d-matte font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight leading-[1.05] mb-2">
+        <p className="text-track text-3d-matte font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight leading-[1.05] mb-2">
           {content.tagline1}
         </p>
-        <p className="text-days gsap-reveal text-brand-matte font-display text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tighter leading-[1.05] pb-2">
+        <p className="text-days text-brand-matte font-display text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tighter leading-[1.05] pb-2">
           {content.tagline2}
         </p>
       </div>
