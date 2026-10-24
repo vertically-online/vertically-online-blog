@@ -120,7 +120,7 @@ export const site = {
       "Vertically is AI for roofing companies: it answers every lead in 30 seconds, builds the quote and books the inspection. Free for 30 days, no contract.",
     ogImageAlt: "Vertically: AI for roofing companies that answers every lead and books the inspection",
     // Sitemap lastModified for the homepage; bump when its content changes.
-    homeUpdated: "2026-10-21",
+    homeUpdated: "2026-10-24",
   },
 
   contact: {
@@ -144,19 +144,6 @@ export const site = {
     termsPath: "/terms",
   },
 
-  connectEmail: {
-    heading: "Connect your email",
-    body: "When you start with Vertically, you connect your own business email so quotes, follow-ups, and review requests go out from your address, not ours. The connection is send-only: we can't read your inbox. You can disconnect it any time.",
-    eyebrow: "Your email, your name",
-    points: ["Send-only access", "We can't read your inbox", "Disconnect any time"],
-    // Matches the three mailbox options in the client onboarding portal.
-    providersLabel: "Works with",
-    providers: [
-      { id: "google", label: "Gmail & Google Workspace" },
-      { id: "microsoft", label: "Outlook & Microsoft 365" },
-      { id: "smtp", label: "Any other email (SMTP)" },
-    ],
-  },
 
   social: {
     linkedin: "",
@@ -208,162 +195,9 @@ export const site = {
     ] satisfies HeroStat[],
   },
 
-  // Scroll-driven intro at the very top of the homepage: two taglines, then a
-  // card rises with a phone showing a lead getting answered, quoted, and booked.
-  cinematicHero: {
-    tagline1: "Every lead answered.",
-    tagline2: "Every job booked.",
-    cardHeading: "Jobs booked on autopilot.",
-    cardDescription:
-      "Vertically is AI for roofing companies. While you're up on a roof, it texts the homeowner back, builds the quote from your pricing, and books the inspection straight onto your Google Calendar.",
-    cardPoints: [
-      "Instant reply by text and email, under your name",
-      "Quotes built from your pricing and limits",
-      "Inspections booked straight onto your Google Calendar",
-      "Automatic voice agent phone call to book the inspection",
-      "Weekly lead reporting",
-      "Automatic review requests after job completion",
-    ],
-    highlightValue: "<30s",
-    highlightCaption: "to answer every lead. Nights and weekends included.",
-    phone: {
-      eyebrow: "Example · 9:41 PM",
-      title: "Your lead desk",
-      metricValue: 100,
-      metricSuffix: "%",
-      metricLabel: "Leads answered",
-      feed: [
-        { icon: "lead", title: "New lead: Sarah M.", detail: "Roof replacement · Cherry Hill, NJ", time: "now" },
-        { icon: "reply", title: "Replied in 18 sec", detail: "“Hi Sarah, thanks for reaching out…”", time: "now" },
-        { icon: "quote", title: "Quote sent", detail: "$11,850 · PDF estimate", time: "1m" },
-        { icon: "booked", title: "Inspection booked", detail: "Thu 10:00 AM · Google Calendar", time: "4m" },
-      ] satisfies LeadFeedItem[],
-    },
-    badges: [
-      { title: "Lead answered", detail: "18 seconds after it came in" },
-      { title: "Job booked", detail: "While you were on a roof" },
-    ],
-    ctaHeading: "Your next job is already calling.",
-    ctaDescription:
-      "Let Vertically answer it. Start free for 30 days. No contract, no credit card.",
-  },
 
-  // "How AI lead response works for roofers" + "in plain English" sections.
-  aiExplainer: {
-    eyebrow: "AI lead response",
-    heading: "How AI lead response works for roofers.",
-    intro:
-      "Slow replies stretch out your sales cycle and quietly hurt your conversion rate: the homeowner keeps shopping while they wait. AI-powered lead response closes that gap. Here's what happens to every lead, step by step.",
-    steps: [
-      {
-        icon: "lead",
-        title: "A lead comes in",
-        body: "A homeowner calls, fills out your website form, or asks for a quote, whether it's a small repair or a storm lead with an insurance claim. Vertically picks it up in real time, day or night.",
-      },
-      {
-        icon: "reply",
-        title: "An instant reply",
-        body: "Within 30 seconds they get a text and an email from your company, under your name. You get a real-time lead alert in your inbox with every detail.",
-      },
-      {
-        icon: "quote",
-        title: "A quote from your price list",
-        body: "If the roofing job fits the limits you set, the AI builds a PDF estimate from your own pricing. Bigger or unusual jobs come to you first.",
-      },
-      {
-        icon: "call",
-        title: "A call that books the inspection",
-        body: "An AI voice agent calls the homeowner, answers their questions, and books the inspection straight onto your Google Calendar.",
-      },
-      {
-        icon: "follow",
-        title: "Follow-up if they don't book",
-        body: "Homeowners who go quiet get friendly, automatic follow-up, so a \"let me think about it\" doesn't turn into a lost job.",
-      },
-      {
-        icon: "review",
-        title: "A review request after the job",
-        body: "When the work is done, the homeowner gets a review request, which helps your roofing business win the next lead.",
-      },
-    ] satisfies AiExplainerStep[],
-    plain: {
-      heading: "AI for roofing companies, in plain English.",
-      body: "AI tools are only useful if they take work off your plate without taking control away from you. Here's the split.",
-      aiDoes: [
-        "Answers every call and web lead in seconds",
-        "Replies by text and email under your name",
-        "Quotes jobs inside the limits you set",
-        "Calls homeowners and books inspections",
-        "Follows up and asks for reviews",
-      ],
-      youDo: [
-        "Set your prices and quoting limits",
-        "Review bigger and unusual jobs",
-        "Run the inspection and close the sale",
-        "Do the roofing",
-      ],
-      closing:
-        "It doesn't replace you or your sales reps. It makes sure every homeowner gets a fast, consistent customer experience until a person takes over, and nothing launches without your approval.",
-    },
-  },
 
-  problem: {
-    eyebrow: "The real problem",
-    // Visualises the first paragraph: how a lead slips away today.
-    timeline: [
-      { time: "2:00 PM", text: "A homeowner fills out your form" },
-      { time: "8:00 PM", text: "You see it after a day on the roof" },
-      { time: "Next morning", text: "You call back" },
-      { time: "Too late", text: "They already booked someone else" },
-    ] satisfies LostLeadStep[],
-    fix: "With Vertically, that lead gets a reply in under 30 seconds, a quote, and an inspection booked on your Google Calendar, before you're even off the roof.",
-    bookingLabel: "Book your free 15-minute lead audit",
-    headline: "You don't have a closing problem. You have a response problem.",
-    paragraphs: [
-      "You're on a roof all day. A homeowner fills out your form at 2pm. You see it at 8pm, call back the next morning, and they've already booked someone else.",
-      "Most homeowners hire the first roofer who gets back to them, not the cheapest or the best. When it takes you a day or two to reply, you're losing jobs you would have won.",
-      "Then there's the back-and-forth: calls, texts, and emails to gather details, measure, price, revise, and send a quote. Hours every week spent chasing jobs instead of doing them.",
-    ],
-  },
 
-  solution: {
-    eyebrow: "The solution",
-    headline: "A system that works your leads while you work the roof.",
-    features: [
-      {
-        icon: "zap",
-        title: "Instant response, every time.",
-        description:
-          "Every form, call, and quote request gets a reply in under 30 seconds, day or night, weekends included.",
-        image: "/images/service-repair.jpg",
-        alt: "Roofer in a white cap kneeling on fresh underlayment beside a roll of roofing membrane",
-      },
-      {
-        icon: "quote",
-        title: "Automatic quotes.",
-        description:
-          "Homeowners answer a few simple questions, and jobs within your price range get a quote automatically. No more hours of back-and-forth. You set the limits; bigger jobs come to you for review. This is entirely custom and specific to your company. We don't launch this without your approval.",
-        image: "/images/service-inspection.jpg",
-        alt: "Roofer in a safety harness carrying a tool bag across a driveway to the job",
-      },
-      {
-        icon: "phone",
-        title: "An automatic call that books the inspection.",
-        description:
-          "A voice agent phones every new lead right away, answers their questions, and schedules the inspection straight into your Google Calendar.",
-        image: "/images/trust-craftsmanship.jpg",
-        alt: "Roofer kneeling on underlayment, lining up a new course of asphalt shingles",
-      },
-      {
-        icon: "shield",
-        title: "Nothing slips through.",
-        description:
-          "Leads who go quiet get automatic follow-up. Every lead lands in your inbox with full details. Finished jobs get a review request.",
-        image: "/images/service-storm.jpg",
-        alt: "Two roofers working near a brick chimney under a dark storm sky",
-      },
-    ] satisfies SolutionFeature[],
-  },
 
   liveDemo: {
     eyebrow: "Live demo",
@@ -381,23 +215,6 @@ export const site = {
     ],
   },
 
-  arias: {
-    logo: "/images/clients/arias-logo.png",
-    logoAlt: "Arias Roofing & Siding logo",
-    websiteUrl: "https://ariasroofingnj.com",
-    visitLabel: "Visit ariasroofingnj.com ↗",
-    testimonial: {
-      paragraphs: [
-        "Working with Vertically has made a real difference in how we operate and grow our business.",
-        "They helped us put better systems in place, improve how we manage and follow up with leads, and take a lot of manual work off our team. That has allowed us to stay focused on our customers, close more opportunities, and scale the business more efficiently.",
-        "I would highly recommend Vertically to any business owner looking to improve their operations and grow.",
-      ],
-      authorName: "Gustavo Arias",
-      authorTitle: "Owner, Arias Roofing and Siding",
-      authorLocation: "Sewell, New Jersey",
-      rating: 5,
-    },
-  },
 
   results: {
     eyebrow: "Case study: Arias Roofing & Siding",
@@ -417,180 +234,10 @@ export const site = {
       "Gustavo's close rate didn't change. Arias was always good at closing. They just finally answered every lead.",
   },
 
-  howItWorks: {
-    eyebrow: "How it works",
-    headline: "Live within hours. You don't lift a finger.",
-    steps: [
-      {
-        title: "Free lead audit (15 minutes)",
-        description:
-          "We look at how leads come in today and where they're slipping through.",
-      },
-      {
-        title: "We set it up (you don't lift a finger)",
-        description:
-          "We install the system on your website and phone, set your pricing limits, and connect it to your email and Google Calendar. Live within hours.",
-      },
-      {
-        title: "You get 30 days free",
-        description:
-          "Watch the leads, quotes, and booked jobs come in. We send you a weekly report on what the system caught.",
-      },
-      {
-        title: "You decide",
-        description:
-          "If it's winning you jobs, keep it. If not, we turn it off. No contract and no hard feelings.",
-      },
-    ] satisfies HowItWorksStep[],
-  },
 
-  objections: {
-    eyebrow: "Straight answers",
-    heading: "Your Questions, Answered",
-    intro:
-      "We know you may have questions. Here are straightforward answers to the ones we hear most often.",
-    items: [
-      {
-        label: "Do I need to understand the tech?",
-        answer:
-          "We install everything on your website, connected to your existing systems, and it just runs. If you can check your email, you can run this, and you don't need to learn software, log into a dashboard, or manage anything.",
-        video: "/objections/not-tech-savvy.mp4",
-        poster: "/objections/not-tech-savvy-poster.jpg",
-        captions: "/captions/not-tech-savvy.vtt",
-      },
-      {
-        label: "Is this worth the investment?",
-        answer:
-          "Think of it as the cost of never missing a lead again. Most roofers using this close several extra jobs a month, just from leads they would have lost to a slower competitor. It pays for itself with the very first job it saves you, and it's free for the first 30 days, so you see the numbers before you spend a dollar.",
-        video: "/objections/too-expensive.mp4",
-        poster: "/objections/too-expensive-poster.jpg",
-        captions: "/captions/too-expensive.vtt",
-      },
-      {
-        label: "I'm already getting referrals. Here's why that's not enough.",
-        answer:
-          "Referrals are great until the phone rings on a Tuesday at 7pm and you're on a roof. Even referred homeowners call around, and the first roofer to respond usually wins the job. This system makes sure every referral, call, and website lead gets answered in under 30 seconds, so none of that goodwill goes to waste.",
-        video: "/objections/referrals-enough.mp4",
-        poster: "/objections/referrals-enough-poster.jpg",
-        captions: "/captions/referrals-enough.vtt",
-      },
-      {
-        label: "I don't have time to set this up.",
-        answer:
-          "We handle the entire setup, connecting to your existing systems and setting your pricing limits. It's live within hours, it just takes a short audit call and a quick check-in. You keep roofing. We build the system.",
-        video: "/objections/no-time.mp4",
-        poster: "/objections/no-time-poster.jpg",
-        captions: "/captions/no-time.vtt",
-      },
-      {
-        label: "Burned by an agency before? Here's what's different",
-        answer:
-          "No long-term contract, no upfront payment, and no vague promises. You get 30 days free to watch real leads, quotes, and booked jobs come in before you decide anything. If it's not winning you jobs, we turn it off, no hard feelings.",
-        video: "/objections/burned-before.mp4",
-        poster: "/objections/burned-before-poster.jpg",
-        captions: "/captions/burned-before.vtt",
-      },
-      {
-        label: "Won't this feel robotic to my clients?",
-        answer:
-          "Every message goes out under your name, in your company's voice. Homeowners never see a bot. They just see a roofer who somehow always responds first.",
-        video: "/objections/feels-robotic.mp4",
-        poster: "/objections/feels-robotic-poster.jpg",
-        captions: "/captions/feels-robotic.vtt",
-      },
-    ] satisfies Objection[],
-  },
 
-  included: {
-    heading: "What's included free for 30 days",
-    eyebrow: "What you get",
-    items: [
-      { label: "Instant response to every web lead in under 30 seconds", icon: "zap" },
-      { label: "Automated quote builder with your pricing and limits", icon: "quote" },
-      { label: "Instant lead breakdown emails", icon: "mail" },
-      { label: "Automatic phone call to the lead to book the inspection", icon: "phone" },
-      { label: "Automatic follow-up for leads who go quiet", icon: "refresh" },
-      { label: "Review requests after completed jobs", icon: "star" },
-      { label: "Weekly performance report", icon: "chart" },
-    ] satisfies IncludedItem[],
-  },
 
-  whoThisIsFor: {
-    eyebrow: "Is this you?",
-    heading: "Who this is for",
-    intro: "This is built for roofing companies that:",
-    criteria: [
-      "Already get leads from calls, referrals, their website, or Google",
-      "Are losing jobs because they can't respond fast enough",
-      "Spend too many hours on quotes and follow-up",
-      "Want more jobs without spending more on marketing",
-    ],
-    closingNote: "We only take on a few new roofers each month so every setup gets done right.",
-  },
 
-  faq: {
-    eyebrow: "FAQ",
-    heading: "Questions roofers ask us first.",
-    helpHeading: "Still have a question?",
-    helpBody: "Call or text us. You'll talk to a person, not a bot.",
-    items: [
-      {
-        question: "Is it really free?",
-        answer:
-          "Yes. 30 days, no credit card, no contract. You only pay if you decide to keep it.",
-      },
-      {
-        question: "What happens after 30 days?",
-        answer:
-          "We review your results together. If the system is winning you jobs, we'll offer a simple monthly plan. If not, we switch it off.",
-      },
-      {
-        question: "Do I need a new website?",
-        answer:
-          "No. We plug into what you already have. If your site is holding you back, we can talk about that later.",
-      },
-      {
-        question: "Will the automatic quotes undercut me?",
-        answer:
-          "No. You set the pricing and limits. Anything outside them comes to you for review before a quote goes out.",
-      },
-      {
-        question: "How much of my time does setup take?",
-        answer:
-          "About an hour total: a short audit call and a call to confirm your eligibility. We handle the rest.",
-      },
-      {
-        question: "Does it answer my phone, or just web leads?",
-        answer:
-          "Both. We set up phone answering so calls get picked up in your company's name, and web leads get a text and email reply in under 30 seconds. Either way, the job details are captured and the inspection gets booked.",
-      },
-      {
-        question: "How does it book inspections?",
-        answer:
-          "An AI voice agent calls the homeowner, answers their questions, and books the inspection straight onto your Google Calendar. The homeowner gets a confirmation, and you get the details in your inbox.",
-      },
-      {
-        question: "Which email does it send from?",
-        answer:
-          "Your own business email, so quotes, follow-ups, and review requests come from your address and under your name. It works with Gmail and Google Workspace, Outlook and Microsoft 365, and other providers over SMTP. Access is send-only: we can't read your inbox.",
-      },
-      {
-        question: "What happens to jobs that are too big to quote automatically?",
-        answer:
-          "They come to you. Automatic quotes only go out for jobs inside the price limits you set; anything larger or unusual waits for your review before a price is sent.",
-      },
-      {
-        question: "Can I see every lead the system handles?",
-        answer:
-          "Yes. Every lead lands in your inbox the moment it comes in, with the name, address, service type, job details, and any quote that was sent, and you get a weekly report on what the system caught.",
-      },
-      {
-        question: "Will it sound like a robot?",
-        answer:
-          "Messages are written in your company's voice and sent under your name. Homeowners just see a roofer who responds fast.",
-      },
-    ] satisfies FaqItem[],
-  },
 
   finalCta: {
     eyebrow: "Free for 30 days",

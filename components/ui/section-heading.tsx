@@ -13,16 +13,7 @@ export function Eyebrow({
   children: React.ReactNode;
 }) {
   return (
-    <span
-      data-reveal="up"
-      className={cn(
-        "eyebrow-pill",
-        tone === "light"
-          ? "bg-signal/10 text-signal ring-signal/20"
-          : "bg-white/10 text-[#9fdaff] ring-white/10",
-        className
-      )}
-    >
+    <span className={cn("eyebrow", tone === "dark" && "!text-[var(--glow)]", className)}>
       {children}
     </span>
   );
@@ -59,7 +50,6 @@ export function SectionHeading({
     <div className={cn(align === "center" && "mx-auto text-center", "max-w-3xl", className)}>
       {eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>}
       <h2
-        data-reveal="up"
         className={cn(
           "section-title",
           eyebrow && "mt-5",
@@ -70,7 +60,7 @@ export function SectionHeading({
         {accent && (
           <>
             {" "}
-            <span className={cn("box-decoration-clone", tone === "light" ? "text-brand-matte" : "text-card-silver-matte")}>
+            <span className={tone === "light" ? "text-[var(--blue)]" : "text-white/80"}>
               {accent}
             </span>
           </>
@@ -78,7 +68,6 @@ export function SectionHeading({
       </h2>
       {intro && (
         <p
-          data-reveal="up"
           className={cn(
             "mt-5 text-lg leading-relaxed",
             align === "center" && "mx-auto",

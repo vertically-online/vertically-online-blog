@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
-import { Phone, Zap } from "@/components/ui/icons";
 import { site } from "@/content/site";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import BookCallButton from "@/components/BookCallButton";
 import JsonLd from "@/components/JsonLd";
 import CTA from "@/components/content/CTA";
+import Closing from "@/components/home/Closing";
 import MdxBody from "@/components/content/mdx-registry";
 import { Breadcrumbs, Byline, FaqBlock, RelatedPosts } from "@/components/content/PageParts";
-import { Eyebrow } from "@/components/ui/section-heading";
 import { getLandingPage } from "@/lib/content";
 import { absoluteUrl, breadcrumbJsonLd, faqPageJsonLd, orgRef } from "@/lib/seo";
 
@@ -67,48 +66,39 @@ export function LandingPage({ slug, eyebrow, visual }: { slug: string; eyebrow: 
       <JsonLd data={[productJsonLd, breadcrumbJsonLd(crumbs), ...(page.faq.length ? [faqPageJsonLd(page.faq)] : [])]} />
       <Header />
       <main className="flex-1">
-        <section className="relative overflow-hidden px-4 pt-10 pb-16 sm:pt-14 lg:pb-20">
-          <div className="bg-grid-theme absolute inset-0 opacity-50 pointer-events-none" aria-hidden="true" />
-          <div className="relative mx-auto max-w-7xl">
-            <Breadcrumbs crumbs={crumbs} />
-            <div className="mt-8 grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
-              <div>
-                <Eyebrow>{eyebrow}</Eyebrow>
-                <h1 className="mt-5 font-display text-4xl sm:text-5xl lg:text-[3.4rem] font-bold leading-[1.05] tracking-tight text-void">
-                  {page.title}
-                </h1>
-                <p className="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-slate">{page.intro}</p>
-                <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-4">
-                  <BookCallButton className="btn-modern-brand group inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-[1.1rem] px-6 py-3.5 text-base font-bold tracking-tight">
-                    <Zap className="h-4 w-4 transition-transform group-hover:scale-110" aria-hidden="true" />
-                    {site.hero.primaryCta}
-                  </BookCallButton>
-                  <a
-                    href={site.contact.phoneHref}
-                    className="btn-modern-dark group inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-[1.1rem] px-6 py-3.5 text-base font-bold tracking-tight"
-                  >
-                    <Phone className="h-4 w-4 transition-transform group-hover:scale-110" aria-hidden="true" />
-                    Call {site.contact.phone}
-                  </a>
-                </div>
-                <p className="mt-4 text-sm text-slate">{site.finalCta.reassurance}</p>
+        <section className="page-hero wrap">
+          <Breadcrumbs crumbs={crumbs} />
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+            <div>
+              <span className="eyebrow">{eyebrow}</span>
+              <h1>{page.title}</h1>
+              <p className="lede">{page.intro}</p>
+              <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+                <BookCallButton className="btn btn-navy">{site.hero.primaryCta}</BookCallButton>
+                <a href={site.contact.phoneHref} className="btn btn-line">
+                  Call {site.contact.phone}
+                </a>
               </div>
-              <div>{visual}</div>
+              <p className="mt-4 text-sm text-[var(--mute)]">{site.finalCta.reassurance}</p>
             </div>
+            <div>{visual}</div>
           </div>
         </section>
 
-        <div className="px-4 pb-20">
-          <div className="mx-auto max-w-3xl">
-            <div className="mb-10 border-b border-void/10 pb-8">
-              <Byline date={page.date} updated={page.updated} />
+        <div className="sheet">
+          <div className="wrap">
+            <div className="mx-auto max-w-3xl">
+              <div className="mb-10 border-b border-[var(--line)] pb-8">
+                <Byline date={page.date} updated={page.updated} />
+              </div>
+              <MdxBody id={`landing/${page.slug}`} />
+              <FaqBlock faq={page.faq} />
+              <CTA />
+              <RelatedPosts slugs={page.related ?? []} heading="Learn more" />
             </div>
-            <MdxBody id={`landing/${page.slug}`} />
-            <FaqBlock faq={page.faq} />
-            <CTA />
-            <RelatedPosts slugs={page.related ?? []} heading="Learn more" />
           </div>
         </div>
+        <Closing />
       </main>
       <Footer />
     </>

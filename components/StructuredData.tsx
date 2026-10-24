@@ -1,6 +1,6 @@
 "use client";
 
-import { site } from "@/content/site";
+import { home } from "@/content/home";
 import JsonLd from "@/components/JsonLd";
 import { faqPageJsonLd, organizationJsonLd } from "@/lib/seo";
 
@@ -12,13 +12,13 @@ export function OrganizationStructuredData() {
   return <JsonLd data={organizationJsonLd()} />;
 }
 
-/** Homepage FAQPage: the objection Q&As plus the FAQ, both visible on the page. */
+/** Homepage FAQPage: exactly the visible Commonly Asked Questions text. */
 export function HomeFaqStructuredData() {
   return (
     <JsonLd
       data={faqPageJsonLd([
-        ...site.objections.items.map((item) => ({ question: item.label, answer: item.answer })),
-        ...site.faq.items,
+        ...home.faq.videos.map((v) => ({ question: v.question, answer: v.answer })),
+        ...home.faq.more,
       ])}
     />
   );

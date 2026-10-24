@@ -6,18 +6,18 @@ import { formatDate, getLinkCard, type FaqItem, type Heading } from "@/lib/conte
 
 export function Breadcrumbs({ crumbs }: { crumbs: { name: string; path: string }[] }) {
   return (
-    <nav aria-label="Breadcrumb">
-      <ol className="flex flex-wrap items-center gap-1.5 text-sm text-slate">
+    <nav aria-label="Breadcrumb" className="crumbs">
+      <ol>
         {crumbs.map((crumb, i) => {
           const last = i === crumbs.length - 1;
           return (
             <li key={crumb.path} className="flex items-center gap-1.5">
               {last ? (
-                <span aria-current="page" className="font-medium text-void line-clamp-1">{crumb.name}</span>
+                <span aria-current="page" className="line-clamp-1">{crumb.name}</span>
               ) : (
                 <>
-                  <Link href={crumb.path} className="hover:text-signal transition-colors">{crumb.name}</Link>
-                  <ChevronRight className="h-3.5 w-3.5 text-slate/50" aria-hidden="true" />
+                  <Link href={crumb.path}>{crumb.name}</Link>
+                  <ChevronRight className="h-3.5 w-3.5 opacity-50" />
                 </>
               )}
             </li>

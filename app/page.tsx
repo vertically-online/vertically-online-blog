@@ -1,47 +1,39 @@
+import "./home.css";
 import Header from "@/components/sections/Header";
-import { CinematicHero } from "@/components/ui/cinematic-landing-hero";
-import Hero from "@/components/sections/Hero";
-import JotFormWidget from "@/components/sections/JotFormWidget";
-import CredibilityStrip from "@/components/sections/CredibilityStrip";
-import LiveDemo from "@/components/sections/LiveDemo";
-import Problem from "@/components/sections/Problem";
-import Solution from "@/components/sections/Solution";
-import AiExplainer from "@/components/sections/AiExplainer";
-import Results from "@/components/sections/Results";
-import HowItWorks from "@/components/sections/HowItWorks";
-import ConnectEmail from "@/components/sections/ConnectEmail";
-import Objections from "@/components/sections/Objections";
-import Included from "@/components/sections/Included";
-import WhoThisIsFor from "@/components/sections/WhoThisIsFor";
-import Faq from "@/components/sections/Faq";
-import FinalCta from "@/components/sections/FinalCta";
 import Footer from "@/components/sections/Footer";
+import Stage from "@/components/home/Stage";
+import CaseStudy from "@/components/home/CaseStudy";
+import WhatYouGet from "@/components/home/WhatYouGet";
+import ReviewsBand from "@/components/home/ReviewsBand";
+import LiveDemo from "@/components/home/LiveDemo";
+import Stories from "@/components/home/Stories";
+import Beliefs from "@/components/home/Beliefs";
+import CommonQuestions from "@/components/home/CommonQuestions";
+import Guides from "@/components/home/Guides";
+import Closing from "@/components/home/Closing";
+import Reveal from "@/components/home/Reveal";
 import { HomeFaqStructuredData } from "@/components/StructuredData";
 
+// Homepage, rebuilt from design/vertically-home.template.html.
 export default function Home() {
   return (
     <>
       <HomeFaqStructuredData />
       <Header />
       <main className="flex-1">
-        <CinematicHero />
-        <Hero />
-        <JotFormWidget />
-        <CredibilityStrip />
+        <Stage />
+        <CaseStudy />
+        <WhatYouGet />
+        <ReviewsBand />
         <LiveDemo />
-        <Problem />
-        <Solution />
-        <AiExplainer />
-        <Results />
-        <HowItWorks />
-        <ConnectEmail />
-        <Objections />
-        <Included />
-        <WhoThisIsFor />
-        <Faq />
-        <FinalCta />
+        <Stories />
+        <Beliefs />
+        <CommonQuestions />
+        <Guides />
+        <Closing />
       </main>
       <Footer />
+      <Reveal />
     </>
   );
 }

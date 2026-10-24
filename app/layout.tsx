@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, Public_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import "./design.css";
 import { site } from "@/content/site";
 import CalProvider from "@/components/CalProvider";
 import AnalyticsEvents from "@/components/AnalyticsEvents";
@@ -11,6 +12,7 @@ import { siteUrl } from "@/lib/seo";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
+  axes: ["opsz"],
   subsets: ["latin"],
   display: "swap",
 });

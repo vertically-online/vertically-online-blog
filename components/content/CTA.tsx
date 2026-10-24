@@ -12,17 +12,17 @@ export default function CTA({
   body?: string;
 }) {
   return (
-    <DarkPanel reveal={false} padded={false} className="my-12 rounded-[28px] md:rounded-[32px] px-7 py-9 sm:px-10 sm:py-11">
-      <p className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-card-silver-matte">{heading}</p>
-      <p className="mt-3 max-w-xl text-[#C9D3DB] leading-relaxed">{body}</p>
+    <DarkPanel padded={false} className="my-12 px-7 py-9 sm:px-10 sm:py-11">
+      <p className="font-display text-2xl sm:text-3xl font-[640] tracking-tight text-white">{heading}</p>
+      <p className="mt-3 max-w-xl text-white/85 leading-relaxed">{body}</p>
       <div className="mt-7 flex flex-col sm:flex-row sm:flex-wrap gap-3">
-        <BookCallButton className="btn-modern-brand group inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-[1.1rem] px-6 py-3.5 text-base font-bold tracking-tight">
+        <BookCallButton className="btn btn-white group">
           <Zap className="h-4 w-4 transition-transform group-hover:scale-110" aria-hidden="true" />
           {site.hero.primaryCta}
         </BookCallButton>
         <a
           href={site.contact.phoneHref}
-          className="btn-modern-glass group inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-[1.1rem] px-6 py-3.5 text-base font-bold tracking-tight"
+          className="btn btn-ghost group"
         >
           <Phone className="h-4 w-4 transition-transform group-hover:scale-110" aria-hidden="true" />
           Call {site.contact.phone}

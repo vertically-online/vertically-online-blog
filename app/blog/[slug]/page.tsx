@@ -4,6 +4,7 @@ import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import JsonLd from "@/components/JsonLd";
 import CTA from "@/components/content/CTA";
+import Closing from "@/components/home/Closing";
 import MdxBody from "@/components/content/mdx-registry";
 import {
   AuthorBox,
@@ -92,29 +93,27 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       <Header />
       <main className="flex-1">
         <article>
-          <header className="relative overflow-hidden px-4 pt-10 pb-12 sm:pt-14">
-            <div className="bg-grid-theme absolute inset-0 opacity-50 pointer-events-none" aria-hidden="true" />
-            <div className="relative mx-auto max-w-3xl">
+          <header className="page-hero wrap">
+            <div className="max-w-4xl">
               <Breadcrumbs crumbs={crumbs} />
-              <h1 className="mt-6 font-display text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight text-void">
-                {post.title}
-              </h1>
-              <p className="mt-5 text-lg sm:text-xl leading-relaxed text-slate">{post.description}</p>
+              <span className="eyebrow">Guide</span>
+              <h1>{post.title}</h1>
+              <p className="lede">{post.description}</p>
               <div className="mt-8">
                 <Byline date={post.date} updated={post.updated} readingMinutes={post.readingMinutes} />
               </div>
             </div>
           </header>
 
-          <div className="px-4 pb-20">
+          <div className="sheet">
             <div
               className={
                 showToc
-                  ? "mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_240px]"
-                  : "mx-auto max-w-3xl"
+                  ? "wrap grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_240px]"
+                  : "wrap"
               }
             >
-              <div className={showToc ? "mx-auto w-full max-w-3xl lg:order-1" : ""}>
+              <div className="mx-auto w-full max-w-3xl">
                 {showToc && <TableOfContents headings={post.headings} variant="inline" />}
                 <MdxBody id={`blog/${post.slug}`} />
                 <FaqBlock faq={post.faq} />
@@ -123,13 +122,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 <RelatedPosts slugs={related} />
               </div>
               {showToc && (
-                <aside className="hidden lg:block lg:order-2">
+                <aside className="hidden lg:block">
                   <TableOfContents headings={post.headings} variant="sidebar" />
                 </aside>
               )}
             </div>
           </div>
         </article>
+        <Closing />
       </main>
       <Footer />
     </>

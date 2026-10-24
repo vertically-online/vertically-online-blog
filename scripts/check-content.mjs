@@ -60,6 +60,29 @@ for (const dir of ["blog", "landing"]) {
   }
 }
 
+// Copy files outside the MDX folders must not ship placeholders either.
+for (const rel of ["content/home.ts", "content/site.ts"]) {
+  const file = path.join(process.cwd(), rel);
+  if (!fs.existsSync(file)) continue;
+  fs.readFileSync(file, "utf8").split("\n").forEach((line, i) => {
+    // In code, "[[" is also nested-array syntax; match the placeholder form only.
+    if (/\[\[[A-Z][A-Z ]{2,}/.test(line)) errors.push(`${rel}:${i + 1} unresolved placeholder: ${line.trim().slice(0, 90)}`);
+  });
+}
+
+// Owner sign-offs (content/approvals.ts) block production deploys only, so
+// previews can still be built for review.
+const approvalsFile = path.join(process.cwd(), "content/approvals.ts");
+if (fs.existsSync(approvalsFile)) {
+  const pending = [...fs.readFileSync(approvalsFile, "utf8").matchAll(/id: "([^"]+)",\s*what: (?:"|')(.+?)(?:"|'),\s*approved: false/gs)];
+  const isProduction = process.env.VERCEL_ENV === "production";
+  for (const [, id, what] of pending) {
+    const message = `awaiting owner approval [${id}]: ${what}`;
+    if (isProduction) errors.push(message);
+    else warnings.push(message);
+  }
+}
+
 for (const warning of warnings) console.warn(`content check warning: ${warning}`);
 if (errors.length) {
   console.error(`\ncontent check failed (${errors.length}):\n  - ${errors.join("\n  - ")}\n`);
