@@ -51,7 +51,6 @@ export default function CommonQuestions() {
               className="oq-video"
               src={current.video}
               poster={current.poster}
-              captions={current.captions}
               label={`${current.question} (${current.duration})`}
               chip="Watch the answer"
             />

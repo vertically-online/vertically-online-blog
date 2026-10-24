@@ -17,7 +17,6 @@ export default function Beliefs() {
           className="founder"
           src={founderVideo.video}
           poster={founderVideo.poster}
-          captions={founderVideo.captions}
           label={`${founderVideo.label}: Toby Karamoutchev, co-founder of Vertically (${founderVideo.duration})`}
           chip={founderVideo.label}
         />

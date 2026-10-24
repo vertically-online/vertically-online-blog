@@ -11,14 +11,12 @@ import { PlayTriangle } from "@/components/home/svg";
 export default function InlineVideo({
   src,
   poster,
-  captions,
   label,
   chip,
   className = "",
 }: {
   src: string;
   poster: string;
-  captions: string;
   /** Accessible name for the play button, e.g. the question. */
   label: string;
   /** Text on the play chip. */
@@ -44,7 +42,6 @@ export default function InlineVideo({
         aria-label={label}
       >
         <source src={src} type="video/mp4" />
-        <track kind="captions" src={captions} srcLang="en" label="English" default />
       </video>
       {!started && (
         <button type="button" className="ivid-play" onClick={play} aria-label={`Play video: ${label}`}>
