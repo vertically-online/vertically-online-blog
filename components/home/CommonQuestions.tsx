@@ -1,21 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { site } from "@/content/site";
 import { home } from "@/content/home";
 import BookCallButton from "@/components/BookCallButton";
-import { PlayTriangle, Plus } from "@/components/home/svg";
-import VideoDialog, { type DialogVideo } from "@/components/home/VideoDialog";
+import { Plus } from "@/components/home/svg";
+import InlineVideo from "@/components/home/InlineVideo";
 
 /**
- * Commonly Asked Questions (#faq): the founder's objection videos with
- * visible text answers and transcripts, then the text-only questions. The
- * FAQPage JSON-LD (components/StructuredData) uses exactly this text.
+ * Commonly Asked Questions (#faq): question list on the left, one video
+ * player on the right that switches with the selected question and plays
+ * in place. On mobile the player opens under the selected question. Every
+ * answer and transcript stays in the HTML (inactive ones hidden), so the
+ * FAQPage JSON-LD matches page text.
  */
 export default function CommonQuestions() {
   const { eyebrow, heading, sub, videos, moreHeading, more, cta } = home.faq;
-  const [open, setOpen] = useState<DialogVideo | null>(null);
+  const [active, setActive] = useState(0);
+  const current = videos[active];
 
   return (
     <section className="sheet" id="faq">
@@ -26,27 +28,46 @@ export default function CommonQuestions() {
           <p className="faq-sub">{sub}</p>
         </div>
 
-        <div className="qgrid">
-          {videos.map((v) => (
-            <article key={v.id} className="qcard" data-sr>
+        <div className="oq">
+          {videos.map((v, i) => (
+            <h3 key={v.id} className="oq-q" style={{ order: i * 2 }}>
               <button
                 type="button"
-                className="poster"
-                aria-label={`Watch the answer: ${v.question} (${v.duration})`}
-                onClick={() => setOpen({ title: v.question, video: v.video, poster: v.poster, captions: v.captions })}
+                aria-expanded={active === i}
+                aria-controls="oq-panel"
+                className={active === i ? "on" : undefined}
+                onClick={() => setActive(i)}
               >
-                <Image src={v.poster} alt="" width={540} height={960} sizes="(max-width: 640px) 92vw, (max-width: 980px) 45vw, 380px" />
-                <span className="dur">{v.duration}</span>
-                <span className="play"><i><PlayTriangle /></i>Watch the answer</span>
+                <span className="n">{i + 1}</span>
+                <span className="t">{v.question}</span>
+                <span className="d">{v.duration}</span>
               </button>
-              <h3>{v.question}</h3>
-              <p className="ans">{v.answer}</p>
-              <details>
-                <summary>Read the full answer</summary>
-                <p>{v.transcript}</p>
-              </details>
-            </article>
+            </h3>
           ))}
+
+          <div id="oq-panel" className="oq-panel" style={{ order: active * 2 + 1 }}>
+            <InlineVideo
+              key={current.id}
+              className="oq-video"
+              src={current.video}
+              poster={current.poster}
+              captions={current.captions}
+              label={`${current.question} (${current.duration})`}
+              chip="Watch the answer"
+            />
+            <div className="oq-text">
+              {videos.map((v, i) => (
+                <div key={v.id} hidden={active !== i}>
+                  <p className="oq-h">{v.question}</p>
+                  <p className="ans">{v.answer}</p>
+                  <details>
+                    <summary>Read the full answer</summary>
+                    <p>{v.transcript}</p>
+                  </details>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="more-q">
@@ -71,7 +92,6 @@ export default function CommonQuestions() {
           <BookCallButton className="btn btn-navy">{site.hero.primaryCta}</BookCallButton>
         </div>
       </div>
-      <VideoDialog video={open} onClose={() => setOpen(null)} />
     </section>
   );
 }

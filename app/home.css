@@ -280,8 +280,6 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 
 /* three beliefs */
 .beliefs { display: grid; grid-template-columns: minmax(0, 400px) 1fr; gap: clamp(30px, 6vw, 90px); align-items: center; margin-top: 44px; }
-.founder { display: block; position: relative; width: 100%; aspect-ratio: 9/16; border-radius: 26px; overflow: hidden; background: #111; border: 0; padding: 0; }
-.founder img { width: 100%; height: 100%; object-fit: contain; background: #111; }
 .play { position: absolute; left: 12px; bottom: 12px; display: flex; align-items: center; gap: 8px; padding: 8px 14px 8px 8px; border-radius: 99px; background: rgba(255, 255, 255, 0.95); color: var(--ink); font: 700 12.5px var(--body-font); }
 .play i { width: 26px; height: 26px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: #fff; }
 .play i svg { width: 10px; height: 10px; }
@@ -290,22 +288,37 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 .bl h3 { font: 700 17px/1.25 var(--body-font); letter-spacing: -0.01em; }
 .bl p { font-size: 16px; color: var(--slate); max-width: 420px; }
 
-/* commonly asked questions */
+/* inline click-to-play video (founder + FAQ) */
+.ivid { position: relative; width: 100%; aspect-ratio: 9/16; border-radius: 26px; overflow: hidden; background: #111; }
+.ivid video { display: block; width: 100%; height: 100%; object-fit: contain; background: #111; }
+.ivid-play { position: absolute; inset: 0; border: 0; padding: 0; background: transparent; cursor: pointer; }
+.ivid-play .play { transition: transform 0.2s; }
+.ivid-play:hover .play { transform: scale(1.04); }
+
+/* commonly asked questions: list left, one player right */
+.oq { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); grid-auto-rows: min-content; column-gap: clamp(24px, 4vw, 56px); row-gap: 10px; margin-top: 40px; align-items: start; }
+.oq-q { grid-column: 1; }
+.oq-q button { width: 100%; display: flex; align-items: center; gap: 14px; padding: 16px 18px; border: 0; border-radius: 18px; background: #fff; text-align: left; font: 700 16px/1.3 var(--body-font); color: var(--ink); transition: box-shadow 0.2s, background 0.2s; }
+.oq-q button:hover { box-shadow: 0 10px 24px rgba(10, 21, 81, 0.08); }
+.oq-q button.on { background: var(--ink); color: #fff; }
+.oq-q .n { flex: none; width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: var(--sheet); color: var(--blue-deep); font: 700 13px var(--body-font); }
+.oq-q button.on .n { background: var(--blue); color: #fff; }
+.oq-q .t { flex: 1; }
+.oq-q .d { flex: none; font: 600 12.5px var(--body-font); color: var(--mute); }
+.oq-q button.on .d { color: rgba(255, 255, 255, 0.7); }
+.oq-panel { grid-column: 2; grid-row: 1 / span 6; display: grid; grid-template-columns: minmax(0, 270px) minmax(0, 1fr); gap: 28px; align-items: center; background: #fff; border-radius: 28px; padding: 16px 28px 16px 16px; }
+.oq-video { border-radius: 20px; }
+.oq-h { font: 640 clamp(22px, 2.2vw, 28px)/1.1 var(--display); letter-spacing: -0.03em; color: var(--ink); }
+.oq-text .ans { margin-top: 12px; font-size: 16px; color: var(--slate); }
+.oq-text details { margin-top: 14px; }
+.oq-text summary { cursor: pointer; font: 700 14px var(--body-font); color: var(--blue-deep); list-style: none; }
+.oq-text summary::-webkit-details-marker { display: none; }
+.oq-text summary::after { content: " +"; }
+.oq-text details[open] summary::after { content: " –"; }
+.oq-text details p { margin-top: 10px; font-size: 14.5px; color: var(--slate); }
+
+/* commonly asked questions: text-only list */
 .faq-sub { margin-top: 16px; font-size: 18px; color: var(--slate); max-width: 620px; }
-.qgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
-.qcard { background: #fff; border-radius: 28px; padding: 12px 12px 22px; display: flex; flex-direction: column; }
-.qcard .poster { position: relative; display: block; width: 100%; aspect-ratio: 9/16; max-height: 420px; border-radius: 20px; overflow: hidden; background: #111; border: 0; padding: 0; }
-.qcard .poster img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
-.qcard .poster:hover img { transform: scale(1.03); }
-.qcard .dur { position: absolute; right: 12px; top: 12px; padding: 5px 9px; border-radius: 99px; background: rgba(7, 11, 36, 0.72); color: #fff; font: 700 11.5px var(--body-font); }
-.qcard h3 { margin: 18px 10px 0; font-size: 22px; line-height: 1.12; }
-.qcard .ans { margin: 10px 10px 0; font-size: 15.5px; color: var(--slate); }
-.qcard details { margin: 14px 10px 0; }
-.qcard summary { cursor: pointer; font: 700 14px var(--body-font); color: var(--blue-deep); list-style: none; }
-.qcard summary::-webkit-details-marker { display: none; }
-.qcard summary::after { content: " +"; }
-.qcard details[open] summary::after { content: " –"; }
-.qcard details p { margin-top: 10px; font-size: 14.5px; color: var(--slate); }
 .more-q { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 340px) 1fr; gap: clamp(24px, 5vw, 70px); }
 .more-q .mh { font-size: clamp(26px, 3vw, 36px); line-height: 1.05; }
 .qlist { display: flex; flex-direction: column; gap: 10px; }
@@ -319,14 +332,6 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 .qcta { margin-top: 44px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 26px; border-radius: 24px; background: #fff; }
 .qcta p { font: 600 17px var(--body-font); }
 .qcta p a { color: var(--blue-deep); }
-
-/* video dialog */
-.vdlg { border: 0; padding: 0; background: transparent; max-width: min(420px, 92vw); width: 100%; overflow: visible; }
-.vdlg::backdrop { background: rgba(7, 11, 36, 0.78); backdrop-filter: blur(4px); }
-.vdlg video { display: block; width: 100%; max-height: 82vh; aspect-ratio: 9/16; border-radius: 22px; background: #000; }
-.vdlg .x { position: absolute; top: -14px; right: -14px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: #fff; color: var(--ink); display: grid; place-items: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
-.vdlg .x svg { width: 18px; height: 18px; }
-.vdlg .cap-t { margin-top: 12px; text-align: center; color: #fff; font: 700 15px var(--body-font); }
 
 /* guides */
 .guides { display: grid; grid-template-columns: 1.25fr 1fr 1fr; grid-template-rows: auto auto; gap: 14px; margin-top: 34px; }
@@ -368,8 +373,11 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
   .tabs::-webkit-scrollbar { display: none; }
   .tab { white-space: nowrap; }
   .band { border-radius: 30px 30px 0 0; margin-top: -30px; }
-  .qgrid { grid-template-columns: 1fr 1fr; }
   .more-q { grid-template-columns: 1fr; }
+  .oq { display: flex; flex-direction: column; }
+  .oq-panel { grid-template-columns: 1fr; padding: 14px 14px 22px; gap: 18px; }
+  .oq-video { max-width: 340px; margin-inline: auto; }
+  .oq-text { padding: 0 8px; }
 }
 /* In the reference, most of its 900px rules were overridden by base rules
    declared after them; these are the ones that actually took effect. */
@@ -379,8 +387,6 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
   .bc { min-height: 600px; }
 }
 @media (max-width: 640px) {
-  .qgrid { grid-template-columns: 1fr; }
-  .qcard .poster { max-height: 520px; }
 }
 @media (max-width: 560px) {
   .hero { padding-top: 40px; }
