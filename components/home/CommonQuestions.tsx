@@ -8,8 +8,9 @@ import { ArrowRight, Plus } from "@/components/home/svg";
 
 /** One question as a dropdown card: the question shows, the answer reveals. */
 function QuestionCard({ question, answer, watchHref, duration }: { question: string; answer: string; watchHref?: string; duration?: string }) {
+  // Shared name: opening one closes the others, so only one answer floats at a time.
   return (
-    <details className="qd">
+    <details className="qd" name="faq-answer">
       <summary>
         <h3>{question}</h3>
         <i aria-hidden="true"><Plus /></i>

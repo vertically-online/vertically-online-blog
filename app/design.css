@@ -23,8 +23,8 @@
   --logo-blue: #008ccd;
   --logo-blue-dark: #0079b1;
   /* Corner radii for buttons and the hero box (rounded rectangles, not pills). */
-  --btn-radius: 16px;
-  --box-radius: 24px;
+  --btn-radius: 10px;
+  --box-radius: 14px;
   --display: var(--font-bricolage), "Public Sans", system-ui, sans-serif;
   --body-font: var(--font-public-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   --stage-grad: linear-gradient(158deg, #02305f 0%, #0a62a6 28%, #008fd0 58%, #8ad8f8 100%);
@@ -157,13 +157,13 @@ h3 {
 }
 .close .wrap { position: relative; z-index: 1; }
 /* Copy on the left; the angled phone rises from the bottom-right edge. */
-.close-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: clamp(24px, 4vw, 56px); align-items: end; }
+.close-grid { display: grid; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); gap: clamp(24px, 4vw, 56px); align-items: end; }
 .close-copy { align-self: center; padding-bottom: clamp(72px, 9vw, 120px); }
 .close h2 { font-size: clamp(38px, 5vw, 70px); line-height: 0.98; color: #fff; }
 .close p { margin: 20px 0 0; font-size: 18px; max-width: 480px; color: rgba(255, 255, 255, 0.9); }
 .close .btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 14px; }
 .close .fine { font-size: 13px; color: rgba(255, 255, 255, 0.78); margin: 0; }
-.close-phone { align-self: end; justify-self: center; width: min(100%, 340px); margin-bottom: -150px; filter: drop-shadow(0 30px 50px rgba(0, 20, 60, 0.35)); }
+.close-phone { order: -1; align-self: end; justify-self: center; width: min(100%, 340px); margin-bottom: -150px; filter: drop-shadow(0 30px 50px rgba(0, 20, 60, 0.35)); }
 .close-phone img { display: block; width: 100%; height: auto; }
 
 /* footer */
@@ -184,6 +184,7 @@ h3 {
   .sheet { border-radius: 30px 30px 0 0; margin-top: -30px; }
   .close { border-radius: 14px 14px 0 0; margin-top: -14px; }
   .close-grid { grid-template-columns: 1fr; text-align: center; }
+  .close-phone { order: 0; }
   .close-copy { padding-bottom: 0; }
   .close p { margin-inline: auto; }
   .close .btns { justify-content: center; }
