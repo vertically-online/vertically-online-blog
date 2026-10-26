@@ -41,18 +41,62 @@ function RotatingWord() {
   );
 }
 
-// How long each of the five steps stays on screen.
-export const STEP_MS = 3400;
+// One run of the story: 5 steps over RUN_MS, then a short hold at 100%
+// before it loops. Everything is driven by one clock so it flows.
+export const RUN_MS = 5000;
+const HOLD_MS = 800;
+const RING_LEN = 100.5;
+
+const clamp = (v: number) => Math.min(1, Math.max(0, v));
+const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 
 /**
- * Plays the phone story like a video: advances one step every STEP_MS and
- * loops, only while the stage is on screen and not paused. Visitors who
- * prefer reduced motion start paused and can step through by hand.
+ * Where a step's caption/stat sits at local progress p (0..1 within its
+ * step): rises from below the whole time it's on screen, fades in over the
+ * first third, and drifts up and out over the last eighth.
  */
-function useAutoStep(stage: React.RefObject<HTMLDivElement | null>, count: number) {
+function riseStyle(p: number, last: boolean) {
+  const inOpacity = clamp(p / 0.32);
+  const out = last ? 0 : clamp((p - 0.86) / 0.14);
+  const y = 56 * (1 - easeOut(clamp(p))) - 22 * out;
+  return { opacity: String(inOpacity * (1 - out)), transform: `translateY(${y.toFixed(1)}px)` };
+}
+
+/** Writes every per-frame value for `elapsed` ms into the stage. Returns the step. */
+function paintFrame(root: HTMLElement | null, elapsed: number, count: number) {
+  const t = clamp(elapsed / RUN_MS);
+  const pos = Math.min(count - 0.0001, t * count);
+  const current = Math.floor(pos);
+  if (!root) return current;
+
+  const label = root.querySelector<HTMLElement>("[data-pct]");
+  if (label) label.textContent = `${Math.round(t * 100)}%`;
+  const ring = root.querySelector<SVGCircleElement>("[data-ring]");
+  if (ring) ring.style.strokeDashoffset = String(RING_LEN * (1 - t));
+
+  root.querySelectorAll<HTMLElement>("[data-rise]").forEach((el) => {
+    const i = Number(el.dataset.rise);
+    if (i === current) Object.assign(el.style, riseStyle(pos - current, i === count - 1));
+    else Object.assign(el.style, { opacity: "0", transform: "translateY(56px)" });
+  });
+  root.querySelectorAll<HTMLElement>("[data-bar]").forEach((el) => {
+    el.style.transform = `scaleX(${clamp(pos - Number(el.dataset.bar)).toFixed(3)})`;
+  });
+  return current;
+}
+
+/**
+ * Plays the phone story like a video: a requestAnimationFrame clock that
+ * runs only while the stage is on screen and not paused. Per-frame values
+ * (counter, ring, caption motion, progress bars) are written straight to
+ * the DOM; React state changes only when the step changes. Reduced motion
+ * starts paused on the finished state.
+ */
+function useStoryClock(stage: React.RefObject<HTMLDivElement | null>, count: number) {
   const [step, setStep] = useState(0);
   const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(false);
+  const elapsed = useRef(0);
 
   useEffect(() => {
     const el = stage.current;
@@ -61,8 +105,12 @@ function useAutoStep(stage: React.RefObject<HTMLDivElement | null>, count: numbe
     let first = true;
     const io = new IntersectionObserver(
       ([entry]) => {
-        // Reduced motion: start paused (decided on the first observation).
-        if (first && reduce) setPaused(true);
+        if (first && reduce) {
+          // Reduced motion: show the finished state, paused.
+          elapsed.current = RUN_MS;
+          setPaused(true);
+          setStep(paintFrame(el, RUN_MS, count));
+        }
         first = false;
         setVisible(entry.isIntersecting);
       },
@@ -70,16 +118,32 @@ function useAutoStep(stage: React.RefObject<HTMLDivElement | null>, count: numbe
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [stage]);
+  }, [stage, count]);
 
   const playing = visible && !paused;
   useEffect(() => {
     if (!playing) return;
-    const id = window.setTimeout(() => setStep((n) => (n + 1) % count), STEP_MS);
-    return () => window.clearTimeout(id);
-  }, [playing, step, count]);
+    let raf = 0;
+    let last = performance.now();
+    const tick = (now: number) => {
+      elapsed.current += now - last;
+      last = now;
+      if (elapsed.current >= RUN_MS + HOLD_MS) elapsed.current = 0;
+      const current = paintFrame(stage.current, elapsed.current, count);
+      setStep((prev) => (prev === current ? prev : current));
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [playing, stage, count]);
 
-  return { step, setStep, paused, setPaused, playing };
+  /** Jump to a step (shown fully risen). */
+  const seek = (i: number) => {
+    elapsed.current = ((i + 0.62) / count) * RUN_MS;
+    setStep(paintFrame(stage.current, elapsed.current, count));
+  };
+
+  return { step, seek, paused, setPaused, playing };
 }
 
 const on = (active: boolean, base: string) => (active ? `${base} on` : base);
@@ -87,8 +151,7 @@ const on = (active: boolean, base: string) => (active ? `${base} on` : base);
 export default function Stage() {
   const { hero, steps, sampleEstimate, sampleTotal, sampleLabel, rating } = home;
   const stageRef = useRef<HTMLDivElement>(null);
-  const { step, setStep, paused, setPaused, playing } = useAutoStep(stageRef, steps.length);
-  const ring = steps[step].ring;
+  const { step, seek, paused, setPaused, playing } = useStoryClock(stageRef, steps.length);
 
   return (
     <section className="stage" id="how-it-works">
@@ -120,7 +183,7 @@ export default function Stage() {
             <div className="blue grain">
               <div className="caps">
                 {steps.map((s, i) => (
-                  <div key={s.title} className={on(step === i, "cap")} aria-hidden={step !== i}>
+                  <div key={s.title} className="cap" data-rise={i} aria-hidden={step !== i} style={{ opacity: i === 0 ? undefined : 0 }}>
                     <p className="cap-h">{s.title}</p>
                     <p>{s.body}</p>
                     {i === steps.length - 1 && (
@@ -146,9 +209,9 @@ export default function Stage() {
                       <div className="pring">
                         <svg viewBox="0 0 40 40">
                           <circle className="bg" cx="20" cy="20" r="16" />
-                          <circle className="fg" cx="20" cy="20" r="16" style={{ strokeDashoffset: 100.5 * (1 - ring / 100) }} />
+                          <circle className="fg" cx="20" cy="20" r="16" data-ring />
                         </svg>
-                        <b>{ring}%</b>
+                        <b data-pct>0%</b>
                       </div>
                     </div>
                     <div className="views">
@@ -243,7 +306,7 @@ export default function Stage() {
 
               <div className="side" aria-hidden="true">
                 {steps.map((s, i) => (
-                  <div key={s.stat} className={on(step === i, "stat")}>
+                  <div key={s.stat} className="stat" data-rise={i} style={{ opacity: i === 0 ? undefined : 0 }}>
                     <b>{s.stat}</b>
                     <span>{s.statNote}</span>
                   </div>
@@ -266,10 +329,9 @@ export default function Stage() {
                       className={i === step ? "on" : i < step ? "done" : undefined}
                       aria-label={`Step ${i + 1}: ${s.title}`}
                       aria-current={i === step ? "step" : undefined}
-                      onClick={() => setStep(i)}
+                      onClick={() => seek(i)}
                     >
-                      {/* key restarts the fill animation on every step */}
-                      <i key={i === step ? `run-${step}` : "idle"} style={{ animationDuration: `${STEP_MS}ms` }} />
+                      <i><b data-bar={i} /></i>
                     </button>
                   ))}
                 </div>

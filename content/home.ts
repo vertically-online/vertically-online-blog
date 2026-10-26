@@ -172,7 +172,6 @@ export const home = {
       ["We believe you stay in control.", "You set your prices and limits. Bigger jobs come to you for review. You run the inspection, close the sale and do the roofing."],
       ["We believe trying it should be free.", "Start free for 30 days with no contract and no credit card. You only pay if you decide to keep it."],
     ] as [string, string][],
-    aboutHref: "/about#founder",
     founderVideo: { video: "/intro.mp4", poster: "/images/home/founder-thumb.jpg", captions: "/captions/intro.vtt", label: "Meet the founder", duration: "1:32" },
   },
 

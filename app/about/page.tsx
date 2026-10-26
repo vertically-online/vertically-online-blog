@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const { founderVideo, items } = home.beliefs;
+  const { founderVideo, items, eyebrow, heading } = home.beliefs;
   const crumbs = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
@@ -59,6 +59,10 @@ export default function AboutPage() {
         </section>
 
         <section className="sheet" id="founder">
+          <div className="wrap">
+            <span className="eyebrow">{eyebrow}</span>
+            <h2 className="big" style={{ marginTop: 14, maxWidth: 1100 }}>{heading}</h2>
+          </div>
           <div className="wrap beliefs">
             <InlineVideo
               className="founder"
@@ -69,7 +73,7 @@ export default function AboutPage() {
             />
             <div>
               <span className="eyebrow">{founderVideo.label}</span>
-              <h2 className="big" style={{ marginTop: 14 }}>{site.author.name}</h2>
+              <h3 className="founder-name">{site.author.name}</h3>
               <p className="faq-sub">{site.author.bio}</p>
               <div style={{ marginTop: 34 }}>
                 {items.map(([title, body]) => (

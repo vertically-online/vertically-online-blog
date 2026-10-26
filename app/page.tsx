@@ -7,7 +7,6 @@ import WhatYouGet from "@/components/home/WhatYouGet";
 import ReviewsBand from "@/components/home/ReviewsBand";
 import LiveDemo from "@/components/home/LiveDemo";
 import Stories from "@/components/home/Stories";
-import Beliefs from "@/components/home/Beliefs";
 import CommonQuestions from "@/components/home/CommonQuestions";
 import Guides from "@/components/home/Guides";
 import Closing from "@/components/home/Closing";
@@ -27,7 +26,6 @@ export default function Home() {
         <ReviewsBand />
         <LiveDemo />
         <Stories />
-        <Beliefs />
         <CommonQuestions />
         <Guides />
         <Closing />
