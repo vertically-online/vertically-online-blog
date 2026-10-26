@@ -318,6 +318,15 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 .oq-text details[open] summary::after { content: " –"; }
 .oq-text details p { margin-top: 10px; font-size: 14.5px; color: var(--slate); }
 
+/* Commonly Asked Questions on the blue gradient with grain */
+.sheet.faq-blue { background: var(--stage-grad); color: #fff; overflow: hidden; }
+.faq-blue > .wrap { position: relative; z-index: 1; }
+.faq-blue .eyebrow { color: var(--glow); }
+.faq-blue h2, .faq-blue .mh { color: #fff; }
+.faq-blue .faq-sub { color: rgba(255, 255, 255, 0.88); }
+.faq-blue .qd, .faq-blue .qcta { color: var(--ink); }
+.faq-blue .qd:hover, .faq-blue .qd[open] { box-shadow: 0 14px 32px rgba(0, 20, 60, 0.25); }
+
 /* founder name on /about */
 .founder-name { margin-top: 12px; font-size: clamp(28px, 3vw, 40px); line-height: 1.05; }
 

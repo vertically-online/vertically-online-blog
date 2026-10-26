@@ -43,8 +43,8 @@ function RotatingWord() {
 
 // One run of the story: 5 steps over RUN_MS, then a short hold at 100%
 // before it loops. Everything is driven by one clock so it flows.
-export const RUN_MS = 5000;
-const HOLD_MS = 800;
+export const RUN_MS = 10000; // about 2s per step
+const HOLD_MS = 1200;
 const RING_LEN = 100.5;
 
 const clamp = (v: number) => Math.min(1, Math.max(0, v));

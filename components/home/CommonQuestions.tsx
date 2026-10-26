@@ -37,7 +37,7 @@ export default function CommonQuestions() {
   const { eyebrow, heading, sub, videos, moreHeading, more, cta } = home.faq;
 
   return (
-    <section className="sheet" id="faq">
+    <section className="sheet faq-blue grain" id="faq">
       <div className="wrap">
         <div data-sr>
           <span className="eyebrow">{eyebrow}</span>

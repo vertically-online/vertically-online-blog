@@ -99,9 +99,7 @@ h3 {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
   z-index: 50;
-  background: rgba(255, 255, 255, 0.86);
-  backdrop-filter: saturate(1.4) blur(14px);
-  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  background: #fff;
 }
 .nav .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
 .nav .logo img { height: 26px; width: auto; }
