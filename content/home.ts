@@ -73,9 +73,7 @@ export const home = {
   hero: {
     lead: "The AI platform roofers use to",
     rotating: ["answer every lead.", "send every quote.", "book every job.", "win more roofs."],
-    sub: "Vertically texts, quotes, calls and books every roofing lead in under 30 seconds, so the job goes to you and not the next roofer.",
     note: "Free for 30 days. No contract, no credit card.",
-    telLine: "Only a few spots each month.",
   },
 
   // Pinned phone story: one entry per scroll step.

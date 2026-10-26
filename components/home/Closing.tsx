@@ -1,10 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { site } from "@/content/site";
 import { home } from "@/content/home";
 import BookCallButton from "@/components/BookCallButton";
 
-/** Closing call to action (blue gradient with grain). Also used on inner pages. */
+/** Closing call to action (blue gradient with grain), just above the footer on every page. */
 export default function Closing({
   heading = home.closing.heading,
   body = home.closing.body,
@@ -14,14 +15,19 @@ export default function Closing({
 }) {
   return (
     <section className="close grain">
-      <div className="wrap">
-        <h2>{heading}</h2>
-        <p>{body}</p>
-        <div className="btns">
-          <BookCallButton className="btn btn-white">{site.hero.primaryCta}</BookCallButton>
-          <a className="btn btn-ghost" href={site.contact.phoneHref}>Call {site.contact.phone}</a>
+      <div className="wrap close-grid">
+        <div className="close-copy">
+          <h2>{heading}</h2>
+          <p>{body}</p>
+          <div className="btns">
+            <BookCallButton className="btn btn-white">{site.hero.primaryCta}</BookCallButton>
+            <a className="btn btn-ghost" href={site.contact.phoneHref}>Call {site.contact.phone}</a>
+          </div>
+          <p className="fine">{home.closing.fine}</p>
         </div>
-        <p className="fine">{home.closing.fine}</p>
+        <div className="close-phone" aria-hidden="true">
+          <Image src="/images/home/phone-angled.png" alt="" width={577} height={1100} sizes="(max-width: 980px) 240px, 360px" />
+        </div>
       </div>
     </section>
   );

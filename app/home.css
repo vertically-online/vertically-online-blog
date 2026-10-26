@@ -3,7 +3,7 @@
    app/design.css. ".ring" is renamed ".pring" (Tailwind has a ring utility). */
 
 /* hero */
-.hero { text-align: center; padding: 60px 0 44px; }
+.hero { text-align: center; padding: 60px 0 76px; }
 .rating { display: inline-flex; align-items: center; gap: 8px; font: 600 13px var(--body-font); color: var(--slate); }
 a.rating:hover { color: var(--blue-deep); }
 .rating .stars { display: inline-flex; gap: 2px; color: #f5a623; }
@@ -13,18 +13,20 @@ a.rating:hover { color: var(--blue-deep); }
 .hero h1 .rot span { display: inline-block; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s; }
 .hero h1 .rot span.out { transform: translateY(-70%); opacity: 0; }
 .hero h1 .rot span.pre { transform: translateY(70%); opacity: 0; transition: none; }
-.hero .sub { max-width: 560px; margin: 24px auto 0; font-size: 18px; color: var(--slate); }
-.pill { display: inline-flex; align-items: center; gap: 18px; margin-top: 30px; padding: 8px 8px 8px 26px; background: #fff; border-radius: 999px; box-shadow: 0 0 0 1px var(--line), 0 0 0 7px rgba(0, 143, 208, 0.1), 0 18px 40px rgba(10, 21, 81, 0.1); }
+/* Hero box: rounded rectangle with a slowly rotating blue/light-blue
+   gradient outline and a soft matching glow. */
+@property --pill-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.pill { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 22px; margin-top: 36px; padding: 10px 10px 10px 28px; border: 2px solid transparent; border-radius: var(--box-radius); background: linear-gradient(#fff, #fff) padding-box, conic-gradient(from var(--pill-angle), #008ccd, #8ad8f8, #e3f3fb, #0a62a6, #008ccd) border-box; box-shadow: 0 18px 44px rgba(0, 140, 205, 0.16); animation: pill-spin 5s linear infinite; }
+.pill::before { content: ""; position: absolute; inset: -3px; z-index: -1; border-radius: inherit; background: conic-gradient(from var(--pill-angle), #008ccd, #8ad8f8, #e3f3fb, #0a62a6, #008ccd); filter: blur(16px); opacity: 0.45; animation: pill-spin 5s linear infinite; }
+@keyframes pill-spin { to { --pill-angle: 360deg; } }
 .pill .note { font: 500 14px var(--body-font); color: var(--mute); }
-.pill .btn { height: 50px; }
-.hero .tel-line { margin-top: 16px; font-size: 14px; color: var(--mute); }
-.hero .tel-line a { font-weight: 700; color: var(--ink); }
+.pill .btn { height: 54px; padding: 0 26px; font-size: 16px; }
 
 /* stage with pinned phone */
 .stage { background: #fff; }
 /* The stage plays on its own (no scroll pinning). A shorter blue card; the
    phone overhangs its top edge by --over and is cut off at its bottom edge. */
-.stage { --card-h: clamp(470px, 60svh, 560px); --over: 88px; --ph: calc(var(--card-h) + var(--over) + 170px); --pw: calc(var(--ph) * 0.486); }
+.stage { --card-h: clamp(470px, 60svh, 560px); --over: 88px; --ph: calc(var(--card-h) + var(--over) + 170px); --pw: calc(var(--ph) * 0.4968); }
 .track { position: relative; padding-top: var(--over); padding-bottom: 76px; } /* room for the next sheet to overlap */
 .pin { position: relative; height: var(--card-h); }
 .pin-in { position: relative; height: 100%; max-width: 1200px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -47,14 +49,12 @@ a.rating:hover { color: var(--blue-deep); }
 
 /* phone (pure CSS; UI sized in container-query units) */
 .phone-wrap { position: absolute; top: calc(-1 * var(--over)); bottom: 0; left: 0; right: 0; display: flex; justify-content: center; overflow: hidden; z-index: 2; pointer-events: none; }
-.phone { --w: var(--pw); position: relative; z-index: 1; flex: none; width: var(--w); height: var(--ph); padding: calc(var(--w) * 0.034); border-radius: calc(var(--w) * 0.175); background: linear-gradient(135deg, #a9afba 0%, #4a505d 14%, #1c1f29 40%, #2a2e3a 62%, #5d6472 86%, #b4bac5 100%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4), inset 0 0 0 calc(var(--w) * 0.006) rgba(0, 0, 0, 0.35); }
-.phone::before { content: ""; position: absolute; left: -0.9%; top: 0; bottom: 0; width: 1.6%; border-radius: 3px 0 0 3px; background: linear-gradient(90deg, #3a3f4b, #7a8190) 0 13%/100% 3.2% no-repeat, linear-gradient(90deg, #3a3f4b, #7a8190) 0 20%/100% 6.4% no-repeat, linear-gradient(90deg, #3a3f4b, #7a8190) 0 28.5%/100% 6.4% no-repeat; }
-.phone::after { content: ""; position: absolute; right: -0.9%; top: 25%; height: 10.5%; width: 1.6%; border-radius: 0 3px 3px 0; background: linear-gradient(270deg, #3a3f4b, #7a8190); }
-.screen { position: relative; height: 100%; border-radius: calc(var(--w) * 0.142); background: #f7f8fa; overflow: hidden; container-type: inline-size; color: #101426; box-shadow: 0 0 0 calc(var(--w) * 0.021) #05060a; }
+.phone { --w: var(--pw); position: relative; z-index: 1; flex: none; width: var(--w); height: var(--ph); }
+.phone-frame { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 8; pointer-events: none; }
+/* The screen sits in the phone image's transparent screen area. */
+.screen { position: absolute; left: 5.89%; right: 5.79%; top: 2.48%; bottom: 2.51%; border-radius: calc(var(--w) * 0.11); background: #f7f8fa; overflow: hidden; container-type: inline-size; color: #101426; }
 .screen::after { content: ""; position: absolute; inset: 0; z-index: 7; pointer-events: none; border-radius: inherit; background: linear-gradient(118deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 22%, transparent 38%), linear-gradient(0deg, rgba(255, 255, 255, 0.05), transparent 14%); }
-.isl { position: absolute; top: 2.6cqw; left: 50%; width: 27cqw; height: 7.4cqw; margin-left: -13.5cqw; border-radius: 99px; background: #05060a; z-index: 5; }
-.isl::after { content: ""; position: absolute; right: 2.2cqw; top: 50%; width: 3.2cqw; height: 3.2cqw; margin-top: -1.6cqw; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #2b3b66, #0b1024 60%); }
-.sb { position: absolute; top: 3.2cqw; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 9cqw; font: 700 4.2cqw var(--body-font); z-index: 4; }
+.sb { position: absolute; top: 4.8cqw; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 9cqw; font: 700 4.2cqw var(--body-font); z-index: 4; }
 .sbi { display: flex; align-items: center; }
 .sbi svg { height: 3.5cqw; width: auto; fill: currentColor; }
 .app { position: absolute; inset: 0; padding: 17cqw 6cqw 0; }
@@ -101,7 +101,6 @@ a.rating:hover { color: var(--blue-deep); }
 .pstat { margin-top: 3cqw; padding: 4.4cqw 5cqw; border-radius: 4.6cqw; background: linear-gradient(135deg, #8ad8f8 0%, #d3f0fd 100%); color: var(--ink); box-shadow: 0 2cqw 5cqw rgba(0, 111, 163, 0.18); }
 .pstat b { display: block; font: 640 10.5cqw/1 var(--display); letter-spacing: -0.04em; }
 .pstat span { display: block; margin-top: 1.6cqw; font: 600 3.5cqw/1.35 var(--body-font); color: #23406b; }
-.home-bar { position: absolute; bottom: 2cqw; left: 50%; width: 30cqw; height: 1.2cqw; margin-left: -15cqw; border-radius: 9px; background: #0e1120; z-index: 5; }
 .gcp { background: #fff; border-radius: 3cqw; padding: 3cqw; box-shadow: 0 1px 0 #e1e7ef; }
 .gh { display: flex; align-items: center; gap: 2cqw; font: 500 3.6cqw var(--body-font); color: #3c4043; }
 .gh img { width: 5.4cqw; height: 5.4cqw; }
@@ -405,7 +404,7 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 }
 @media (max-width: 560px) {
   .hero { padding-top: 40px; }
-  .pill { flex-direction: column; align-items: stretch; padding: 18px; border-radius: 28px; gap: 12px; text-align: center; }
+  .pill { flex-direction: column; align-items: stretch; padding: 18px; gap: 12px; text-align: center; }
   .pill .btn { justify-content: center; }
   .guides { grid-template-columns: 1fr; }
   .gc.big-card, .gc.mint { grid-column: auto; }
@@ -414,6 +413,7 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 @media (prefers-reduced-motion: reduce) {
   .mrow { animation: none; }
   .hero h1 .rot span { transition: none; }
+  .pill, .pill::before { animation: none; }
   .on .b, .on .q, .on .qt, .on .tli, .on .tag, .on .gw .ev.hit { animation-duration: 0.01s; animation-delay: 0s !important; }
   .on .typing { display: none; }
   .sr-hide { opacity: 1; transform: none; }

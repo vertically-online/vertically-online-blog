@@ -5,7 +5,7 @@ import Image from "next/image";
 import { site } from "@/content/site";
 import { home } from "@/content/home";
 import BookCallButton from "@/components/BookCallButton";
-import { ArrowRight, SmallCheck, Stars, StatusBarIcons } from "@/components/home/svg";
+import { SmallCheck, Stars, StatusBarIcons } from "@/components/home/svg";
 
 const SWAP_MS = 3200;
 
@@ -180,17 +180,10 @@ export default function Stage() {
           {hero.lead}{" "}
           <RotatingWord />
         </h1>
-        <p className="sub">{hero.sub}</p>
         <div className="pill">
           <span className="note">{hero.note}</span>
-          <BookCallButton className="btn btn-navy">
-            {site.hero.primaryCta}
-            <ArrowRight />
-          </BookCallButton>
+          <BookCallButton className="btn btn-navy">{site.hero.primaryCta}</BookCallButton>
         </div>
-        <p className="tel-line">
-          Or call <a href={site.contact.phoneHref}>{site.contact.phone}</a>. {hero.telLine}
-        </p>
       </div>
 
       <div className="track">
@@ -226,7 +219,6 @@ export default function Stage() {
             <div className="phone-wrap">
               <div className="phone" role="img" aria-label="Example of the Vertically lead desk on a phone: a new roofing lead answered in 18 seconds, quoted, and booked for an inspection">
                 <div className="screen" aria-hidden="true">
-                  <div className="isl" />
                   <div className="sb">
                     <span>9:41</span>
                     <span className="sbi"><StatusBarIcons /></span>
@@ -344,8 +336,9 @@ export default function Stage() {
                       </div>
                     </div>
                   </div>
-                  <div className="home-bar" />
                 </div>
+                {/* Phone hardware drawn over the live screen (its screen area is transparent). */}
+                <Image className="phone-frame" src="/images/home/phone-front.png" alt="" width={795} height={1600} sizes="(max-width: 980px) 300px, 420px" priority />
               </div>
 
             </div>
