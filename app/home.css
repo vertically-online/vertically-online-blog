@@ -24,31 +24,30 @@ a.rating:hover { color: var(--blue-deep); }
 .stage { background: #fff; }
 /* The stage plays on its own (no scroll pinning). A shorter blue card; the
    phone overhangs its top edge by --over and is cut off at its bottom edge. */
-.stage { --card-h: clamp(470px, 60svh, 560px); --over: 88px; }
+.stage { --card-h: clamp(470px, 60svh, 560px); --over: 88px; --ph: calc(var(--card-h) + var(--over) + 170px); --pw: calc(var(--ph) * 0.486); }
 .track { position: relative; padding-top: var(--over); padding-bottom: 76px; } /* room for the next sheet to overlap */
 .pin { position: relative; height: var(--card-h); }
 .pin-in { position: relative; height: 100%; max-width: 1200px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.blue { position: relative; height: 100%; border-radius: 36px; overflow: hidden; background: var(--stage-grad); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(12px, 3vw, 48px); padding-inline: clamp(22px, 4.5vw, 64px); }
+/* Gradient sized to the original (taller) card so its colors match. */
+.blue { position: relative; height: 100%; border-radius: 36px; overflow: hidden; background: var(--stage-grad); background-size: 100% max(100%, 820px); background-position: center; display: grid; grid-template-columns: minmax(0, 1fr) calc(var(--pw) + 24px) minmax(0, 1fr); gap: clamp(12px, 3vw, 48px); padding-inline: clamp(22px, 4.5vw, 64px); }
 .blue::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 50% at 50% 12%, rgba(255, 255, 255, 0.18), transparent 70%); }
-.caps { position: relative; align-self: center; height: 300px; max-width: 460px; z-index: 2; }
+.caps { position: relative; align-self: center; height: 280px; z-index: 2; }
 .cap { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 16px; color: #fff; will-change: transform, opacity; }
 .cap[aria-hidden="true"] { pointer-events: none; }
-.cap .cap-h { font: 640 clamp(32px, 4vw, 56px)/1 var(--display); letter-spacing: -0.032em; text-wrap: balance; }
-.cap p { font-size: 18px; line-height: 1.45; color: rgba(255, 255, 255, 0.9); max-width: 400px; }
+.cap .cap-h { font: 640 clamp(30px, 3.6vw, 50px)/1 var(--display); letter-spacing: -0.032em; text-wrap: balance; }
+.cap p { font-size: 17px; line-height: 1.45; color: rgba(255, 255, 255, 0.88); max-width: 340px; }
 .cap .btn { align-self: flex-start; margin-top: 4px; }
-/* video-style controls: pause/play + one progress bar per step */
-.player { position: absolute; left: clamp(22px, 4.5vw, 64px); bottom: 38px; display: flex; align-items: center; gap: 12px; z-index: 3; }
-.pp { width: 34px; height: 34px; border-radius: 50%; border: 0; display: grid; place-items: center; background: rgba(255, 255, 255, 0.22); color: #fff; backdrop-filter: blur(6px); }
-.pp:hover { background: rgba(255, 255, 255, 0.34); }
-.pp svg { width: 12px; height: 12px; }
-.dots { display: flex; gap: 6px; }
-.dots button { width: 40px; height: 16px; padding: 6px 0; border: 0; background: none; }
-.dots i { display: block; position: relative; height: 4px; border-radius: 4px; background: rgba(255, 255, 255, 0.35); overflow: hidden; }
-.dots b { position: absolute; inset: 0; background: #fff; transform: scaleX(0); transform-origin: left; }
+.side { position: relative; align-self: center; height: 200px; z-index: 2; }
+.stat { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; text-align: right; color: #fff; will-change: transform, opacity; }
+.stat b { font: 640 clamp(40px, 5vw, 76px)/0.95 var(--display); letter-spacing: -0.04em; }
+.stat span { margin-top: 10px; max-width: 220px; font-size: 15px; color: rgba(255, 255, 255, 0.85); }
+/* The phone's drop shadow, drawn inside the card so none of it shows above */
+.phone-shadow { align-self: stretch; justify-self: center; width: var(--pw); border-radius: 60px 60px 0 0; box-shadow: 0 40px 90px rgba(0, 20, 60, 0.45), 0 14px 28px rgba(0, 20, 60, 0.25); }
+.stage-note { position: absolute; left: clamp(22px, 4.5vw, 64px); bottom: 22px; z-index: 3; font: 600 11.5px var(--body-font); color: rgba(255, 255, 255, 0.72); }
 
 /* phone (pure CSS; UI sized in container-query units) */
-.phone-wrap { position: absolute; top: calc(-1 * var(--over)); bottom: 0; left: 50%; right: max(16px, env(safe-area-inset-right, 0px)); display: flex; justify-content: center; overflow: hidden; z-index: 2; pointer-events: none; }
-.phone { --ph: calc(var(--card-h) + var(--over) + 170px); --w: calc(var(--ph) * 0.486); position: relative; z-index: 1; flex: none; width: var(--w); height: var(--ph); padding: calc(var(--w) * 0.034); border-radius: calc(var(--w) * 0.175); background: linear-gradient(135deg, #a9afba 0%, #4a505d 14%, #1c1f29 40%, #2a2e3a 62%, #5d6472 86%, #b4bac5 100%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4), inset 0 0 0 calc(var(--w) * 0.006) rgba(0, 0, 0, 0.35), 0 2px 0 rgba(255, 255, 255, 0.18), 0 60px 100px rgba(0, 20, 60, 0.5), 0 18px 30px rgba(0, 20, 60, 0.3); }
+.phone-wrap { position: absolute; top: calc(-1 * var(--over)); bottom: 0; left: 0; right: 0; display: flex; justify-content: center; overflow: hidden; z-index: 2; pointer-events: none; }
+.phone { --w: var(--pw); position: relative; z-index: 1; flex: none; width: var(--w); height: var(--ph); padding: calc(var(--w) * 0.034); border-radius: calc(var(--w) * 0.175); background: linear-gradient(135deg, #a9afba 0%, #4a505d 14%, #1c1f29 40%, #2a2e3a 62%, #5d6472 86%, #b4bac5 100%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4), inset 0 0 0 calc(var(--w) * 0.006) rgba(0, 0, 0, 0.35); }
 .phone::before { content: ""; position: absolute; left: -0.9%; top: 0; bottom: 0; width: 1.6%; border-radius: 3px 0 0 3px; background: linear-gradient(90deg, #3a3f4b, #7a8190) 0 13%/100% 3.2% no-repeat, linear-gradient(90deg, #3a3f4b, #7a8190) 0 20%/100% 6.4% no-repeat, linear-gradient(90deg, #3a3f4b, #7a8190) 0 28.5%/100% 6.4% no-repeat; }
 .phone::after { content: ""; position: absolute; right: -0.9%; top: 25%; height: 10.5%; width: 1.6%; border-radius: 0 3px 3px 0; background: linear-gradient(270deg, #3a3f4b, #7a8190); }
 .screen { position: relative; height: 100%; border-radius: calc(var(--w) * 0.142); background: #f7f8fa; overflow: hidden; container-type: inline-size; color: #101426; box-shadow: 0 0 0 calc(var(--w) * 0.021) #05060a; }
@@ -99,9 +98,9 @@ a.rating:hover { color: var(--blue-deep); }
 .chk .c { flex: none; width: 6cqw; height: 6cqw; border-radius: 50%; background: var(--ok); display: grid; place-items: center; }
 .chk .c svg { width: 3.4cqw; height: 3.4cqw; stroke: #fff; }
 /* the step's key number, under its screen in the feed */
-.pstat { margin-top: 3cqw; padding: 4.4cqw 5cqw; border-radius: 4.6cqw; background: var(--ink); color: #fff; box-shadow: 0 3cqw 7cqw rgba(10, 21, 81, 0.22); }
+.pstat { margin-top: 3cqw; padding: 4.4cqw 5cqw; border-radius: 4.6cqw; background: linear-gradient(135deg, #8ad8f8 0%, #d3f0fd 100%); color: var(--ink); box-shadow: 0 2cqw 5cqw rgba(0, 111, 163, 0.18); }
 .pstat b { display: block; font: 640 10.5cqw/1 var(--display); letter-spacing: -0.04em; }
-.pstat span { display: block; margin-top: 1.6cqw; font: 600 3.5cqw/1.35 var(--body-font); color: rgba(255, 255, 255, 0.78); }
+.pstat span { display: block; margin-top: 1.6cqw; font: 600 3.5cqw/1.35 var(--body-font); color: #23406b; }
 .home-bar { position: absolute; bottom: 2cqw; left: 50%; width: 30cqw; height: 1.2cqw; margin-left: -15cqw; border-radius: 9px; background: #0e1120; z-index: 5; }
 .gcp { background: #fff; border-radius: 3cqw; padding: 3cqw; box-shadow: 0 1px 0 #e1e7ef; }
 .gh { display: flex; align-items: center; gap: 2cqw; font: 500 3.6cqw var(--body-font); color: #3c4043; }
@@ -225,7 +224,6 @@ a.badge2:hover { background: rgba(255, 255, 255, 0.28); }
 .mrow { display: flex; gap: 14px; width: max-content; animation: slide 60s linear infinite; }
 .mrow.rev { animation-direction: reverse; animation-duration: 72s; }
 .mq:hover .mrow, .mq:focus-within .mrow { animation-play-state: paused; }
-.stage-note { position: absolute; left: 0; top: 100%; margin-top: 8px; white-space: nowrap; font: 600 11.5px var(--body-font); color: rgba(255, 255, 255, 0.7); }
 @keyframes slide { to { transform: translateX(-50%); } }
 .rv { flex: 0 0 300px; text-align: left; background: #d3f0fd; color: var(--ink); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 14px; min-height: 190px; transition: transform 0.2s, box-shadow 0.2s; }
 a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80, 0.22); }
@@ -371,15 +369,15 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 @media (max-width: 980px) {
   .stage { --card-h: 660px; --over: 0px; }
   .blue { grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 0; padding-inline: 20px; justify-items: center; }
-  .phone-wrap { top: 222px; bottom: 70px; left: 16px; right: 16px; }
+  .phone-wrap { top: 222px; bottom: 44px; left: 16px; right: 16px; }
+  .side, .phone-shadow { display: none; }
   .caps { height: 170px; align-self: start; width: 100%; margin-top: 26px; text-align: center; }
   .cap { align-items: center; justify-content: flex-start; gap: 10px; }
   .cap .cap-h { font-size: 30px; }
   .cap p { font-size: 15px; max-width: 340px; }
   .cap .btn { display: none; }
-  .player { left: 50%; transform: translateX(-50%); bottom: 30px; }
-  .stage-note { left: 50%; transform: translateX(-50%); }
-  .phone { --ph: 600px; }
+  .stage-note { left: 0; right: 0; bottom: 16px; text-align: center; }
+  .stage { --ph: 600px; }
   .panel { grid-template-columns: 1fr; }
   .ts { grid-template-columns: 1fr; flex-basis: 90%; }
   .ts .r { margin: 0 14px 14px; min-height: 260px; order: -1; }

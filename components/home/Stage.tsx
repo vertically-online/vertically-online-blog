@@ -5,7 +5,7 @@ import Image from "next/image";
 import { site } from "@/content/site";
 import { home } from "@/content/home";
 import BookCallButton from "@/components/BookCallButton";
-import { ArrowRight, PauseBars, PlayTriangle, SmallCheck, Stars, StatusBarIcons } from "@/components/home/svg";
+import { ArrowRight, SmallCheck, Stars, StatusBarIcons } from "@/components/home/svg";
 
 const SWAP_MS = 3200;
 
@@ -43,8 +43,8 @@ function RotatingWord() {
 
 // One run of the story: 5 steps over RUN_MS, then a short hold at 100%
 // before it loops. Everything is driven by one clock so it flows.
-export const RUN_MS = 13000; // about 2.6s per step
-const HOLD_MS = 1500;
+export const RUN_MS = 17500; // about 3.5s per step
+const HOLD_MS = 2200;
 const RING_LEN = 100.5;
 
 const clamp = (v: number) => Math.min(1, Math.max(0, v));
@@ -107,17 +107,15 @@ function paintFrame(root: HTMLElement | null, elapsed: number, count: number, wr
 
 /**
  * Plays the phone story like a video: a requestAnimationFrame clock that
- * runs only while the stage is on screen and not paused. Per-frame values
- * (counter, ring, caption motion, progress bars) are written straight to
- * the DOM; React state changes only when the step changes. Reduced motion
- * starts paused on the finished state.
+ * runs on its own while the stage is on screen. Per-frame values (counter,
+ * ring, caption motion, feed scroll) are written straight to the DOM; React
+ * state changes only when the step changes. Reduced motion shows the
+ * finished state without animating.
  */
 function useStoryClock(stage: React.RefObject<HTMLDivElement | null>, count: number) {
   const [step, setStep] = useState(0);
-  const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(false);
-  // Hovering the stage holds it (mouse users reading at their own pace).
-  const [hovered, setHovered] = useState(false);
+  const [still, setStill] = useState(false);
   const elapsed = useRef(0);
   // Whether the story has looped at least once (step 0 then scrolls back up).
   const wrapped = useRef(false);
@@ -130,9 +128,8 @@ function useStoryClock(stage: React.RefObject<HTMLDivElement | null>, count: num
     const io = new IntersectionObserver(
       ([entry]) => {
         if (first && reduce) {
-          // Reduced motion: show the finished state, paused.
           elapsed.current = RUN_MS;
-          setPaused(true);
+          setStill(true);
           setStep(paintFrame(el, RUN_MS, count));
         }
         first = false;
@@ -144,7 +141,7 @@ function useStoryClock(stage: React.RefObject<HTMLDivElement | null>, count: num
     return () => io.disconnect();
   }, [stage, count]);
 
-  const playing = visible && !paused && !hovered;
+  const playing = visible && !still;
   useEffect(() => {
     if (!playing) return;
     let raf = 0;
@@ -164,19 +161,13 @@ function useStoryClock(stage: React.RefObject<HTMLDivElement | null>, count: num
     return () => cancelAnimationFrame(raf);
   }, [playing, stage, count]);
 
-  /** Jump to a step (shown fully risen). */
-  const seek = (i: number) => {
-    elapsed.current = ((i + 0.62) / count) * RUN_MS;
-    setStep(paintFrame(stage.current, elapsed.current, count));
-  };
-
-  return { step, seek, paused, setPaused, playing, setHovered };
+  return step;
 }
 
 export default function Stage() {
   const { hero, steps, sampleEstimate, sampleTotal, sampleLabel, rating } = home;
   const stageRef = useRef<HTMLDivElement>(null);
-  const { step, seek, paused, setPaused, playing, setHovered } = useStoryClock(stageRef, steps.length);
+  const step = useStoryClock(stageRef, steps.length);
 
   return (
     <section className="stage" id="how-it-works">
@@ -203,12 +194,7 @@ export default function Stage() {
       </div>
 
       <div className="track">
-        <div
-          className="pin"
-          ref={stageRef}
-          onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(true)}
-          onPointerLeave={() => setHovered(false)}
-        >
+        <div className="pin" ref={stageRef}>
           <div className="pin-in">
             <div className="blue grain">
               <div className="caps">
@@ -223,31 +209,18 @@ export default function Stage() {
                 ))}
               </div>
 
-              <div className={playing ? "player" : "player paused"}>
-                <button
-                  type="button"
-                  className="pp"
-                  onClick={() => setPaused((v) => !v)}
-                  aria-label={paused ? "Play the walkthrough" : "Pause the walkthrough"}
-                >
-                  {paused ? <PlayTriangle /> : <PauseBars />}
-                </button>
-                <div className="dots">
-                  {steps.map((s, i) => (
-                    <button
-                      key={s.title}
-                      type="button"
-                      className={i === step ? "on" : i < step ? "done" : undefined}
-                      aria-label={`Step ${i + 1}: ${s.title}`}
-                      aria-current={i === step ? "step" : undefined}
-                      onClick={() => seek(i)}
-                    >
-                      <i><b data-bar={i} /></i>
-                    </button>
-                  ))}
-                </div>
-                <span className="stage-note">{sampleLabel}</span>
+              {/* The phone sits in its own centered frame (below); this keeps its column. */}
+              <div className="phone-shadow" aria-hidden="true" />
+
+              <div className="side" aria-hidden="true">
+                {steps.map((s, i) => (
+                  <div key={s.stat} className="stat" data-rise={i} style={{ opacity: i === 0 ? undefined : 0 }}>
+                    <b>{s.stat}</b>
+                    <span>{s.statNote}</span>
+                  </div>
+                ))}
               </div>
+              <p className="stage-note">{sampleLabel}</p>
             </div>
             {/* The phone overhangs the top of the card and is cut off at its bottom edge */}
             <div className="phone-wrap">
