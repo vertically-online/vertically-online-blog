@@ -62,8 +62,26 @@ function riseStyle(p: number, last: boolean, travel = 1) {
   return { opacity: String(inOpacity * (1 - out)), transform: `translateY(${y.toFixed(1)}px)` };
 }
 
+const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+/**
+ * Scrolls the phone feed: during the first part of each step it glides from
+ * the previous section to the current one, then holds while it's read.
+ * After a full loop, step 0 glides back up from the last section.
+ */
+function scrollFeed(root: HTMLElement, current: number, local: number, wrapped: boolean) {
+  const track = root.querySelector<HTMLElement>("[data-feed]");
+  if (!track) return;
+  const secs = track.querySelectorAll<HTMLElement>("[data-sec]");
+  const top = (i: number) => (secs[i] ? secs[i].offsetTop - secs[0].offsetTop : 0);
+  const from = current === 0 ? (wrapped ? top(secs.length - 1) : 0) : top(current - 1);
+  const to = top(current);
+  const y = from + (to - from) * easeInOut(clamp(local / 0.34));
+  track.style.transform = `translate3d(0, ${(-y).toFixed(1)}px, 0)`;
+}
+
 /** Writes every per-frame value for `elapsed` ms into the stage. Returns the step. */
-function paintFrame(root: HTMLElement | null, elapsed: number, count: number) {
+function paintFrame(root: HTMLElement | null, elapsed: number, count: number, wrapped = false) {
   const t = clamp(elapsed / RUN_MS);
   const pos = Math.min(count - 0.0001, t * count);
   const current = Math.floor(pos);
@@ -83,6 +101,7 @@ function paintFrame(root: HTMLElement | null, elapsed: number, count: number) {
   root.querySelectorAll<HTMLElement>("[data-bar]").forEach((el) => {
     el.style.transform = `scaleX(${clamp(pos - Number(el.dataset.bar)).toFixed(3)})`;
   });
+  scrollFeed(root, current, pos - current, wrapped);
   return current;
 }
 
@@ -100,6 +119,8 @@ function useStoryClock(stage: React.RefObject<HTMLDivElement | null>, count: num
   // Hovering the stage holds it (mouse users reading at their own pace).
   const [hovered, setHovered] = useState(false);
   const elapsed = useRef(0);
+  // Whether the story has looped at least once (step 0 then scrolls back up).
+  const wrapped = useRef(false);
 
   useEffect(() => {
     const el = stage.current;
@@ -131,8 +152,11 @@ function useStoryClock(stage: React.RefObject<HTMLDivElement | null>, count: num
     const tick = (now: number) => {
       elapsed.current += now - last;
       last = now;
-      if (elapsed.current >= RUN_MS + HOLD_MS) elapsed.current = 0;
-      const current = paintFrame(stage.current, elapsed.current, count);
+      if (elapsed.current >= RUN_MS + HOLD_MS) {
+        elapsed.current = 0;
+        wrapped.current = true;
+      }
+      const current = paintFrame(stage.current, elapsed.current, count, wrapped.current);
       setStep((prev) => (prev === current ? prev : current));
       raf = requestAnimationFrame(tick);
     };
@@ -148,8 +172,6 @@ function useStoryClock(stage: React.RefObject<HTMLDivElement | null>, count: num
 
   return { step, seek, paused, setPaused, playing, setHovered };
 }
-
-const on = (active: boolean, base: string) => (active ? `${base} on` : base);
 
 export default function Stage() {
   const { hero, steps, sampleEstimate, sampleTotal, sampleLabel, rating } = home;
@@ -201,118 +223,6 @@ export default function Stage() {
                 ))}
               </div>
 
-              <div className="phone" role="img" aria-label="Example of the Vertically lead desk on a phone: a new roofing lead answered in 18 seconds, quoted, and booked for an inspection">
-                <div className="screen" aria-hidden="true">
-                  <div className="isl" />
-                  <div className="sb">
-                    <span>9:41</span>
-                    <span className="sbi"><StatusBarIcons /></span>
-                  </div>
-                  <div className="app">
-                    <div className="app-h">
-                      <div>
-                        <small>EXAMPLE LEAD</small>
-                        <p className="app-title">Your lead desk</p>
-                      </div>
-                      <div className="pring">
-                        <svg viewBox="0 0 40 40">
-                          <circle className="bg" cx="20" cy="20" r="16" />
-                          <circle className="fg" cx="20" cy="20" r="16" data-ring />
-                        </svg>
-                        <b data-pct>0%</b>
-                      </div>
-                    </div>
-                    <div className="views">
-                      <div className={on(step === 0, "view")}>
-                        <div className="card">
-                          <div className="row">
-                            <Image className="av" src="/images/home/sarah.jpg" alt="" width={96} height={96} style={{ width: "10cqw", height: "10cqw" }} />
-                            <div>
-                              <div className="t1">New lead: Sarah M.</div>
-                              <div className="t2">Roof replacement, Cherry Hill, NJ</div>
-                            </div>
-                            <span className="pulse" style={{ marginLeft: "auto" }} />
-                          </div>
-                          <div className="t2" style={{ marginTop: "3cqw" }}>Web form · just now</div>
-                        </div>
-                        <div className="card"><div className="skel" style={{ width: "70%" }} /><div className="skel" style={{ width: "46%", marginTop: "2.4cqw" }} /></div>
-                        <div className="card" style={{ opacity: 0.6 }}><div className="skel" style={{ width: "58%" }} /><div className="skel" style={{ width: "38%", marginTop: "2.4cqw" }} /></div>
-                      </div>
-                      <div className={on(step === 1, "view")}>
-                        <div className="chat">
-                          <div className="row" style={{ alignItems: "flex-end", gap: "2cqw" }}>
-                            <Image className="av" src="/images/home/sarah.jpg" alt="" width={96} height={96} style={{ width: "8cqw", height: "8cqw" }} />
-                            <div className="bub in" style={{ maxWidth: "none" }}>Hi, I need a quote for a roof replacement.</div>
-                          </div>
-                          <div className="bub out">Hi Sarah, this is Your Roofing Co. Got your request. Your estimate is on its way.</div>
-                          <div className="meta">Replied in 18 sec</div>
-                        </div>
-                      </div>
-                      <div className={on(step === 2, "view")}>
-                        <div className="card doc">
-                          <p className="doc-h">Roof replacement estimate</p>
-                          <div className="t2">Prepared for Sarah M.</div>
-                          {sampleEstimate.map(([item, price], k) => (
-                            <div key={item} className="line" style={k === 0 ? { marginTop: "3cqw" } : undefined}>
-                              <span>{item}</span>
-                              <b>{price}</b>
-                            </div>
-                          ))}
-                          <div className="total"><span>Total</span><b>{sampleTotal}</b></div>
-                        </div>
-                        <div className="card row">
-                          <div className="ico pdf"><Image src="/images/home/acrobat.png" alt="" width={96} height={93} /></div>
-                          <div className="t1">Estimate.pdf</div>
-                          <span className="badge ok">Sent</span>
-                        </div>
-                      </div>
-                      <div className={on(step === 3, "view")}>
-                        <div className="gcp">
-                          <div className="gh"><Image src="/images/home/gcal.svg" alt="" width={256} height={275} /><b>Calendar</b><em>Oct 2026</em></div>
-                          <div className="gd">
-                            {[["MON", 19], ["TUE", 20], ["WED", 21], ["THU", 22], ["FRI", 23]].map(([d, n]) => (
-                              <span key={d} className={d === "THU" ? "hit" : undefined}>{d}<b>{n}</b></span>
-                            ))}
-                          </div>
-                          <div className="gg">
-                            <span className="t">9 AM</span><i /><i /><i /><i /><i />
-                            <span className="t">10 AM</span><i /><i /><i /><i className="ev">Roof inspection<small>10:00 – 11:00am</small></i><i />
-                            <span className="t">11 AM</span><i /><i /><i /><i /><i />
-                          </div>
-                        </div>
-                        <div className="card"><div className="t1">Sarah M.</div><div className="t2">Booked by phone. Added to Google Calendar.</div></div>
-                      </div>
-                      <div className={on(step === 4, "view")}>
-                        <div className="card" style={{ padding: "1cqw 4cqw" }}>
-                          {[
-                            ["New lead: Sarah M.", "Roof replacement"],
-                            ["Replied in 18 sec", "Text and email"],
-                            ["Quote sent", `${sampleTotal} PDF estimate`],
-                            ["Inspection booked", "Thursday, 10:00 AM"],
-                          ].map(([a, b]) => (
-                            <div key={a} className="chk">
-                              <span className="c"><SmallCheck /></span>
-                              <div><div className="t1">{a}</div><div className="t2">{b}</div></div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* Each step's key number, on the lower part of the screen */}
-                  <div className="pstats">
-                    {steps.map((s, i) => (
-                      <div key={s.stat} className="pstat" data-rise={i} data-travel="0.45" style={{ opacity: i === 0 ? undefined : 0 }}>
-                        <b>{s.stat}</b>
-                        <span>{s.statNote}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="ex">{sampleLabel}</div>
-                  <div className="home-bar" />
-                </div>
-              </div>
-
               <div className={playing ? "player" : "player paused"}>
                 <button
                   type="button"
@@ -336,7 +246,135 @@ export default function Stage() {
                     </button>
                   ))}
                 </div>
+                <span className="stage-note">{sampleLabel}</span>
               </div>
+            </div>
+            {/* The phone overhangs the top of the card and is cut off at its bottom edge */}
+            <div className="phone-wrap">
+              <div className="phone" role="img" aria-label="Example of the Vertically lead desk on a phone: a new roofing lead answered in 18 seconds, quoted, and booked for an inspection">
+                <div className="screen" aria-hidden="true">
+                  <div className="isl" />
+                  <div className="sb">
+                    <span>9:41</span>
+                    <span className="sbi"><StatusBarIcons /></span>
+                  </div>
+                  <div className="app">
+                    <div className="app-h">
+                      <div>
+                        <small>EXAMPLE LEAD</small>
+                        <p className="app-title">Your lead desk</p>
+                      </div>
+                      <div className="pring">
+                        <svg viewBox="0 0 40 40">
+                          <circle className="bg" cx="20" cy="20" r="16" />
+                          <circle className="fg" cx="20" cy="20" r="16" data-ring />
+                        </svg>
+                        <b data-pct>0%</b>
+                      </div>
+                    </div>
+                    <div className="feed">
+                      <div className="feed-track" data-feed>
+                        <div className="fsec" data-sec={0}>
+                          <div className="card">
+                            <div className="row">
+                              <Image className="av" src="/images/home/sarah.jpg" alt="" width={96} height={96} style={{ width: "10cqw", height: "10cqw" }} />
+                              <div>
+                                <div className="t1">New lead: Sarah M.</div>
+                                <div className="t2">Roof replacement, Cherry Hill, NJ</div>
+                              </div>
+                              <span className="pulse" style={{ marginLeft: "auto" }} />
+                            </div>
+                            <div className="t2" style={{ marginTop: "3cqw" }}>Web form · just now</div>
+                          </div>
+                          <div className="card"><div className="skel" style={{ width: "70%" }} /><div className="skel" style={{ width: "46%", marginTop: "2.4cqw" }} /></div>
+                          <div className="card" style={{ opacity: 0.6 }}><div className="skel" style={{ width: "58%" }} /><div className="skel" style={{ width: "38%", marginTop: "2.4cqw" }} /></div>
+                          <div className="pstat">
+                            <b>{steps[0].stat}</b>
+                            <span>{steps[0].statNote}</span>
+                          </div>
+                        </div>
+                        <div className="fsec" data-sec={1}>
+                          <div className="chat">
+                            <div className="row" style={{ alignItems: "flex-end", gap: "2cqw" }}>
+                              <Image className="av" src="/images/home/sarah.jpg" alt="" width={96} height={96} style={{ width: "8cqw", height: "8cqw" }} />
+                              <div className="bub in" style={{ maxWidth: "none" }}>Hi, I need a quote for a roof replacement.</div>
+                            </div>
+                            <div className="bub out">Hi Sarah, this is Your Roofing Co. Got your request. Your estimate is on its way.</div>
+                            <div className="meta">Replied in 18 sec</div>
+                          </div>
+                          <div className="pstat">
+                            <b>{steps[1].stat}</b>
+                            <span>{steps[1].statNote}</span>
+                          </div>
+                        </div>
+                        <div className="fsec" data-sec={2}>
+                          <div className="card doc">
+                            <p className="doc-h">Roof replacement estimate</p>
+                            <div className="t2">Prepared for Sarah M.</div>
+                            {sampleEstimate.map(([item, price], k) => (
+                              <div key={item} className="line" style={k === 0 ? { marginTop: "3cqw" } : undefined}>
+                                <span>{item}</span>
+                                <b>{price}</b>
+                              </div>
+                            ))}
+                            <div className="total"><span>Total</span><b>{sampleTotal}</b></div>
+                          </div>
+                          <div className="card row">
+                            <div className="ico pdf"><Image src="/images/home/acrobat.png" alt="" width={96} height={93} /></div>
+                            <div className="t1">Estimate.pdf</div>
+                            <span className="badge ok">Sent</span>
+                          </div>
+                          <div className="pstat">
+                            <b>{steps[2].stat}</b>
+                            <span>{steps[2].statNote}</span>
+                          </div>
+                        </div>
+                        <div className="fsec" data-sec={3}>
+                          <div className="gcp">
+                            <div className="gh"><Image src="/images/home/gcal.svg" alt="" width={256} height={275} /><b>Calendar</b><em>Oct 2026</em></div>
+                            <div className="gd">
+                              {[["MON", 19], ["TUE", 20], ["WED", 21], ["THU", 22], ["FRI", 23]].map(([d, n]) => (
+                                <span key={d} className={d === "THU" ? "hit" : undefined}>{d}<b>{n}</b></span>
+                              ))}
+                            </div>
+                            <div className="gg">
+                              <span className="t">9 AM</span><i /><i /><i /><i /><i />
+                              <span className="t">10 AM</span><i /><i /><i /><i className="ev">Roof inspection<small>10:00 – 11:00am</small></i><i />
+                              <span className="t">11 AM</span><i /><i /><i /><i /><i />
+                            </div>
+                          </div>
+                          <div className="card"><div className="t1">Sarah M.</div><div className="t2">Booked by phone. Added to Google Calendar.</div></div>
+                          <div className="pstat">
+                            <b>{steps[3].stat}</b>
+                            <span>{steps[3].statNote}</span>
+                          </div>
+                        </div>
+                        <div className="fsec" data-sec={4}>
+                          <div className="card" style={{ padding: "1cqw 4cqw" }}>
+                            {[
+                              ["New lead: Sarah M.", "Roof replacement"],
+                              ["Replied in 18 sec", "Text and email"],
+                              ["Quote sent", `${sampleTotal} PDF estimate`],
+                              ["Inspection booked", "Thursday, 10:00 AM"],
+                            ].map(([a, b]) => (
+                              <div key={a} className="chk">
+                                <span className="c"><SmallCheck /></span>
+                                <div><div className="t1">{a}</div><div className="t2">{b}</div></div>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="pstat">
+                            <b>{steps[4].stat}</b>
+                            <span>{steps[4].statNote}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="home-bar" />
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
