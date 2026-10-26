@@ -5,7 +5,7 @@ import Image from "next/image";
 import { site } from "@/content/site";
 import { home } from "@/content/home";
 import BookCallButton from "@/components/BookCallButton";
-import { ArrowRight, CalendarIcon, Check, PauseBars, PlayTriangle, SmallCheck, Stars, StatusBarIcons } from "@/components/home/svg";
+import { ArrowRight, PauseBars, PlayTriangle, SmallCheck, Stars, StatusBarIcons } from "@/components/home/svg";
 
 const SWAP_MS = 3200;
 
@@ -43,8 +43,8 @@ function RotatingWord() {
 
 // One run of the story: 5 steps over RUN_MS, then a short hold at 100%
 // before it loops. Everything is driven by one clock so it flows.
-export const RUN_MS = 10000; // about 2s per step
-const HOLD_MS = 1200;
+export const RUN_MS = 13000; // about 2.6s per step
+const HOLD_MS = 1500;
 const RING_LEN = 100.5;
 
 const clamp = (v: number) => Math.min(1, Math.max(0, v));
@@ -55,10 +55,10 @@ const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
  * step): rises from below the whole time it's on screen, fades in over the
  * first third, and drifts up and out over the last eighth.
  */
-function riseStyle(p: number, last: boolean) {
+function riseStyle(p: number, last: boolean, travel = 1) {
   const inOpacity = clamp(p / 0.32);
   const out = last ? 0 : clamp((p - 0.86) / 0.14);
-  const y = 56 * (1 - easeOut(clamp(p))) - 22 * out;
+  const y = (56 * (1 - easeOut(clamp(p))) - 22 * out) * travel;
   return { opacity: String(inOpacity * (1 - out)), transform: `translateY(${y.toFixed(1)}px)` };
 }
 
@@ -76,8 +76,9 @@ function paintFrame(root: HTMLElement | null, elapsed: number, count: number) {
 
   root.querySelectorAll<HTMLElement>("[data-rise]").forEach((el) => {
     const i = Number(el.dataset.rise);
-    if (i === current) Object.assign(el.style, riseStyle(pos - current, i === count - 1));
-    else Object.assign(el.style, { opacity: "0", transform: "translateY(56px)" });
+    const travel = Number(el.dataset.travel ?? 1);
+    if (i === current) Object.assign(el.style, riseStyle(pos - current, i === count - 1, travel));
+    else Object.assign(el.style, { opacity: "0", transform: `translateY(${56 * travel}px)` });
   });
   root.querySelectorAll<HTMLElement>("[data-bar]").forEach((el) => {
     el.style.transform = `scaleX(${clamp(pos - Number(el.dataset.bar)).toFixed(3)})`;
@@ -96,6 +97,8 @@ function useStoryClock(stage: React.RefObject<HTMLDivElement | null>, count: num
   const [step, setStep] = useState(0);
   const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(false);
+  // Hovering the stage holds it (mouse users reading at their own pace).
+  const [hovered, setHovered] = useState(false);
   const elapsed = useRef(0);
 
   useEffect(() => {
@@ -120,7 +123,7 @@ function useStoryClock(stage: React.RefObject<HTMLDivElement | null>, count: num
     return () => io.disconnect();
   }, [stage, count]);
 
-  const playing = visible && !paused;
+  const playing = visible && !paused && !hovered;
   useEffect(() => {
     if (!playing) return;
     let raf = 0;
@@ -143,7 +146,7 @@ function useStoryClock(stage: React.RefObject<HTMLDivElement | null>, count: num
     setStep(paintFrame(stage.current, elapsed.current, count));
   };
 
-  return { step, seek, paused, setPaused, playing };
+  return { step, seek, paused, setPaused, playing, setHovered };
 }
 
 const on = (active: boolean, base: string) => (active ? `${base} on` : base);
@@ -151,7 +154,7 @@ const on = (active: boolean, base: string) => (active ? `${base} on` : base);
 export default function Stage() {
   const { hero, steps, sampleEstimate, sampleTotal, sampleLabel, rating } = home;
   const stageRef = useRef<HTMLDivElement>(null);
-  const { step, seek, paused, setPaused, playing } = useStoryClock(stageRef, steps.length);
+  const { step, seek, paused, setPaused, playing, setHovered } = useStoryClock(stageRef, steps.length);
 
   return (
     <section className="stage" id="how-it-works">
@@ -178,7 +181,12 @@ export default function Stage() {
       </div>
 
       <div className="track">
-        <div className="pin" ref={stageRef}>
+        <div
+          className="pin"
+          ref={stageRef}
+          onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(true)}
+          onPointerLeave={() => setHovered(false)}
+        >
           <div className="pin-in">
             <div className="blue grain">
               <div className="caps">
@@ -291,27 +299,20 @@ export default function Stage() {
                       </div>
                     </div>
                   </div>
+                  {/* Each step's key number, on the lower part of the screen */}
+                  <div className="pstats">
+                    {steps.map((s, i) => (
+                      <div key={s.stat} className="pstat" data-rise={i} data-travel="0.45" style={{ opacity: i === 0 ? undefined : 0 }}>
+                        <b>{s.stat}</b>
+                        <span>{s.statNote}</span>
+                      </div>
+                    ))}
+                  </div>
                   <div className="ex">{sampleLabel}</div>
                   <div className="home-bar" />
                 </div>
-                <div className={on(step >= 1, "fchip fc1")} aria-hidden="true">
-                  <i><Check /></i>
-                  <div>Lead answered<small>in 18 seconds</small></div>
-                </div>
-                <div className={on(step >= 3, "fchip fc2")} aria-hidden="true">
-                  <i><CalendarIcon /></i>
-                  <div>Job booked<small>Thursday, 10:00 AM</small></div>
-                </div>
               </div>
 
-              <div className="side" aria-hidden="true">
-                {steps.map((s, i) => (
-                  <div key={s.stat} className="stat" data-rise={i} style={{ opacity: i === 0 ? undefined : 0 }}>
-                    <b>{s.stat}</b>
-                    <span>{s.statNote}</span>
-                  </div>
-                ))}
-              </div>
               <div className={playing ? "player" : "player paused"}>
                 <button
                   type="button"
