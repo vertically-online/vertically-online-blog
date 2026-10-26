@@ -5,7 +5,7 @@ import Image from "next/image";
 import { site } from "@/content/site";
 import { home } from "@/content/home";
 import BookCallButton from "@/components/BookCallButton";
-import { ArrowRight, CalendarIcon, Check, SmallCheck, Stars, StatusBarIcons } from "@/components/home/svg";
+import { ArrowRight, CalendarIcon, Check, PauseBars, PlayTriangle, SmallCheck, Stars, StatusBarIcons } from "@/components/home/svg";
 
 const SWAP_MS = 3200;
 
@@ -41,38 +41,53 @@ function RotatingWord() {
   );
 }
 
-/** Index of the active scroll step (0-4) through the pinned track. */
-function useScrollStep(track: React.RefObject<HTMLDivElement | null>, pin: React.RefObject<HTMLDivElement | null>, count: number) {
+// How long each of the five steps stays on screen.
+export const STEP_MS = 3400;
+
+/**
+ * Plays the phone story like a video: advances one step every STEP_MS and
+ * loops, only while the stage is on screen and not paused. Visitors who
+ * prefer reduced motion start paused and can step through by hand.
+ */
+function useAutoStep(stage: React.RefObject<HTMLDivElement | null>, count: number) {
   const [step, setStep] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [visible, setVisible] = useState(false);
+
   useEffect(() => {
-    const update = () => {
-      const t = track.current;
-      const p = pin.current;
-      if (!t || !p) return;
-      const r = t.getBoundingClientRect();
-      const top = parseFloat(getComputedStyle(p).top) || 68;
-      const dist = r.height - p.offsetHeight;
-      const progress = Math.max(0, Math.min(1, (top - r.top) / dist));
-      setStep(Math.min(count - 1, Math.floor(progress * count)));
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, [track, pin, count]);
-  return step;
+    const el = stage.current;
+    if (!el) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let first = true;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        // Reduced motion: start paused (decided on the first observation).
+        if (first && reduce) setPaused(true);
+        first = false;
+        setVisible(entry.isIntersecting);
+      },
+      { threshold: 0.35 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [stage]);
+
+  const playing = visible && !paused;
+  useEffect(() => {
+    if (!playing) return;
+    const id = window.setTimeout(() => setStep((n) => (n + 1) % count), STEP_MS);
+    return () => window.clearTimeout(id);
+  }, [playing, step, count]);
+
+  return { step, setStep, paused, setPaused, playing };
 }
 
 const on = (active: boolean, base: string) => (active ? `${base} on` : base);
 
 export default function Stage() {
   const { hero, steps, sampleEstimate, sampleTotal, sampleLabel, rating } = home;
-  const trackRef = useRef<HTMLDivElement>(null);
-  const pinRef = useRef<HTMLDivElement>(null);
-  const step = useScrollStep(trackRef, pinRef, steps.length);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const { step, setStep, paused, setPaused, playing } = useAutoStep(stageRef, steps.length);
   const ring = steps[step].ring;
 
   return (
@@ -99,8 +114,8 @@ export default function Stage() {
         </p>
       </div>
 
-      <div className="track" ref={trackRef}>
-        <div className="pin" ref={pinRef}>
+      <div className="track">
+        <div className="pin" ref={stageRef}>
           <div className="pin-in">
             <div className="blue grain">
               <div className="caps">
@@ -234,8 +249,30 @@ export default function Stage() {
                   </div>
                 ))}
               </div>
-              <div className="dots" aria-hidden="true">
-                {steps.map((s, i) => <i key={s.title} className={step === i ? "on" : undefined} />)}
+              <div className={playing ? "player" : "player paused"}>
+                <button
+                  type="button"
+                  className="pp"
+                  onClick={() => setPaused((v) => !v)}
+                  aria-label={paused ? "Play the walkthrough" : "Pause the walkthrough"}
+                >
+                  {paused ? <PlayTriangle /> : <PauseBars />}
+                </button>
+                <div className="dots">
+                  {steps.map((s, i) => (
+                    <button
+                      key={s.title}
+                      type="button"
+                      className={i === step ? "on" : i < step ? "done" : undefined}
+                      aria-label={`Step ${i + 1}: ${s.title}`}
+                      aria-current={i === step ? "step" : undefined}
+                      onClick={() => setStep(i)}
+                    >
+                      {/* key restarts the fill animation on every step */}
+                      <i key={i === step ? `run-${step}` : "idle"} style={{ animationDuration: `${STEP_MS}ms` }} />
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

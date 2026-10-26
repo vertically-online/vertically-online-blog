@@ -120,7 +120,7 @@ export const site = {
       "Vertically is AI for roofing companies: it answers every lead in 30 seconds, builds the quote and books the inspection. Free for 30 days, no contract.",
     ogImageAlt: "Vertically: AI for roofing companies that answers every lead and books the inspection",
     // Sitemap lastModified for the homepage; bump when its content changes.
-    homeUpdated: "2026-10-24",
+    homeUpdated: "2026-10-26",
   },
 
   contact: {

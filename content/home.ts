@@ -142,13 +142,12 @@ export const home = {
   liveDemo: {
     eyebrow: "See it work",
     heading: "Built to feel like your own front desk.",
-    demoPill: "Roof replacement quote",
-    demoTitle: "Don't take our word for it. Try it yourself.",
-    demoBody: "Request a quote on a demo roofing company's site and get an instant PDF estimate with the lead breakdown. It takes about 2 minutes.",
-    demoCta: "Try the live demo",
     emailTitle: "Replies come from your email, not ours.",
-    emailBody: "Connect your own business email so quotes and follow-ups go out under your name. Disconnect any time.",
+    emailBody: "Quotes and follow-ups go out from your own business email, under your name. Disconnect any time.",
     sendOnly: "Send-only access. We can't read your inbox.",
+    demoTitle: "Try it for yourself.",
+    demoBody: "Request a quote from a demo roofing company and get the instant PDF estimate in about 2 minutes.",
+    demoCta: "Try the live demo",
   },
 
   stories: {
@@ -173,6 +172,7 @@ export const home = {
       ["We believe you stay in control.", "You set your prices and limits. Bigger jobs come to you for review. You run the inspection, close the sale and do the roofing."],
       ["We believe trying it should be free.", "Start free for 30 days with no contract and no credit card. You only pay if you decide to keep it."],
     ] as [string, string][],
+    aboutHref: "/about#founder",
     founderVideo: { video: "/intro.mp4", poster: "/images/home/founder-thumb.jpg", captions: "/captions/intro.vtt", label: "Meet the founder", duration: "1:32" },
   },
 
@@ -180,6 +180,8 @@ export const home = {
     eyebrow: "Straight answers",
     heading: "Commonly Asked Questions",
     sub: "Real objections from roofing owners, answered by the founder.",
+    videosLink: "Watch the founder answer each one",
+    videosHref: "/about#videos",
     // From the founder's objection videos. Text answers summarise the video;
     // transcripts are the captions (pending approval, content/approvals.ts).
     videos: VIDEOS,

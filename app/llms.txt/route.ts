@@ -20,6 +20,7 @@ Customer result (Arias Roofing & Siding, Sewell, NJ): leads went from 1-3 a mont
 ## Product
 - [Home](${absoluteUrl("/")}): what Vertically does for roofers, how setup works, the case study, and FAQ
 ${pages.map((p) => `- [${p.title}](${absoluteUrl(`/${p.slug}`)}): ${p.description}`).join("\n")}
+- [About](${absoluteUrl("/about")}): who builds Vertically, the founder video, and video answers to the questions roofers ask most
 - [Live demo](${site.liveDemo.url}): a demo roofing company running the system; request a quote to see the instant PDF estimate
 
 ## Guides

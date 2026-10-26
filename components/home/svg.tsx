@@ -58,6 +58,12 @@ export const PlayTriangle = () => (
     <path d="M3 1.8v8.4L10 6z" />
   </svg>
 );
+export const PauseBars = () => (
+  <svg viewBox="0 0 12 12" aria-hidden="true" fill="currentColor">
+    <rect x="2.5" y="2" width="2.4" height="8" rx=".8" />
+    <rect x="7.1" y="2" width="2.4" height="8" rx=".8" />
+  </svg>
+);
 export const CloseX = () => (
   <svg viewBox="0 0 20 20" aria-hidden="true" {...stroke}>
     <path d="M5 5l10 10M15 5L5 15" />

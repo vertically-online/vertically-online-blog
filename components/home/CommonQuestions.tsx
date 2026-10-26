@@ -1,72 +1,45 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
 import { site } from "@/content/site";
 import { home } from "@/content/home";
 import BookCallButton from "@/components/BookCallButton";
-import { Plus } from "@/components/home/svg";
-import InlineVideo from "@/components/home/InlineVideo";
+import { ArrowRight, Plus, PlayTriangle } from "@/components/home/svg";
 
 /**
- * Commonly Asked Questions (#faq): question list on the left, one video
- * player on the right that switches with the selected question and plays
- * in place. On mobile the player opens under the selected question. Every
- * answer and transcript stays in the HTML (inactive ones hidden), so the
- * FAQPage JSON-LD matches page text.
+ * Commonly Asked Questions (#faq): the six founder questions as a 3x2 grid
+ * of short answers, linking to the videos on /about, then the text-only
+ * questions. The FAQPage JSON-LD (components/StructuredData) uses this text.
  */
 export default function CommonQuestions() {
-  const { eyebrow, heading, sub, videos, moreHeading, more, cta } = home.faq;
-  const [active, setActive] = useState(0);
-  const current = videos[active];
+  const { eyebrow, heading, sub, videos, videosLink, videosHref, moreHeading, more, cta } = home.faq;
 
   return (
     <section className="sheet" id="faq">
       <div className="wrap">
-        <div data-sr>
-          <span className="eyebrow">{eyebrow}</span>
-          <h2 className="big" style={{ marginTop: 14 }}>{heading}</h2>
-          <p className="faq-sub">{sub}</p>
+        <div className="sec-head" data-sr>
+          <div>
+            <span className="eyebrow">{eyebrow}</span>
+            <h2 className="big" style={{ marginTop: 14 }}>{heading}</h2>
+            <p className="faq-sub">{sub}</p>
+          </div>
+          <Link className="btn btn-navy" href={videosHref}>
+            <PlayTriangle />
+            {videosLink}
+          </Link>
         </div>
 
-        <div className="oq">
-          {videos.map((v, i) => (
-            <h3 key={v.id} className="oq-q" style={{ order: i * 2 }}>
-              <button
-                type="button"
-                aria-expanded={active === i}
-                aria-controls="oq-panel"
-                className={active === i ? "on" : undefined}
-                onClick={() => setActive(i)}
-              >
-                <span className="n">{i + 1}</span>
-                <span className="t">{v.question}</span>
-                <span className="d">{v.duration}</span>
-              </button>
-            </h3>
+        <div className="qgrid">
+          {videos.map((v) => (
+            <article key={v.id} className="qcard" data-sr>
+              <h3>{v.question}</h3>
+              <p>{v.answer}</p>
+              <Link href={`/about#q-${v.id}`} className="qwatch">
+                Watch the answer ({v.duration})
+                <ArrowRight />
+              </Link>
+            </article>
           ))}
-
-          <div id="oq-panel" className="oq-panel" style={{ order: active * 2 + 1 }}>
-            <InlineVideo
-              key={current.id}
-              className="oq-video"
-              src={current.video}
-              poster={current.poster}
-              label={`${current.question} (${current.duration})`}
-              chip="Watch the answer"
-            />
-            <div className="oq-text">
-              {videos.map((v, i) => (
-                <div key={v.id} hidden={active !== i}>
-                  <p className="oq-h">{v.question}</p>
-                  <p className="ans">{v.answer}</p>
-                  <details>
-                    <summary>Read the full answer</summary>
-                    <p>{v.transcript}</p>
-                  </details>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
 
         <div className="more-q">

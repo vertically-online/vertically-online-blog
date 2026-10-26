@@ -2,11 +2,17 @@
 
 import { site } from "@/content/site";
 import { home } from "@/content/home";
-import { ArrowUpRight, GmailMark, OutlookMark, Search, SmtpMark } from "@/components/home/svg";
+import { ArrowUpRight, GmailMark, OutlookMark, SmtpMark } from "@/components/home/svg";
 
+const PROVIDERS = [
+  { name: "Gmail and Google Workspace", mark: <GmailMark label="Gmail" /> },
+  { name: "Outlook and Microsoft 365", mark: <OutlookMark /> },
+  { name: "Any email (SMTP)", mark: <SmtpMark /> },
+];
+
+/** Compact "front desk" row: email providers on the blue card, demo link beside it. */
 export default function LiveDemo() {
   const d = home.liveDemo;
-  const demoUrl = site.liveDemo.url;
   return (
     <section className="sheet white" id="live-demo">
       <div className="wrap">
@@ -14,46 +20,29 @@ export default function LiveDemo() {
           <span className="eyebrow">{d.eyebrow}</span>
           <h2 className="big" style={{ marginTop: 14, maxWidth: 760 }}>{d.heading}</h2>
         </div>
-        <div className="bento">
-          <div className="bc blue2 grain">
-            <div className="vis">
-              <a className="demo-btn" href={demoUrl} target="_blank" rel="noopener">
-                <Search />
-                <span>{d.demoPill}</span>
-              </a>
-            </div>
-            <div className="tx">
-              <h3>{d.demoTitle}</h3>
-              <p>{d.demoBody}</p>
-              <a className="btn btn-white" href={demoUrl} target="_blank" rel="noopener">
-                {d.demoCta}
-                <ArrowUpRight />
-              </a>
-            </div>
-          </div>
-          <div className="bc light">
-            <div className="vis">
-              <div className="mailbox">
-                <div className="mc">
-                  <span className="mi"><GmailMark label="Gmail" /></span>
-                  <div>Gmail and Google Workspace<small>Connect in one click</small></div>
-                  <span className="ok">Sent</span>
-                </div>
-                <div className="mc">
-                  <span className="mi"><OutlookMark /></span>
-                  <div>Outlook and Microsoft 365<small>Quotes go out from your address</small></div>
-                </div>
-                <div className="mc">
-                  <span className="mi"><SmtpMark /></span>
-                  <div>Any email (SMTP)<small>Your domain, your name</small></div>
-                </div>
-                <div className="sendonly">{d.sendOnly}</div>
-              </div>
-            </div>
-            <div className="tx">
+        <div className="fd">
+          <div className="fd-mail grain">
+            <div className="fd-copy">
               <h3>{d.emailTitle}</h3>
               <p>{d.emailBody}</p>
             </div>
+            <ul className="fd-providers">
+              {PROVIDERS.map((p) => (
+                <li key={p.name}>
+                  <span className="mi">{p.mark}</span>
+                  {p.name}
+                </li>
+              ))}
+            </ul>
+            <p className="fd-note">{d.sendOnly}</p>
+          </div>
+          <div className="fd-demo">
+            <h3>{d.demoTitle}</h3>
+            <p>{d.demoBody}</p>
+            <a className="btn btn-navy" href={site.liveDemo.url} target="_blank" rel="noopener">
+              {d.demoCta}
+              <ArrowUpRight />
+            </a>
           </div>
         </div>
       </div>
