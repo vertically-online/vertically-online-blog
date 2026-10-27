@@ -109,11 +109,14 @@ export const home = {
   whatYouGet: {
     eyebrow: "What you get",
     heading: "With Vertically, you get faster replies, sent quotes and booked inspections.",
-    tabs: [
-      { tab: "Instant Reply", eyebrow: "Answer first", title: "Your reply goes out in seconds, not hours.", body: "Every form, call and quote request gets a text and an email under your company name, day or night, weekends included." },
-      { tab: "Automatic Quotes", eyebrow: "Quote it", title: "A PDF estimate from your own price list.", body: "You set the prices and the limits. Jobs inside them get a quote right away. Anything bigger comes to you for review first." },
-      { tab: "Booked Inspections", eyebrow: "Book it", title: "The inspection lands on your calendar.", body: "A voice agent calls the homeowner, answers their questions and schedules the inspection straight onto your Google Calendar." },
-      { tab: "Follow-Up and Reviews", eyebrow: "Keep it moving", title: "Nothing slips through after the first reply.", body: "Leads who go quiet get a friendly follow-up. When the job is done, the homeowner gets a review request." },
+    // Six boxes; the first three show a mini visual.
+    items: [
+      { id: "reply", visual: true, title: "Every lead answered in under 30 seconds", body: "A text and an email go out under your company name, day or night, weekends included." },
+      { id: "book", visual: true, title: "Inspections on your calendar", body: "Our AI agent calls the lead, answers their questions and books the inspection directly on your Google Calendar." },
+      { id: "quote", visual: true, title: "Quotes from your own price list", body: "Jobs inside the limits you set get a PDF estimate right away. Bigger jobs come to you first." },
+      { id: "follow", visual: false, title: "Follow-ups until the homeowner books", body: "Leads who go quiet get friendly texts and emails until they book or tell you no." },
+      { id: "review", visual: false, title: "Google review requests", body: "Sent automatically when a job is completed, with your Google review link." },
+      { id: "report", visual: false, title: "Weekly reporting", body: "Every Monday you get an email with a full breakdown of all the leads that came in." },
     ],
   },
 
