@@ -154,8 +154,8 @@ export const home = {
     },
     // Verbatim from Google reviews.
     reviews: [
-      { quote: "Now most of that is taken care of automatically, and I can focus on getting the work done.", by: "John Beshir", image: "/images/home/ladder-wrap.jpg", alt: "Contractor on a ladder working under the roof edge" },
-      { quote: "Every lead gets an instant estimate, text message, phone call, and follow up to book an inspection while we're on the job.", by: "Jorden Sesar", image: "/images/home/flat-roof.jpg", alt: "Roofer sealing a flat roof around a vent" },
+      { quote: "Now most of that is taken care of automatically, and I can focus on getting the work done.", by: "John Beshir", image: "/images/home/flat-roof.jpg", alt: "Roofer sealing a flat roof around a vent" },
+      { quote: "Every lead gets an instant estimate, text message, phone call, and follow up to book an inspection while we're on the job.", by: "Jorden Sesar", image: "/images/home/ladder-wrap.jpg", alt: "Contractor on a ladder working under the roof edge" },
     ],
   },
 
