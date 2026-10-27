@@ -26,7 +26,7 @@ a.rating:hover { color: var(--blue-deep); }
 .stage { background: #fff; }
 /* The stage plays on its own (no scroll pinning). A shorter blue card; the
    phone overhangs its top edge by --over and is cut off at its bottom edge. */
-.stage { --card-h: clamp(470px, 60svh, 560px); --over: 88px; --ph: calc(var(--card-h) + var(--over) + 170px); --pw: calc(var(--ph) * 0.4869); }
+.stage { --card-h: clamp(470px, 60svh, 560px); --over: 88px; --ph: calc(var(--card-h) + var(--over) + 170px); --pw: calc(var(--ph) * 0.5086); }
 .track { position: relative; padding-top: var(--over); padding-bottom: 76px; } /* room for the next sheet to overlap */
 .pin { position: relative; height: var(--card-h); }
 .pin-in { position: relative; height: 100%; max-width: 1200px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -53,7 +53,7 @@ a.rating:hover { color: var(--blue-deep); }
 .phone { --w: var(--pw); position: relative; z-index: 1; flex: none; width: var(--w); height: var(--ph); }
 .phone-frame { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 8; pointer-events: none; overflow: visible; }
 /* The screen sits in the phone image's transparent screen area. */
-.screen { position: absolute; left: 2.7%; right: 2.7%; top: 0.96%; bottom: 0.96%; border-radius: calc(var(--w) * 0.112); background: #f7f8fa; overflow: hidden; container-type: inline-size; color: #101426; }
+.screen { position: absolute; left: 4.6%; right: 4.6%; top: 1.8%; bottom: 1.75%; border-radius: calc(var(--w) * 0.118); background: #f7f8fa; overflow: hidden; container-type: inline-size; color: #101426; }
 .screen::after { content: ""; position: absolute; inset: 0; z-index: 7; pointer-events: none; border-radius: inherit; background: linear-gradient(118deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 22%, transparent 38%), linear-gradient(0deg, rgba(255, 255, 255, 0.05), transparent 14%); }
 .sb { position: absolute; top: 4.8cqw; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 9cqw; font: 700 4.2cqw var(--body-font); z-index: 4; }
 .sbi { display: flex; align-items: center; }
