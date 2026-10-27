@@ -26,7 +26,7 @@ export default function Closing({
           <p className="fine">{home.closing.fine}</p>
         </div>
         <div className="close-phone" aria-hidden="true">
-          <Image src="/images/home/phone-angled-final.png" alt="" width={1154} height={2200} sizes="(max-width: 980px) 240px, 360px" />
+          <Image src="/images/home/phone-angled-v3.png" alt="" width={1154} height={2200} sizes="(max-width: 980px) 240px, 360px" />
         </div>
       </div>
     </section>
