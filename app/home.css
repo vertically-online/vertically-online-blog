@@ -366,15 +366,16 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 @media (max-width: 980px) {
   .stage { --card-h: 660px; --over: 0px; }
   .blue { grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 0; padding-inline: 20px; justify-items: center; }
-  .phone-wrap { top: 222px; bottom: 44px; left: 16px; right: 16px; }
+  .phone-wrap { top: 196px; bottom: 44px; left: 16px; right: 16px; }
   .side, .phone-shadow { display: none; }
-  .caps { height: 170px; align-self: start; width: 100%; margin-top: 26px; text-align: center; }
+  .caps { height: 156px; align-self: start; width: 100%; margin-top: 24px; text-align: center; overflow: hidden; }
   .cap { align-items: center; justify-content: flex-start; gap: 10px; }
   .cap .cap-h { font-size: 30px; }
   .cap p { font-size: 15px; max-width: 340px; }
   .cap .btn { display: none; }
   .stage-note { left: 0; right: 0; bottom: 16px; text-align: center; }
-  .stage { --ph: 600px; }
+  /* Phone scales down on narrow screens so it never overflows the card. */
+  .stage { --ph: min(600px, calc((100vw - 64px) / 0.5086)); }
   .panel { grid-template-columns: 1fr; }
   .ts { grid-template-columns: 1fr; flex-basis: 90%; }
   .ts .r { margin: 0 14px 14px; min-height: 260px; order: -1; }
