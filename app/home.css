@@ -26,7 +26,7 @@ a.rating:hover { color: var(--blue-deep); }
 .stage { background: #fff; }
 /* The stage plays on its own (no scroll pinning). A shorter blue card; the
    phone overhangs its top edge by --over and is cut off at its bottom edge. */
-.stage { --card-h: clamp(470px, 60svh, 560px); --over: 88px; --ph: calc(var(--card-h) + var(--over) + 170px); --pw: calc(var(--ph) * 0.4968); }
+.stage { --card-h: clamp(470px, 60svh, 560px); --over: 88px; --ph: calc(var(--card-h) + var(--over) + 170px); --pw: calc(var(--ph) * 0.4869); }
 .track { position: relative; padding-top: var(--over); padding-bottom: 76px; } /* room for the next sheet to overlap */
 .pin { position: relative; height: var(--card-h); }
 .pin-in { position: relative; height: 100%; max-width: 1200px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -45,15 +45,15 @@ a.rating:hover { color: var(--blue-deep); }
 .stat span { margin-top: 10px; max-width: 220px; font-size: 15px; color: rgba(255, 255, 255, 0.85); }
 /* The phone's drop shadow, drawn inside the card so none of it shows above */
 /* Narrower than the image so its edges sit under the frame, not the transparent button margins. */
-.phone-shadow { align-self: stretch; justify-self: center; width: calc(var(--pw) * 0.96); border-radius: 60px 60px 0 0; box-shadow: 0 40px 90px rgba(0, 20, 60, 0.45), 0 14px 28px rgba(0, 20, 60, 0.25); }
+.phone-shadow { align-self: stretch; justify-self: center; width: calc(var(--pw) * 0.96); border-radius: 13% 13% 0 0 / 6% 6% 0 0; box-shadow: 0 40px 90px rgba(0, 20, 60, 0.45), 0 14px 28px rgba(0, 20, 60, 0.25); }
 .stage-note { position: absolute; left: clamp(22px, 4.5vw, 64px); bottom: 22px; z-index: 3; font: 600 11.5px var(--body-font); color: rgba(255, 255, 255, 0.72); }
 
 /* phone (pure CSS; UI sized in container-query units) */
 .phone-wrap { position: absolute; top: calc(-1 * var(--over)); bottom: 0; left: 0; right: 0; display: flex; justify-content: center; overflow: hidden; z-index: 2; pointer-events: none; }
 .phone { --w: var(--pw); position: relative; z-index: 1; flex: none; width: var(--w); height: var(--ph); }
-.phone-frame { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 8; pointer-events: none; }
+.phone-frame { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 8; pointer-events: none; overflow: visible; }
 /* The screen sits in the phone image's transparent screen area. */
-.screen { position: absolute; left: 5.89%; right: 5.79%; top: 2.48%; bottom: 2.51%; border-radius: calc(var(--w) * 0.11); background: #f7f8fa; overflow: hidden; container-type: inline-size; color: #101426; }
+.screen { position: absolute; left: 2.7%; right: 2.7%; top: 0.96%; bottom: 0.96%; border-radius: calc(var(--w) * 0.112); background: #f7f8fa; overflow: hidden; container-type: inline-size; color: #101426; }
 .screen::after { content: ""; position: absolute; inset: 0; z-index: 7; pointer-events: none; border-radius: inherit; background: linear-gradient(118deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 22%, transparent 38%), linear-gradient(0deg, rgba(255, 255, 255, 0.05), transparent 14%); }
 .sb { position: absolute; top: 4.8cqw; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 9cqw; font: 700 4.2cqw var(--body-font); z-index: 4; }
 .sbi { display: flex; align-items: center; }

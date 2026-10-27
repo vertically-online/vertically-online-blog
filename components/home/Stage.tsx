@@ -9,6 +9,37 @@ import { SmallCheck, Stars, StatusBarIcons } from "@/components/home/svg";
 
 const SWAP_MS = 3200;
 
+/**
+ * Phone hardware drawn over the live screen, traced from the iPhone outline
+ * mockup: a thin black frame, side buttons and the Dynamic Island. Vector, so
+ * it stays crisp at any size. Units match the mockup (body 275 x 573).
+ */
+function PhoneFrame() {
+  return (
+    <svg className="phone-frame" viewBox="0 0 279 573" aria-hidden="true">
+      <defs>
+        <linearGradient id="pf-edge" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#3a3b40" />
+          <stop offset="0.35" stopColor="#111113" />
+          <stop offset="1" stopColor="#050506" />
+        </linearGradient>
+      </defs>
+      {/* side buttons: action, volume up/down (left), power (right) */}
+      <g fill="#111113">
+        <rect x="0" y="74" width="4" height="13" rx="1.5" />
+        <rect x="0" y="122" width="4" height="37" rx="1.5" />
+        <rect x="0" y="176" width="4" height="31" rx="1.5" />
+        <rect x="275" y="124" width="4" height="55" rx="1.5" />
+      </g>
+      <rect x="4.5" y="2.5" width="270" height="568" rx="34" fill="none" stroke="url(#pf-edge)" strokeWidth="5.5" />
+      <rect x="2" y="0.25" width="275" height="572.5" rx="36.5" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="0.5" />
+      <rect x="104.5" y="11" width="70" height="20" rx="10" fill="#050506" />
+      <circle cx="163" cy="21" r="4" fill="#15192a" />
+      <circle cx="163" cy="21" r="1.6" fill="#2b3a66" />
+    </svg>
+  );
+}
+
 /** Hero headline's last line cycles through the rotating phrases. */
 function RotatingWord() {
   const words = home.hero.rotating;
@@ -324,8 +355,7 @@ export default function Stage() {
                     </div>
                   </div>
                 </div>
-                {/* Phone hardware drawn over the live screen (its screen area is transparent). */}
-                <Image className="phone-frame" src="/images/home/phone-front-metal.png" alt="" width={795} height={1600} sizes="(max-width: 980px) 300px, 420px" priority />
+                <PhoneFrame />
               </div>
 
             </div>

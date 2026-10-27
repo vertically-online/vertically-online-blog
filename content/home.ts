@@ -98,9 +98,9 @@ export const home = {
     byline: "Sewell, NJ · Gustavo Arias, Owner",
     cards: [
       { stat: "4x", label: "More jobs closed per month", image: "/images/home/gustavo.jpg", alt: "Gustavo Arias, owner of Arias Roofing & Siding", position: "50% 18%" },
-      { stat: "Up to +900%", label: "More leads from the website alone, from 1–3 to 7–10 a month", image: "/images/home/inspection.jpg", alt: "Roofer in a safety harness walking to a roofing job", position: "50% 50%" },
-      { stat: "<30 sec", label: "Response time, down from 24 to 48 hours", image: "/images/home/craft.jpg", alt: "Roofer lining up new shingles on underlayment", position: "62% 50%" },
-      { stat: "~30 hrs/wk", label: "Saved on quoting and chasing leads", image: "/images/home/storm.jpg", alt: "Two roofers working near a brick chimney", position: "50% 50%" },
+      { stat: "Up to +900%", label: "More leads from the website alone, from 1–3 to 7–10 a month", image: "/images/home/crew-underlayment.jpg", alt: "Roofer in a harness laying shingles over new underlayment", position: "46% 50%" },
+      { stat: "<30 sec", label: "Response time, down from 24 to 48 hours", image: "/images/home/crew-brick.jpg", alt: "Roofing crew replacing the roof on a brick home", position: "52% 50%" },
+      { stat: "~30 hrs/wk", label: "Saved on quoting and chasing leads", image: "/images/home/crew-porch.jpg", alt: "Roofing crew on a ladder at a white house with a porch", position: "54% 50%" },
     ],
     source: "Arias Roofing & Siding, Sewell, NJ. Close rate did not change. They answered every lead.",
   },
@@ -154,8 +154,8 @@ export const home = {
     },
     // Verbatim from Google reviews.
     reviews: [
-      { quote: "Now most of that is taken care of automatically, and I can focus on getting the work done.", by: "John Beshir", image: "/images/home/repair.jpg", alt: "Roofer working on underlayment" },
-      { quote: "Every lead gets an instant estimate, text message, phone call, and follow up to book an inspection while we're on the job.", by: "Jorden Sesar", image: "/images/home/inspection.jpg", alt: "Roofer heading to a job" },
+      { quote: "Now most of that is taken care of automatically, and I can focus on getting the work done.", by: "John Beshir", image: "/images/home/ladder-wrap.jpg", alt: "Contractor on a ladder working under the roof edge" },
+      { quote: "Every lead gets an instant estimate, text message, phone call, and follow up to book an inspection while we're on the job.", by: "Jorden Sesar", image: "/images/home/flat-roof.jpg", alt: "Roofer sealing a flat roof around a vent" },
     ],
   },
 
@@ -195,9 +195,9 @@ export const home = {
   guides: {
     heading: "Read our free guides for roofing companies",
     cards: [
-      { href: "/roofing-answering-service", title: "How a roofing answering service works", image: "/images/home/repair.jpg", big: true },
-      { href: "/roofing-quote-software", title: "Roofing quote software, explained", image: "/images/home/craft.jpg" },
-      { href: "/blog/how-to-get-more-roofing-leads", title: "How to get more roofing leads", image: "/images/home/storm.jpg" },
+      { href: "/roofing-answering-service", title: "How a roofing answering service works", image: "/images/home/shingles-nailer.jpg", big: true },
+      { href: "/roofing-quote-software", title: "Roofing quote software, explained", image: "/images/home/inspection.jpg" },
+      { href: "/blog/how-to-get-more-roofing-leads", title: "How to get more roofing leads", image: "/images/home/repair.jpg" },
     ],
     blog: { href: "/blog", title: "Learn with Vertically", note: "Plain-English guides for roofing company owners." },
   },
