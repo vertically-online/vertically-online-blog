@@ -25,7 +25,7 @@ export default function AnalyticsEvents() {
           ? "phone_tap"
           : href.startsWith("mailto:")
             ? "email_click"
-            : href.includes("roofing-demo.vertically.online")
+            : href.includes("demo.vertically.online")
               ? "demo_click"
               : null;
       if (!event || typeof window.gtag !== "function") return;

@@ -206,9 +206,9 @@ export const site = {
     ctaLabel: "Try the live demo →",
     note: "Takes about 2 minutes. Opens in a new tab.",
     // Base URL, previewed in the embedded browser-chrome mockup and linked from the overlay/card.
-    url: "https://roofing-demo.vertically.online",
+    url: "https://demo.vertically.online",
     // Deep link used by the primary CTA button specifically.
-    ctaUrl: "https://roofing-demo.vertically.online/quote?ref=vertically-online",
+    ctaUrl: "https://demo.vertically.online/quote?ref=vertically-online",
     badges: [
       { title: "Instant PDF estimate", detail: "Sent straight to your inbox" },
       { title: "Lead breakdown", detail: "Everything your company would get" },
