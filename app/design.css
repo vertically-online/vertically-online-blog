@@ -167,6 +167,10 @@ h3 {
 .close .fine { font-size: 13px; color: rgba(255, 255, 255, 0.78); margin: 0; }
 .close-phone { order: -1; align-self: end; justify-self: center; width: min(100%, 340px); margin-bottom: -150px; filter: drop-shadow(0 30px 50px rgba(0, 20, 60, 0.35)); }
 .close-phone img { display: block; width: 100%; height: auto; }
+/* The phone floats gently up and down. */
+.close-phone img { animation: phone-float 5s ease-in-out infinite alternate; will-change: transform; }
+@keyframes phone-float { from { transform: translateY(0); } to { transform: translateY(-14px); } }
+@media (prefers-reduced-motion: reduce) { .close-phone img { animation: none; } }
 
 /* footer */
 .foot { position: relative; background: #fff; border-radius: 0; margin-top: 0; padding: 60px 0 36px; }
