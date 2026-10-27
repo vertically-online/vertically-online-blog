@@ -193,7 +193,9 @@ h3 {
   .close-phone { width: 220px; margin-bottom: -110px; }
 }
 @media (max-width: 560px) {
-  .foot .cols { grid-template-columns: 1fr; }
+  /* Footer links as a 2x2 grid: Explore and Products, then Contact and Legal. */
+  .foot .cols { grid-template-columns: 1fr 1fr; gap: 30px 16px; }
+  .foot ul { font-size: 14px; overflow-wrap: anywhere; }
 }
 
 /* ==========================================================================

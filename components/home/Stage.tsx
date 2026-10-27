@@ -46,6 +46,8 @@ function RotatingWord() {
 export const RUN_MS = 17500; // about 3.5s per step
 const HOLD_MS = 2200;
 
+const mobileMq = typeof window === "undefined" ? null : window.matchMedia("(max-width: 980px)");
+
 const clamp = (v: number) => Math.min(1, Math.max(0, v));
 const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 
@@ -86,9 +88,11 @@ function paintFrame(root: HTMLElement | null, elapsed: number, count: number, wr
   const current = Math.floor(pos);
   if (!root) return current;
 
+  // On phones the captions above the phone drift down toward it instead of rising.
+  const down = mobileMq?.matches ?? false;
   root.querySelectorAll<HTMLElement>("[data-rise]").forEach((el) => {
     const i = Number(el.dataset.rise);
-    const travel = Number(el.dataset.travel ?? 1);
+    const travel = Number(el.dataset.travel ?? 1) * (down && el.classList.contains("cap") ? -1 : 1);
     if (i === current) Object.assign(el.style, riseStyle(pos - current, i === count - 1, travel));
     else Object.assign(el.style, { opacity: "0", transform: `translateY(${56 * travel}px)` });
   });

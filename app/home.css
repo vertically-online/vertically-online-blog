@@ -134,7 +134,12 @@ a.rating:hover { color: var(--blue-deep); }
 .tab::after { content: ""; position: absolute; left: 18px; right: 18px; bottom: -1px; height: 3px; border-radius: 3px; background: var(--blue); transform: scaleX(0); transform-origin: left; }
 .tab[aria-selected="true"]::after { transform: scaleX(1); transition: transform 6s linear; }
 .tab.paused::after { transition: none !important; }
-.tabcard { background: var(--tint); border-radius: 32px; min-height: 480px; overflow: hidden; }
+.tabcard { background: var(--stage-grad); background-size: 100% max(100%, 820px); border-radius: 32px; min-height: 480px; overflow: hidden; color: #fff; }
+.tabcard > .panel { position: relative; z-index: 1; }
+.tabcard .panel .eyebrow { color: var(--glow); }
+.tabcard .panel h3 { color: #fff; }
+.tabcard .panel p.d { color: rgba(255, 255, 255, 0.9); }
+.tabcard .ui { color: var(--ink); }
 .panel { display: none; grid-template-columns: 1fr 1.1fr; align-items: center; gap: 30px; padding: clamp(26px, 5vw, 64px); }
 .panel.on { display: grid; }
 .panel h3 { font-size: clamp(26px, 3vw, 38px); line-height: 1.04; margin-top: 14px; }
@@ -319,6 +324,7 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 
 /* commonly asked questions: dropdown cards (3x2 founder questions, 4x2 more) */
 .qgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 34px; align-items: start; }
+.faq-more { display: none; }
 .qd { position: relative; background: #fff; border-radius: 20px; transition: box-shadow 0.35s ease, border-radius 0.25s ease; }
 .qd[open] { z-index: 5; border-radius: 20px 20px 0 0; }
 .qd:hover, .qd[open] { box-shadow: 0 12px 28px rgba(10, 21, 81, 0.08); }
@@ -366,14 +372,15 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 @media (max-width: 980px) {
   .stage { --card-h: 660px; --over: 0px; }
   .blue { grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 0; padding-inline: 20px; justify-items: center; }
-  .phone-wrap { top: 196px; bottom: 44px; left: 16px; right: 16px; }
+  .phone-wrap { top: 196px; bottom: 0; left: 16px; right: 16px; }
   .side, .phone-shadow { display: none; }
-  .caps { height: 156px; align-self: start; width: 100%; margin-top: 24px; text-align: center; overflow: hidden; }
-  .cap { align-items: center; justify-content: flex-start; gap: 10px; }
+  /* Captions sit just above the phone and drift down into place. */
+  .caps { height: 186px; align-self: start; width: 100%; margin-top: 0; padding-bottom: 14px; text-align: center; overflow: hidden; }
+  .cap { inset: auto 0 14px; align-items: center; justify-content: flex-end; gap: 10px; }
   .cap .cap-h { font-size: 30px; }
   .cap p { font-size: 15px; max-width: 340px; }
   .cap .btn { display: none; }
-  .stage-note { left: 0; right: 0; bottom: 16px; text-align: center; }
+  .stage-note { display: none; }
   /* Phone scales down on narrow screens so it never overflows the card. */
   .stage { --ph: min(600px, calc((100vw - 64px) / 0.5086)); }
   .panel { grid-template-columns: 1fr; }
@@ -384,9 +391,20 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
   .guides { grid-template-columns: 1fr 1fr; }
   .gc.big-card { grid-row: auto; grid-column: 1/3; min-height: 340px; }
   .gc.mint { grid-column: 1/3; }
-  .tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-  .tabs::-webkit-scrollbar { display: none; }
-  .tab { white-space: nowrap; }
+  /* Tabs as a 2x2 grid so all four fit without side scrolling. */
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .tab { text-align: left; padding: 14px 10px 14px; font-size: 14.5px; }
+  .tab::after { left: 10px; right: 10px; }
+  /* Smaller, slower review cards. */
+  .rv { flex-basis: 230px; min-height: 0; padding: 14px; gap: 10px; border-radius: 16px; }
+  .rv q { font-size: 13.5px; }
+  .rv .who { font-size: 12.5px; }
+  .rv .who .av { width: 28px; height: 28px; }
+  .mq { gap: 10px; }
+  .mrow { gap: 10px; animation-duration: 120s; will-change: transform; backface-visibility: hidden; }
+  .mrow.rev { animation-duration: 140s; }
+  .qgrid:not(.all) > .qd:nth-child(n + 8) { display: none; }
+  .faq-more { display: inline-flex; margin-top: 16px; }
   .band { border-radius: 30px 30px 0 0; margin-top: -30px; }
   .oq { display: flex; flex-direction: column; }
   .oq-panel { grid-template-columns: 1fr; padding: 14px 14px 22px; gap: 18px; }

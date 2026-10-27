@@ -13,8 +13,12 @@ export default function Stories() {
     const car = carRef.current;
     const slide = car?.querySelector<HTMLElement>(".ts");
     if (!car || !slide) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    car.scrollBy({ left: dir * (slide.getBoundingClientRect().width + 16), behavior: reduce ? "auto" : "smooth" });
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    const end = car.scrollWidth - car.clientWidth;
+    // Wrap around: past the last story goes back to the first, and vice versa.
+    if (dir === 1 && car.scrollLeft >= end - 4) return car.scrollTo({ left: 0, behavior });
+    if (dir === -1 && car.scrollLeft <= 4) return car.scrollTo({ left: end, behavior });
+    car.scrollBy({ left: dir * (slide.getBoundingClientRect().width + 16), behavior });
   };
 
   return (

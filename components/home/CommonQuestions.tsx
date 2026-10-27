@@ -63,30 +63,41 @@ function QuestionCard({ question, answer, watchHref, duration }: { question: str
 
 /**
  * Commonly Asked Questions (#faq): all fourteen questions in one 2x7 grid of
- * dropdown cards, the six founder questions first. Answers stay in the HTML
+ * dropdown cards (the first seven on phones), the six founder questions first. Answers stay in the HTML
  * while collapsed, so the FAQPage JSON-LD matches page text. The founder
  * questions link to their videos on /about.
  */
+/** All fourteen questions as dropdown cards, the founder questions first. */
+export function FaqGrid({ all = false }: { all?: boolean }) {
+  const { videos, more } = home.faq;
+  return (
+    <div className={all ? "qgrid all" : "qgrid"}>
+      {videos.map((v) => (
+        <QuestionCard key={v.id} question={v.question} answer={v.answer} watchHref={`/about#q-${v.id}`} duration={v.duration} />
+      ))}
+      {more.map((q) => (
+        <QuestionCard key={q.question} question={q.question} answer={q.answer} />
+      ))}
+    </div>
+  );
+}
+
 export default function CommonQuestions() {
-  const { eyebrow, heading, sub, videos, more, cta } = home.faq;
+  const { heading, sub, cta } = home.faq;
 
   return (
     <section className="sheet faq-blue grain" id="faq">
       <div className="wrap">
         <div data-sr>
-          <span className="eyebrow">{eyebrow}</span>
-          <h2 className="big" style={{ marginTop: 14 }}>{heading}</h2>
+          <h2 className="big">{heading}</h2>
           <p className="faq-sub">{sub}</p>
         </div>
 
-        <div className="qgrid">
-          {videos.map((v) => (
-            <QuestionCard key={v.id} question={v.question} answer={v.answer} watchHref={`/about#q-${v.id}`} duration={v.duration} />
-          ))}
-          {more.map((q) => (
-            <QuestionCard key={q.question} question={q.question} answer={q.answer} />
-          ))}
-        </div>
+        {/* Phones show the first seven, then a link to the full FAQ page. */}
+        <FaqGrid />
+        <Link href="/faq" className="btn btn-white faq-more">
+          See all questions <ArrowRight />
+        </Link>
 
         <div className="qcta" data-sr>
           <p>

@@ -90,8 +90,7 @@ export default function AboutPage() {
 
         <section className="sheet white" id="videos">
           <div className="wrap">
-            <span className="eyebrow">{home.faq.eyebrow}</span>
-            <h2 className="big" style={{ marginTop: 14 }}>Your questions, answered on video</h2>
+            <h2 className="big">Your questions, answered on video</h2>
             <p className="faq-sub">{home.faq.sub}</p>
             <ObjectionPlayer />
           </div>

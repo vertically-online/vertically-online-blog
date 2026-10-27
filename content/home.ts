@@ -171,7 +171,6 @@ export const home = {
   },
 
   faq: {
-    eyebrow: "Straight answers",
     heading: "Commonly Asked Questions",
     sub: "Real questions from roofing owners, answered by the founder.",
     videosLink: "Watch the founder answer each one",

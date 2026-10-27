@@ -134,7 +134,7 @@ export default function WhatYouGet() {
             </button>
           ))}
         </div>
-        <div className="tabcard">
+        <div className="tabcard grain">
           {tabs.map((t, i) => (
             <div
               key={t.tab}
