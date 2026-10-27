@@ -83,7 +83,7 @@ function Panel({ index }: { index: number }) {
 }
 
 export default function WhatYouGet() {
-  const { eyebrow, heading, tabs } = home.whatYouGet;
+  const { heading, tabs } = home.whatYouGet;
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -114,8 +114,7 @@ export default function WhatYouGet() {
     <section className="sheet">
       <div className="wrap">
         <div data-sr>
-          <span className="eyebrow">{eyebrow}</span>
-          <h2 className="big" style={{ marginTop: 14, maxWidth: 820 }}>{heading}</h2>
+          <h2 className="big" style={{ maxWidth: 820 }}>{heading}</h2>
         </div>
         <div className="tabs" role="tablist" aria-label="What you get" onKeyDown={onKeyDown}>
           {tabs.map((t, i) => (

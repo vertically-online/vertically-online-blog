@@ -9,7 +9,7 @@ export type Approval = { id: string; what: string; approved: boolean; note?: str
 export const approvals: Approval[] = [
   {
     id: "arias-percentages",
-    what: 'Arias stats on the homepage: "+400% more jobs closed per month" and "Up to +900% more website leads" (confirm with Gustavo Arias)',
+    what: 'Arias stats on the homepage: "4x more jobs closed per month" (was "+400%"; owner asked for 4x, Oct 27, 2026) and "Up to +900% more website leads" (confirm with Gustavo Arias)',
     approved: true,
     note: "Owner approved for production, Oct 24, 2026 (\"everything looks good ... deploy to production\").",
   },

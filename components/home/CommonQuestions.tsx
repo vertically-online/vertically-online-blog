@@ -1,17 +1,50 @@
 "use client";
 
+import { useRef, type MouseEvent } from "react";
 import Link from "next/link";
 import { site } from "@/content/site";
 import { home } from "@/content/home";
 import BookCallButton from "@/components/BookCallButton";
 import { ArrowRight, Plus } from "@/components/home/svg";
 
-/** One question as a dropdown card: the question shows, the answer reveals. */
+const CLOSE_MS = 480;
+
+/** Eases a card's answer closed, then actually closes the <details>. */
+function closeCard(el: HTMLDetailsElement) {
+  if (!el.open || el.classList.contains("closing")) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    el.open = false;
+    return;
+  }
+  el.classList.add("closing");
+  window.setTimeout(() => {
+    el.open = false;
+    el.classList.remove("closing");
+  }, CLOSE_MS);
+}
+
+/** One question as a dropdown card: the question shows, the answer floats open over the cards below. */
 function QuestionCard({ question, answer, watchHref, duration }: { question: string; answer: string; watchHref?: string; duration?: string }) {
-  // Shared name: opening one closes the others, so only one answer floats at a time.
+  const ref = useRef<HTMLDetailsElement>(null);
+
+  // Opening and closing are handled here (not by the browser) so closing can
+  // animate too. Only one answer floats at a time: opening a card eases any
+  // other open card closed.
+  const onSummaryClick = (e: MouseEvent) => {
+    e.preventDefault();
+    const el = ref.current;
+    if (!el) return;
+    if (el.open) {
+      closeCard(el);
+      return;
+    }
+    document.querySelectorAll<HTMLDetailsElement>("details.qd[open]").forEach(closeCard);
+    el.open = true;
+  };
+
   return (
-    <details className="qd" name="faq-answer">
-      <summary>
+    <details className="qd" ref={ref}>
+      <summary onClick={onSummaryClick}>
         <h3>{question}</h3>
         <i aria-hidden="true"><Plus /></i>
       </summary>

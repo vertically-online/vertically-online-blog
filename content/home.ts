@@ -94,11 +94,10 @@ export const home = {
   sampleLabel: "Example lead. Names and prices are samples.",
 
   caseStudy: {
-    eyebrow: "Case study",
     heading: "Grow jobs like Arias Roofing did",
     byline: "Sewell, NJ · Gustavo Arias, Owner",
     cards: [
-      { stat: "+400%", label: "More jobs closed per month", image: "/images/home/gustavo.jpg", alt: "Gustavo Arias, owner of Arias Roofing & Siding", position: "50% 18%" },
+      { stat: "4x", label: "More jobs closed per month", image: "/images/home/gustavo.jpg", alt: "Gustavo Arias, owner of Arias Roofing & Siding", position: "50% 18%" },
       { stat: "Up to +900%", label: "More leads from the website alone, from 1–3 to 7–10 a month", image: "/images/home/inspection.jpg", alt: "Roofer in a safety harness walking to a roofing job", position: "50% 50%" },
       { stat: "<30 sec", label: "Response time, down from 24 to 48 hours", image: "/images/home/craft.jpg", alt: "Roofer lining up new shingles on underlayment", position: "62% 50%" },
       { stat: "~30 hrs/wk", label: "Saved on quoting and chasing leads", image: "/images/home/storm.jpg", alt: "Two roofers working near a brick chimney", position: "50% 50%" },
@@ -107,7 +106,6 @@ export const home = {
   },
 
   whatYouGet: {
-    eyebrow: "What you get",
     heading: "With Vertically, you get faster replies, sent quotes and booked inspections.",
     tabs: [
       { tab: "Instant Reply", eyebrow: "Answer first", title: "Your reply goes out in seconds, not hours.", body: "Every form, call and quote request gets a text and an email under your company name, day or night, weekends included." },
@@ -138,7 +136,6 @@ export const home = {
   },
 
   liveDemo: {
-    eyebrow: "See it work",
     heading: "Built to feel like your own front desk.",
     emailTitle: "Replies come from your email, not ours.",
     emailBody: "Quotes and follow-ups go out from your own business email, under your name. Disconnect any time.",
@@ -153,7 +150,7 @@ export const home = {
     gustavo: {
       quote: "Working with Vertically has made a real difference in how we operate and grow our business.",
       by: "Gustavo Arias, Owner, Arias Roofing & Siding",
-      stats: [["+400%", "Jobs closed per month"], ["<30 sec", "Response time"]],
+      stats: [["4x", "More jobs closed per month"], ["<30 sec", "Response time"]],
     },
     // Verbatim from Google reviews.
     reviews: [
@@ -176,7 +173,7 @@ export const home = {
   faq: {
     eyebrow: "Straight answers",
     heading: "Commonly Asked Questions",
-    sub: "Real objections from roofing owners, answered by the founder.",
+    sub: "Real questions from roofing owners, answered by the founder.",
     videosLink: "Watch the founder answer each one",
     videosHref: "/about#videos",
     // From the founder's objection videos. Text answers summarise the video;

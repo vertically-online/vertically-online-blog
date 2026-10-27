@@ -319,18 +319,23 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 
 /* commonly asked questions: dropdown cards (3x2 founder questions, 4x2 more) */
 .qgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 34px; align-items: start; }
-.qd { position: relative; background: #fff; border-radius: 20px; transition: box-shadow 0.3s, border-radius 0.2s; }
+.qd { position: relative; background: #fff; border-radius: 20px; transition: box-shadow 0.35s ease, border-radius 0.25s ease; }
 .qd[open] { z-index: 5; border-radius: 20px 20px 0 0; }
 .qd:hover, .qd[open] { box-shadow: 0 12px 28px rgba(10, 21, 81, 0.08); }
 .qd summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; padding: 20px 20px 20px 22px; }
 .qd summary::-webkit-details-marker { display: none; }
 .qd summary h3 { font: 700 16.5px/1.3 var(--body-font); letter-spacing: -0.01em; }
-.qd summary i { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--sheet); display: grid; place-items: center; font-style: normal; transition: transform 0.25s, background 0.2s; }
+.qd summary i { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--sheet); display: grid; place-items: center; font-style: normal; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s; }
 .qd[open] summary i { transform: rotate(45deg); background: var(--tint); }
-.qd-body { position: absolute; left: 0; right: 0; top: calc(100% - 1px); padding: 0 22px 22px; background: #fff; border-radius: 0 0 20px 20px; box-shadow: 0 22px 34px rgba(10, 21, 81, 0.16); clip-path: inset(0 -60px -60px -60px); }
+.qd.closing summary i { transform: none; background: var(--sheet); }
+.qd.closing { border-radius: 20px; transition-delay: 0.3s; }
+.qd-body { position: absolute; left: 0; right: 0; top: calc(100% - 1px); padding: 0 22px 22px; background: #fff; border-radius: 0 0 20px 20px; box-shadow: 0 22px 34px rgba(10, 21, 81, 0.16); clip-path: inset(0 -60px -60px -60px); will-change: clip-path, opacity, transform; }
 .qd-body p { font-size: 15px; line-height: 1.55; color: var(--slate); }
-.qd[open] .qd-body { animation: qd-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1); }
-@keyframes qd-in { from { opacity: 0; clip-path: inset(0 -60px 100% -60px); } to { opacity: 1; clip-path: inset(0 -60px -60px -60px); } }
+/* Open: unrolls downward with a soft ease. Close: rolls back up, a little slower. */
+.qd[open] .qd-body { animation: qd-in 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.qd.closing .qd-body { animation: qd-out 0.48s cubic-bezier(0.55, 0, 0.35, 1) forwards; }
+@keyframes qd-in { from { opacity: 0; transform: translateY(-6px); clip-path: inset(0 -60px 100% -60px); } to { opacity: 1; transform: none; clip-path: inset(0 -60px -60px -60px); } }
+@keyframes qd-out { from { opacity: 1; transform: none; clip-path: inset(0 -60px -60px -60px); } to { opacity: 0; transform: translateY(-6px); clip-path: inset(0 -60px 100% -60px); } }
 .qwatch { margin-top: 14px; display: inline-flex; align-items: center; gap: 6px; font: 700 14px var(--body-font); color: var(--blue-deep); }
 .qwatch svg { width: 14px; height: 14px; transition: transform 0.2s; }
 .qwatch:hover svg { transform: translateX(3px); }
@@ -409,5 +414,5 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
   .on .b, .on .q, .on .qt, .on .tli, .on .tag, .on .gw .ev.hit { animation-duration: 0.01s; animation-delay: 0s !important; }
   .on .typing { display: none; }
   .sr-hide { opacity: 1; transform: none; }
-  .qd[open] .qd-body { animation: none; }
+  .qd[open] .qd-body, .qd.closing .qd-body { animation: none; }
 }

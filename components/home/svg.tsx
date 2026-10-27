@@ -94,11 +94,11 @@ export const StatusBarIcons = () => (
     <rect x="5" y="5.5" width="3" height="6.5" rx="1" />
     <rect x="10" y="3" width="3" height="9" rx="1" />
     <rect x="15" y="0" width="3" height="12" rx="1" />
-    <g fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+    <g fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
       <path d="M24 4.6a9 9 0 0 1 12.6 0" />
-      <path d="M26.7 7.3a5.2 5.2 0 0 1 7.2 0" />
+      <path d="M26.7 7.6a5.2 5.2 0 0 1 7.2 0" />
     </g>
-    <circle cx="30.3" cy="10.3" r="1.4" />
+    <circle cx="30.3" cy="10.4" r="1.7" />
     <rect x="42" y=".6" width="20" height="10.8" rx="3.3" fill="none" stroke="currentColor" strokeOpacity=".45" />
     <rect x="43.7" y="2.3" width="15.4" height="7.4" rx="1.9" />
     <rect x="63.2" y="4" width="1.6" height="4" rx=".8" fillOpacity=".45" />

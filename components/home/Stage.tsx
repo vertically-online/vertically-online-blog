@@ -214,7 +214,7 @@ export default function Stage() {
               <div className="phone" role="img" aria-label="Example of the Vertically lead desk on a phone: a new roofing lead answered in 18 seconds, quoted, and booked for an inspection">
                 <div className="screen" aria-hidden="true">
                   <div className="sb">
-                    <span>9:41</span>
+                    <span>2:00 PM</span>
                     <span className="sbi"><StatusBarIcons /></span>
                   </div>
                   <div className="app">
@@ -325,7 +325,7 @@ export default function Stage() {
                   </div>
                 </div>
                 {/* Phone hardware drawn over the live screen (its screen area is transparent). */}
-                <Image className="phone-frame" src="/images/home/phone-front-silver.png" alt="" width={795} height={1600} sizes="(max-width: 980px) 300px, 420px" priority />
+                <Image className="phone-frame" src="/images/home/phone-front-metal.png" alt="" width={795} height={1600} sizes="(max-width: 980px) 300px, 420px" priority />
               </div>
 
             </div>

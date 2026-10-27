@@ -17,8 +17,7 @@ export default function LiveDemo() {
     <section className="sheet white" id="live-demo">
       <div className="wrap">
         <div data-sr>
-          <span className="eyebrow">{d.eyebrow}</span>
-          <h2 className="big" style={{ marginTop: 14, maxWidth: 760 }}>{d.heading}</h2>
+          <h2 className="big" style={{ maxWidth: 760 }}>{d.heading}</h2>
         </div>
         <div className="fd">
           <div className="fd-mail grain">
