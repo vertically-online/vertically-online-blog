@@ -325,7 +325,7 @@ export default function Stage() {
                   </div>
                 </div>
                 {/* Phone hardware over the live screen (its screen area is transparent). */}
-                <Image className="phone-frame" src="/images/home/phone-front-matte.png" alt="" width={622} height={1223} sizes="(max-width: 980px) 300px, 440px" priority />
+                <Image className="phone-frame" src="/images/home/phone-front-chrome.png" alt="" width={622} height={1223} sizes="(max-width: 980px) 300px, 440px" priority />
               </div>
 
             </div>
