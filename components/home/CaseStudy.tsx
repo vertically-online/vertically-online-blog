@@ -4,7 +4,7 @@ import Image from "next/image";
 import { home } from "@/content/home";
 
 export default function CaseStudy() {
-  const { heading, byline, cards, source } = home.caseStudy;
+  const { heading, byline, cards } = home.caseStudy;
   return (
     <section className="sheet white" id="proof">
       <div className="wrap">
@@ -27,9 +27,6 @@ export default function CaseStudy() {
             </div>
           </div>
         ))}
-      </div>
-      <div className="wrap">
-        <p className="src">{source}</p>
       </div>
     </section>
   );

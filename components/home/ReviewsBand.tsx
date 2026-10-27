@@ -44,7 +44,12 @@ function Row({ items, reverse, decorative }: { items: Review[]; reverse?: boolea
 
 export default function ReviewsBand() {
   const { heading, items, badges } = home.reviews;
-  const rowTwo = [...items.slice(6), ...items.slice(0, 6)];
+  // Top and bottom rows each get their own half of the reviews, so no review
+  // ever shows in both. Each row loops: a card leaving the screen rejoins the
+  // end of its own line.
+  const half = Math.ceil(items.length / 2);
+  const rowOne = items.slice(0, half);
+  const rowTwo = items.slice(half);
   return (
     <section className="band grain" id="reviews">
       <div className="wrap">
@@ -59,8 +64,8 @@ export default function ReviewsBand() {
         </div>
       </div>
       <div className="mq" aria-label="Customer reviews from Google">
-        <Row items={items} />
-        <Row items={rowTwo} reverse decorative />
+        <Row items={rowOne} />
+        <Row items={rowTwo} reverse />
       </div>
     </section>
   );

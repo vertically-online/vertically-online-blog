@@ -5,7 +5,7 @@ import Image from "next/image";
 import { home } from "@/content/home";
 import { CheckCircle, GmailMark, Stars } from "@/components/home/svg";
 
-const AUTO_ADVANCE_MS = 6000;
+const AUTO_ADVANCE_MS = 7500;
 
 function Panel({ index }: { index: number }) {
   const { sampleEstimate, sampleTotal } = home;
@@ -88,7 +88,7 @@ export default function WhatYouGet() {
   const [paused, setPaused] = useState(false);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  // Auto-advance every 6s (the underline animates over the same time) until
+  // Auto-advance every 7.5s (the underline animates over the same time) until
   // the visitor picks a tab; off for reduced motion.
   useEffect(() => {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -145,7 +145,6 @@ export default function WhatYouGet() {
               hidden={active !== i}
             >
               <div>
-                <span className="eyebrow">{t.eyebrow}</span>
                 <h3>{t.title}</h3>
                 <p className="d">{t.body}</p>
               </div>

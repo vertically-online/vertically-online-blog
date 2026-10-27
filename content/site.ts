@@ -244,7 +244,7 @@ export const site = {
     headline: "Every lead you don't answer today is a job for someone else.",
     subheadline: "Let us answer them for you, free for 30 days.",
     primaryCta: "Start My Free 30 Days",
-    reassurance: "No contract. No credit card. Only a few spots each month.",
+    reassurance: "No contract. No credit card. We only work with one roofer per area.",
   },
 
   fallbackReviews: [] as Review[],

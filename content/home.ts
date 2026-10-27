@@ -102,16 +102,15 @@ export const home = {
       { stat: "<30 sec", label: "Response time, down from 24 to 48 hours", image: "/images/home/crew-brick.jpg", alt: "Roofing crew replacing the roof on a brick home", position: "52% 50%" },
       { stat: "~30 hrs/wk", label: "Saved on quoting and chasing leads", image: "/images/home/crew-porch.jpg", alt: "Roofing crew on a ladder at a white house with a porch", position: "54% 50%" },
     ],
-    source: "Arias Roofing & Siding, Sewell, NJ. Close rate did not change. They answered every lead.",
   },
 
   whatYouGet: {
     heading: "With Vertically, you get faster replies, sent quotes and booked inspections.",
     tabs: [
-      { tab: "Instant Reply", eyebrow: "Answer first", title: "Your reply goes out in seconds, not hours.", body: "Every form, call and quote request gets a text and an email under your company name, day or night, weekends included." },
-      { tab: "Automatic Quotes", eyebrow: "Quote it", title: "A PDF estimate from your own price list.", body: "You set the prices and the limits. Jobs inside them get a quote right away. Anything bigger comes to you for review first." },
-      { tab: "Booked Inspections", eyebrow: "Book it", title: "The inspection lands on your calendar.", body: "A voice agent calls the homeowner, answers their questions and schedules the inspection straight onto your Google Calendar." },
-      { tab: "Follow-Up and Reviews", eyebrow: "Keep it moving", title: "Nothing slips through after the first reply.", body: "Leads who go quiet get a friendly follow-up. When the job is done, the homeowner gets a review request." },
+      { tab: "Instant Reply", title: "Your reply goes out in seconds, not hours.", body: "Every form, call and quote request gets a text and an email under your company name, day or night, weekends included." },
+      { tab: "Automatic Quotes", title: "A PDF estimate from your own price list.", body: "You set the prices and the limits. Jobs inside them get a quote right away. Anything bigger comes to you for review first." },
+      { tab: "Booked Inspections", title: "The inspection lands on your calendar.", body: "A voice agent calls the homeowner, answers their questions and schedules the inspection straight onto your Google Calendar." },
+      { tab: "Follow-Up and Reviews", title: "Nothing slips through after the first reply.", body: "Leads who go quiet get a friendly follow-up. When the job is done, the homeowner gets a review request." },
     ],
   },
 
@@ -204,7 +203,7 @@ export const home = {
   closing: {
     heading: "Every lead you don't answer today is a job for someone else.",
     body: "Let Vertically answer them for you. Free for 30 days.",
-    fine: "No contract. No credit card. Only a few spots each month.",
+    fine: "No contract. No credit card. We only work with one roofer per area.",
   },
 
   footerNote: "Example leads, names and prices on this page are samples.",

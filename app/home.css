@@ -125,14 +125,13 @@ a.rating:hover { color: var(--blue-deep); }
 .pc .cp b { display: block; font: 640 clamp(32px, 3.2vw, 40px)/1 var(--display); letter-spacing: -0.03em; }
 .pc .cp span { display: block; margin-top: 6px; font: 600 16px/1.25 var(--body-font); color: rgba(255, 255, 255, 0.86); }
 .pc .cp small { display: block; margin-top: 10px; font: 500 11.5px var(--body-font); color: rgba(255, 255, 255, 0.62); }
-.src { margin-top: 6px; font-size: 13px; color: var(--mute); }
 
 /* tabs (what you get) */
 .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 30px 0 18px; border-bottom: 1px solid var(--line); }
 .tab { position: relative; background: none; border: 0; padding: 14px 18px 16px; font: 700 15px var(--body-font); color: #8b93a6; }
 .tab[aria-selected="true"] { color: var(--ink); }
 .tab::after { content: ""; position: absolute; left: 18px; right: 18px; bottom: -1px; height: 3px; border-radius: 3px; background: var(--blue); transform: scaleX(0); transform-origin: left; }
-.tab[aria-selected="true"]::after { transform: scaleX(1); transition: transform 6s linear; }
+.tab[aria-selected="true"]::after { transform: scaleX(1); transition: transform 7.5s linear; }
 .tab.paused::after { transition: none !important; }
 .tabcard { background: var(--stage-grad); background-size: 100% max(100%, 820px); border-radius: 32px; min-height: 480px; overflow: hidden; color: #fff; }
 .tabcard > .panel { position: relative; z-index: 1; }
@@ -142,7 +141,7 @@ a.rating:hover { color: var(--blue-deep); }
 .tabcard .ui { color: var(--ink); }
 .panel { display: none; grid-template-columns: 1fr 1.1fr; align-items: center; gap: 30px; padding: clamp(26px, 5vw, 64px); }
 .panel.on { display: grid; }
-.panel h3 { font-size: clamp(26px, 3vw, 38px); line-height: 1.04; margin-top: 14px; }
+.panel h3 { font-size: clamp(26px, 3vw, 38px); line-height: 1.04; }
 .panel p.d { margin-top: 16px; font-size: 17px; color: var(--slate); max-width: 420px; }
 .ui { background: #fff; border-radius: 24px; padding: 22px; box-shadow: 0 24px 60px rgba(10, 21, 81, 0.12); max-width: 460px; width: 100%; margin-inline: auto; }
 .ui .hd { display: flex; align-items: center; gap: 10px; font: 700 14px var(--body-font); padding-bottom: 14px; border-bottom: 1px solid #eef1f6; margin-bottom: 16px; }
@@ -156,18 +155,19 @@ a.rating:hover { color: var(--blue-deep); }
 .b.in { background: #eceff5; border-bottom-left-radius: 5px; }
 .b.out { background: var(--blue); color: #fff; margin-left: auto; border-bottom-right-radius: 5px; }
 .on .b { animation: pop 0.5s forwards; }
-.on .b:nth-of-type(1) { animation-delay: 0.2s; }
-.on .b:nth-of-type(3) { animation-delay: 2s; }
-.typing { display: flex; gap: 5px; width: 62px; padding: 14px 16px; border-radius: 18px; background: var(--blue); margin: 0 0 10px auto; opacity: 0; }
-.on .typing { animation: typ 1.2s 0.9s forwards; }
-.typing i { width: 7px; height: 7px; border-radius: 50%; background: #fff; animation: blink 1s infinite; }
-.typing i:nth-child(2) { animation-delay: 0.15s; }
-.typing i:nth-child(3) { animation-delay: 0.3s; }
+.on .b.in { animation-delay: 0.2s; }
+.on .b.out { animation-delay: 4.1s; }
+/* Typing indicator: pops in, dots bounce in a wave for about 3s, then gives way to the reply. */
+.typing { display: flex; align-items: center; gap: 5px; width: 64px; height: 40px; padding: 0 16px; border-radius: 18px 18px 5px 18px; background: var(--blue); margin: 0 0 10px auto; opacity: 0; transform-origin: right bottom; overflow: hidden; }
+.on .typing { animation: typ 3.1s 1s cubic-bezier(0.3, 0.7, 0.4, 1) forwards; }
+.typing i { width: 7px; height: 7px; border-radius: 50%; background: #fff; opacity: 0.55; animation: dot 1.3s ease-in-out infinite; }
+.typing i:nth-child(2) { animation-delay: 0.18s; }
+.typing i:nth-child(3) { animation-delay: 0.36s; }
 .tag { display: inline-flex; margin-top: 4px; padding: 6px 11px; border-radius: 99px; background: #dff5e8; color: #0d7a3d; font: 700 12px var(--body-font); opacity: 0; }
-.on .tag { animation: pop 0.5s 2.5s forwards; }
+.on .tag { animation: pop 0.5s 4.7s forwards; }
 @keyframes pop { to { opacity: 1; transform: none; } }
-@keyframes typ { 0% { opacity: 0; } 10%, 80% { opacity: 1; } 100% { opacity: 0; height: 0; padding: 0; margin: 0; } }
-@keyframes blink { 50% { opacity: 0.3; } }
+@keyframes typ { 0% { opacity: 0; transform: scale(0.6); } 9% { opacity: 1; transform: scale(1.04); } 14%, 93% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.85); height: 0; margin-bottom: 0; } }
+@keyframes dot { 0%, 60%, 100% { transform: translateY(0); opacity: 0.55; } 30% { transform: translateY(-4px); opacity: 1; } }
 .q { display: flex; justify-content: space-between; padding: 11px 0; border-bottom: 1px dashed #dde3ec; font: 500 15px var(--body-font); opacity: 0; }
 .q b { font-weight: 700; }
 .on .q { animation: pop 0.45s forwards; }
