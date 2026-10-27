@@ -29,13 +29,13 @@ function QuestionCard({ question, answer, watchHref, duration }: { question: str
 }
 
 /**
- * Commonly Asked Questions (#faq): the six founder questions (3x2) and the
- * eight text questions (4x2) as dropdown cards. Answers stay in the HTML
+ * Commonly Asked Questions (#faq): all fourteen questions in one 2x7 grid of
+ * dropdown cards, the six founder questions first. Answers stay in the HTML
  * while collapsed, so the FAQPage JSON-LD matches page text. The founder
  * questions link to their videos on /about.
  */
 export default function CommonQuestions() {
-  const { eyebrow, heading, sub, videos, moreHeading, more, cta } = home.faq;
+  const { eyebrow, heading, sub, videos, more, cta } = home.faq;
 
   return (
     <section className="sheet faq-blue grain" id="faq">
@@ -50,10 +50,6 @@ export default function CommonQuestions() {
           {videos.map((v) => (
             <QuestionCard key={v.id} question={v.question} answer={v.answer} watchHref={`/about#q-${v.id}`} duration={v.duration} />
           ))}
-        </div>
-
-        <h3 className="mh" data-sr>{moreHeading}</h3>
-        <div className="qgrid four">
           {more.map((q) => (
             <QuestionCard key={q.question} question={q.question} answer={q.answer} />
           ))}

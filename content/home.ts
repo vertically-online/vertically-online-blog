@@ -11,7 +11,7 @@ const VIDEOS = [
   },
   {
     "id": "too-expensive",
-    "question": "Isn't this too expensive?",
+    "question": "How expensive is it?",
     "answer": "If the system wins you even one extra roofing job, it pays for itself. And the first 30 days are free, so you see it working before you spend a dollar.",
     "video": "/objections/too-expensive.mp4",
     "poster": "/objections/too-expensive-poster.jpg",
@@ -78,11 +78,11 @@ export const home = {
 
   // Pinned phone story: one entry per scroll step.
   steps: [
-    { title: "A lead comes in.", body: "A homeowner fills out your form at 2 PM while you are up on a roof.", stat: "2:00 PM", statNote: "Homeowner submits a form while you work", ring: 0 },
-    { title: "Answered in 18 seconds.", body: "A text and an email go out under your company name, day or night.", stat: "Still 2 PM", statNote: "and the first text and email reply has already gone out", ring: 25 },
-    { title: "A quote, built for you.", body: "Jobs inside your price limits get a PDF estimate from your own price list. Bigger jobs come to you first.", stat: "$11,850", statNote: "sample estimate, built from your price list", ring: 60 },
-    { title: "The inspection is booked.", body: "A voice agent calls the homeowner and puts the visit on your Google Calendar.", stat: "Thu 10 AM", statNote: "inspection on your Google Calendar", ring: 85 },
-    { title: "You just show up.", body: "Quiet leads get follow-up and finished jobs get a review request, all on their own.", stat: "<30s", statNote: "to answer every lead. Nights and weekends included.", ring: 100 },
+    { title: "A lead comes in.", body: "A homeowner fills out your form at 2 PM while you are up on a roof.", stat: "2:00 PM", statNote: "Homeowner submits a form while you work" },
+    { title: "Answered in 18 seconds.", body: "A text and an email go out under your company name, day or night.", stat: "Still 2 PM", statNote: "and the first text and email reply has already gone out" },
+    { title: "A quote, built for you.", body: "Jobs inside your price limits get a PDF estimate from your own price list. Bigger jobs come to you first.", stat: "$11,850", statNote: "sample estimate, built from your price list" },
+    { title: "The inspection is booked.", body: "A voice agent calls the homeowner and puts the visit on your Google Calendar.", stat: "Thu 10 AM", statNote: "inspection on your Google Calendar" },
+    { title: "You just show up.", body: "Quiet leads get follow-up and finished jobs get a review request, all on their own.", stat: "<30s", statNote: "to answer every lead. Nights and weekends included." },
   ],
   sampleEstimate: [
     ["Tear-off and disposal", "$2,450"],
@@ -182,7 +182,6 @@ export const home = {
     // From the founder's objection videos. Text answers summarise the video;
     // transcripts are the captions (pending approval, content/approvals.ts).
     videos: VIDEOS,
-    moreHeading: "More questions",
     more: [
       { question: "Is this just another answering service?", answer: "No. An answering service takes a message. Vertically replies to every lead in under 30 seconds, sends a quote from your own price list, calls the homeowner to book the inspection on your Google Calendar, and follows up if they go quiet." },
       { question: "What if a quote is wrong?", answer: "Quotes are built from your own price list and only go out for jobs inside the limits you set. Anything bigger or unusual comes to you for review first, and nothing launches without your approval." },

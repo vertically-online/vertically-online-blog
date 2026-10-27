@@ -45,7 +45,6 @@ function RotatingWord() {
 // before it loops. Everything is driven by one clock so it flows.
 export const RUN_MS = 17500; // about 3.5s per step
 const HOLD_MS = 2200;
-const RING_LEN = 100.5;
 
 const clamp = (v: number) => Math.min(1, Math.max(0, v));
 const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
@@ -87,11 +86,6 @@ function paintFrame(root: HTMLElement | null, elapsed: number, count: number, wr
   const current = Math.floor(pos);
   if (!root) return current;
 
-  const label = root.querySelector<HTMLElement>("[data-pct]");
-  if (label) label.textContent = `${Math.round(t * 100)}%`;
-  const ring = root.querySelector<SVGCircleElement>("[data-ring]");
-  if (ring) ring.style.strokeDashoffset = String(RING_LEN * (1 - t));
-
   root.querySelectorAll<HTMLElement>("[data-rise]").forEach((el) => {
     const i = Number(el.dataset.rise);
     const travel = Number(el.dataset.travel ?? 1);
@@ -107,8 +101,8 @@ function paintFrame(root: HTMLElement | null, elapsed: number, count: number, wr
 
 /**
  * Plays the phone story like a video: a requestAnimationFrame clock that
- * runs on its own while the stage is on screen. Per-frame values (counter,
- * ring, caption motion, feed scroll) are written straight to the DOM; React
+ * runs on its own while the stage is on screen. Per-frame values (caption
+ * motion, feed scroll) are written straight to the DOM; React
  * state changes only when the step changes. Reduced motion shows the
  * finished state without animating.
  */
@@ -229,13 +223,6 @@ export default function Stage() {
                         <small>EXAMPLE LEAD</small>
                         <p className="app-title">Your lead desk</p>
                       </div>
-                      <div className="pring">
-                        <svg viewBox="0 0 40 40">
-                          <circle className="bg" cx="20" cy="20" r="16" />
-                          <circle className="fg" cx="20" cy="20" r="16" data-ring />
-                        </svg>
-                        <b data-pct>0%</b>
-                      </div>
                     </div>
                     <div className="feed">
                       <div className="feed-track" data-feed>
@@ -338,7 +325,7 @@ export default function Stage() {
                   </div>
                 </div>
                 {/* Phone hardware drawn over the live screen (its screen area is transparent). */}
-                <Image className="phone-frame" src="/images/home/phone-front.png" alt="" width={795} height={1600} sizes="(max-width: 980px) 300px, 420px" priority />
+                <Image className="phone-frame" src="/images/home/phone-front-silver.png" alt="" width={795} height={1600} sizes="(max-width: 980px) 300px, 420px" priority />
               </div>
 
             </div>

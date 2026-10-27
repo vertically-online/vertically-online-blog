@@ -1,7 +1,6 @@
 /* Homepage sections, ported from design/vertically-home.template.html.
    Shared pieces (tokens, buttons, nav, sheets, close, footer) are in
-   app/design.css. ".ring" is renamed ".pring" (Tailwind has a ring utility). */
-
+   app/design.css. */
 /* hero */
 .hero { text-align: center; padding: 60px 0 76px; }
 .rating { display: inline-flex; align-items: center; gap: 8px; font: 600 13px var(--body-font); color: var(--slate); }
@@ -45,7 +44,8 @@ a.rating:hover { color: var(--blue-deep); }
 .stat b { font: 640 clamp(40px, 5vw, 76px)/0.95 var(--display); letter-spacing: -0.04em; }
 .stat span { margin-top: 10px; max-width: 220px; font-size: 15px; color: rgba(255, 255, 255, 0.85); }
 /* The phone's drop shadow, drawn inside the card so none of it shows above */
-.phone-shadow { align-self: stretch; justify-self: center; width: var(--pw); border-radius: 60px 60px 0 0; box-shadow: 0 40px 90px rgba(0, 20, 60, 0.45), 0 14px 28px rgba(0, 20, 60, 0.25); }
+/* Narrower than the image so its edges sit under the frame, not the transparent button margins. */
+.phone-shadow { align-self: stretch; justify-self: center; width: calc(var(--pw) * 0.96); border-radius: 60px 60px 0 0; box-shadow: 0 40px 90px rgba(0, 20, 60, 0.45), 0 14px 28px rgba(0, 20, 60, 0.25); }
 .stage-note { position: absolute; left: clamp(22px, 4.5vw, 64px); bottom: 22px; z-index: 3; font: 600 11.5px var(--body-font); color: rgba(255, 255, 255, 0.72); }
 
 /* phone (pure CSS; UI sized in container-query units) */
@@ -62,12 +62,6 @@ a.rating:hover { color: var(--blue-deep); }
 .app-h { display: flex; align-items: center; justify-content: space-between; gap: 3cqw; }
 .app-h small { display: block; font: 600 3.2cqw var(--body-font); color: #7a8196; letter-spacing: 0.02em; }
 .app-h .app-title { margin: 0; font: 640 6.6cqw/1.05 var(--display); letter-spacing: -0.02em; }
-.pring { position: relative; width: 15cqw; height: 15cqw; flex: none; }
-.pring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-.pring circle { fill: none; stroke-width: 4.4; }
-.pring .bg { stroke: #e3e8f0; }
-.pring .fg { stroke: var(--blue); stroke-linecap: round; stroke-dasharray: 100.5; stroke-dashoffset: 100.5; }
-.pring b { position: absolute; inset: 0; display: grid; place-items: center; font: 640 3.3cqw var(--display); letter-spacing: -0.02em; }
 .feed { position: relative; margin-top: 5cqw; height: calc(100% - 22cqw); overflow: hidden; }
 .feed-track { padding-bottom: 160cqw; will-change: transform; }
 .fsec { padding-bottom: 7cqw; }
@@ -315,7 +309,7 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 .sheet.faq-blue { background: var(--stage-grad); color: #fff; overflow: hidden; }
 .faq-blue > .wrap { position: relative; z-index: 1; }
 .faq-blue .eyebrow { color: var(--glow); }
-.faq-blue h2, .faq-blue .mh { color: #fff; }
+.faq-blue h2 { color: #fff; }
 .faq-blue .faq-sub { color: rgba(255, 255, 255, 0.88); }
 .faq-blue .qd, .faq-blue .qcta { color: var(--ink); }
 .faq-blue .qd:hover, .faq-blue .qd[open] { box-shadow: 0 14px 32px rgba(0, 20, 60, 0.25); }
@@ -324,15 +318,13 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 .founder-name { margin-top: 12px; font-size: clamp(28px, 3vw, 40px); line-height: 1.05; }
 
 /* commonly asked questions: dropdown cards (3x2 founder questions, 4x2 more) */
-.qgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 34px; align-items: start; }
-.qgrid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 20px; }
+.qgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 34px; align-items: start; }
 .qd { position: relative; background: #fff; border-radius: 20px; transition: box-shadow 0.3s, border-radius 0.2s; }
 .qd[open] { z-index: 5; border-radius: 20px 20px 0 0; }
 .qd:hover, .qd[open] { box-shadow: 0 12px 28px rgba(10, 21, 81, 0.08); }
 .qd summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; padding: 20px 20px 20px 22px; }
 .qd summary::-webkit-details-marker { display: none; }
 .qd summary h3 { font: 700 16.5px/1.3 var(--body-font); letter-spacing: -0.01em; }
-.qgrid.four .qd summary h3 { font-size: 15.5px; }
 .qd summary i { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--sheet); display: grid; place-items: center; font-style: normal; transition: transform 0.25s, background 0.2s; }
 .qd[open] summary i { transform: rotate(45deg); background: var(--tint); }
 .qd-body { position: absolute; left: 0; right: 0; top: calc(100% - 1px); padding: 0 22px 22px; background: #fff; border-radius: 0 0 20px 20px; box-shadow: 0 22px 34px rgba(10, 21, 81, 0.16); clip-path: inset(0 -60px -60px -60px); }
@@ -342,7 +334,6 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
 .qwatch { margin-top: 14px; display: inline-flex; align-items: center; gap: 6px; font: 700 14px var(--body-font); color: var(--blue-deep); }
 .qwatch svg { width: 14px; height: 14px; transition: transform 0.2s; }
 .qwatch:hover svg { transform: translateX(3px); }
-#faq .mh { margin-top: 56px; font-size: clamp(26px, 3vw, 36px); line-height: 1.05; }
 
 .qcta { margin-top: 44px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 26px; border-radius: 24px; background: #fff; }
 .qcta p { font: 600 17px var(--body-font); }
@@ -391,7 +382,6 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
   .tabs::-webkit-scrollbar { display: none; }
   .tab { white-space: nowrap; }
   .band { border-radius: 30px 30px 0 0; margin-top: -30px; }
-  .qgrid, .qgrid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .oq { display: flex; flex-direction: column; }
   .oq-panel { grid-template-columns: 1fr; padding: 14px 14px 22px; gap: 18px; }
   .oq-video { max-width: 340px; margin-inline: auto; }
@@ -402,7 +392,7 @@ a.rv:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 30, 80
   .fd-mail { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .qgrid, .qgrid.four { grid-template-columns: 1fr; }
+  .qgrid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .hero { padding-top: 40px; }
