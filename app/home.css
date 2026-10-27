@@ -54,7 +54,7 @@ a.rating:hover { color: var(--blue-deep); }
 .phone-frame { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 8; pointer-events: none; overflow: visible; }
 /* The screen sits in the phone image's transparent screen area. */
 .screen { position: absolute; left: 4.6%; right: 4.6%; top: 1.8%; bottom: 1.75%; border-radius: calc(var(--w) * 0.118); background: #f7f8fa; overflow: hidden; container-type: inline-size; color: #101426; }
-.screen::after { content: ""; position: absolute; inset: 0; z-index: 7; pointer-events: none; border-radius: inherit; background: linear-gradient(118deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 22%, transparent 38%), linear-gradient(0deg, rgba(255, 255, 255, 0.05), transparent 14%); }
+.screen::after { content: ""; position: absolute; inset: 0; z-index: 7; pointer-events: none; border-radius: inherit; background: linear-gradient(118deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.015) 22%, transparent 38%); }
 .sb { position: absolute; top: 4.8cqw; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 9cqw; font: 700 4.2cqw var(--body-font); z-index: 4; }
 .sbi { display: flex; align-items: center; }
 .sbi svg { height: 3.5cqw; width: auto; fill: currentColor; }
