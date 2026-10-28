@@ -76,7 +76,7 @@ function checkGenerated(rel, data, content) {
   const banned = [
     [/\b(we|our team|I) (tested|visited|interviewed|surveyed|found that)\b/i, "first-person experience claim"],
     [/\bin (our|my) experience\b/i, "first-person experience claim"],
-    [/vertically[^.]{0,80}\b(answers?|picks? up|handles?) (your |the |inbound |incoming )?(phone|calls|business line)/i, "says Vertically answers calls"],
+    [/vertically(?:(?!\bnot\b|\bnever\b|n't\b|\bno\b)[^.\n]){0,100}\b(answers?|picks? up|handles?) (your |the |inbound |incoming )?(phone|calls|business line)/i, "says Vertically answers calls"],
     [/missed[- ]call text/i, "missed-call text claim"],
     [/\b(5x|4\.2x|2,000\+)/i, "banned stat"],
     [/(answers?|replies to|responds to) every lead in (under )?30 seconds/i, "generic 30-second claim"],
