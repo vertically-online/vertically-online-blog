@@ -51,6 +51,8 @@ for (const dir of ["blog", "landing"]) {
     if (slugs.has(data.slug)) errors.push(`${rel}: duplicate slug "${data.slug}" (also ${slugs.get(data.slug)})`);
     slugs.set(data.slug, rel);
 
+    if (data.generated) checkGenerated(rel, data, content);
+
     for (const match of content.matchAll(/!\[([^\]]*)\]\(/g)) {
       if (!match[1].trim()) errors.push(`${rel}: markdown image without alt text`);
     }
@@ -58,6 +60,29 @@ for (const dir of ["blog", "landing"]) {
       if (!/\balt\s*=\s*["{][^"}]/.test(match[0])) errors.push(`${rel}: <${match[1]}> without alt text`);
     }
   }
+}
+
+// Posts from the n8n blog pipeline get stricter checks than hand-written ones,
+// because nobody reviews them before they go live.
+function checkGenerated(rel, data, content) {
+  const AUTHORS = ["Toby Karamoutchev", "Bogdan Stere"];
+  if (!AUTHORS.includes(data.author)) errors.push(`${rel}: generated post author must be one of ${AUTHORS.join(", ")}`);
+  if (typeof data.title === "string" && data.title.length > 60) errors.push(`${rel}: title is ${data.title.length} characters (max 60)`);
+  if (typeof data.description === "string" && data.description.length < 140) errors.push(`${rel}: description under 140 characters`);
+  if (!data.image || !data.imageAlt) errors.push(`${rel}: generated post needs image and imageAlt`);
+  else if (!fs.existsSync(path.join(process.cwd(), "public", data.image))) errors.push(`${rel}: image ${data.image} not found in public/`);
+  if (!Array.isArray(data.faq) || data.faq.length < 4 || data.faq.length > 6) errors.push(`${rel}: generated post needs 4-6 FAQ items`);
+  const text = `${data.title}\n${data.description}\n${content}\n${(data.faq ?? []).map((q) => `${q.question} ${q.answer}`).join("\n")}`;
+  const banned = [
+    [/\b(we|our team|I) (tested|visited|interviewed|surveyed|found that)\b/i, "first-person experience claim"],
+    [/\bin (our|my) experience\b/i, "first-person experience claim"],
+    [/vertically[^.]{0,80}\b(answers?|picks? up|handles?) (your |the |inbound |incoming )?(phone|calls|business line)/i, "says Vertically answers calls"],
+    [/missed[- ]call text/i, "missed-call text claim"],
+    [/\b(5x|4\.2x|2,000\+)/i, "banned stat"],
+    [/(answers?|replies to|responds to) every lead in (under )?30 seconds/i, "generic 30-second claim"],
+    [/\$\d[\d,]*\s*(\/|per )\s*(mo|month)[^.]{0,60}vertically|vertically[^.]{0,60}\$\d/i, "Vertically pricing"],
+  ];
+  for (const [re, why] of banned) if (re.test(text)) errors.push(`${rel}: ${why}: "${text.match(re)[0]}"`);
 }
 
 // Copy files outside the MDX folders must not ship placeholders either.

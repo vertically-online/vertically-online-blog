@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
@@ -32,6 +33,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return {};
   const path = `/blog/${post.slug}`;
   const title = post.seoTitle ?? post.title;
+  const ogImage = post.image
+    ? { url: post.image, width: post.imageWidth, height: post.imageHeight, alt: post.imageAlt ?? post.title }
+    : { url: "/images/og.jpg", width: 1200, height: 630, alt: post.title };
   return {
     title: post.seoTitle ? { absolute: post.seoTitle } : post.title,
     description: post.description,
@@ -45,13 +49,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       publishedTime: post.date,
       modifiedTime: post.updated,
       authors: [post.author],
-      images: [{ url: "/images/og.jpg", width: 1200, height: 630, alt: post.title }],
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: post.description,
-      images: [{ url: "/images/og.jpg", alt: post.title }],
+      images: [{ url: ogImage.url, alt: ogImage.alt }],
     },
   };
 }
@@ -77,10 +81,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     description: post.description,
     datePublished: post.date,
     dateModified: post.updated,
-    author: authorJsonLd(),
+    // Generated posts carry a name-only author.
+    author: post.generated ? { "@type": "Person", name: post.author } : authorJsonLd(),
     publisher: orgRef,
     mainEntityOfPage: absoluteUrl(path),
-    image: absoluteUrl("/images/og.jpg"),
+    image: absoluteUrl(post.image ?? "/images/og.jpg"),
     wordCount: post.wordCount,
     keywords: post.primaryKeyword,
   };
@@ -100,7 +105,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               <h1>{post.title}</h1>
               <p className="lede">{post.description}</p>
               <div className="mt-8">
-                <Byline date={post.date} updated={post.updated} readingMinutes={post.readingMinutes} />
+                <Byline
+                  date={post.date}
+                  updated={post.updated}
+                  readingMinutes={post.readingMinutes}
+                  nameOnly={post.generated ? post.author : undefined}
+                />
               </div>
             </div>
           </header>
@@ -114,11 +124,35 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               }
             >
               <div className="mx-auto w-full max-w-3xl">
+                {post.image && (
+                  <figure className="post-hero">
+                    <Image
+                      src={post.image}
+                      alt={post.imageAlt ?? ""}
+                      width={post.imageWidth ?? 1600}
+                      height={post.imageHeight ?? 1067}
+                      sizes="(max-width: 820px) 100vw, 768px"
+                      priority
+                    />
+                    {post.imageCredit && (
+                      <figcaption>
+                        Photo:{" "}
+                        {post.imageCreditUrl ? (
+                          <a href={post.imageCreditUrl} rel="noopener nofollow" target="_blank">
+                            {post.imageCredit}
+                          </a>
+                        ) : (
+                          post.imageCredit
+                        )}
+                      </figcaption>
+                    )}
+                  </figure>
+                )}
                 {showToc && <TableOfContents headings={post.headings} variant="inline" />}
                 <MdxBody id={`blog/${post.slug}`} />
                 <FaqBlock faq={post.faq} />
                 <CTA />
-                <AuthorBox />
+                {!post.generated && <AuthorBox />}
                 <RelatedPosts slugs={related} />
               </div>
               {showToc && (

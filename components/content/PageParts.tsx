@@ -28,8 +28,36 @@ export function Breadcrumbs({ crumbs }: { crumbs: { name: string; path: string }
   );
 }
 
-export function Byline({ date, updated, readingMinutes }: { date: string; updated: string; readingMinutes?: number }) {
+export function Byline({
+  date,
+  updated,
+  readingMinutes,
+  nameOnly,
+}: {
+  date: string;
+  updated: string;
+  readingMinutes?: number;
+  /** Generated posts: the author's name and dates only, no photo or title. */
+  nameOnly?: string;
+}) {
   const { author } = site;
+  if (nameOnly) {
+    return (
+      <div className="text-sm leading-snug">
+        <p className="font-semibold text-void">By {nameOnly}</p>
+        <p className="text-slate">
+          <time dateTime={date}>Published {formatDate(date)}</time>
+          {updated !== date && (
+            <>
+              {" · "}
+              <time dateTime={updated}>Updated {formatDate(updated)}</time>
+            </>
+          )}
+          {readingMinutes ? ` · ${readingMinutes} min read` : null}
+        </p>
+      </div>
+    );
+  }
   return (
     <div className="flex items-center gap-3.5">
       <Image

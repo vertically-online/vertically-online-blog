@@ -81,7 +81,7 @@ export const home = {
     { title: "A lead comes in.", body: "A homeowner fills out your form at 2 PM while you are up on a roof.", stat: "2:00 PM", statNote: "Homeowner submits a form while you work" },
     { title: "Answered in 18 seconds.", body: "A text and an email go out under your company name, day or night.", stat: "Still 2 PM", statNote: "and the first text and email reply has already gone out" },
     { title: "A quote, built for you.", body: "Jobs inside your price limits get a PDF estimate from your own price list. Bigger jobs come to you first.", stat: "$11,850", statNote: "sample estimate, built from your price list" },
-    { title: "The inspection is booked.", body: "A voice agent calls the homeowner and puts the visit on your Google Calendar.", stat: "Thu 10 AM", statNote: "inspection on your Google Calendar" },
+    { title: "The inspection is booked.", body: "About 5 minutes later, an AI agent calls the homeowner and puts the visit on your Google Calendar.", stat: "Thu 10 AM", statNote: "inspection on your Google Calendar" },
     { title: "You just show up.", body: "Quiet leads get follow-up and finished jobs get a review request, all on their own.", stat: "<30s", statNote: "to answer every lead. Nights and weekends included." },
   ],
   sampleEstimate: [
@@ -107,9 +107,9 @@ export const home = {
   whatYouGet: {
     heading: "With Vertically, you get faster replies, sent quotes and booked inspections.",
     tabs: [
-      { tab: "Instant Reply", title: "Your reply goes out in seconds, not hours.", body: "Every form, call and quote request gets a text and an email under your company name, day or night, weekends included." },
+      { tab: "Instant Reply", title: "Your reply goes out in seconds, not hours.", body: "Every quote request on your website gets an instant estimate by email and a text under your company name, day or night, weekends included." },
       { tab: "Automatic Quotes", title: "A PDF estimate from your own price list.", body: "You set the prices and the limits. Jobs inside them get a quote right away. Anything bigger comes to you for review first." },
-      { tab: "Booked Inspections", title: "The inspection lands on your calendar.", body: "A voice agent calls the homeowner, answers their questions and schedules the inspection straight onto your Google Calendar." },
+      { tab: "Booked Inspections", title: "The inspection lands on your calendar.", body: "About 5 minutes after the request, an AI agent calls the homeowner, answers their questions and books the inspection straight onto your Google Calendar." },
       { tab: "Follow-Up and Reviews", title: "Nothing slips through after the first reply.", body: "Leads who go quiet get a friendly follow-up. When the job is done, the homeowner gets a review request." },
     ],
   },
@@ -178,7 +178,7 @@ export const home = {
     // transcripts are the captions (pending approval, content/approvals.ts).
     videos: VIDEOS,
     more: [
-      { question: "Is this just another answering service?", answer: "No. An answering service takes a message. Vertically replies to every lead in under 30 seconds, sends a quote from your own price list, calls the homeowner to book the inspection on your Google Calendar, and follows up if they go quiet." },
+      { question: "Is this just another answering service?", answer: "No. Vertically doesn't answer your phone, and it doesn't just take a message. Every web lead gets an instant quote from your own price list by email and a text, then an AI agent calls the homeowner about 5 minutes later to book the inspection on your Google Calendar, and follows up if they go quiet." },
       { question: "What if a quote is wrong?", answer: "Quotes are built from your own price list and only go out for jobs inside the limits you set. Anything bigger or unusual comes to you for review first, and nothing launches without your approval." },
       { question: "Do I lose control of my prices?", answer: "No. You set the prices and the limits for automatic quotes, and you can see every quote that goes out in your inbox." },
       { question: "What does it cost after the free 30 days?", answer: "We review your results together. If the system is winning you jobs, we offer a simple monthly plan. If not, we switch it off and you owe nothing." },
@@ -193,7 +193,7 @@ export const home = {
   guides: {
     heading: "Read our free guides for roofing companies",
     cards: [
-      { href: "/roofing-answering-service", title: "How a roofing answering service works", image: "/images/home/shingles-nailer.jpg", big: true },
+      { href: "/roofing-answering-service", title: "Roofing answering service vs instant lead response", image: "/images/home/shingles-nailer.jpg", big: true },
       { href: "/roofing-quote-software", title: "Roofing quote software, explained", image: "/images/home/inspection.jpg" },
       { href: "/blog/how-to-get-more-roofing-leads", title: "How to get more roofing leads", image: "/images/home/repair.jpg" },
     ],
@@ -202,7 +202,7 @@ export const home = {
 
   closing: {
     heading: "Every lead you don't answer today is a job for someone else.",
-    body: "Let Vertically answer them for you. Free for 30 days.",
+    body: "Let Vertically reply to them for you. Free for 30 days.",
     fine: "No contract. No credit card. We only work with one roofer per area.",
   },
 

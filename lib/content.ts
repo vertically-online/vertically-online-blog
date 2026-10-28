@@ -30,6 +30,16 @@ export type PostFrontmatter = BaseFrontmatter & {
   seoTitle?: string;
   /** Slugs of hand-picked related posts/pages. */
   related?: string[];
+  /** Set on posts written by the n8n blog pipeline: name-only byline, no author box. */
+  generated?: boolean;
+  /** Hero image from public/images/blog-stock (manifest.json), also used as og:image. */
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  /** Shown under the image only when the image license asks for attribution. */
+  imageCredit?: string;
+  imageCreditUrl?: string;
 };
 
 export type LandingFrontmatter = BaseFrontmatter & {

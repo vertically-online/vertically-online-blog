@@ -11,7 +11,7 @@ export function GET() {
 
   const text = `# ${site.brand.name}
 
-> ${site.brand.name} sets up automatic lead response for roofing companies. It replies to new web leads in under 30 seconds, builds a quote from the roofer's own price list, calls and texts the lead, answers the roofer's phone, books the inspection on the roofer's Google Calendar, follows up with leads who go quiet, and asks for reviews after the job. Free for 30 days, no contract, no credit card.
+> ${site.brand.name} sets up automatic lead response for roofing companies. Every new web lead gets an instant estimate by email (a branded PDF priced from the roofer's own rates and materials) and a text; about 5 minutes later an AI agent calls the lead on the roofer's behalf and can book the inspection on the roofer's Google Calendar. It follows up with leads who go quiet and asks for Google reviews after the job. Vertically does not answer inbound phone calls. Free for 30 days, no contract, no credit card.
 
 ${site.brand.name} is operated by ${site.legal.entityWithDba}. Contact: ${site.contact.email}, ${site.contact.phone}. Book a free lead audit: ${site.bookingUrl}
 

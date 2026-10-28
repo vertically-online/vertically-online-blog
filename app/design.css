@@ -144,6 +144,11 @@ h3 {
   padding: clamp(72px, 9vw, 120px) 0 clamp(72px, 9vw, 110px);
 }
 .sheet.white { background: #fff; }
+/* Hero photo on generated blog posts, with an optional credit line. */
+.post-hero { margin: 0 0 32px; }
+.post-hero img { width: 100%; height: auto; border-radius: 20px; display: block; }
+.post-hero figcaption { margin-top: 8px; font-size: 12px; color: var(--slate, #5b6577); }
+.post-hero figcaption a { text-decoration: underline; }
 .big { font-size: clamp(34px, 4.6vw, 60px); line-height: 1.02; }
 .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 34px; }
 

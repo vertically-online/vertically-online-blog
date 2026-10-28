@@ -109,7 +109,7 @@ export const site = {
     image: "/images/team/toby-karamoutchev.jpg",
     imageWidth: 640,
     imageHeight: 800,
-    bio: "Toby Karamoutchev is the co-founder of Vertically, which sets up automatic lead response, quoting, phone answering, and inspection booking for roofing companies.",
+    bio: "Toby Karamoutchev is the co-founder of Vertically, which sets up automatic lead response, quoting, and inspection booking for roofing companies.",
   },
 
   // Search/social snippet. Keep the description at or under ~155 characters.

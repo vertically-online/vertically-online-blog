@@ -1,4 +1,4 @@
-import { CalendarCheck, ClipboardList, MessageSquareText, PhoneIncoming } from "@/components/ui/icons";
+import { CalendarCheck, ClipboardList, FileText, PhoneCall } from "@/components/ui/icons";
 import { ExampleCard, ExampleStep, LandingPage, landingMetadata } from "@/components/content/LandingPage";
 
 const SLUG = "roofing-answering-service";
@@ -9,33 +9,33 @@ export default function RoofingAnsweringServicePage() {
   return (
     <LandingPage
       slug={SLUG}
-      eyebrow="Phone answering for roofers"
+      eyebrow="Instant lead response for roofers"
       visual={
         <ExampleCard
           label="Example"
-          title="A call while you're on a roof"
-          alt="Example of the AI roofing answering service handling a call: answered, job details captured, inspection booked on Google Calendar"
+          title="A quote request while you're on a roof"
+          alt="Example of a roofing web lead handled by Vertically: quote request, instant emailed estimate, AI call about 5 minutes later, inspection booked on Google Calendar"
         >
           <ExampleStep
-            icon={<PhoneIncoming className="h-4 w-4" aria-hidden="true" />}
-            title="Incoming call, 7:42 PM"
-            detail="Answered right away, in your company's name"
+            icon={<ClipboardList className="h-4 w-4" aria-hidden="true" />}
+            title="Quote request, 7:42 PM"
+            detail="Leak over the kitchen · asphalt shingle · Cherry Hill, NJ"
           />
           <ExampleStep
-            icon={<ClipboardList className="h-4 w-4" aria-hidden="true" />}
-            title="Job details captured"
-            detail="Leak over the kitchen · asphalt shingle · Cherry Hill, NJ"
+            icon={<FileText className="h-4 w-4" aria-hidden="true" />}
+            title="Estimate emailed instantly"
+            detail="Branded PDF from your price list, plus a text"
+          />
+          <ExampleStep
+            icon={<PhoneCall className="h-4 w-4" aria-hidden="true" />}
+            title="AI call, about 5 minutes later"
+            detail="Calls the homeowner in your company's name"
           />
           <ExampleStep
             icon={<CalendarCheck className="h-4 w-4" aria-hidden="true" />}
             title="Inspection booked"
             detail="Thu 10:00 AM · added to your Google Calendar"
             tone="emerald"
-          />
-          <ExampleStep
-            icon={<MessageSquareText className="h-4 w-4" aria-hidden="true" />}
-            title="Confirmation texted to the homeowner"
-            detail="And the full lead breakdown lands in your inbox"
           />
         </ExampleCard>
       }
