@@ -1,4 +1,460 @@
 {
   "note": "Written by the n8n workflow \"K — Blog Image Sync\" from the Google Drive folder. Each image: file, alt, tags, clusters, credit, sourceUrl, license, width, height, fallback.",
-  "images": []
+  "images": [
+    {
+      "file": "colonial-house-cedar-shingle-roof-neighborhood-1ps1jr.jpg",
+      "driveId": "1Ps1JrAgGNKVNUjY4HDfhD4l_HrlZ_K5F",
+      "alt": "White colonial house with black shutters, three dormers and a weathered wood shingle roof, seen across a quiet street with a picket fence",
+      "tags": [
+        "shingle roof",
+        "cedar shingles",
+        "residential roofing",
+        "dormers",
+        "colonial home",
+        "neighborhood",
+        "roof inspection",
+        "curb appeal",
+        "homeowners"
+      ],
+      "clusters": [
+        "leads",
+        "quote"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1067,
+      "height": 1600,
+      "generic": true,
+      "addedAt": "2026-10-28T12:07:17.268-04:00",
+      "fallback": true
+    },
+    {
+      "file": "waterfront-neighborhood-homes-shingle-roofs-overca-1phzcn.jpg",
+      "driveId": "1phZcNFL2VGn8CXW0WovIfvzdbJxUoHwz",
+      "alt": "Suburban waterfront homes with asphalt shingle roofs, a blue fence and green lawn along a canal under an overcast sky",
+      "tags": [
+        "residential roofing",
+        "asphalt shingles",
+        "homeowners",
+        "neighborhood",
+        "suburban homes",
+        "roof exterior",
+        "overcast weather",
+        "curb appeal"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1413,
+      "generic": true,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "aerial-snow-covered-neighborhood-rooftops-winter-10m8gr.jpg",
+      "driveId": "10M8GRJzD0pAvISZrcFe02XsMWLM0-U0c",
+      "alt": "Aerial top-down view of snow-covered suburban rooftops and trees on both sides of a plowed residential street in winter",
+      "tags": [
+        "snow load",
+        "winter roofing",
+        "aerial view",
+        "residential roofs",
+        "drone photo",
+        "neighborhood",
+        "roof inspection",
+        "winter weather"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1066,
+      "generic": false,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "aerial-suburban-neighborhood-shingle-roofs-1yhpa4.jpg",
+      "driveId": "1yhpa4lPHOQWXPeUI8pJYIMXyEAXslTvk",
+      "alt": "Aerial view of a suburban neighborhood with rows of single-family homes, asphalt shingle roofs, solar panels, screened pools, and tree-lined streets",
+      "tags": [
+        "aerial view",
+        "asphalt shingles",
+        "residential roofing",
+        "neighborhood",
+        "solar panels",
+        "roof inspection",
+        "suburban homes",
+        "drone photo"
+      ],
+      "clusters": [
+        "leads",
+        "quote"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 900,
+      "generic": true,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "aerial-view-neighborhood-residential-rooftops-1jfmbx.jpg",
+      "driveId": "1jFMB-K-EzlPq6-i4o2DmfCeTuNeA6snB",
+      "alt": "Aerial top-down view of a residential neighborhood with asphalt shingle rooftops, tree canopy and a street intersection with parked cars",
+      "tags": [
+        "aerial view",
+        "neighborhood",
+        "residential roofs",
+        "asphalt shingles",
+        "rooftops",
+        "drone photo",
+        "homeowners",
+        "roof inspection",
+        "service area"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1200,
+      "height": 1600,
+      "generic": false,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "aerial-suburban-neighborhood-tile-roofs-solar-1ck7bu.jpg",
+      "driveId": "1ck7Buq1ejH617Z4RpymIXjyZA4pG5DV6",
+      "alt": "Aerial view of a dense suburban neighborhood with tile roofs, some with solar panels, along curving streets under a clear blue sky",
+      "tags": [
+        "aerial view",
+        "residential roofing",
+        "tile roof",
+        "solar panels",
+        "suburban neighborhood",
+        "homeowners",
+        "roof replacement",
+        "housing development",
+        "roofing leads"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1200,
+      "generic": true,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "aerial-suburban-neighborhood-residential-rooftops-1kteqv.jpg",
+      "driveId": "1kteqV7jkEkeTae6wkmj2MGpriaAbWjTl",
+      "alt": "Aerial view of a large suburban neighborhood with tiled and shingled rooftops, solar panels, winding streets, and green hills in the distance",
+      "tags": [
+        "residential roofs",
+        "aerial view",
+        "tile roof",
+        "asphalt shingles",
+        "solar panels",
+        "neighborhood",
+        "suburban homes",
+        "roof inspection",
+        "homeowners"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1200,
+      "generic": true,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "american-flag-suburban-home-shingle-roof-1vx8sj.jpg",
+      "driveId": "1Vx8SJWtI6ItJl4RKIJ0-JAB53YOyZNuN",
+      "alt": "American flag mounted on a craftsman-style house porch with gray asphalt shingle roof, with neighboring homes in a suburban street under a clear blue sky",
+      "tags": [
+        "asphalt shingles",
+        "residential roofing",
+        "homeowners",
+        "neighborhood",
+        "suburban home",
+        "curb appeal",
+        "gable roof",
+        "american flag"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": false,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "collapsed-ceiling-roof-damage-interior-1vb6is.jpg",
+      "driveId": "1VB6ISG0DzBnqtWFvdS8VTboy74vAy7dQ",
+      "alt": "Abandoned room with a collapsed white paneled ceiling, hanging boards, exposed insulation, and a hole opening to the roof above, debris covering the floor",
+      "tags": [
+        "roof damage",
+        "ceiling collapse",
+        "fire damage",
+        "water damage",
+        "insulation",
+        "roof repair",
+        "inspection",
+        "structural damage",
+        "insurance claim"
+      ],
+      "clusters": [
+        "leads",
+        "quote"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 900,
+      "height": 1600,
+      "generic": false,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "storm-damaged-tile-roof-exposed-rafters-1q1vyy.jpg",
+      "driveId": "1Q1vyYz92HJeqP5LjXC6xCq0CweIdTUWg",
+      "alt": "Damaged tiled roof with missing tiles and exposed rafters above a gutter and a tall window showing a wooden spiral staircase",
+      "tags": [
+        "roof damage",
+        "storm damage",
+        "clay tile roof",
+        "missing tiles",
+        "exposed rafters",
+        "roof repair",
+        "gutter",
+        "insurance claim",
+        "inspection"
+      ],
+      "clusters": [
+        "leads",
+        "quote"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1067,
+      "height": 1600,
+      "generic": false,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "lightning-storm-over-tile-roofs-1a4k7i.jpg",
+      "driveId": "1A4K7IUP1_FpIbktxPPDBptdewkcSX1sv",
+      "alt": "Large branching lightning bolt streaking across a deep blue stormy sky above red clay tile house roofs and green trees",
+      "tags": [
+        "lightning storm",
+        "storm damage",
+        "tile roof",
+        "residential roof",
+        "severe weather",
+        "roof inspection",
+        "storm season",
+        "homeowners"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1501,
+      "generic": false,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "rain-pouring-off-corrugated-roof-edge-1r9k91.jpg",
+      "driveId": "1r9K916QbqffiwEInLJ0IV7p89LTpaFcK",
+      "alt": "Heavy rain streaming off the edge of a corrugated tile roof at dusk, with water droplets frozen in mid-air",
+      "tags": [
+        "rain",
+        "roof leak",
+        "storm damage",
+        "corrugated roof",
+        "roof drainage",
+        "gutters",
+        "heavy rain",
+        "weather",
+        "roof repair"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": false,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "rainy-clay-tile-roof-through-window-1hhsms.jpg",
+      "driveId": "1hHsMsoxDBQLvKA_PsxZjTzOweBb2VPYb",
+      "alt": "Close-up of wet red clay roof tiles with rain dripping off the edge, seen through a rain-speckled window",
+      "tags": [
+        "clay tile roof",
+        "rain",
+        "roof leak",
+        "storm weather",
+        "water damage",
+        "roof drainage",
+        "tile roofing",
+        "roof inspection"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1280,
+      "height": 1600,
+      "generic": false,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "roofer-climbing-ladder-clay-tile-roof-1o5pym.jpg",
+      "driveId": "1o5pYm-J90t1C-we-HaUC_PUUymBr1fQ9",
+      "alt": "Roofer in yellow hard hat, safety harness and sunglasses climbing an aluminum ladder to reach a clay tile roof edge on a sunny day",
+      "tags": [
+        "roofer at work",
+        "clay tile roof",
+        "roof safety",
+        "fall protection",
+        "safety harness",
+        "ladder",
+        "roof inspection",
+        "roof repair",
+        "construction"
+      ],
+      "clusters": [
+        "quote",
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1063,
+      "height": 1600,
+      "generic": true,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "aluminum-ladder-against-blue-sky-1luryb.jpg",
+      "driveId": "1LurYBwwucjas1Dspy1Fc3esGCr8xjfAO",
+      "alt": "Low-angle view of an aluminum stepladder's top with copper-colored hinge brackets and rungs against a blue sky with white clouds",
+      "tags": [
+        "ladder",
+        "aluminum ladder",
+        "roofing tools",
+        "roof access",
+        "safety equipment",
+        "construction",
+        "inspection",
+        "blue sky",
+        "contractor equipment"
+      ],
+      "clusters": [
+        "quote",
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": true,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "aluminum-ladder-against-blue-sky-1yfujg.jpg",
+      "driveId": "1YFUJgXcZ-iRRpkVFB85ns8_be1bF0T1g",
+      "alt": "Low-angle view of an aluminum stepladder with orange metal hinge bracket rising against a clear blue sky",
+      "tags": [
+        "ladder",
+        "roof access",
+        "roofing tools",
+        "aluminum ladder",
+        "construction",
+        "job site safety",
+        "roof inspection",
+        "contractor equipment"
+      ],
+      "clusters": [
+        "quote",
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1067,
+      "height": 1600,
+      "generic": true,
+      "addedAt": "2026-10-28T12:07:17.268-04:00"
+    }
+  ],
+  "rejected": [
+    {
+      "driveId": "17Ursay6wdxZgTdfM7yXiDJQWbMztOVu3",
+      "name": "pexels-justin-morphis-9043461-6076471.jpg",
+      "reason": "A readable sign in the right-hand house's window reads 'Freedom is in peril. Defend it with all your might', which is a political message. A small text placard is also visible in another house's window. Readable signage is not allowed, and the message is off-topic for a roofing blog."
+    },
+    {
+      "driveId": "1MlhDcC7wJOxe1PX2JfZe9_kzK7tkEhoE",
+      "name": "pexels-heytam-35920464.jpg",
+      "reason": "A green street sign reading 'ENGLEFIELD DR' is legible at the lower right, so the photo shows readable signage and identifies a real neighborhood. Otherwise the image is sharp and relevant. Cropping or retouching out the sign would make it usable."
+    },
+    {
+      "driveId": "1RoE3OZ-Dx3DM11XhwohsxMSHa72TnW8j",
+      "name": "pexels-daniel-faundez-2163280772-38875778.jpg",
+      "reason": "vision output unreadable"
+    },
+    {
+      "driveId": "1V64QwSsaAx4QSGeqsZYSHS-UtxKt_nzr",
+      "name": "pexels-mieke-boogert-59233141-9788122.jpg",
+      "reason": "The ladder has a visible sticker with a readable brand name at the top (looks like 'TORNADO') plus small warning text. This breaks the no-brand-names/signage rule. Otherwise the photo is sharp and on-topic, with no face shown, so it would work if the label were cropped or retouched out."
+    }
+  ]
 }
