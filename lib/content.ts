@@ -32,6 +32,8 @@ export type PostFrontmatter = BaseFrontmatter & {
   related?: string[];
   /** Set on posts written by the n8n blog pipeline: name-only byline, no author box. */
   generated?: boolean;
+  /** Exact publish time (ISO), set by the pipeline so same-day posts sort newest first. */
+  publishedAt?: string;
   /** Hero image from public/images/blog-stock (manifest.json), also used as og:image. */
   image?: string;
   imageAlt?: string;
@@ -104,8 +106,12 @@ function load<T extends BaseFrontmatter>(dir: "blog" | "landing"): Doc<T>[] {
     });
 }
 
+// Newest first. Pipeline posts carry an exact publishedAt time; hand-written posts
+// only have a date, so they count as published at noon UTC that day.
+const publishedTime = (post: PostFrontmatter) => Date.parse(post.publishedAt ?? `${post.date}T12:00:00Z`) || 0;
+
 export function getAllPosts() {
-  return load<PostFrontmatter>("blog").sort((a, b) => (a.date < b.date ? 1 : -1));
+  return load<PostFrontmatter>("blog").sort((a, b) => publishedTime(b) - publishedTime(a));
 }
 
 export function getPost(slug: string) {

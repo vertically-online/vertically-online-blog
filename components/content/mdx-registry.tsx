@@ -5,19 +5,23 @@ import type { ComponentType } from "react";
 import Body0 from "@/content/blog/best-roofing-answering-services.mdx";
 import Body1 from "@/content/blog/best-roofing-proposal-software.mdx";
 import Body2 from "@/content/blog/how-to-get-more-roofing-leads.mdx";
-import Body3 from "@/content/blog/roofing-virtual-assistant-vs-ai-receptionist.mdx";
-import Body4 from "@/content/blog/what-to-look-for-in-a-roofing-answering-service.mdx";
-import Body5 from "@/content/landing/roofing-answering-service.mdx";
-import Body6 from "@/content/landing/roofing-quote-software.mdx";
+import Body3 from "@/content/blog/roofing-leads-during-a-slowdown.mdx";
+import Body4 from "@/content/blog/roofing-seo.mdx";
+import Body5 from "@/content/blog/roofing-virtual-assistant-vs-ai-receptionist.mdx";
+import Body6 from "@/content/blog/what-to-look-for-in-a-roofing-answering-service.mdx";
+import Body7 from "@/content/landing/roofing-answering-service.mdx";
+import Body8 from "@/content/landing/roofing-quote-software.mdx";
 
 const BODIES: Record<string, ComponentType> = {
   "blog/best-roofing-answering-services": Body0,
   "blog/best-roofing-proposal-software": Body1,
   "blog/how-to-get-more-roofing-leads": Body2,
-  "blog/roofing-virtual-assistant-vs-ai-receptionist": Body3,
-  "blog/what-to-look-for-in-a-roofing-answering-service": Body4,
-  "landing/roofing-answering-service": Body5,
-  "landing/roofing-quote-software": Body6,
+  "blog/roofing-leads-during-a-slowdown": Body3,
+  "blog/roofing-seo": Body4,
+  "blog/roofing-virtual-assistant-vs-ai-receptionist": Body5,
+  "blog/what-to-look-for-in-a-roofing-answering-service": Body6,
+  "landing/roofing-answering-service": Body7,
+  "landing/roofing-quote-software": Body8,
 };
 
 export default function MdxBody({ id }: { id: string }) {
