@@ -1,5 +1,5 @@
 {
-  "note": "Written by the n8n workflow \"K \u2014 Blog Image Sync\" from the Google Drive folder. Each image: file, alt, tags, clusters, credit, sourceUrl, license, width, height, fallback.",
+  "note": "Written by the n8n workflow \"K — Blog Image Sync\" from the Google Drive folder. Each image: file, alt, tags, clusters, credit, sourceUrl, license, width, height, fallback.",
   "images": [
     {
       "file": "colonial-house-cedar-shingle-roof-neighborhood-1ps1jr.jpg",
@@ -433,6 +433,478 @@
       "height": 1600,
       "generic": true,
       "addedAt": "2026-10-28T12:07:17.268-04:00"
+    },
+    {
+      "file": "aluminum-ladder-at-home-construction-site-114quk.jpg",
+      "driveId": "114QukgXSZ7c-UrUhOf-gVJBp7SGsPJA7",
+      "alt": "Aluminum step ladder standing outside a house under construction, with metal sheets, a broom and a yellow mop bucket nearby",
+      "tags": [
+        "ladder",
+        "construction site",
+        "roofing tools",
+        "job site",
+        "home exterior",
+        "metal sheets",
+        "contractor equipment",
+        "roof access"
+      ],
+      "clusters": [
+        "quote",
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1067,
+      "height": 1600,
+      "generic": false,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "roofer-installing-red-clay-roof-tiles-1ftmxc.jpg",
+      "driveId": "1ftM_CVm-89KxdJ-4iO2ZoYyiFQXVvzTB",
+      "alt": "Roofer kneeling on a partly tiled roof, laying red clay tiles over wooden battens under a cloudy sky",
+      "tags": [
+        "clay roof tiles",
+        "roofer at work",
+        "roof installation",
+        "tile roofing",
+        "roof replacement",
+        "battens",
+        "new roof",
+        "roofing contractor"
+      ],
+      "clusters": [],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1067,
+      "height": 1600,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "asphalt-shingle-roof-white-siding-wall-1fgluk.jpg",
+      "driveId": "1fgLUkHKfgFZ7KzDXg8iRtlc0jvKTEvxW",
+      "alt": "Weathered asphalt shingle roof edge above white fiber cement siding and gray wooden planks along the bottom of a house wall",
+      "tags": [
+        "asphalt shingles",
+        "roof edge",
+        "fascia",
+        "siding",
+        "house exterior",
+        "roof maintenance",
+        "weathered roof",
+        "residential roofing"
+      ],
+      "clusters": [
+        "leads",
+        "quote"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "red-clay-tile-roof-closeup-1mkfvq.jpg",
+      "driveId": "1MKfVQ_-06l9QjH44SYcIcMB8fOYZw9hT",
+      "alt": "Close-up of overlapping red clay roof tiles in neat rows, with decorative round end tiles along the lower eave",
+      "tags": [
+        "clay tile roof",
+        "red roof tiles",
+        "tile roofing",
+        "roof texture",
+        "roof installation",
+        "eave tiles",
+        "roofing materials",
+        "roof replacement"
+      ],
+      "clusters": [
+        "quote",
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "terracotta-clay-roof-tiles-close-up-1z7mh4.jpg",
+      "driveId": "1z7mH4Vg9lJ2PefweKupwB2zWxKdjV_EY",
+      "alt": "Close-up of rows of orange-red terracotta clay roof tiles with small debris and weathering in bright sunlight",
+      "tags": [
+        "clay tile roof",
+        "terracotta tiles",
+        "roof texture",
+        "roof inspection",
+        "roof maintenance",
+        "tile roofing",
+        "roof repair",
+        "roofing"
+      ],
+      "clusters": [
+        "quote",
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "slate-tile-roof-dormer-window-1lteln.jpg",
+      "driveId": "1ltelNVN-971XCQ6PyN82fZxMYeTOb3yk",
+      "alt": "Gray slate-style tiled roof with a white stone dormer window and a blue window pane under a clear blue sky",
+      "tags": [
+        "slate roof",
+        "roof tiles",
+        "dormer window",
+        "residential roofing",
+        "roof installation",
+        "flashing",
+        "roof inspection",
+        "home exterior"
+      ],
+      "clusters": [
+        "quote",
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 946,
+      "height": 1600,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "red-clay-tile-roof-blue-sky-1crel0.jpg",
+      "driveId": "1CREl0AOMT-CVhSKPoPzNfD-Tk4EWMsZk",
+      "alt": "Close view of a red terracotta clay tile roof with a small arched ventilation tile under a bright blue sky",
+      "tags": [
+        "clay tile roof",
+        "terracotta tiles",
+        "roof ventilation",
+        "roof vent",
+        "roofing materials",
+        "residential roofing",
+        "roof installation",
+        "eaves",
+        "blue sky"
+      ],
+      "clusters": [
+        "leads",
+        "quote"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "frost-covered-rounded-roof-shingles-closeup-1x6m4k.jpg",
+      "driveId": "1X6M4KTbS7kKiLGtet4QRmfbaTgrpiz00",
+      "alt": "Close-up of frost crystals covering rounded, overlapping asphalt roof shingles on a cold winter morning",
+      "tags": [
+        "asphalt shingles",
+        "frost",
+        "winter roofing",
+        "cold weather",
+        "roof texture",
+        "shingle roof",
+        "roof maintenance",
+        "weather damage"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1143,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "frosted-asphalt-shingles-close-up-1jdqo6.jpg",
+      "driveId": "1JdQo62yFISJ61Zp_b0nJ43v5dkw3-VFV",
+      "alt": "Close-up of frost crystals covering overlapping asphalt shingles on a roof, with shallow depth of field and visible granule texture",
+      "tags": [
+        "asphalt shingles",
+        "frost",
+        "winter roofing",
+        "cold weather",
+        "shingle texture",
+        "roof maintenance",
+        "roof inspection",
+        "weather damage"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "cedar-shake-roof-dormer-windows-1l2tg7.jpg",
+      "driveId": "1L2tg7H_ujZ0umu_VOVymGob13SGZBHU-",
+      "alt": "Two gabled dormers with green-framed windows set into a weathered gray cedar shake roof with copper flashing",
+      "tags": [
+        "cedar shake roof",
+        "wood shingles",
+        "dormer windows",
+        "copper flashing",
+        "roof texture",
+        "roof replacement",
+        "historic home",
+        "roofing materials"
+      ],
+      "clusters": [
+        "quote",
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1298,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "asphalt-shingle-roof-texture-closeup-1ksnww.jpg",
+      "driveId": "1kSnWwp7vi0Fu-qehAJS_KYWHXO--iXx5",
+      "alt": "Black and white close-up of overlapping asphalt shingles on a roof, receding into the distance with shallow depth of field",
+      "tags": [
+        "asphalt shingles",
+        "shingle roof",
+        "roofing",
+        "roof texture",
+        "roof installation",
+        "roof replacement",
+        "roofing materials",
+        "residential roofing"
+      ],
+      "clusters": [
+        "quote",
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1067,
+      "height": 1600,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "slate-roof-with-green-shuttered-dormers-1cqw6e.jpg",
+      "driveId": "1cQW6eYcGz4EQsSKTz1JpM7t99O6wJ6VX",
+      "alt": "Close-up of a gray slate roof with two small dormer windows fitted with green wooden shutters and a roof hook",
+      "tags": [
+        "slate roof",
+        "dormer",
+        "roof tiles",
+        "roof installation",
+        "roof flashing",
+        "roof restoration",
+        "historic roofing",
+        "roofing materials"
+      ],
+      "clusters": [
+        "quote",
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "roofer-hammering-plywood-deck-harness-1lqwrq.jpg",
+      "driveId": "1lqwrqZXpidSipWWpDpOCnl72ukQO_a4S",
+      "alt": "Construction worker in blue hard hat, orange safety vest and harness kneeling on plywood decking, hammering a nail beside a coiled rope",
+      "tags": [
+        "roofer at work",
+        "roof decking",
+        "plywood sheathing",
+        "fall protection",
+        "safety harness",
+        "hard hat",
+        "hammer",
+        "construction site",
+        "roofing crew"
+      ],
+      "clusters": [],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": false,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "timber-roof-framing-under-construction-1wsxic.jpg",
+      "driveId": "1WS_icXSwqZy8cNaALkLuUq3PTQf4CtKu",
+      "alt": "Wooden roof truss framework with rafters and support posts over an unfinished building with aerated concrete block walls and scaffolding",
+      "tags": [
+        "roof framing",
+        "timber trusses",
+        "roof construction",
+        "rafters",
+        "new build",
+        "carpentry",
+        "scaffolding",
+        "roofing contractor"
+      ],
+      "clusters": [
+        "quote",
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "worker-drilling-lumber-at-construction-site-1s3kjg.jpg",
+      "driveId": "1S3KjGiqJ5zdCNQwZnimtmLpM9W5WGwM6",
+      "alt": "Construction worker in yellow hard hat and gloves drilling into a wooden board on a workbench outside a timber-clad house",
+      "tags": [
+        "construction worker",
+        "cordless drill",
+        "hard hat",
+        "lumber",
+        "home construction",
+        "jobsite",
+        "contractor",
+        "roofer at work"
+      ],
+      "clusters": [],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": true,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "roofer-inspecting-wooden-roof-rafters-framing-1vmqrw.jpg",
+      "driveId": "1VmQrwLsLGlpSMo3JqBJwiuYHTCg5XYyV",
+      "alt": "Construction worker in cap and checked shirt holding a hammer, looking up at exposed wooden roof rafters under a blue sky",
+      "tags": [
+        "roof framing",
+        "rafters",
+        "roofer at work",
+        "carpenter",
+        "construction site",
+        "timber roof",
+        "hammer",
+        "new construction",
+        "roofing crew"
+      ],
+      "clusters": [],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": false,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "roofer-sawing-wood-roof-framing-1gpcsd.jpg",
+      "driveId": "1GPCSdhw8jnlKBRhT4Stuehb5hukHl9KX",
+      "alt": "Construction worker in white gloves using a yellow hand saw on wooden roof rafters outdoors among tall pine trees",
+      "tags": [
+        "roofer at work",
+        "roof framing",
+        "rafters",
+        "carpentry",
+        "hand saw",
+        "new construction",
+        "roofing crew",
+        "wood roof structure",
+        "construction tools"
+      ],
+      "clusters": [],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": false,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
+    },
+    {
+      "file": "worker-holding-rolled-blueprints-job-site-1hco6f.jpg",
+      "driveId": "1hcO6fdUkwmjhqZvWCsTqKWg2FpHVNsWq",
+      "alt": "Construction worker in hi-vis vest and red shirt holding rolled blueprints on a job site while a coworker leans on a table",
+      "tags": [
+        "construction worker",
+        "blueprints",
+        "job site",
+        "estimate",
+        "paperwork",
+        "project planning",
+        "hi-vis vest",
+        "roofing contractor"
+      ],
+      "clusters": [
+        "quote"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": false,
+      "addedAt": "2026-10-28T12:12:27.478-04:00"
     }
   ],
   "rejected": [
@@ -450,6 +922,16 @@
       "driveId": "1V64QwSsaAx4QSGeqsZYSHS-UtxKt_nzr",
       "name": "pexels-mieke-boogert-59233141-9788122.jpg",
       "reason": "The ladder has a visible sticker with a readable brand name at the top (looks like 'TORNADO') plus small warning text. This breaks the no-brand-names/signage rule. Otherwise the photo is sharp and on-topic, with no face shown, so it would work if the label were cropped or retouched out."
+    },
+    {
+      "driveId": "1RoE3OZ-Dx3DM11XhwohsxMSHa72TnW8j",
+      "name": "pexels-daniel-faundez-2163280772-38875778.jpg",
+      "reason": "The welding machine in the foreground shows a legible model or brand label, and the work pants have a small red brand logo on the pocket. The scene is also fence welding rather than roofing, so it is only loosely relevant to a roofing company blog."
+    },
+    {
+      "driveId": "1zaYFp4L_cGnCmzIjRlwK_OGzmd7QE7CR",
+      "name": "pexels-jimmy-liao-3615017-17063686.jpg",
+      "reason": "Readable signage appears in the background: a green road sign with the Chinese characters 新北 and a storefront sign reading 'MOK'. The setting is also an urban street with scooters and an overpass, not a roofing or home context."
     }
   ]
 }
