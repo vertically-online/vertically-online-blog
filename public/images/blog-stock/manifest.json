@@ -1,5 +1,5 @@
 {
-  "note": "Written by the n8n workflow \"K — Blog Image Sync\" from the Google Drive folder. Each image: file, alt, tags, clusters, credit, sourceUrl, license, width, height, fallback.",
+  "note": "Written by the n8n workflow \"K \u2014 Blog Image Sync\" from the Google Drive folder. Each image: file, alt, tags, clusters, credit, sourceUrl, license, width, height, fallback.",
   "images": [
     {
       "file": "colonial-house-cedar-shingle-roof-neighborhood-1ps1jr.jpg",
@@ -445,11 +445,6 @@
       "driveId": "1MlhDcC7wJOxe1PX2JfZe9_kzK7tkEhoE",
       "name": "pexels-heytam-35920464.jpg",
       "reason": "A green street sign reading 'ENGLEFIELD DR' is legible at the lower right, so the photo shows readable signage and identifies a real neighborhood. Otherwise the image is sharp and relevant. Cropping or retouching out the sign would make it usable."
-    },
-    {
-      "driveId": "1RoE3OZ-Dx3DM11XhwohsxMSHa72TnW8j",
-      "name": "pexels-daniel-faundez-2163280772-38875778.jpg",
-      "reason": "vision output unreadable"
     },
     {
       "driveId": "1V64QwSsaAx4QSGeqsZYSHS-UtxKt_nzr",
