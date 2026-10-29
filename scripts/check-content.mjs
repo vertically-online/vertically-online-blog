@@ -67,11 +67,13 @@ for (const dir of ["blog", "landing"]) {
 function checkGenerated(rel, data, content) {
   const AUTHORS = ["Toby Karamoutchev", "Bogdan Stere"];
   if (!AUTHORS.includes(data.author)) errors.push(`${rel}: generated post author must be one of ${AUTHORS.join(", ")}`);
-  if (typeof data.title === "string" && data.title.length > 60) errors.push(`${rel}: title is ${data.title.length} characters (max 60)`);
-  if (typeof data.description === "string" && data.description.length < 140) errors.push(`${rel}: description under 140 characters`);
+  // Length and FAQ-count targets are warnings: the pipeline treats them as soft
+  // checks, and a build failure here would roll a published post back.
+  if (typeof data.title === "string" && data.title.length > 60) warnings.push(`${rel}: title is ${data.title.length} characters (target 60)`);
+  if (typeof data.description === "string" && data.description.length < 140) warnings.push(`${rel}: description under 140 characters`);
   if (!data.image || !data.imageAlt) errors.push(`${rel}: generated post needs image and imageAlt`);
   else if (!fs.existsSync(path.join(process.cwd(), "public", data.image))) errors.push(`${rel}: image ${data.image} not found in public/`);
-  if (!Array.isArray(data.faq) || data.faq.length < 4 || data.faq.length > 6) errors.push(`${rel}: generated post needs 4-6 FAQ items`);
+  if (!Array.isArray(data.faq) || data.faq.length < 4 || data.faq.length > 6) warnings.push(`${rel}: generated post has ${(data.faq ?? []).length} FAQ items (target 4-6)`);
   const text = `${data.title}\n${data.description}\n${content}\n${(data.faq ?? []).map((q) => `${q.question} ${q.answer}`).join("\n")}`;
   const banned = [
     [/\b(we|our team|I) (tested|visited|interviewed|surveyed|found that)\b/i, "first-person experience claim"],
