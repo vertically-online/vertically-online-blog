@@ -1048,6 +1048,111 @@
       "height": 1600,
       "generic": false,
       "addedAt": "2026-10-28T13:20:08.117-04:00"
+    },
+    {
+      "file": "worker-cutting-roof-rafter-outdoors-16mz9x.jpg",
+      "driveId": "16MZ9_GkRizVSHJXF5RZWOBr6hLFi81TN",
+      "alt": "A worker in a gray shirt and jeans cuts a wooden roof rafter with a handsaw in a pine forest.",
+      "tags": [
+        "roofer at work",
+        "wood roof framing",
+        "handsaw cutting",
+        "roof rafters",
+        "timber construction",
+        "pine forest",
+        "roof framing",
+        "carpentry",
+        "residential construction"
+      ],
+      "clusters": [
+        "quote"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": true,
+      "addedAt": "2026-10-30T06:01:46.683-04:00"
+    },
+    {
+      "file": "worker-drilling-formwork-construction-site-1nscdr.jpg",
+      "driveId": "1NScDRb6NHoH3KcY9q4w_sFZkabXxcf47",
+      "alt": "Smiling worker in orange hoodie and yellow hard hat using a cordless drill on wooden formwork at a brick construction site.",
+      "tags": [
+        "construction site",
+        "formwork",
+        "cordless drill",
+        "brick walls",
+        "construction worker",
+        "hard hat",
+        "building foundation",
+        "outdoor work"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1067,
+      "generic": true,
+      "addedAt": "2026-10-30T06:01:46.683-04:00"
+    },
+    {
+      "file": "roofer-climbing-ladder-safety-harness-1kvobj.jpg",
+      "driveId": "1KvOBJKLqnltR3A7ad6V22AdciSL1d902",
+      "alt": "Roofer in yellow shirt and hard hat climbing an aluminum ladder onto a terracotta tile roof, wearing a safety harness.",
+      "tags": [
+        "roofer at work",
+        "safety harness",
+        "fall protection",
+        "terracotta roof tiles",
+        "aluminum ladder",
+        "hard hat",
+        "roof repair",
+        "roofing crew"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1063,
+      "height": 1600,
+      "generic": true,
+      "addedAt": "2026-10-30T06:01:46.683-04:00"
+    },
+    {
+      "file": "orange-hard-hats-metal-roof-13szba.jpg",
+      "driveId": "13SZBA5hZVxCflbeE9YeP0fzScWx9S5IX",
+      "alt": "Two orange hard hats and a coiled yellow extension cord resting on a white metal roof ridge with a tree-lined background.",
+      "tags": [
+        "metal roof",
+        "hard hats",
+        "safety gear",
+        "roof ridge",
+        "construction site",
+        "extension cord",
+        "commercial roofing",
+        "roofing safety"
+      ],
+      "clusters": [
+        "leads"
+      ],
+      "credit": "Free stock photo",
+      "sourceUrl": "",
+      "license": "Free to use (uploaded by Vertically)",
+      "attributionRequired": false,
+      "width": 1600,
+      "height": 1069,
+      "generic": true,
+      "addedAt": "2026-10-30T06:01:46.683-04:00"
     }
   ],
   "rejected": [
@@ -1110,6 +1215,41 @@
       "driveId": "1oZGziZ46KSR_HaH26DAZTcjREUmzWoyf",
       "name": "pexels-christafaari-34020199.jpg",
       "reason": "Contains a readable company logo and brand name ('PuroClean' with tagline) on the worker's hoodie, which is not allowed for this hero image."
+    },
+    {
+      "driveId": "1-Jz6345iNg9a5APprVurM3_6p_A4wGkN",
+      "name": "pexels-yuraforrat-10161111.jpg",
+      "reason": "The welding helmet displays a readable brand name ('PEGAHTA'-style logo/text on the mask), which violates the no-readable-brand rule. Also the scene is a concrete/masonry rooftop welding job rather than a clear roofing shot."
+    },
+    {
+      "driveId": "1C8koFM-IXX8uWuGAFiKAO2sgbLiprqD2",
+      "name": "pexels-prolificpeople-38293530.jpg",
+      "reason": "The image contains a readable branded/printed sign on the board with partially legible text and a large red printed word that could be a brand or product label, and the blurred text overlay on the lumber suggests printed marketing text; also the image is somewhat soft-focused in the foreground. Readable signage/text makes it unsuitable under the criteria."
+    },
+    {
+      "driveId": "1Fk0ZbMgYQ09YsOoVokjsYwXfwOCKkv3L",
+      "name": "pexels-life-of-pix-8092.jpg",
+      "reason": "The image shows a worker's tool belt with a hammer bearing a visible brand-like marking on the belt and tool pouch, and the photo is partly out of focus in the foreground; the brand text on the belt is readable enough to be a concern for a hero image."
+    },
+    {
+      "driveId": "1LffF77AX0ImdmLYY2Kz0bCMascsUKppR",
+      "name": "pexels-cristian-rojas-8853523.jpg",
+      "reason": "The image shows a readable brand label on the worker's gloves ('UCA' stamped on the cuff), and the bottom-left metal fixture bears small printed text; the photo also appears to be a close-up of hands and tools rather than a clean roofing scene, so it risks showing identifiable brand names."
+    },
+    {
+      "driveId": "1x_-d6jTTXi1ZxhGExiqlCbBdA-tuby0Z",
+      "name": "pexels-christafaari-34019841.jpg",
+      "reason": "The worker's hard hat/shirt and gear show no readable logos, but there is a handwritten name/text on the rope or tool strap ('Xxxx Griffiths'-like script) and a blurred foreground; the main concern is an identifiable person in a fairly close, clear shot plus legible handwritten text, which makes it unsuitable as a generic hero image."
+    },
+    {
+      "driveId": "1-9d7FkUhTO5Rz4DBGqfT9JxBVuGvUuVz",
+      "name": "pexels-prolificpeople-38346725.jpg",
+      "reason": "Readable brand text is visible: the harness and gear show the 'PMI' or similar manufacturer branding, and a sign on the roof edge reads 'Pinnacle Roofing'-style lettering, which is a readable company name."
+    },
+    {
+      "driveId": "1B0-6S9k3RILvKp5G05ZGJTFbY-zT-8O0",
+      "name": "pexels-christafaari-34033126.jpg",
+      "reason": "Shows a readable company logo and brand name ('PuroClean' with tagline) on the worker's hoodie, which violates the no-readable-branding rule."
     }
   ]
 }
